@@ -21,58 +21,94 @@ const Photography = ({ className }: PhotographyProps) => {
   const photos: PhotoItem[] = [
     {
       id: '1',
-      src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
-      alt: "Landscape photography of mountain hit by sun rays",
-      category: 'nature'
+      src: "/images/astrography.jpg",
+      alt: "Astrography",
+      category: 'astrography'
     },
     {
       id: '2',
-      src: "https://images.unsplash.com/photo-1527576539890-dfa815648363",
-      alt: "Grayscale photo of low angle view of building",
-      category: 'architecture'
+      src: "/images/flower1.jpg",
+      alt: "Flower",
+      category: 'flower'
     },
     {
       id: '3',
-      src: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
-      alt: "Ocean wave at beach",
-      category: 'nature'
+      src: "/images/mansmoking.jpg",
+      alt: "Man Smoking",
+      category: 'people'
     },
     {
       id: '4',
-      src: "https://images.unsplash.com/photo-1486718448742-163732cd1544",
-      alt: "Minimalist photography of brown wavy structure",
-      category: 'architecture'
+      src: "/images/manwithumbrella.jpg",
+      alt: "Man with Umbrella",
+      category: 'people'
     },
     {
       id: '5',
-      src: "https://images.unsplash.com/photo-1518005020951-eccb494ad742",
-      alt: "White concrete building during daytime",
+      src: "/images/statu34.jpg",
+      alt: "Statue",
       category: 'architecture'
     },
     {
       id: '6',
-      src: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1",
-      alt: "Grey tabby kitten",
-      category: 'animals'
+      src: "/images/architecture.jpg",
+      alt: "Architecture",
+      category: 'architecture'
     },
     {
       id: '7',
-      src: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86",
-      alt: "Low angle photography of trees at daytime",
-      category: 'nature'
+      src: "/images/architecture2.jpg",
+      alt: "Architecture 2",
+      category: 'architecture'
     },
     {
       id: '8',
-      src: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2",
-      alt: "Four brown horses behind fence",
+      src: "/images/architecture3.jpg",
+      alt: "Architecture 3",
+      category: 'architecture'
+    },
+    {
+      id: '9',
+      src: "/images/darknight.jpg",
+      alt: "Dark Night",
+      category: 'nature'
+    },
+    {
+      id: '10',
+      src: "/images/photo1.jpeg",
+      alt: "Photo 1",
+      category: 'other'
+    },
+    {
+      id: '11',
+      src: "/images/flower.jpg",
+      alt: "Flower",
+      category: 'flower'
+    },
+    {
+      id: '12',
+      src: "/images/flower3.jpg",
+      alt: "Flower 3",
+      category: 'flower'
+    },
+    {
+      id: '13',
+      src: "/images/pinkflowers.jpg",
+      alt: "Pink Flowers",
+      category: 'flower'
+    },
+    {
+      id: '14',
+      src: "/images/squirrel.jpg",
+      alt: "Squirrel",
       category: 'animals'
     }
   ];
   
-  const categories = ['all', 'nature', 'architecture', 'animals'];
+  const categories = ['all', 'astrography', 'flower', 'people', 'architecture', 'nature', 'other', 'animals'];
   
-  const filteredPhotos = activeCategory === 'all' 
-    ? photos 
+  const filteredPhotos = activeCategory === 'all'
+    ? photos
     : photos.filter(photo => photo.category === activeCategory);
   
   return (

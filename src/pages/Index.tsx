@@ -17,10 +17,17 @@ const Index = () => {
     
     // Smooth scroll for anchor links
     const handleAnchorLinkClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest('a[href^="#"]');
-      
-      if (anchor) {
+      let target = e.target as HTMLElement;
+      let anchor: HTMLAnchorElement | null = null;
+
+      // Traverse up the DOM tree to find the anchor element
+      while (target && !(target instanceof HTMLAnchorElement)) {
+          target = target.parentNode as HTMLElement;
+      }
+
+      anchor = target as HTMLAnchorElement;
+
+      if (anchor && anchor.getAttribute('href')?.startsWith('#')) {
         e.preventDefault();
         const targetId = anchor.getAttribute('href');
         if (targetId && targetId !== '#') {

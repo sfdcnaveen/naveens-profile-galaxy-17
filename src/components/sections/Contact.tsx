@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
 import AnimatedText from '../ui/AnimatedText';
+import emailjs from '@emailjs/browser';
+
+emailjs.init('vkO2r8e_jDVNtkMmF');
 
 interface ContactProps {
   className?: string;
@@ -24,18 +27,23 @@ const Contact = ({ className }: ContactProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      
-      // Reset the submitted state after some time
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1500);
+
+    emailjs.sendForm('service_4kg7k5r', 'template_j2ztzyc', e.target as HTMLFormElement, 'vkO2r8e_jDVNtkMmF')
+      .then((result) => {
+          console.log(result.text);
+          setIsSubmitting(false);
+          setSubmitted(true);
+          setFormData({ name: '', email: '', message: '' });
+
+          // Reset the submitted state after some time
+          setTimeout(() => {
+            setSubmitted(false);
+          }, 5000);
+      }, (error) => {
+          console.log(error.text);
+          setIsSubmitting(false);
+          alert('Failed to send message. Please try again later.');
+      });
   };
   
   return (
@@ -70,8 +78,8 @@ const Contact = ({ className }: ContactProps) => {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1">Email</h4>
-                    <a href="mailto:pasupuleti.naveen001@gmail.com" className="text-primary interactive-link">
-                      pasupuleti.naveen001@gmail.com
+                    <a href="mailto:pasupuletinaveen.qa@gmail.com" className="text-primary interactive-link">
+                      pasupuletinaveen.qa@gmail.com
                     </a>
                   </div>
                 </div>
@@ -85,7 +93,7 @@ const Contact = ({ className }: ContactProps) => {
                   <div>
                     <h4 className="font-medium mb-1">LinkedIn</h4>
                     <a 
-                      href="https://www.linkedin.com/in/naveen-kumar-pasupuleti/" 
+                      href="https://www.linkedin.com/in/naveenkumarpasupuleti/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-primary interactive-link"
@@ -114,7 +122,7 @@ const Contact = ({ className }: ContactProps) => {
                 <h4 className="font-medium mb-4">Connect With Me</h4>
                 <div className="flex space-x-4">
                   <a 
-                    href="https://www.linkedin.com/in/naveen-kumar-pasupuleti/" 
+                    href="https://www.linkedin.com/in/naveenkumarpasupuleti/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-primary/10 hover:bg-primary/20 text-primary rounded-full p-3 transition-colors"
@@ -125,7 +133,7 @@ const Contact = ({ className }: ContactProps) => {
                     </svg>
                   </a>
                   <a 
-                    href="mailto:pasupuleti.naveen001@gmail.com" 
+                    href="mailto:pasupuletinaveen.qa@gmail.com" 
                     className="bg-primary/10 hover:bg-primary/20 text-primary rounded-full p-3 transition-colors"
                     aria-label="Email"
                   >
@@ -134,7 +142,7 @@ const Contact = ({ className }: ContactProps) => {
                     </svg>
                   </a>
                   <a 
-                    href="https://github.com/" 
+                    href="https://github.com/sfdcnaveen" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-primary/10 hover:bg-primary/20 text-primary rounded-full p-3 transition-colors"

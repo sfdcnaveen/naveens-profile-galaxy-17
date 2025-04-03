@@ -36,7 +36,7 @@ const Hero = ({ className }: HeroProps) => {
             <div className="inline-block mb-3">
               <span className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
                 <span className="mr-1.5 h-2 w-2 rounded-full bg-primary animate-pulse-slow"></span>
-                Senior Associate | Salesforce Developer
+                Consultant
               </span>
             </div>
             
@@ -55,7 +55,7 @@ const Hero = ({ className }: HeroProps) => {
             </h1>
             
             <AnimatedText
-              text="Experienced Salesforce Developer with expertise in Sales Cloud and Service Cloud solutions, specializing in crafting robust and scalable applications."
+              text="Experienced Salesforce QA Engineer with expertise in Sales Cloud and Service Cloud, specializing in testing and validating scalable, high-performance Salesforce solutions. Skilled in manual and automated testing, defect tracking, and ensuring optimal system functionality."
               delay={300}
               className="text-xl text-muted-foreground mb-8"
             />

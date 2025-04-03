@@ -16,18 +16,24 @@ interface SkillsProps {
 
 const Skills = ({ className }: SkillsProps) => {
   const salesforceSkills: SkillProps[] = [
-    { name: "Salesforce Sales Cloud", level: 95, color: "#00A1E0" },
+    { name: "Salesforce Administration", level: 80, color: "#00A1E0" },
     { name: "Salesforce Service Cloud", level: 90, color: "#00A1E0" },
-    { name: "Apex Programming", level: 90, color: "#00A1E0" },
-    { name: "Lightning Web Components", level: 85, color: "#00A1E0" },
-    { name: "Process Builder & Flow Builder", level: 92, color: "#00A1E0" }
+    { name: "Case Management", level: 90, color: "#00A1E0" },
+    { name: "Case Entitlements", level: 90, color: "#00A1E0" },
+    { name: "Apex Programming", level: 40, color: "#00A1E0" },
+    { name: "Lightning Web Components", level: 50, color: "#00A1E0" },
+    { name: "Process Builder & Flow Builder", level: 60, color: "#00A1E0" },
+    { name: "User Configuration", level: 50, color: "#00A1E0" }
   ];
   
   const webSkills: SkillProps[] = [
     { name: "HTML5 & CSS3", level: 85, color: "#E44D26" },
     { name: "JavaScript", level: 82, color: "#F7DF1E" },
+    { name: "TypeScript", level: 82, color: "#F7DF1E" },
     { name: "Java", level: 75, color: "#007396" },
-    { name: "Git", level: 80, color: "#F05032" }
+    { name: "Git", level: 80, color: "#F05032" },
+    { name: "WDIO", level: 85, color: "#61DAFB" },
+    { name: "Playwright", level: 80, color: "#61DAFB" }
   ];
   
   const containerRef = useRef<HTMLDivElement>(null);
@@ -90,7 +96,7 @@ const Skills = ({ className }: SkillsProps) => {
             className="text-3xl md:text-4xl font-bold mb-6" 
           />
           <AnimatedText 
-            text="A showcase of my expertise in Salesforce development and related technologies."
+            text="A showcase of my expertise in Salesforce Quality Assurance and related technologies."
             delay={100}
             className="text-lg text-muted-foreground" 
           />
@@ -120,7 +126,7 @@ const Skills = ({ className }: SkillsProps) => {
                 <path d="M12 3V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M4 21H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              Development Skills
+              Automation Skills
             </h3>
             <div className="glass rounded-xl p-6">
               {webSkills.map((skill, index) => (
