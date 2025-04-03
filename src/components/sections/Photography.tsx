@@ -20,22 +20,10 @@ const Photography = ({ className }: PhotographyProps) => {
   
   const photos: PhotoItem[] = [
     {
-      id: '1',
-      src: "/images/astrography.jpg",
-      alt: "Astrography",
-      category: 'astrography'
-    },
-    {
       id: '2',
       src: "/images/flower1.jpg",
       alt: "Flower",
       category: 'flower'
-    },
-    {
-      id: '3',
-      src: "/images/mansmoking.jpg",
-      alt: "Man Smoking",
-      category: 'people'
     },
     {
       id: '4',
@@ -102,10 +90,34 @@ const Photography = ({ className }: PhotographyProps) => {
       src: "/images/squirrel.jpg",
       alt: "Squirrel",
       category: 'animals'
+    },
+    {
+      id: '15',
+      src: "/images/sai.jpg",
+      alt: "Sai",
+      category: 'people'
+    },
+    {
+      id: '16',
+      src: "/images/harshanew4.jpg",
+      alt: "Harsha",
+      category: 'people'
+    },
+    {
+      id: '17',
+      src: "/images/sunny.jpg",
+      alt: "Sunny",
+      category: 'people'
+    },
+    {
+      id: '18',
+      src: "/images/portrait.jpg",
+      alt: "Portrait",
+      category: 'people'
     }
   ];
   
-  const categories = ['all', 'astrography', 'flower', 'people', 'architecture', 'nature', 'other', 'animals'];
+  const categories = ['all', 'flower', 'people', 'architecture', 'nature', 'other', 'animals'];
   
   const filteredPhotos = activeCategory === 'all'
     ? photos
