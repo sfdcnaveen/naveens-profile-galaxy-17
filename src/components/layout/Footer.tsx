@@ -16,7 +16,7 @@ const Footer = ({ className }: FooterProps) => {
           <div className="text-center md:text-left">
             <span className="font-display text-xl font-medium">Naveen Kumar P.</span>
             <p className="text-sm text-muted-foreground mt-1">
-              Senior Associate | Salesforce Developer
+              Consultant | Salesforce Quality Assurance Engineer
             </p>
           </div>
           

@@ -23,7 +23,7 @@ const About = ({ className }: AboutProps) => {
             className="text-3xl md:text-4xl font-bold mb-6" 
           />
           <AnimatedText 
-            text="Passionate Salesforce developer with a focus on creating innovative solutions for complex business challenges."
+            text="Passionate Salesforce QA Engineer with a strong focus on ensuring the quality and reliability of Salesforce solutions through rigorous testing and automation. Dedicated to identifying and resolving complex business challenges with efficient testing strategies and best practices."
             delay={100}
             className="text-lg text-muted-foreground" 
           />
@@ -38,20 +38,20 @@ const About = ({ className }: AboutProps) => {
             </div>
             <h3 className="text-xl font-semibold mb-3">Professional Background</h3>
             <p className="text-muted-foreground mb-4">
-              Currently working as a Senior Associate Consultant at Capgemini, with experience in designing and implementing Salesforce solutions.
+              Consultant at Capgemini, specializing in Salesforce QA. Experienced in testing, validating, and ensuring reliable Salesforce solutions with manual and automated testing, defect management, and team collaboration.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Senior Associate at Capgemini (2023 - Present)</span>
+                <span>Consultant at Capgemini (2023 - Present)</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Associate Consultant (2021 - 2023)</span>
+                <span>Associate Consultant at Capgemini (2021 - 2023)</span>
               </li>
             </ul>
           </div>
@@ -96,19 +96,19 @@ const About = ({ className }: AboutProps) => {
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Salesforce Sales Cloud & Service Cloud</span>
+                <span>Salesforce Sales Cloud & Service Cloud Testing</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Lightning Web Components & Aura Components</span>
+                <span>Lightning Web Components Validation</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Apex Development & Integration</span>
+                <span>Apex Functionality Testing & Integration QA</span>
               </li>
             </ul>
           </div>

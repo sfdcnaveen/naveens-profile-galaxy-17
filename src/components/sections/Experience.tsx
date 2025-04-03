@@ -10,17 +10,17 @@ interface ExperienceProps {
 const Experience = ({ className }: ExperienceProps) => {
   const experiences = [
     {
-      title: "Senior Associate",
+      title: "Consultant",
       company: "Capgemini",
       logo: "https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8",
       period: "2023 - Present",
-      description: "Leading Salesforce development initiatives for enterprise clients, focusing on Sales Cloud and Service Cloud solutions.",
+      description: "Specializing in Salesforce Quality Assurance, leading test automation and validation for enterprise Sales Cloud and Service Cloud solutions. Currently migrating WDIO test scripts to Playwright with TypeScript to enhance test efficiency and reliability.",
       responsibilities: [
-        "Design and development of custom Salesforce solutions",
-        "Implementation of Lightning Web Components & Lightning Experience",
-        "Integration with third-party systems and APIs",
-        "Client consultation and requirement gathering",
-        "Team mentoring and knowledge sharing"
+        "Developing and maintaining automated test frameworks using Java Selenium, WDIO (TypeScript), and Playwright.",
+        "Performing functional, regression, and integration testing for Salesforce applications.",
+        "Validating Lightning Web Components and Lightning Experience for performance and compliance.",
+        "Ensuring seamless integration testing with third-party systems and APIs.",
+        "Collaborating with developers, BAs, and stakeholders to define test strategies and automation best practices."
       ]
     },
     {
@@ -28,12 +28,12 @@ const Experience = ({ className }: ExperienceProps) => {
       company: "Capgemini",
       logo: "https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8",
       period: "2021 - 2023",
-      description: "Contributed to Salesforce implementations and customizations, supporting clients in optimizing their CRM processes.",
+      description: "Contributed to Salesforce QA and automation efforts, supporting clients in optimizing CRM processes through testing and quality assurance",
       responsibilities: [
-        "Development of Apex classes and triggers",
-        "Configuration of Sales Cloud components",
-        "Creation and maintenance of custom objects",
-        "Testing and quality assurance"
+        "Developed and executed automated test scripts using Java Selenium and WDIO for Salesforce applications.",
+        "Conducted manual and automated testing for Apex classes, triggers, and custom configurations.",
+        "Performed Service Cloud component validation and ensured proper functionality of custom objects.",
+        "Assisted in identifying and resolving defects, performance issues, and integration challenges."
       ]
     }
   ];

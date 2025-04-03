@@ -70,8 +70,8 @@ const Contact = ({ className }: ContactProps) => {
                   </div>
                   <div>
                     <h4 className="font-medium mb-1">Email</h4>
-                    <a href="mailto:pasupuleti.naveen001@gmail.com" className="text-primary interactive-link">
-                      pasupuleti.naveen001@gmail.com
+                    <a href="mailto:pasupuletinaveen.qa@gmail.com" className="text-primary interactive-link">
+                      pasupuletinaveen.qa@gmail.com
                     </a>
                   </div>
                 </div>
@@ -85,7 +85,7 @@ const Contact = ({ className }: ContactProps) => {
                   <div>
                     <h4 className="font-medium mb-1">LinkedIn</h4>
                     <a 
-                      href="https://www.linkedin.com/in/naveen-kumar-pasupuleti/" 
+                      href="https://www.linkedin.com/in/naveenkumarpasupuleti/" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="text-primary interactive-link"
@@ -114,7 +114,7 @@ const Contact = ({ className }: ContactProps) => {
                 <h4 className="font-medium mb-4">Connect With Me</h4>
                 <div className="flex space-x-4">
                   <a 
-                    href="https://www.linkedin.com/in/naveen-kumar-pasupuleti/" 
+                    href="https://www.linkedin.com/in/naveenkumarpasupuleti/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-primary/10 hover:bg-primary/20 text-primary rounded-full p-3 transition-colors"
@@ -125,7 +125,7 @@ const Contact = ({ className }: ContactProps) => {
                     </svg>
                   </a>
                   <a 
-                    href="mailto:pasupuleti.naveen001@gmail.com" 
+                    href="mailto:pasupuletinaveen.qa@gmail.com" 
                     className="bg-primary/10 hover:bg-primary/20 text-primary rounded-full p-3 transition-colors"
                     aria-label="Email"
                   >
@@ -134,7 +134,7 @@ const Contact = ({ className }: ContactProps) => {
                     </svg>
                   </a>
                   <a 
-                    href="https://github.com/" 
+                    href="https://github.com/sfdcnaveen" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-primary/10 hover:bg-primary/20 text-primary rounded-full p-3 transition-colors"

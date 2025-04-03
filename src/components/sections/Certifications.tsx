@@ -37,19 +37,11 @@ const Certifications = ({ className }: CertificationsProps) => {
       link: "#"
     },
     {
-      title: "Copado Robotic Testing Certification",
-      issuer: "Copado",
-      date: "2023",
-      logo: "https://media.licdn.com/dms/image/v2/C560BAQFNt6AkjMBc_A/company-logo_400_400/company-logo_400_400/0/1630625195669/copado_solutions_sl_logo?e=1748476800&v=beta&t=80mSkw0Kpei7dHDsjbuBHQMxpFEaw_uFcnSgyGvPGcU",
-      description: "Demonstrates proficiency in automated testing for Salesforce applications using Copado's testing platform.",
-      link: "#"
-    },
-    {
-      title: "Salesforce Service Cloud Consultant",
+      title: "Salesforce Certified AI Associate",
       issuer: "Salesforce",
       date: "2024",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
-      description: "Validates expertise in Service Cloud implementation, including case management, customer support processes, and knowledge management.",
+      description: "Validates proficiency in AI-powered CRM features, including data analysis, predictive modeling, and ethical AI use. It’s ideal for professionals who want to learn how to use AI to improve business operations in Salesforce.",
       link: "#"
     }
   ];

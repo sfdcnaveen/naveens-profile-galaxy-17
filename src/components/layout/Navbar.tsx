@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -72,36 +73,36 @@ const Navbar = ({ className }: NavbarProps) => {
             </a>
           ))}
         </nav>
-        
+
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden flex flex-col space-y-1.5 p-2"
           aria-label="Toggle menu"
         >
-          <span 
+          <span
             className={cn(
               "w-6 h-0.5 bg-foreground transition-transform duration-300",
               mobileMenuOpen && "transform rotate-45 translate-y-2"
-            )} 
+            )}
           />
-          <span 
+          <span
             className={cn(
               "w-6 h-0.5 bg-foreground transition-opacity duration-300",
               mobileMenuOpen && "opacity-0"
-            )} 
+            )}
           />
-          <span 
+          <span
             className={cn(
               "w-6 h-0.5 bg-foreground transition-transform duration-300",
               mobileMenuOpen && "transform -rotate-45 -translate-y-2"
-            )} 
+            )}
           />
         </button>
       </div>
-      
+
       {/* Mobile Navigation */}
-      <div 
+      <div
         className={cn(
           "md:hidden absolute w-full transition-transform duration-300 ease-in-out glass-dark",
           mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
@@ -116,7 +117,7 @@ const Navbar = ({ className }: NavbarProps) => {
               className={cn(
                 "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300",
                 activeSection === item.href.substring(1)
-                  ? "text-white bg-primary" 
+                  ? "text-white bg-primary"
                   : "text-foreground hover:text-primary hover:bg-primary/5"
               )}
             >
