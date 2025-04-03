@@ -21,7 +21,15 @@ const Certifications = ({ className }: CertificationsProps) => {
   
   const certifications: CertificationProps[] = [
     {
-      title: "Salesforce Certified Associate",
+      title: "Salesforce Certified Platform Developer I",
+      issuer: "Salesforce",
+      date: "2022",
+      logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
+      description: "Validates skills in developing custom applications on the Salesforce platform, including Apex and Visualforce.",
+      link: "#"
+    },
+    {
+      title: "Salesforce Certified Administrator",
       issuer: "Salesforce",
       date: "2023",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
@@ -37,11 +45,11 @@ const Certifications = ({ className }: CertificationsProps) => {
       link: "#"
     },
     {
-      title: "Salesforce Certified Platform Developer I",
+      title: "Salesforce Service Cloud Consultant",
       issuer: "Salesforce",
-      date: "2022",
+      date: "2024",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
-      description: "Validates skills in developing custom applications on the Salesforce platform, including Apex and Visualforce.",
+      description: "Validates expertise in Service Cloud implementation, including case management, customer support processes, and knowledge management.",
       link: "#"
     }
   ];
@@ -64,7 +72,7 @@ const Certifications = ({ className }: CertificationsProps) => {
           />
         </div>
         
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {certifications.map((cert, index) => (
             <div 
               key={index}

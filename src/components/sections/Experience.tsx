@@ -10,16 +10,17 @@ interface ExperienceProps {
 const Experience = ({ className }: ExperienceProps) => {
   const experiences = [
     {
-      title: "Consultant",
+      title: "Senior Associate",
       company: "Capgemini",
       logo: "https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8",
       period: "2023 - Present",
-      description: "Leading Salesforce development initiatives for enterprise clients, focusing on custom solutions and optimizing business processes.",
+      description: "Leading Salesforce development initiatives for enterprise clients, focusing on Sales Cloud and Service Cloud solutions.",
       responsibilities: [
         "Design and development of custom Salesforce solutions",
-        "Implementation of Lightning Web Components",
+        "Implementation of Lightning Web Components & Lightning Experience",
         "Integration with third-party systems and APIs",
-        "Client consultation and requirement gathering"
+        "Client consultation and requirement gathering",
+        "Team mentoring and knowledge sharing"
       ]
     },
     {

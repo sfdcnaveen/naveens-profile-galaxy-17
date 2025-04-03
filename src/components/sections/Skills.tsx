@@ -17,17 +17,17 @@ interface SkillsProps {
 const Skills = ({ className }: SkillsProps) => {
   const salesforceSkills: SkillProps[] = [
     { name: "Salesforce Sales Cloud", level: 95, color: "#00A1E0" },
+    { name: "Salesforce Service Cloud", level: 90, color: "#00A1E0" },
     { name: "Apex Programming", level: 90, color: "#00A1E0" },
     { name: "Lightning Web Components", level: 85, color: "#00A1E0" },
-    { name: "Custom Objects", level: 92, color: "#00A1E0" },
-    { name: "Salesforce Implementation", level: 88, color: "#00A1E0" }
+    { name: "Process Builder & Flow Builder", level: 92, color: "#00A1E0" }
   ];
   
   const webSkills: SkillProps[] = [
-    { name: "HTML5", level: 85, color: "#E44D26" },
-    { name: "CSS3", level: 80, color: "#264DE4" },
+    { name: "HTML5 & CSS3", level: 85, color: "#E44D26" },
     { name: "JavaScript", level: 82, color: "#F7DF1E" },
-    { name: "Java", level: 75, color: "#007396" }
+    { name: "Java", level: 75, color: "#007396" },
+    { name: "Git", level: 80, color: "#F05032" }
   ];
   
   const containerRef = useRef<HTMLDivElement>(null);
@@ -120,7 +120,7 @@ const Skills = ({ className }: SkillsProps) => {
                 <path d="M12 3V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M4 21H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              Web Development
+              Development Skills
             </h3>
             <div className="glass rounded-xl p-6">
               {webSkills.map((skill, index) => (

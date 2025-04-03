@@ -16,14 +16,14 @@ const Footer = ({ className }: FooterProps) => {
           <div className="text-center md:text-left">
             <span className="font-display text-xl font-medium">Naveen Kumar P.</span>
             <p className="text-sm text-muted-foreground mt-1">
-              Salesforce Developer & Consultant
+              Senior Associate | Salesforce Developer
             </p>
           </div>
           
           <div className="flex flex-col items-center md:items-end">
             <div className="flex space-x-4 mb-3">
               <a 
-                href="https://www.linkedin.com/in/naveen-kumar-pasupuleti/" 
+                href="https://www.linkedin.com/in/naveenkumarpasupuleti/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors"
@@ -43,7 +43,7 @@ const Footer = ({ className }: FooterProps) => {
                 </svg>
               </a>
               <a 
-                href="https://github.com/" 
+                href="https://github.com/naveenkumar-pasupuleti" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors"

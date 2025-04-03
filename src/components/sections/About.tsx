@@ -38,14 +38,14 @@ const About = ({ className }: AboutProps) => {
             </div>
             <h3 className="text-xl font-semibold mb-3">Professional Background</h3>
             <p className="text-muted-foreground mb-4">
-              Currently working as a Salesforce Developer at Capgemini, with a proven track record of delivering high-quality solutions.
+              Currently working as a Senior Associate Consultant at Capgemini, with experience in designing and implementing Salesforce solutions.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Consultant at Capgemini (2023 - Present)</span>
+                <span>Senior Associate at Capgemini (2023 - Present)</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
@@ -89,26 +89,26 @@ const About = ({ className }: AboutProps) => {
             </div>
             <h3 className="text-xl font-semibold mb-3">Specializations</h3>
             <p className="text-muted-foreground mb-4">
-              I specialize in Salesforce development and implementation, focusing on creating value and impact through innovative solutions.
+              I specialize in Salesforce development and implementation, focusing on creating innovative solutions that drive business value.
             </p>
             <ul className="space-y-2 text-sm">
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Salesforce Sales Cloud</span>
+                <span>Salesforce Sales Cloud & Service Cloud</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Lightning Web Components</span>
+                <span>Lightning Web Components & Aura Components</span>
               </li>
               <li className="flex items-start">
                 <svg className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                <span>Information Technology & Services</span>
+                <span>Apex Development & Integration</span>
               </li>
             </ul>
           </div>
@@ -117,7 +117,7 @@ const About = ({ className }: AboutProps) => {
         <div className="mt-16 text-center">
           <div className="glass rounded-xl inline-block px-6 py-3 mx-auto">
             <p className="text-lg italic text-muted-foreground">
-              "I strive to create value and impact within organizations through problem-solving, communication, and analytical skills."
+              "I strive to create value and impact within organizations through innovative solutions, effective communication, and technical excellence."
             </p>
           </div>
         </div>
