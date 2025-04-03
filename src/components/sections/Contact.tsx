@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
 import AnimatedText from '../ui/AnimatedText';
+import emailjs from '@emailjs/browser';
+
+emailjs.init('vkO2r8e_jDVNtkMmF');
 
 interface ContactProps {
   className?: string;
@@ -24,18 +27,23 @@ const Contact = ({ className }: ContactProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      
-      // Reset the submitted state after some time
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1500);
+
+    emailjs.sendForm('service_4kg7k5r', 'template_j2ztzyc', e.target as HTMLFormElement, 'vkO2r8e_jDVNtkMmF')
+      .then((result) => {
+          console.log(result.text);
+          setIsSubmitting(false);
+          setSubmitted(true);
+          setFormData({ name: '', email: '', message: '' });
+
+          // Reset the submitted state after some time
+          setTimeout(() => {
+            setSubmitted(false);
+          }, 5000);
+      }, (error) => {
+          console.log(error.text);
+          setIsSubmitting(false);
+          alert('Failed to send message. Please try again later.');
+      });
   };
   
   return (
