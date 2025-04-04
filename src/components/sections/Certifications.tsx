@@ -26,15 +26,15 @@ const Certifications = ({ className }: CertificationsProps) => {
       date: "2022",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
       description: "Validates skills in developing custom applications on the Salesforce platform, including Apex and Visualforce.",
-      link: "#"
+      link: "/certifications/Naveen_Kumar_PD1.pdf"
     },
     {
-      title: "Salesforce Certified Administrator",
+      title: "Salesforce Certified Associate",
       issuer: "Salesforce",
       date: "2023",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
-      description: "Validates fundamental knowledge of the Salesforce platform, including admin setup, standard & custom objects, security, and business logic automation.",
-      link: "#"
+      description: "Demonstrates foundational Salesforce knowledge, including navigating the platform, understanding key concepts, and basic user support.",
+      link: "/certifications/Naveen_Kumar_Salesforce_Associate.pdf"
     },
     {
       title: "Salesforce Certified AI Associate",
@@ -42,7 +42,7 @@ const Certifications = ({ className }: CertificationsProps) => {
       date: "2024",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
       description: "Validates proficiency in AI-powered CRM features, including data analysis, predictive modeling, and ethical AI use. It’s ideal for professionals who want to learn how to use AI to improve business operations in Salesforce.",
-      link: "#"
+      link: "/certifications/Naveen_Kumar_Salesforce_AI_Associate.pdf"
     }
   ];
   
@@ -95,8 +95,10 @@ const Certifications = ({ className }: CertificationsProps) => {
               
               <a 
                 href={cert.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
                 className="text-primary text-sm font-medium hover:text-primary/80 transition-colors flex items-center"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()} // Keep stopPropagation to prevent card click
               >
                 View Certificate
                 <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
