@@ -13,7 +13,7 @@ import Contact from '../components/sections/Contact';
 const Index = () => {
   useEffect(() => {
     // Update document title
-    document.title = 'Naveen Kumar Pasupuleti | Salesforce Developer';
+    document.title = 'Naveen Kumar Pasupuleti | Salesforce QA Engineer | Automation Tester';
     
     // Smooth scroll for anchor links
     const handleAnchorLinkClick = (e: MouseEvent) => {
