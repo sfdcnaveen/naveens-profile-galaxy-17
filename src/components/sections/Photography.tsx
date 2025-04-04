@@ -92,24 +92,6 @@ const Photography = ({ className }: PhotographyProps) => {
       category: 'animals'
     },
     {
-      id: '15',
-      src: "/images/sai.jpg",
-      alt: "Sai",
-      category: 'people'
-    },
-    {
-      id: '16',
-      src: "/images/harshanew4.jpg",
-      alt: "Harsha",
-      category: 'people'
-    },
-    {
-      id: '17',
-      src: "/images/sunny.jpg",
-      alt: "Sunny",
-      category: 'people'
-    },
-    {
       id: '18',
       src: "/images/portrait.jpg",
       alt: "Portrait",
