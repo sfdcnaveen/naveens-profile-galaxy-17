@@ -1,39 +1,50 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+:root {
+    /* Deep Black Background */
+    --background: 240 10% 3.9%; /* Deep rich black with slight blue tint */
+    /* Off-white Foreground for better contrast */
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    /* Adjust Card colors */
+    --card: 240 10% 5%; /* Darker card with slight blue tint */
+    --card-foreground: 0 0% 98%; /* Lighter text on card */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    /* Adjust Popover colors */
+    --popover: 240 10% 5%; /* Darker popover */
+    --popover-foreground: 0 0% 98%; /* Lighter text on popover */
 
-    --primary: 201 100% 44%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary color with better contrast - vibrant blue */
+    --primary: 210 100% 52%;
+    --primary-foreground: 0 0% 98%; /* Lighter text on primary */
 
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 222 47% 11%;
+    /* Secondary colors - dark with blue tint */
+    --secondary: 240 5% 10%;
+    --secondary-foreground: 0 0% 98%; /* Lighter text on secondary */
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    /* Muted colors */
+    --muted: 240 5% 12%; /* Darker muted with blue tint */
+    --muted-foreground: 240 5% 65%; /* Dimmer text for muted */
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
+    /* Accent colors - subtle blue accent */
+    --accent: 210 40% 12%;
+    --accent-foreground: 0 0% 98%; /* Lighter text on accent */
 
+    /* Destructive color */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%; /* Lighter text on destructive */
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
+    /* Border, Input, Ring colors */
+    --border: 240 5% 15%; /* Darker border with blue tint */
+    --input: 240 5% 12%; /* Darker input with blue tint */
+    --ring: 210 100% 52%; /* Use primary for ring */
 
     --radius: 0.75rem;
   }
@@ -46,31 +57,43 @@
     scroll-behavior: smooth;
     @apply overflow-x-hidden;
   }
-  
-  body {
+
+body {
     @apply bg-background text-foreground antialiased overflow-x-hidden;
-  }
+    background-image: radial-gradient(circle at 25% 25%, rgba(30, 64, 175, 0.05) 0%, transparent 45%),
+                     radial-gradient(circle at 75% 75%, rgba(30, 64, 175, 0.05) 0%, transparent 45%);
+}
+
+/* Image styling */
+img {
+    @apply max-w-full h-auto object-contain rounded-lg shadow-lg transition-transform duration-300 hover:scale-105;
+}
+
+/* Image styling */
+img {
+    @apply max-w-full h-auto object-contain rounded-lg shadow-lg transition-transform duration-300 hover:scale-105;
+}
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-medium tracking-tight;
   }
-  
+
   h1 {
     @apply text-4xl sm:text-5xl md:text-6xl;
   }
-  
+
   h2 {
     @apply text-3xl sm:text-4xl;
   }
-  
+
   h3 {
     @apply text-2xl sm:text-3xl;
   }
-  
+
   h4 {
     @apply text-xl sm:text-2xl;
   }
-  
+
   p {
     @apply text-base sm:text-lg leading-relaxed;
   }
@@ -78,29 +101,40 @@
 
 @layer components {
   .glass {
-    @apply bg-white/50 backdrop-blur-xl border border-white/30 shadow-sm;
+    @apply bg-white/10 backdrop-blur-xl border border-white/10 shadow-md;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
-  
+
   .glass-dark {
-    @apply bg-foreground/5 backdrop-blur-xl border border-white/10 shadow-md;
+    @apply bg-foreground/5 backdrop-blur-xl border border-white/5 shadow-lg;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   }
-  
+
+  .glass-card {
+    @apply bg-card/30 backdrop-blur-lg border border-white/5 shadow-xl rounded-xl transition-all duration-300;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  .glass-hover {
+    @apply hover:bg-primary/10 hover:border-primary/20 transition-all duration-300;
+  }
+
   .section-container {
     @apply max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-24;
   }
-  
+
   .interactive-card {
     @apply hover:shadow-lg transition-all duration-300 hover:-translate-y-1;
   }
-  
+
   .interactive-link {
     @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
-  
+
   .skill-bar {
     @apply h-1.5 bg-primary/20 rounded-full overflow-hidden relative;
   }
-  
+
   .skill-progress {
     @apply h-full bg-primary absolute left-0 top-0 rounded-full transition-all duration-1000;
   }

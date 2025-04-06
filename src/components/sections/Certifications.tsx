@@ -18,7 +18,7 @@ interface CertificationsProps {
 
 const Certifications = ({ className }: CertificationsProps) => {
   const [activeCert, setActiveCert] = useState<number | null>(null);
-  
+
   const certifications: CertificationProps[] = [
     {
       title: "Salesforce Certified Platform Developer I",
@@ -45,57 +45,57 @@ const Certifications = ({ className }: CertificationsProps) => {
       link: "/certifications/Naveen_Kumar_Salesforce_AI_Associate.pdf"
     }
   ];
-  
+
   return (
-    <section 
-      id="certifications" 
+    <section
+      id="certifications"
       className={cn("py-16 md:py-24 bg-background", className)}
     >
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-16 text-center">
-          <AnimatedText 
-            text="Certifications" 
-            className="text-3xl md:text-4xl font-bold mb-6" 
+          <AnimatedText
+            text="Certifications"
+            className="text-3xl md:text-4xl font-bold mb-6"
           />
-          <AnimatedText 
+          <AnimatedText
             text="Professional credentials that validate my expertise in Salesforce and related technologies."
             delay={100}
-            className="text-lg text-muted-foreground" 
+            className="text-lg text-muted-foreground"
           />
         </div>
-        
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
           {certifications.map((cert, index) => (
-            <div 
+            <div
               key={index}
               className={cn(
-                "glass rounded-xl p-6 relative overflow-hidden transition-all duration-300",
-                "hover:shadow-lg hover:-translate-y-1",
+                "glass-card rounded-xl p-6 relative overflow-hidden transition-all duration-300 w-full max-w-sm",
+                "hover:shadow-lg hover:-translate-y-1 glass-hover",
                 activeCert === index ? "ring-2 ring-primary" : ""
               )}
               onClick={() => setActiveCert(activeCert === index ? null : index)}
             >
               <div className="flex items-center mb-4">
-                <img 
-                  src={cert.logo} 
-                  alt={cert.issuer} 
-                  className="w-12 h-12 rounded-lg object-contain border border-border p-1"
+                <img
+                  src={cert.logo}
+                  alt={cert.issuer}
+                  className="w-12 h-12 rounded-lg object-contain border border-white/10 glass-dark p-1"
                 />
                 <div className="ml-3">
                   <div className="text-xs text-muted-foreground">{cert.issuer}</div>
                   <div className="text-sm font-medium">{cert.date}</div>
                 </div>
               </div>
-              
+
               <h3 className="text-lg font-semibold mb-3">{cert.title}</h3>
-              
+
               <p className="text-sm text-muted-foreground mb-4">
                 {cert.description}
               </p>
-              
-              <a 
-                href={cert.link} 
-                target="_blank" 
+
+              <a
+                href={cert.link}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary text-sm font-medium hover:text-primary/80 transition-colors flex items-center"
                 onClick={(e) => e.stopPropagation()} // Keep stopPropagation to prevent card click
@@ -105,8 +105,8 @@ const Certifications = ({ className }: CertificationsProps) => {
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </a>
-              
-              <div 
+
+              <div
                 className={cn(
                   "absolute top-0 right-0 h-16 w-16 transition-opacity duration-300",
                   activeCert === index ? "opacity-100" : "opacity-0"
@@ -120,7 +120,7 @@ const Certifications = ({ className }: CertificationsProps) => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-12 text-center">
           <p className="text-muted-foreground">
             Continuously expanding my knowledge and skills through certifications and professional development.
