@@ -10,23 +10,23 @@ interface HeroProps {
 
 const Hero = ({ className }: HeroProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  
+
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-  
+
   return (
-    <section 
-      id="home" 
+    <section
+      id="home"
       className={cn(
         "min-h-screen pt-20 flex items-center",
-        "bg-gradient-to-b from-white to-background",
+        "bg-gradient-to-b from-background via-background to-background",
         className
       )}
     >
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-          <div 
+          <div
             className={cn(
               "flex flex-col text-center lg:text-left order-2 lg:order-1",
               "transition-all duration-700 transform",
@@ -34,36 +34,36 @@ const Hero = ({ className }: HeroProps) => {
             )}
           >
             <div className="inline-block mb-3">
-              <span className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
+              <span className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary glass-dark">
                 <span className="mr-1.5 h-2 w-2 rounded-full bg-primary animate-pulse-slow"></span>
                 Consultant
               </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
-              <AnimatedText 
-                text="Naveen Kumar" 
-                delay={100} 
+              <AnimatedText
+                text="Naveen Kumar"
+                delay={100}
                 className="inline-block"
               />
               <br />
-              <AnimatedText 
-                text="Pasupuleti" 
+              <AnimatedText
+                text="Pasupuleti"
                 delay={200}
                 className="inline-block text-primary"
               />
             </h1>
-            
+
             <AnimatedText
               text="Experienced Salesforce QA Engineer with expertise in Sales Cloud and Service Cloud, specializing in testing and validating scalable, high-performance Salesforce solutions. Skilled in manual and automated testing, defect tracking, and ensuring optimal system functionality."
               delay={300}
               className="text-xl text-muted-foreground mb-8"
             />
-            
+
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-2">
               <ResumeDownload />
-              <a 
-                href="#contact" 
+              <a
+                href="#contact"
                 className={cn(
                   "relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden",
                   "font-medium tracking-tight text-white rounded-full group",
@@ -81,7 +81,7 @@ const Hero = ({ className }: HeroProps) => {
               </a>
             </div>
           </div>
-          
+
           <div className={cn(
             "order-1 lg:order-2 mx-auto lg:mx-0",
             "transition-all duration-700 delay-300",
@@ -97,23 +97,23 @@ const Hero = ({ className }: HeroProps) => {
                 style={{ objectPosition: 'center top' }}
               />
               <div className="absolute -bottom-2 -right-2 z-20 glass rounded-full p-3 shadow-lg">
-                <img 
-                  src="https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY" 
-                  alt="Salesforce" 
+                <img
+                  src="https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY"
+                  alt="Salesforce"
                   className="w-10 h-10 object-contain"
                 />
               </div>
               <div className="absolute -top-2 -left-2 z-20 glass rounded-full p-3 shadow-lg">
-                <img 
-                  src="https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8" 
-                  alt="Capgemini" 
+                <img
+                  src="https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8"
+                  alt="Capgemini"
                   className="w-10 h-10 object-contain"
                 />
               </div>
             </div>
           </div>
         </div>
-        
+
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <a href="#about" className="flex flex-col items-center text-sm text-muted-foreground hover:text-primary transition-colors">
             <span className="mb-2">Scroll Down</span>

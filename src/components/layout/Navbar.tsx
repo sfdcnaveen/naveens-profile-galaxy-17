@@ -25,14 +25,14 @@ const Navbar = ({ className }: NavbarProps) => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
-      
+
       // Detect active section based on scroll position
       const sections = document.querySelectorAll('section[id]');
       sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
         const sectionHeight = section.clientHeight;
         const sectionId = section.getAttribute('id') as string;
-        
+
         if (sectionTop <= 100 && sectionTop + sectionHeight > 100) {
           setActiveSection(sectionId);
         }
@@ -47,7 +47,7 @@ const Navbar = ({ className }: NavbarProps) => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "py-3 bg-white/80 backdrop-blur-lg shadow-sm" : "py-5 bg-transparent",
+        scrolled ? "py-3 bg-card/30 backdrop-blur-xl border-b border-white/5 shadow-lg" : "py-5 bg-transparent",
         className
       )}
     >
@@ -55,7 +55,7 @@ const Navbar = ({ className }: NavbarProps) => {
         <a href="#home" className="text-xl font-display font-medium">
           Naveen Kumar P.
         </a>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (
@@ -65,7 +65,7 @@ const Navbar = ({ className }: NavbarProps) => {
               className={cn(
                 "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
                 activeSection === item.href.substring(1)
-                  ? "text-white bg-primary" 
+                  ? "text-white bg-primary"
                   : "text-foreground hover:text-primary hover:bg-primary/5"
               )}
             >

@@ -8,12 +8,12 @@ interface ResumeDownloadProps {
 
 const ResumeDownload = ({ className }: ResumeDownloadProps) => {
   return (
-    <a 
-      href="/Naveen_Kumar_Resume.pdf" 
+    <a
+      href="/Naveen_Kumar_Resume.pdf"
       download="Naveen_Kumar_Resume.pdf" // Suggest filename for download
       className={cn(
         "relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden",
-        "font-medium tracking-tight bg-white text-foreground rounded-full group",
+        "font-medium tracking-tight glass-dark text-foreground rounded-full group",
         "shadow-md hover:shadow-lg transition-all duration-300",
         "after:absolute after:inset-0 after:bg-primary after:rounded-full",
         "after:scale-0 hover:after:scale-100 after:transition-transform after:duration-300 after:ease-in-out",
