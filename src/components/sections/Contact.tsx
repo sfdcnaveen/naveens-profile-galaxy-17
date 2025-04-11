@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import AnimatedText from '../ui/AnimatedText';
 import emailjs from '@emailjs/browser';
 
+// Initialize EmailJS with your public key
 emailjs.init('vkO2r8e_jDVNtkMmF');
 
 interface ContactProps {
@@ -28,21 +29,41 @@ const Contact = ({ className }: ContactProps) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    emailjs.sendForm('service_4kg7k5r', 'template_j2ztzyc', e.target as HTMLFormElement, 'vkO2r8e_jDVNtkMmF')
+    // Get the form element
+    const form = e.target as HTMLFormElement;
+
+    // Add your email as a hidden recipient field
+    const recipientEmail = 'pasupuleti.naveen001@gmail.com'; // Your email address
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.name = 'to_email';
+    hiddenInput.value = recipientEmail;
+    form.appendChild(hiddenInput);
+
+    // Send the form using EmailJS
+    emailjs.sendForm('service_4kg7k5r', 'template_j2ztzyc', form, 'vkO2r8e_jDVNtkMmF')
       .then((result) => {
-          console.log(result.text);
+          console.log('Email sent successfully:', result.text);
           setIsSubmitting(false);
           setSubmitted(true);
           setFormData({ name: '', email: '', message: '' });
+
+          // Remove the hidden input after sending
+          form.removeChild(hiddenInput);
 
           // Reset the submitted state after some time
           setTimeout(() => {
             setSubmitted(false);
           }, 5000);
       }, (error) => {
-          console.log(error.text);
+          console.error('Failed to send email:', error.text);
           setIsSubmitting(false);
           alert('Failed to send message. Please try again later.');
+
+          // Remove the hidden input if there's an error
+          if (form.contains(hiddenInput)) {
+            form.removeChild(hiddenInput);
+          }
       });
   };
 
@@ -182,6 +203,8 @@ const Contact = ({ className }: ContactProps) => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Hidden field for recipient email */}
+                  <input type="hidden" name="to_name" value="Naveen Kumar Pasupuleti" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Your Name
