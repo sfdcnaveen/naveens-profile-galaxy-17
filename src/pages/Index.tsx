@@ -6,6 +6,7 @@ import Hero from '../components/sections/Hero';
 import About from '../components/sections/About';
 import Experience from '../components/sections/Experience';
 import Skills from '../components/sections/Skills';
+import Projects from '../components/sections/Projects';
 import Certifications from '../components/sections/Certifications';
 import Photography from '../components/sections/Photography';
 import Contact from '../components/sections/Contact';
@@ -14,7 +15,7 @@ const Index = () => {
   useEffect(() => {
     // Update document title
     document.title = 'Naveen Kumar Pasupuleti | Salesforce QA Engineer | Automation Tester';
-    
+
     // Smooth scroll for anchor links
     const handleAnchorLinkClick = (e: MouseEvent) => {
       let target = e.target as HTMLElement;
@@ -41,14 +42,14 @@ const Index = () => {
         }
       }
     };
-    
+
     document.addEventListener('click', handleAnchorLinkClick);
-    
+
     return () => {
       document.removeEventListener('click', handleAnchorLinkClick);
     };
   }, []);
-  
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -57,6 +58,7 @@ const Index = () => {
         <About />
         <Experience />
         <Skills />
+        <Projects />
         <Certifications />
         <Photography />
         <Contact />
