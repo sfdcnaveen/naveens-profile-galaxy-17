@@ -174,7 +174,7 @@ const Contact = ({ className }: ContactProps) => {
                     </svg>
                   </a>
                   <a
-                    href="https://music.apple.com/profile/pnaveen"
+                    href="https://music.apple.com/profile/yoyonaveenhere"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="glass-dark hover:bg-primary/20 text-primary rounded-full p-3 transition-colors"

@@ -54,7 +54,7 @@ const Footer = ({ className }: FooterProps) => {
                 </svg>
               </a>
               <a
-                href="https://music.apple.com/profile/pnaveen"
+                href="https://music.apple.com/profile/yoyonaveenhere"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground hover:text-primary transition-colors"
