@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
 import AnimatedText from '../ui/AnimatedText';
+import CertificateModal from '../ui/CertificateModal';
 
 interface CertificationProps {
   title: string;
@@ -17,7 +18,7 @@ interface CertificationsProps {
 }
 
 const Certifications = ({ className }: CertificationsProps) => {
-  const [activeCert, setActiveCert] = useState<number | null>(null);
+  const [selectedCert, setSelectedCert] = useState<number | null>(null);
 
   const certifications: CertificationProps[] = [
     {
@@ -26,7 +27,7 @@ const Certifications = ({ className }: CertificationsProps) => {
       date: "2022",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
       description: "Validates skills in developing custom applications on the Salesforce platform, including Apex and Visualforce.",
-      link: "/certifications/Naveen_Kumar_PD1.pdf"
+      link: "/certifications/SF_Platform_Developer_1.png"
     },
     {
       title: "Salesforce Certified Associate",
@@ -34,7 +35,7 @@ const Certifications = ({ className }: CertificationsProps) => {
       date: "2023",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
       description: "Demonstrates foundational Salesforce knowledge, including navigating the platform, understanding key concepts, and basic user support.",
-      link: "/certifications/Naveen_Kumar_Salesforce_Associate.pdf"
+      link: "/certifications/SF_Certified_Associate.png"
     },
     {
       title: "Salesforce Certified AI Associate",
@@ -42,7 +43,7 @@ const Certifications = ({ className }: CertificationsProps) => {
       date: "2024",
       logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
       description: "Validates proficiency in AI-powered CRM features, including data analysis, predictive modeling, and ethical AI use. It’s ideal for professionals who want to learn how to use AI to improve business operations in Salesforce.",
-      link: "/certifications/Naveen_Kumar_Salesforce_AI_Associate.pdf"
+      link: "/certifications/SF_Certified_AI_Associate.png"
     }
   ];
 
@@ -70,10 +71,8 @@ const Certifications = ({ className }: CertificationsProps) => {
               key={index}
               className={cn(
                 "glass-card rounded-xl p-6 relative overflow-hidden transition-all duration-300 w-full max-w-sm",
-                "hover:shadow-lg hover:-translate-y-1 glass-hover",
-                activeCert === index ? "ring-2 ring-primary" : ""
+                "hover:shadow-lg hover:-translate-y-1 glass-hover"
               )}
-              onClick={() => setActiveCert(activeCert === index ? null : index)}
             >
               <div className="flex items-center mb-4">
                 <img
@@ -93,30 +92,22 @@ const Certifications = ({ className }: CertificationsProps) => {
                 {cert.description}
               </p>
 
-              <a
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary text-sm font-medium hover:text-primary/80 transition-colors flex items-center"
-                onClick={(e) => e.stopPropagation()} // Keep stopPropagation to prevent card click
+              <button
+                className="glass-dark text-sm font-medium text-white hover:bg-primary/90 transition-all flex items-center cursor-pointer px-3 py-1.5 rounded-full mt-2"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent card click event
+                  // Don't highlight the card when viewing certificate
+                  setSelectedCert(index);
+                }}
+                aria-label={`View ${cert.title} certificate`}
               >
                 View Certificate
                 <svg className="w-4 h-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
-              </a>
+              </button>
 
-              <div
-                className={cn(
-                  "absolute top-0 right-0 h-16 w-16 transition-opacity duration-300",
-                  activeCert === index ? "opacity-100" : "opacity-0"
-                )}
-              >
-                <div className="absolute top-0 right-0 w-0 h-0 border-t-[64px] border-t-primary border-l-[64px] border-l-transparent"></div>
-                <svg className="absolute top-2 right-2 h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </div>
+
             </div>
           ))}
         </div>
@@ -127,6 +118,17 @@ const Certifications = ({ className }: CertificationsProps) => {
           </p>
         </div>
       </div>
+
+      {/* Certificate Modal */}
+      {selectedCert !== null && (
+        <CertificateModal
+          isOpen={selectedCert !== null}
+          onClose={() => setSelectedCert(null)}
+          certificateUrl={certifications[selectedCert].link || ''}
+          title={certifications[selectedCert].title}
+          issuer={certifications[selectedCert].issuer}
+        />
+      )}
     </section>
   );
 };
