@@ -10,22 +10,40 @@ interface HeroProps {
 
 const Hero = ({ className }: HeroProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    // Update time every second for more accurate display
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    
+    return () => clearInterval(timer);
   }, []);
+
+  // Format date and time
+  const dateOptions: Intl.DateTimeFormatOptions = { 
+    weekday: 'long', 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  };
+  const formattedDate = currentTime.toLocaleDateString(undefined, dateOptions);
+  const formattedTime = `${currentTime.getHours()}:${currentTime.getMinutes().toString().padStart(2, '0')}`;
 
   return (
     <section
       id="home"
       className={cn(
-        "min-h-screen pt-20 flex items-center",
+        "min-h-screen pt-0 flex items-center", // No top padding
         "bg-gradient-to-b from-background via-background to-background",
         className
       )}
     >
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+      <div className="container mx-auto px-6 pt-10"> {/* Reduced top padding on container */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
           <div
             className={cn(
               "flex flex-col text-center lg:text-left order-2 lg:order-1",
@@ -33,14 +51,14 @@ const Hero = ({ className }: HeroProps) => {
               isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             )}
           >
-            <div className="inline-block mb-3">
+            <div className="inline-block mb-2">
               <span className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary glass-dark">
                 <span className="mr-1.5 h-2 w-2 rounded-full bg-primary animate-pulse-slow"></span>
                 Consultant
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 tracking-tight">
               <AnimatedText
                 text="Naveen Kumar"
                 delay={100}
@@ -57,10 +75,10 @@ const Hero = ({ className }: HeroProps) => {
             <AnimatedText
               text="Experienced Salesforce QA Engineer with expertise in Sales Cloud and Service Cloud, specializing in testing and validating scalable, high-performance Salesforce solutions. Skilled in manual and automated testing, defect tracking, and ensuring optimal system functionality."
               delay={300}
-              className="text-xl text-muted-foreground mb-8"
+              className="text-xl text-muted-foreground mb-6"
             />
 
-            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-2">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 mt-2 mb-6">
               <ResumeDownload />
               <a
                 href="#contact"
@@ -79,6 +97,22 @@ const Hero = ({ className }: HeroProps) => {
                   Contact Me
                 </span>
               </a>
+            </div>
+            
+            {/* Date Time Display - Moved below buttons with left alignment */}
+            <div className={cn(
+              "flex justify-start", // Left alignment
+              "transition-all duration-500",
+              isLoaded ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4"
+            )}>
+              <div className="glass-dark rounded-lg py-1.5 px-3 shadow-sm inline-flex items-center gap-3 text-xs">
+                <div className="flex items-center gap-1.5">
+                  <div className="h-2 w-2 rounded-full bg-primary/70 animate-pulse-slow"></div>
+                  <span className="text-muted-foreground">{formattedDate}</span>
+                </div>
+                <div className="h-3 w-px bg-primary/20"></div>
+                <div className="text-primary font-medium">It's {formattedTime} in India</div>
+              </div>
             </div>
           </div>
 
