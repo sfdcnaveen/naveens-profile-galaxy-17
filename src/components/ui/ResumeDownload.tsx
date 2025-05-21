@@ -9,8 +9,9 @@ interface ResumeDownloadProps {
 const ResumeDownload = ({ className }: ResumeDownloadProps) => {
   return (
     <a
-      href="/Naveen_Kumar_Resume.pdf"
-      download="Naveen_Kumar_Resume.pdf" // Suggest filename for download
+      href="https://naveen-kumar-pasupuleti-resume.vercel.app"
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn(
         "relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden",
         "font-medium tracking-tight glass-dark text-foreground rounded-full group",
@@ -38,7 +39,7 @@ const ResumeDownload = ({ className }: ResumeDownloadProps) => {
             strokeLinejoin="round"
           />
         </svg>
-        Download Resume
+        Resume
       </span>
     </a>
   );
