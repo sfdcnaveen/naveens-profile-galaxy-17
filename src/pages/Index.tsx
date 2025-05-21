@@ -9,7 +9,7 @@ import Skills from '../components/sections/Skills';
 import Projects from '../components/sections/Projects';
 import Certifications from '../components/sections/Certifications';
 import Photography from '../components/sections/Photography';
-import Contact from '../components/sections/Contact';
+import WhatsAppButton from '../components/ui/WhatsAppButton';
 
 const Index = () => {
   useEffect(() => {
@@ -61,9 +61,9 @@ const Index = () => {
         <Projects />
         <Certifications />
         <Photography />
-        <Contact />
       </main>
       <Footer />
+      <WhatsAppButton phoneNumber="919490380061" />
     </div>
   );
 };
