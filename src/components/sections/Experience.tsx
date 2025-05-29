@@ -16,7 +16,7 @@ const Experience = ({ className }: ExperienceProps) => {
     {
       title: "Consultant",
       company: "Capgemini",
-      logo: "https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8",
+      logo: "/images/capgemini_logo.jpeg",
       period: "2023 - Present",
       description: "Specializing in Salesforce Quality Assurance, leading test automation and validation for enterprise Sales Cloud and Service Cloud solutions. Currently migrating WDIO test scripts to Playwright with TypeScript to enhance test efficiency and reliability.",
       technologies: ["Salesforce", "Playwright", "TypeScript", "WDIO", "Java", "Selenium"],
@@ -31,7 +31,7 @@ const Experience = ({ className }: ExperienceProps) => {
     {
       title: "Associate Consultant",
       company: "Capgemini",
-      logo: "https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8",
+      logo: "/images/capgemini_logo.jpeg",
       period: "2021 - 2023",
       description: "Contributed to Salesforce QA and automation efforts, supporting clients in optimizing CRM processes through testing and quality assurance",
       technologies: ["Salesforce", "Java", "Selenium", "WDIO", "Service Cloud"],

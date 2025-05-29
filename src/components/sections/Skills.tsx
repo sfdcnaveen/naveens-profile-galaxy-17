@@ -106,7 +106,7 @@ const Skills = ({ className }: SkillsProps) => {
           <div>
             <h3 className="text-xl font-semibold mb-6 flex items-center">
               <img
-                src="https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY"
+                src="/images/salesforce_logo.jpeg"
                 alt="Salesforce"
                 className="w-8 h-8 mr-3"
               />

@@ -25,7 +25,7 @@ const Certifications = ({ className }: CertificationsProps) => {
       title: "Salesforce Certified Platform Developer I",
       issuer: "Salesforce",
       date: "2022",
-      logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
+      logo: "/images/salesforce_logo.jpeg",
       description: "Validates skills in developing custom applications on the Salesforce platform, including Apex and Visualforce.",
       link: "/certifications/SF_Platform_Developer_1.png"
     },
@@ -33,7 +33,7 @@ const Certifications = ({ className }: CertificationsProps) => {
       title: "Salesforce Certified Associate",
       issuer: "Salesforce",
       date: "2023",
-      logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
+      logo: "/images/salesforce_logo.jpeg",
       description: "Demonstrates foundational Salesforce knowledge, including navigating the platform, understanding key concepts, and basic user support.",
       link: "/certifications/SF_Certified_Associate.png"
     },
@@ -41,7 +41,7 @@ const Certifications = ({ className }: CertificationsProps) => {
       title: "Salesforce Certified AI Associate",
       issuer: "Salesforce",
       date: "2024",
-      logo: "https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY",
+      logo: "/images/salesforce_logo.jpeg",
       description: "Validates proficiency in AI-powered CRM features, including data analysis, predictive modeling, and ethical AI use. It’s ideal for professionals who want to learn how to use AI to improve business operations in Salesforce.",
       link: "/certifications/SF_Certified_AI_Associate.png"
     }
