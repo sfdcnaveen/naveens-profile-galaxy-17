@@ -125,21 +125,21 @@ const Hero = ({ className }: HeroProps) => {
               <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-primary/0 animate-spin-slow"></div>
               <div className="absolute inset-4 rounded-full bg-gradient-to-bl from-primary/10 to-primary/0 animate-spin-slow" style={{ animationDirection: 'reverse', animationDuration: '12s' }}></div>
               <img
-                src="https://media.licdn.com/dms/image/v2/D5603AQHdnqbC4TOWZg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1713788449905?e=1748476800&v=beta&t=F9DOg0AX1_vyANoQ1Q2ybqN1FpuSGCfAIhNYFpvFpQY"
+                src="/images/profile-photo.jpeg"
                 alt="Naveen Kumar Pasupuleti"
                 className="absolute inset-6 rounded-full object-cover w-[calc(100%-48px)] h-[calc(100%-48px)] shadow-xl z-10"
                 style={{ objectPosition: 'center top' }}
               />
               <div className="absolute -bottom-2 -right-2 z-20 glass rounded-full p-3 shadow-lg">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/C560BAQHZ9xYomLW7zg/company-logo_400_400/company-logo_400_400/0/1630658255326/salesforce_logo?e=1748476800&v=beta&t=MpI_GvGzjNVIAZ4Zd59Impvg3Xkc3eTza7ByOyTlCNY"
+                  src="/images/salesforce_logo.jpeg"
                   alt="Salesforce"
                   className="w-10 h-10 object-contain"
                 />
               </div>
               <div className="absolute -top-2 -left-2 z-20 glass rounded-full p-3 shadow-lg">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/D4D0BAQH-ZV832H4sdA/company-logo_400_400/company-logo_400_400/0/1705572256355/capgemini_logo?e=1748476800&v=beta&t=JM-VMyuJyKen0ckcFq_L3YPdGBuVI6C6J4nmp575bG8"
+                  src="/images/capgemini_logo.jpeg"
                   alt="Capgemini"
                   className="w-10 h-10 object-contain"
                 />

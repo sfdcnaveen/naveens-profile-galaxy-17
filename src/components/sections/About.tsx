@@ -67,7 +67,7 @@ const About = ({ className }: AboutProps) => {
             <h3 className="text-xl font-semibold mb-3">Education</h3>
             <div className="flex items-start mb-4">
               <img
-                src="https://media.licdn.com/dms/image/v2/C560BAQGn-IEnvdYHnQ/company-logo_400_400/company-logo_400_400/0/1630599281371/jntua_college_of_engineering_anantapur_logo?e=1748476800&v=beta&t=CVSXf5aO0oo758s9m3sKfEZDHctDVNotB7hn4tFNYuU"
+                src="/images/jntua_college_of_engineering_anantapur_logo.jpeg"
                 alt="JNTU Anantapur"
                 className="w-10 h-10 rounded-md object-contain mr-3"
               />
