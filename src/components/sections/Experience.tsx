@@ -202,7 +202,7 @@ const Experience = ({ className }: ExperienceProps) => {
                       onClick={(e) => {
                         e.stopPropagation();
                         setExpandedIndex(
-                          expandedIndex === index ? null : index
+                          expandedIndex === index ? null : index,
                         );
                       }}
                     >

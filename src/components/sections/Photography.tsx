@@ -1,8 +1,7 @@
-
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from "react";
 import { cn } from "@/lib/utils";
-import AnimatedText from '../ui/AnimatedText';
-import { motion, useInView } from 'framer-motion';
+import AnimatedText from "../ui/AnimatedText";
+import { motion, useInView } from "framer-motion";
 
 interface PhotoItem {
   id: string;
@@ -16,95 +15,103 @@ interface PhotographyProps {
 }
 
 const Photography = ({ className }: PhotographyProps) => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
 
   const photos: PhotoItem[] = [
     {
-      id: '1',
+      id: "1",
       src: "/images/flower1.jpg",
       alt: "Flower",
-      category: 'flower'
+      category: "flower",
     },
     {
-      id: '2',
+      id: "2",
       src: "/images/manwithumbrella.jpg",
       alt: "Man with Umbrella",
-      category: 'people'
+      category: "people",
     },
     {
-      id: '3',
+      id: "3",
       src: "/images/statu34.jpg",
       alt: "Statue",
-      category: 'architecture'
+      category: "architecture",
     },
     {
-      id: '4',
+      id: "4",
       src: "/images/architecture.jpg",
       alt: "Architecture",
-      category: 'architecture'
+      category: "architecture",
     },
     {
-      id: '5',
+      id: "5",
       src: "/images/architecture2.jpg",
       alt: "Architecture 2",
-      category: 'architecture'
+      category: "architecture",
     },
     {
-      id: '6',
+      id: "6",
       src: "/images/architecture3.jpg",
       alt: "Architecture 3",
-      category: 'architecture'
+      category: "architecture",
     },
     {
-      id: '7',
+      id: "7",
       src: "/images/darknight.jpg",
       alt: "Dark Night",
-      category: 'nature'
+      category: "nature",
     },
     {
-      id: '8',
+      id: "8",
       src: "/images/flower.jpg",
       alt: "Flower",
-      category: 'flower'
+      category: "flower",
     },
     {
-      id: '9',
+      id: "9",
       src: "/images/flower3.jpg",
       alt: "Flower 3",
-      category: 'flower'
+      category: "flower",
     },
     {
-      id: '10',
+      id: "10",
       src: "/images/pinkflowers.jpg",
       alt: "Pink Flowers",
-      category: 'flower'
+      category: "flower",
     },
     {
-      id: '11',
+      id: "11",
       src: "/images/portrait.jpg",
       alt: "Portrait",
-      category: 'people'
+      category: "people",
     },
     {
-      id: '12',
+      id: "12",
       src: "/images/squirrel.jpg",
       alt: "Squirrel",
-      category: 'nature'
+      category: "nature",
     },
     {
-      id: '13',
+      id: "13",
       src: "/images/photo1.jpeg",
       alt: "Photo 1",
-      category: 'other'
-    }
+      category: "other",
+    },
   ];
 
-  const categories = ['all', 'flower', 'people', 'architecture', 'nature', 'other'];
+  const categories = [
+    "all",
+    "flower",
+    "people",
+    "architecture",
+    "nature",
+    "other",
+  ];
 
-  const filteredPhotos = activeCategory === 'all'
-    ? photos
-    : photos.filter(photo => photo.category === activeCategory);
+  const filteredPhotos =
+    activeCategory === "all"
+      ? photos
+      : photos.filter((photo) => photo.category === activeCategory);
 
   return (
     <section
@@ -122,7 +129,10 @@ const Photography = ({ className }: PhotographyProps) => {
             delay={100}
             className="text-lg text-muted-foreground italic"
           />
-          <p className="mt-4 text-sm text-muted-foreground/80">Every photograph is a heartbeat frozen in time, a silent story waiting to be heard.</p>
+          <p className="mt-4 text-sm text-muted-foreground/80">
+            Every photograph is a heartbeat frozen in time, a silent story
+            waiting to be heard.
+          </p>
         </div>
 
         {/* Category Filter */}
@@ -135,7 +145,7 @@ const Photography = ({ className }: PhotographyProps) => {
                 "px-4 py-2 rounded-full text-sm font-medium capitalize transition-all",
                 activeCategory === category
                   ? "glass-dark text-white"
-                  : "glass-card hover:glass-dark"
+                  : "glass-card hover:glass-dark",
               )}
             >
               {category}
@@ -169,8 +179,19 @@ const Photography = ({ className }: PhotographyProps) => {
                 className="absolute top-4 right-4 z-10 glass-dark rounded-full p-2 text-white hover:bg-white/20 transition-colors"
                 onClick={() => setSelectedPhoto(null)}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
               <img
@@ -235,6 +256,5 @@ const PhotoCard: React.FC<PhotoCardProps> = ({ photo, onClick, index }) => {
     </motion.div>
   );
 };
-
 
 export default Photography;

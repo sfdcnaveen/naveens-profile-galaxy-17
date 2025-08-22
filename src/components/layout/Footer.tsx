@@ -12,7 +12,7 @@ const Footer = ({ className }: FooterProps) => {
     <footer
       className={cn(
         "py-8 bg-card/30 backdrop-blur-lg border-t border-white/5",
-        className
+        className,
       )}
     >
       <div className="container mx-auto px-6">
@@ -30,9 +30,6 @@ const Footer = ({ className }: FooterProps) => {
             <div className="text-sm text-muted-foreground">
               © {currentYear} Naveen Kumar Pasupuleti. All rights reserved.
             </div>
-            <p className="text-xs text-muted-foreground mt-1">
-              Connect with me in the Contact section above
-            </p>
           </div>
         </div>
       </div>
