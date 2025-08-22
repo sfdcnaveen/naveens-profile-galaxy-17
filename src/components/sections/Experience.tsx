@@ -76,11 +76,11 @@ const Experience = ({ className }: ExperienceProps) => {
   return (
     <section
       id="experience"
-      className={cn("py-16 md:py-24 bg-background", className)}
+      className={cn("py-10 md:py-16 bg-background", className)}
       ref={containerRef}
     >
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-16 text-center">
+        <div className="max-w-3xl mx-auto mb-12 text-center">
           <AnimatedText
             text="Professional Experience"
             className="text-3xl md:text-4xl font-bold mb-6"

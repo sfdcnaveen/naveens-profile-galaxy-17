@@ -7,8 +7,7 @@ import Experience from "../components/sections/Experience";
 import Skills from "../components/sections/Skills";
 import Projects from "../components/sections/Projects";
 import Certifications from "../components/sections/Certifications";
-import Photography from "../components/sections/Photography";
-import ResumeSection from "../components/sections/Resume";
+import LetsConnect from "../components/sections/LetsConnect";
 
 const Index = () => {
   return (
@@ -21,8 +20,7 @@ const Index = () => {
         <Projects />
         <Skills />
         <Certifications />
-        <Photography />
-        <ResumeSection />
+        <LetsConnect />
       </main>
       <Footer />
     </div>
