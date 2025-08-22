@@ -71,7 +71,7 @@ const LetsConnect = ({ className }: LetsConnectProps) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
                   {/* Professional Chat */}
                   <a
-                    href="https://wa.me/919876543210?text=Hello%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect%20professionally."
+                    href="https://wa.me/918500070061?text=Hello%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect%20professionally."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center gap-4 glass-dark hover:bg-green-500/20 rounded-2xl p-6 transition-all duration-300 hover:scale-105 hover:shadow-lg"
@@ -143,7 +143,7 @@ const LetsConnect = ({ className }: LetsConnectProps) => {
                   </a>
 
                   <a
-                    href="https://github.com/naveenkumar-pasupuleti"
+                    href="https://github.com/sfdcnaveen"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group w-12 h-12 bg-gray-500/20 rounded-full flex items-center justify-center hover:bg-gray-500/30 transition-all duration-300 hover:scale-110"
