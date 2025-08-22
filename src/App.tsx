@@ -11,7 +11,6 @@ import SkillsPage from "./pages/Skills";
 import ProjectsPage from "./pages/Projects";
 import CertificationsPage from "./pages/Certifications";
 import PhotographyPage from "./pages/Photography";
-import ContactPage from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import CursorEffect from "./components/ui/CursorEffect";
 import BackgroundEffect from "./components/ui/BackgroundEffect";

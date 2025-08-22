@@ -18,7 +18,6 @@ interface ProjectsProps {
 }
 
 const Projects = ({ className }: ProjectsProps) => {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
   const [activeProject, setActiveProject] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
@@ -65,26 +64,14 @@ const Projects = ({ className }: ProjectsProps) => {
     },
   ];
 
-  const categories = [
-    { id: "all", label: "All Projects" },
-    { id: "salesforce", label: "Salesforce" },
-    { id: "automation", label: "Test Automation" },
-    { id: "web", label: "Web Development" },
-  ];
-
-  const filteredProjects =
-    activeCategory === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeCategory);
-
   return (
     <section
       id="projects"
-      className={cn("py-16 md:py-24 bg-background", className)}
+      className={cn("py-10 md:py-16 bg-background", className)}
       ref={containerRef}
     >
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-16 text-center">
+        <div className="max-w-3xl mx-auto mb-12 text-center">
           <AnimatedText
             text="Projects"
             className="text-3xl md:text-4xl font-bold mb-6"
@@ -96,27 +83,9 @@ const Projects = ({ className }: ProjectsProps) => {
           />
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                activeCategory === category.id
-                  ? "glass-dark text-white"
-                  : "glass-card hover:glass-dark"
-              )}
-            >
-              {category.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredProjects.map((project, index) => (
+        {/* Projects List */}
+        <div className="space-y-12">
+          {projects.map((project, index) => (
             <ProjectCard
               key={index}
               project={project}
@@ -131,11 +100,9 @@ const Projects = ({ className }: ProjectsProps) => {
         </div>
 
         {/* Empty State */}
-        {filteredProjects.length === 0 && (
+        {projects.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground">
-              No projects found in this category.
-            </p>
+            <p className="text-muted-foreground">No projects available.</p>
           </div>
         )}
       </div>
@@ -168,78 +135,45 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         isActive ? "ring-2 ring-primary" : ""
       )}
     >
-      {/* Project Image */}
-      <div
-        className="relative overflow-hidden bg-gradient-to-br from-card/80 to-card/30"
-        style={{ paddingTop: "56.25%" }}
-      >
-        {" "}
-        {/* 16:9 aspect ratio */}
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
-          <div
-            className={cn(
-              "flex items-center justify-center rounded-lg transition-transform duration-500 group-hover:scale-110",
-              project.title.includes("Salesforce")
-                ? "bg-white/10 backdrop-blur-sm p-4 w-[85%] h-[85%]"
-                : "",
-              project.title.includes("Automation")
-                ? "bg-white/10 backdrop-blur-sm p-3 w-[90%] h-[90%]"
-                : "",
-              project.title.includes("Portfolio")
-                ? "bg-white/10 backdrop-blur-sm p-3 w-[90%] h-[90%]"
-                : ""
+      {/* Full-Width Project Image */}
+      <div className="relative w-full h-80 md:h-96 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            {project.title}
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {project.technologies.slice(0, 4).map((tech, idx) => (
+              <span
+                key={idx}
+                className="glass-dark px-3 py-1 rounded-full text-xs font-medium text-white/90"
+              >
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 4 && (
+              <span className="glass-dark px-3 py-1 rounded-full text-xs font-medium text-white/90">
+                +{project.technologies.length - 4} more
+              </span>
             )}
-            style={{ transform: "scale(1.05)" }}
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className={cn(
-                "w-auto h-auto object-contain transition-all duration-300",
-                project.title.includes("Salesforce")
-                  ? "max-w-[90%] max-h-[90%]"
-                  : "",
-                project.title.includes("Automation")
-                  ? "max-w-[95%] max-h-[95%]"
-                  : "",
-                project.title.includes("Portfolio")
-                  ? "max-w-[95%] max-h-[95%]"
-                  : ""
-              )}
-            />
           </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 p-4">
-          <h3 className="text-xl font-semibold text-white">{project.title}</h3>
         </div>
       </div>
 
       {/* Project Content */}
       <div className="p-6">
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.slice(0, 3).map((tech, idx) => (
-            <span
-              key={idx}
-              className="glass-dark px-3 py-1 rounded-full text-xs font-medium"
-            >
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 3 && (
-            <span className="glass-dark px-3 py-1 rounded-full text-xs font-medium">
-              +{project.technologies.length - 3} more
-            </span>
-          )}
-        </div>
-
-        <p className="text-muted-foreground mb-4 line-clamp-3">
+        <p className="text-muted-foreground mb-6 text-lg leading-relaxed line-clamp-3">
           {project.description}
         </p>
 
         <div className="flex justify-between items-center">
           <button
-            className="text-primary text-sm font-medium flex items-center"
+            className="text-primary text-sm font-medium flex items-center hover:text-primary/80 transition-colors"
             onClick={onClick}
           >
             {isActive ? (

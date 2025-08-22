@@ -11,7 +11,7 @@ const navItems = [
   { label: "Projects", href: "#projects" },
   { label: "Skills", href: "#skills" },
   { label: "Certifications", href: "#certifications" },
-  { label: "Photography", href: "#photography" },
+  { label: "Let's Connect", href: "#lets-connect" },
   {
     label: "Resume",
     href: "https://naveen-kumar-pasupuleti-resume.vercel.app/",

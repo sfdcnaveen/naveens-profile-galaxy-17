@@ -38,111 +38,75 @@ const Hero = ({ className }: HeroProps) => {
     <section
       id="home"
       className={cn(
-        "min-h-screen pt-0 flex items-center", // No top padding
+        "min-h-screen pt-20 flex items-center justify-center", // Full viewport height with top padding for navbar
         "bg-gradient-to-b from-background via-background to-background",
         className
       )}
     >
-      <div className="container mx-auto px-6 pt-10">
-        {" "}
-        {/* Reduced top padding on container */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+      <div className="container mx-auto px-6 py-8">
+        <div className="flex flex-col items-center text-center">
           <div
             className={cn(
-              "flex flex-col text-center lg:text-left order-2 lg:order-1",
+              "flex flex-col text-center",
               "transition-all duration-700 transform",
               isLoaded
                 ? "translate-y-0 opacity-100"
                 : "translate-y-10 opacity-0"
             )}
           >
-            <div className="inline-block mb-2">
-              <span className="inline-flex items-center px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary glass-dark">
-                <span className="mr-1.5 h-2 w-2 rounded-full bg-primary animate-pulse-slow"></span>
-                SDET
-              </span>
+            {/* Clean Introduction */}
+            <div className="text-center mb-6">
+              <AnimatedText
+                text="Hello, I'm"
+                delay={100}
+                className="text-2xl md:text-3xl text-muted-foreground"
+              />
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 tracking-tight">
+            {/* Enhanced Name Formatting */}
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold mb-8 tracking-tight">
               <AnimatedText
                 text="Naveen Kumar"
-                delay={100}
-                className="inline-block"
+                delay={200}
+                className="inline-block bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
               />
               <br />
               <AnimatedText
                 text="Pasupuleti"
-                delay={200}
-                className="inline-block text-primary"
+                delay={300}
+                className="inline-block bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent font-black"
               />
             </h1>
 
-            <AnimatedText
-              text="Experienced Salesforce QA Engineer with expertise in Sales Cloud and Service Cloud, specializing in testing and validating scalable, high-performance Salesforce solutions. Skilled in manual and automated testing, defect tracking, and ensuring optimal system functionality. Passionate about delivering quality and collaborating with teams to achieve business goals."
-              delay={300}
-              className="text-xl text-muted-foreground mb-6"
-            />
+            {/* Professional Title */}
+            <div className="mb-10">
+              <AnimatedText
+                text="SDET @ TestVagrant Technologies"
+                delay={400}
+                className="text-xl md:text-2xl font-semibold text-muted-foreground tracking-wide"
+              />
+            </div>
 
-            {/* Date Time Display - Centered */}
-            <div
-              className={cn(
-                "flex justify-center", // Center alignment
-                "transition-all duration-500",
-                isLoaded
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 -translate-y-4"
-              )}
-            >
-              <div className="glass-dark rounded-lg py-1.5 px-3 shadow-sm inline-flex items-center gap-3 text-xs">
-                <div className="flex items-center gap-1.5">
-                  <div className="h-2 w-2 rounded-full bg-primary/70 animate-pulse-slow"></div>
+            {/* Value Proposition */}
+            <div className="mb-12">
+              <AnimatedText
+                text="I build robust test automation frameworks and ensure quality in Salesforce applications—combining technical expertise with precision to deliver reliable, scalable solutions."
+                delay={500}
+                className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto"
+              />
+            </div>
+
+            {/* Time Capsule - Moved below text */}
+            <div className="flex justify-center">
+              <div className="glass-dark rounded-lg py-2 px-4 shadow-sm inline-flex items-center gap-3 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-primary/70 animate-ping"></div>
                   <span className="text-muted-foreground">{formattedDate}</span>
                 </div>
-                <div className="h-3 w-px bg-primary/20"></div>
+                <div className="h-4 w-px bg-primary/20"></div>
                 <div className="text-primary font-medium">
                   It's {formattedTime} in India
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={cn(
-              "order-1 lg:order-2 mx-auto lg:mx-0",
-              "transition-all duration-700 delay-300",
-              isLoaded
-                ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
-            )}
-          >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-primary/0 animate-spin-slow"></div>
-              <div
-                className="absolute inset-4 rounded-full bg-gradient-to-bl from-primary/10 to-primary/0 animate-spin-slow"
-                style={{
-                  animationDirection: "reverse",
-                  animationDuration: "12s",
-                }}
-              ></div>
-              <img
-                src="/images/profile-photo.jpeg"
-                alt="Naveen Kumar Pasupuleti"
-                className="absolute inset-6 rounded-full object-cover w-[calc(100%-48px)] h-[calc(100%-48px)] shadow-xl z-10"
-                style={{ objectPosition: "center top" }}
-              />
-              <div className="absolute -bottom-2 -right-2 z-20 glass rounded-full p-3 shadow-lg">
-                <img
-                  src="/images/salesforce_logo.jpeg"
-                  alt="Salesforce"
-                  className="w-10 h-10 object-contain"
-                />
-              </div>
-              <div className="absolute -top-2 -left-2 z-20 glass rounded-full p-3 shadow-lg">
-                <img
-                  src="/images/testvagrant_technologies_logo.jpeg"
-                  alt="TestVagrant"
-                  className="w-10 h-10 object-contain"
-                />
               </div>
             </div>
           </div>
