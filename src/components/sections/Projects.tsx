@@ -132,7 +132,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={cn(
         "glass-card rounded-xl overflow-hidden transition-all duration-300 group",
-        isActive ? "ring-2 ring-primary" : ""
+        isActive ? "ring-2 ring-primary" : "",
       )}
     >
       {/* Full-Width Project Image */}

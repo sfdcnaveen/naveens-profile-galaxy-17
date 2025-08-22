@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Loader2, ZoomIn, ZoomOut, Download, RotateCw } from 'lucide-react';
-import { Button } from './button';
-import { motion } from 'framer-motion';
+import { Loader2, ZoomIn, ZoomOut, Download, RotateCw } from "lucide-react";
+import { Button } from "./button";
+import { motion } from "framer-motion";
 
 interface CertificateImageViewerProps {
   imageSrc: string;
   className?: string;
 }
 
-const CertificateImageViewer = ({ imageSrc, className }: CertificateImageViewerProps) => {
-  const [imageUrl, setImageUrl] = useState<string>('');
+const CertificateImageViewer = ({
+  imageSrc,
+  className,
+}: CertificateImageViewerProps) => {
+  const [imageUrl, setImageUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [scale, setScale] = useState<number>(1);
@@ -20,17 +23,17 @@ const CertificateImageViewer = ({ imageSrc, className }: CertificateImageViewerP
   useEffect(() => {
     try {
       // If the path starts with '/', it's a local file in the public directory
-      if (imageSrc.startsWith('/')) {
+      if (imageSrc.startsWith("/")) {
         const baseUrl = window.location.origin;
         const fullPath = `${baseUrl}${imageSrc}`;
-        console.log('Loading image from:', fullPath);
+        console.log("Loading image from:", fullPath);
         setImageUrl(fullPath);
       } else {
-        console.log('Loading image from external URL:', imageSrc);
+        console.log("Loading image from external URL:", imageSrc);
         setImageUrl(imageSrc);
       }
     } catch (err) {
-      console.error('Error processing image path:', err);
+      console.error("Error processing image path:", err);
       setError(true);
       setLoading(false);
     }
@@ -38,44 +41,43 @@ const CertificateImageViewer = ({ imageSrc, className }: CertificateImageViewerP
 
   // Function to open image in a new tab
   const openInNewTab = () => {
-    window.open(imageUrl, '_blank');
+    window.open(imageUrl, "_blank");
   };
 
   // Handle image load success
   const handleImageLoad = () => {
-    console.log('Image loaded successfully:', imageUrl);
+    console.log("Image loaded successfully:", imageUrl);
     setLoading(false);
     setError(false);
   };
 
   // Handle image load error
   const handleImageError = () => {
-    console.error('Error loading image:', imageUrl);
+    console.error("Error loading image:", imageUrl);
     setError(true);
     setLoading(false);
   };
 
   // Zoom functions
-  const zoomIn = () => setScale(prev => Math.min(prev + 0.1, 2.5));
-  const zoomOut = () => setScale(prev => Math.max(prev - 0.1, 0.5));
+  const zoomIn = () => setScale((prev) => Math.min(prev + 0.1, 2.5));
+  const zoomOut = () => setScale((prev) => Math.max(prev - 0.1, 0.5));
 
   // Rotation function
-  const rotate = () => setRotation(prev => (prev + 90) % 360);
+  const rotate = () => setRotation((prev) => (prev + 90) % 360);
 
   // Error content
   const errorContent = (
     <div className="flex flex-col items-center justify-center h-[50vh] text-center p-4 w-full">
-      <p className="text-destructive font-medium mb-2">Failed to load certificate</p>
+      <p className="text-destructive font-medium mb-2">
+        Failed to load certificate
+      </p>
       <p className="text-muted-foreground text-sm mb-4">
-        The certificate could not be loaded. Please try again later or open it in a new tab.
+        The certificate could not be loaded. Please try again later or open it
+        in a new tab.
         <br />
         <span className="text-xs opacity-70 mt-2 block">Path: {imageUrl}</span>
       </p>
-      <Button
-        variant="outline"
-        onClick={openInNewTab}
-        className="glass-hover"
-      >
+      <Button variant="outline" onClick={openInNewTab} className="glass-hover">
         <Download className="h-4 w-4 mr-2" />
         Open in New Tab
       </Button>
@@ -93,13 +95,13 @@ const CertificateImageViewer = ({ imageSrc, className }: CertificateImageViewerP
         transition: {
           type: "spring",
           damping: 25,
-          stiffness: 300
-        }
+          stiffness: 300,
+        },
       }}
       className="relative"
       style={{
-        maxHeight: '70vh',
-        overflow: 'auto'
+        maxHeight: "70vh",
+        overflow: "auto",
       }}
     >
       {imageUrl && (
@@ -109,8 +111,8 @@ const CertificateImageViewer = ({ imageSrc, className }: CertificateImageViewerP
           className="max-w-full object-contain"
           style={{
             transform: `scale(${scale})`,
-            transformOrigin: 'center',
-            transition: 'transform 0.3s ease'
+            transformOrigin: "center",
+            transition: "transform 0.3s ease",
           }}
           onLoad={handleImageLoad}
           onError={handleImageError}
@@ -134,9 +136,7 @@ const CertificateImageViewer = ({ imageSrc, className }: CertificateImageViewerP
           <ZoomOut className="h-4 w-4" />
         </Button>
 
-        <span className="text-sm">
-          {Math.round(scale * 100)}%
-        </span>
+        <span className="text-sm">{Math.round(scale * 100)}%</span>
 
         <Button
           variant="ghost"

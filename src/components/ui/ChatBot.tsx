@@ -141,8 +141,8 @@ const ChatBot = ({ className }: ChatBotProps) => {
         {
           text: `<div class="mt-2">
                   <a href="https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-            whatsAppMessage
-          )}"
+                    whatsAppMessage,
+                  )}"
                      target="_blank"
                      rel="noopener noreferrer"
                      class="inline-flex items-center justify-center gap-2 px-3 py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg text-xs transition-colors">
@@ -169,7 +169,7 @@ const ChatBot = ({ className }: ChatBotProps) => {
         className={cn(
           "w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center shadow-lg",
           "hover:bg-primary/90 transition-colors duration-300",
-          isOpen ? "opacity-0 scale-90" : "opacity-100 scale-100"
+          isOpen ? "opacity-0 scale-90" : "opacity-100 scale-100",
         )}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
@@ -263,7 +263,7 @@ const ChatBot = ({ className }: ChatBotProps) => {
                     "mb-3 max-w-[80%] p-3 rounded-lg",
                     message.sender === "bot"
                       ? "bg-muted/50 text-foreground mr-auto"
-                      : "bg-primary/90 text-white ml-auto"
+                      : "bg-primary/90 text-white ml-auto",
                   )}
                   dangerouslySetInnerHTML={{ __html: message.text }}
                 ></div>
@@ -280,7 +280,7 @@ const ChatBot = ({ className }: ChatBotProps) => {
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
                   userName
                     ? `Hello, this is ${userName} from your website.`
-                    : "Hello, I found your website and would like to connect."
+                    : "Hello, I found your website and would like to connect.",
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"

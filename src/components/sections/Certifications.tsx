@@ -73,7 +73,7 @@ const Certifications = ({ className }: CertificationsProps) => {
               key={index}
               className={cn(
                 "glass-card rounded-xl p-6 relative overflow-hidden transition-all duration-300 w-full max-w-sm",
-                "hover:shadow-lg hover:-translate-y-1 glass-hover"
+                "hover:shadow-lg hover:-translate-y-1 glass-hover",
               )}
             >
               <div className="flex items-center mb-4">

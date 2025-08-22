@@ -1,7 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Loader2, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, Download } from 'lucide-react';
-import { Button } from './button';
+import {
+  Loader2,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
+  ZoomOut,
+  Download,
+} from "lucide-react";
+import { Button } from "./button";
 
 // We'll use an iframe-based approach instead of react-pdf
 // This is more reliable for displaying PDFs across different browsers
@@ -12,7 +19,7 @@ interface PDFViewerProps {
 }
 
 const PDFViewer = ({ file, className }: PDFViewerProps) => {
-  const [pdfUrl, setPdfUrl] = useState<string>('');
+  const [pdfUrl, setPdfUrl] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
 
@@ -20,17 +27,17 @@ const PDFViewer = ({ file, className }: PDFViewerProps) => {
   useEffect(() => {
     try {
       // If the file path starts with '/', it's a local file in the public directory
-      if (file.startsWith('/')) {
+      if (file.startsWith("/")) {
         const baseUrl = window.location.origin;
         const fullPath = `${baseUrl}${file}`;
-        console.log('Loading PDF from:', fullPath);
+        console.log("Loading PDF from:", fullPath);
         setPdfUrl(fullPath);
       } else {
-        console.log('Loading PDF from external URL:', file);
+        console.log("Loading PDF from external URL:", file);
         setPdfUrl(file);
       }
     } catch (err) {
-      console.error('Error processing PDF path:', err);
+      console.error("Error processing PDF path:", err);
       setError(true);
       setLoading(false);
     }
@@ -43,14 +50,14 @@ const PDFViewer = ({ file, className }: PDFViewerProps) => {
     const checkPdfExists = async () => {
       try {
         // Try to fetch the PDF to see if it exists
-        const response = await fetch(pdfUrl, { method: 'HEAD' });
+        const response = await fetch(pdfUrl, { method: "HEAD" });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         setLoading(false);
         setError(false);
       } catch (err) {
-        console.error('Error checking PDF:', err);
+        console.error("Error checking PDF:", err);
         setError(true);
         setLoading(false);
       }
@@ -61,7 +68,7 @@ const PDFViewer = ({ file, className }: PDFViewerProps) => {
 
   // Function to open PDF in a new tab (as fallback)
   const openInNewTab = () => {
-    window.open(pdfUrl, '_blank');
+    window.open(pdfUrl, "_blank");
   };
 
   return (
@@ -72,11 +79,16 @@ const PDFViewer = ({ file, className }: PDFViewerProps) => {
         </div>
       ) : error ? (
         <div className="flex flex-col items-center justify-center h-[50vh] text-center p-4 w-full">
-          <p className="text-destructive font-medium mb-2">Failed to load PDF</p>
+          <p className="text-destructive font-medium mb-2">
+            Failed to load PDF
+          </p>
           <p className="text-muted-foreground text-sm mb-4">
-            The certificate could not be loaded. Please try again later or open it in a new tab.
+            The certificate could not be loaded. Please try again later or open
+            it in a new tab.
             <br />
-            <span className="text-xs opacity-70 mt-2 block">Path: {pdfUrl}</span>
+            <span className="text-xs opacity-70 mt-2 block">
+              Path: {pdfUrl}
+            </span>
           </p>
           <Button
             variant="outline"
@@ -96,7 +108,9 @@ const PDFViewer = ({ file, className }: PDFViewerProps) => {
               className="w-full h-full"
             >
               <div className="flex flex-col items-center justify-center h-full text-center p-4">
-                <p className="text-destructive font-medium mb-2">Your browser cannot display the PDF</p>
+                <p className="text-destructive font-medium mb-2">
+                  Your browser cannot display the PDF
+                </p>
                 <Button
                   variant="outline"
                   onClick={openInNewTab}

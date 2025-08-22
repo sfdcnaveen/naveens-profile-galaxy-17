@@ -40,7 +40,7 @@ const Hero = ({ className }: HeroProps) => {
       className={cn(
         "min-h-screen pt-20 flex items-center justify-center", // Full viewport height with top padding for navbar
         "bg-gradient-to-b from-background via-background to-background",
-        className
+        className,
       )}
     >
       <div className="container mx-auto px-6 py-8">
@@ -51,7 +51,7 @@ const Hero = ({ className }: HeroProps) => {
               "transition-all duration-700 transform",
               isLoaded
                 ? "translate-y-0 opacity-100"
-                : "translate-y-10 opacity-0"
+                : "translate-y-10 opacity-0",
             )}
           >
             {/* Clean Introduction */}

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Link, useLocation } from "react-router-dom";
-import ResumeDownload from "../ui/ResumeDownload";
-import { useTheme } from "next-themes";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -25,14 +22,11 @@ interface NavbarProps {
 
 const Navbar = ({ className }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
-
-      // No longer needed: Detect active section based on scroll position
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -56,32 +50,19 @@ const Navbar = ({ className }: NavbarProps) => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
-          {navItems.map((item) =>
-            item.external ? (
-              <a
-                key={item.label}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-foreground hover:text-primary hover:bg-primary/5"
-                )}
-              >
-                {item.label}
-              </a>
-            ) : (
-              <a
-                key={item.label}
-                href={item.href}
-                className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-foreground hover:text-primary hover:bg-primary/5"
-                )}
-              >
-                {item.label}
-              </a>
-            )
-          )}
-          {/* ResumeDownload button removed from navbar, now a separate section */}
+          {navItems.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              {...(item.external && {
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
+              className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-foreground hover:text-primary hover:bg-primary/5"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         {/* Mobile Menu Button (top right) */}
@@ -123,33 +104,20 @@ const Navbar = ({ className }: NavbarProps) => {
             style={{ maxWidth: 320, alignSelf: "flex-end" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {navItems.map((item) =>
-              item.external ? (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 text-foreground hover:text-primary"
-                  )}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={cn(
-                    "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 text-foreground hover:text-primary"
-                  )}
-                >
-                  {item.label}
-                </a>
-              )
-            )}
+            {navItems.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                {...(item.external && {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                })}
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 text-foreground hover:text-primary"
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
         </div>
       )}

@@ -19,7 +19,7 @@ const About = ({ className }: AboutProps) => {
       id="about"
       className={cn(
         "min-h-screen pt-20 flex items-center justify-center bg-background",
-        className
+        className,
       )}
       ref={containerRef}
     >
@@ -32,7 +32,7 @@ const About = ({ className }: AboutProps) => {
               "transition-all duration-700 transform",
               isLoaded
                 ? "translate-y-0 opacity-100 scale-100"
-                : "translate-y-10 opacity-0 scale-95"
+                : "translate-y-10 opacity-0 scale-95",
             )}
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-primary/0 animate-spin-slow"></div>

@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 import { cn } from "@/lib/utils";
 
 interface ResumeDownloadProps {
@@ -19,7 +18,7 @@ const ResumeDownload = ({ className }: ResumeDownloadProps) => {
         "after:absolute after:inset-0 after:bg-primary after:rounded-full",
         "after:scale-0 hover:after:scale-100 after:transition-transform after:duration-300 after:ease-in-out",
         "hover:text-white",
-        className
+        className,
       )}
     >
       <span className="relative z-10 flex items-center gap-2 transition-colors duration-300">

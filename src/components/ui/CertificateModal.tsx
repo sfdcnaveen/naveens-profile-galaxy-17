@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import CertificateImageViewer from './CertificateImageViewer';
+import CertificateImageViewer from "./CertificateImageViewer";
 
 interface CertificateModalProps {
   isOpen: boolean;
@@ -19,7 +19,7 @@ const CertificateModal = ({
   certificateUrl,
   title,
   issuer,
-  className
+  className,
 }: CertificateModalProps) => {
   // Handle click outside to close
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -31,7 +31,7 @@ const CertificateModal = ({
   // Animation variants
   const backdropVariants = {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.3 } }
+    visible: { opacity: 1, transition: { duration: 0.3 } },
   };
 
   const modalVariants = {
@@ -44,17 +44,17 @@ const CertificateModal = ({
         type: "spring",
         damping: 25,
         stiffness: 300,
-        delay: 0.1
-      }
+        delay: 0.1,
+      },
     },
     exit: {
       opacity: 0,
       scale: 0.95,
       y: 10,
       transition: {
-        duration: 0.2
-      }
-    }
+        duration: 0.2,
+      },
+    },
   };
 
   return (
@@ -71,7 +71,7 @@ const CertificateModal = ({
           <motion.div
             className={cn(
               "relative max-w-4xl w-full glass-card rounded-xl p-6 max-h-[90vh] overflow-hidden",
-              className
+              className,
             )}
             variants={modalVariants}
             initial="hidden"
@@ -92,7 +92,17 @@ const CertificateModal = ({
                   className="glass-dark rounded-full p-2 text-white hover:bg-white/20 transition-colors"
                   aria-label="Open in new tab"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <line x1="10" y1="14" x2="21" y2="3"></line>
