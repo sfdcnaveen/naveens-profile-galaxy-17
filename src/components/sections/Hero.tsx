@@ -38,8 +38,7 @@ const Hero = ({ className }: HeroProps) => {
     <section
       id="home"
       className={cn(
-        "min-h-screen pt-20 flex items-center justify-center", // Full viewport height with top padding for navbar
-        "bg-gradient-to-b from-background via-background to-background",
+        "min-h-screen pt-20 flex items-center justify-center bg-background", // Full viewport height with consistent background
         className
       )}
     >
@@ -59,44 +58,44 @@ const Hero = ({ className }: HeroProps) => {
               <AnimatedText
                 text="Hello, I'm"
                 delay={100}
-                className="text-2xl md:text-3xl text-muted-foreground"
+                className="text-2xl md:text-3xl text-muted-foreground font-light tracking-wide"
               />
             </div>
 
-            {/* Enhanced Name Formatting */}
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold mb-8 tracking-tight">
+            {/* Enhanced Name Formatting - Modern Typography */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-tight">
               <AnimatedText
                 text="Naveen Kumar"
                 delay={200}
-                className="inline-block bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
+                className="inline-block bg-gradient-to-r from-primary via-blue-500 to-cyan-500 bg-clip-text text-transparent font-extrabold"
               />
               <br />
               <AnimatedText
                 text="Pasupuleti"
                 delay={300}
-                className="inline-block bg-gradient-to-r from-primary via-primary to-primary/70 bg-clip-text text-transparent font-black"
+                className="inline-block bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 bg-clip-text text-transparent font-black"
               />
             </h1>
 
-            {/* Professional Title */}
+            {/* Professional Title - Clean Design */}
             <div className="mb-10">
               <AnimatedText
                 text="SDET @ TestVagrant Technologies"
                 delay={400}
-                className="text-xl md:text-2xl font-semibold text-muted-foreground tracking-wide"
+                className="text-lg md:text-xl lg:text-2xl font-medium text-muted-foreground tracking-wide uppercase"
               />
             </div>
 
-            {/* Value Proposition */}
+            {/* Value Proposition - Clean Layout */}
             <div className="mb-12">
               <AnimatedText
                 text="I build robust test automation frameworks and ensure quality in Salesforce applications—combining technical expertise with precision to deliver reliable, scalable solutions."
                 delay={500}
-                className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto"
+                className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-4xl mx-auto"
               />
             </div>
 
-            {/* Time Capsule - Moved below text */}
+            {/* Time Capsule - Clean Design */}
             <div className="flex justify-center">
               <div className="glass-dark rounded-lg py-2 px-4 shadow-sm inline-flex items-center gap-3 text-sm">
                 <div className="flex items-center gap-2">

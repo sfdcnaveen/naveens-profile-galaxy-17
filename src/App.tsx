@@ -11,16 +11,12 @@ import SkillsPage from "./pages/Skills";
 import ProjectsPage from "./pages/Projects";
 import CertificationsPage from "./pages/Certifications";
 import NotFound from "./pages/NotFound";
-import CursorEffect from "./components/ui/CursorEffect";
-import BackgroundEffect from "./components/ui/BackgroundEffect";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <CursorEffect />
-      <BackgroundEffect />
       <Toaster />
       <Sonner />
       <BrowserRouter>

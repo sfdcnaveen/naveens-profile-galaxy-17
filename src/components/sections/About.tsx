@@ -35,14 +35,8 @@ const About = ({ className }: AboutProps) => {
                 : "translate-y-10 opacity-0 scale-95"
             )}
           >
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-primary/0 animate-spin-slow"></div>
-            <div
-              className="absolute inset-3 rounded-full bg-gradient-to-bl from-primary/10 to-primary/0 animate-spin-slow"
-              style={{
-                animationDirection: "reverse",
-                animationDuration: "12s",
-              }}
-            ></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary/20 to-primary/0"></div>
+            <div className="absolute inset-3 rounded-full bg-gradient-to-bl from-primary/10 to-primary/0"></div>
             <img
               src="/images/profile-photo.jpeg"
               alt="Naveen Kumar Pasupuleti"

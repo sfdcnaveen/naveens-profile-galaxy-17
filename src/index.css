@@ -7,33 +7,33 @@
 
 @layer base {
   :root {
-    /* Deep Black Background */
-    --background: 240 10% 3.9%; /* Deep rich black with slight blue tint */
+    /* Full Black Background */
+    --background: 0 0% 0%; /* Pure black */
     /* Off-white Foreground for better contrast */
     --foreground: 0 0% 98%;
 
     /* Adjust Card colors */
-    --card: 240 10% 5%; /* Darker card with slight blue tint */
+    --card: 0 0% 5%; /* Very dark grey for cards */
     --card-foreground: 0 0% 98%; /* Lighter text on card */
 
     /* Adjust Popover colors */
-    --popover: 240 10% 5%; /* Darker popover */
+    --popover: 0 0% 5%; /* Very dark grey for popover */
     --popover-foreground: 0 0% 98%; /* Lighter text on popover */
 
     /* Primary color with better contrast - vibrant blue */
     --primary: 210 100% 52%;
     --primary-foreground: 0 0% 98%; /* Lighter text on primary */
 
-    /* Secondary colors - dark with blue tint */
-    --secondary: 240 5% 10%;
+    /* Secondary colors - dark */
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%; /* Lighter text on secondary */
 
     /* Muted colors */
-    --muted: 240 5% 12%; /* Darker muted with blue tint */
-    --muted-foreground: 240 5% 65%; /* Dimmer text for muted */
+    --muted: 0 0% 12%; /* Darker muted */
+    --muted-foreground: 0 0% 65%; /* Dimmer text for muted */
 
-    /* Accent colors - subtle blue accent */
-    --accent: 210 40% 12%;
+    /* Accent colors - subtle accent */
+    --accent: 0 0% 12%;
     --accent-foreground: 0 0% 98%; /* Lighter text on accent */
 
     /* Destructive color */
@@ -41,8 +41,8 @@
     --destructive-foreground: 0 0% 98%; /* Lighter text on destructive */
 
     /* Border, Input, Ring colors */
-    --border: 240 5% 15%; /* Darker border with blue tint */
-    --input: 240 5% 12%; /* Darker input with blue tint */
+    --border: 0 0% 15%; /* Darker border */
+    --input: 0 0% 12%; /* Darker input */
     --ring: 210 100% 52%; /* Use primary for ring */
 
     --radius: 0.75rem;
@@ -59,16 +59,7 @@
 
   body {
     @apply bg-background text-foreground antialiased overflow-x-hidden;
-    background-image: radial-gradient(
-        circle at 25% 25%,
-        rgba(30, 64, 175, 0.05) 0%,
-        transparent 45%
-      ),
-      radial-gradient(
-        circle at 75% 75%,
-        rgba(30, 64, 175, 0.05) 0%,
-        transparent 45%
-      );
+    background: #000000; /* Pure black background */
   }
 
   /* Image styling */
