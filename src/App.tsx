@@ -19,7 +19,20 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/*" element={<Index />} />
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<Index section="about" />} />
+            <Route
+              path="/experience"
+              element={<Index section="experience" />}
+            />
+            <Route path="/projects" element={<Index section="projects" />} />
+            <Route path="/skills" element={<Index section="skills" />} />
+            <Route
+              path="/certifications"
+              element={<Index section="certifications" />}
+            />
+            <Route path="/contact" element={<Index section="contact" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

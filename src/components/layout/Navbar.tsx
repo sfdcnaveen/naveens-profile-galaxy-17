@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Let's Connect", href: "#lets-connect" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Experience", href: "/experience" },
+  { label: "Projects", href: "/projects" },
+  { label: "Skills", href: "/skills" },
+  { label: "Certifications", href: "/certifications" },
+  { label: "Let's Connect", href: "/contact" },
   {
     label: "Resume",
     href: "https://naveen-kumar-pasupuleti-resume.vercel.app/",
@@ -23,6 +24,7 @@ interface NavbarProps {
 const Navbar = ({ className }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,15 +62,18 @@ const Navbar = ({ className }: NavbarProps) => {
                 {item.label}
               </a>
             ) : (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.href}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-foreground hover:text-primary hover:bg-primary/5"
+                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                  location.pathname === item.href
+                    ? "text-primary bg-primary/10"
+                    : "text-foreground hover:text-primary hover:bg-primary/5"
                 )}
               >
                 {item.label}
-              </a>
+              </Link>
             )
           )}
         </nav>
@@ -129,16 +134,19 @@ const Navbar = ({ className }: NavbarProps) => {
                   {item.label}
                 </a>
               ) : (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
+                  to={item.href}
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 text-foreground hover:text-primary"
+                    "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300",
+                    location.pathname === item.href
+                      ? "text-primary bg-primary/10"
+                      : "text-foreground hover:text-primary"
                   )}
                 >
                   {item.label}
-                </a>
+                </Link>
               )
             )}
             {/* Mobile menu items */}
