@@ -29,14 +29,14 @@ const Hero = ({ className }: HeroProps) => {
     year: "numeric",
     month: "long",
     day: "numeric",
-    timeZone: "Asia/Kolkata"
+    timeZone: "Asia/Kolkata",
   };
   const formattedDate = currentTime.toLocaleDateString("en-IN", dateOptions);
-  const formattedTime = new Intl.DateTimeFormat('en-IN', {
-    timeZone: 'Asia/Kolkata',
+  const formattedTime = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
     hour12: false,
-    hour: '2-digit',
-    minute: '2-digit'
+    hour: "2-digit",
+    minute: "2-digit",
   }).format(currentTime);
 
   return (
