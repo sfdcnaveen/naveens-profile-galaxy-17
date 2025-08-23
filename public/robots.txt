@@ -10,7 +10,14 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: LinkedInBot
+Allow: /
+
 User-agent: *
 Allow: /
 
-Sitemap: https://your-portfolio-url.com/sitemap.xml
+# Sitemap
+Sitemap: https://www.naveenpasupuleti.com/sitemap.xml
+
+# Host
+Host: https://www.naveenpasupuleti.com
