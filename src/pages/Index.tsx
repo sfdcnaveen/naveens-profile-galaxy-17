@@ -62,7 +62,7 @@ const Index: React.FC<IndexProps> = ({ section }) => {
         );
       }
 
-      // Scroll to section if specified
+      // Scroll to section if specified or scroll to home for root path
       if (section) {
         setTimeout(() => {
           const element = document.getElementById(
@@ -70,6 +70,17 @@ const Index: React.FC<IndexProps> = ({ section }) => {
           );
           if (element) {
             element.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 100);
+      } else if (currentPath === "/") {
+        // Scroll to home section when navigating to root path
+        setTimeout(() => {
+          const homeElement = document.getElementById("home");
+          if (homeElement) {
+            homeElement.scrollIntoView({ behavior: "smooth" });
+          } else {
+            // Fallback: scroll to top if home element not found
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }
         }, 100);
       }
