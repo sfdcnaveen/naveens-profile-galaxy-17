@@ -8,28 +8,20 @@ interface LetsConnectProps {
 
 const LetsConnect = ({ className }: LetsConnectProps) => {
   return (
-    <section
-      id="lets-connect"
-      className={cn("py-10 md:py-16 bg-background", className)}
-    >
+    <section id="lets-connect" className={cn("py-6 md:py-10", className)}>
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <AnimatedText
               text="Let's Connect!"
               className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
-            />
-            <AnimatedText
-              text="Ready to collaborate? I'm always open to discussing new opportunities, sharing insights, or simply having a great conversation about technology and innovation."
-              delay={100}
-              className="text-lg text-muted-foreground max-w-2xl mx-auto"
             />
           </div>
 
           {/* Main Connect Card */}
           <div className="relative">
-            <div className="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+            <div className="glass-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden">
               {/* Background decoration */}
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5 rounded-3xl"></div>
               <div className="absolute top-4 right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
@@ -39,7 +31,7 @@ const LetsConnect = ({ className }: LetsConnectProps) => {
               {/* Content */}
               <div className="relative z-10">
                 {/* Connection Icon */}
-                <div className="inline-flex items-center justify-center w-24 h-24 bg-primary/10 rounded-full mb-8">
+                <div className="inline-flex items-center justify-center w-24 h-24 bg-primary/10 rounded-full mb-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-12 w-12 text-primary"
@@ -56,19 +48,8 @@ const LetsConnect = ({ className }: LetsConnectProps) => {
                   </svg>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-bold mb-6">
-                  Ready to Build Something Amazing?
-                </h3>
-
-                <p className="text-muted-foreground mb-8 text-lg max-w-2xl mx-auto">
-                  Whether you're looking for a skilled SDET to join your team,
-                  need consultation on test automation strategies, or want to
-                  discuss the latest in Salesforce testing, I'd love to hear
-                  from you.
-                </p>
-
                 {/* Connect Options Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-6">
                   {/* Professional Chat */}
                   <a
                     href="https://wa.me/918500070061?text=Hello%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect%20professionally."
@@ -89,11 +70,9 @@ const LetsConnect = ({ className }: LetsConnectProps) => {
                       </svg>
                     </div>
                     <div className="text-left">
-                      <h4 className="font-semibold text-green-500">
-                        Quick Chat
-                      </h4>
+                      <h4 className="font-semibold text-green-500">WhatsApp</h4>
                       <p className="text-sm text-muted-foreground">
-                        Direct message for quick discussion
+                        Quick chat
                       </p>
                     </div>
                   </a>
@@ -115,9 +94,9 @@ const LetsConnect = ({ className }: LetsConnectProps) => {
                       </svg>
                     </div>
                     <div className="text-left">
-                      <h4 className="font-semibold text-blue-500">Email Me</h4>
+                      <h4 className="font-semibold text-blue-500">Email</h4>
                       <p className="text-sm text-muted-foreground">
-                        For detailed discussions
+                        Professional contact
                       </p>
                     </div>
                   </a>
@@ -161,13 +140,13 @@ const LetsConnect = ({ className }: LetsConnectProps) => {
                 </div>
 
                 {/* Call to Action */}
-                <div className="mt-8 p-4 bg-primary/5 rounded-xl">
+                <div className="mt-6 p-4 bg-primary/5 rounded-xl">
                   <p className="text-sm text-muted-foreground">
                     <span className="text-primary font-medium">
                       Available for:
                     </span>{" "}
                     Full-time opportunities, Consulting projects, Technical
-                    discussions, Collaboration on open-source projects
+                    discussions
                   </p>
                 </div>
               </div>
