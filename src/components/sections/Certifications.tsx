@@ -50,10 +50,7 @@ const Certifications = ({ className }: CertificationsProps) => {
   ];
 
   return (
-    <section
-      id="certifications"
-      className={cn("py-10 md:py-16 bg-background", className)}
-    >
+    <section id="certifications" className={cn("py-10 md:py-16", className)}>
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <AnimatedText
@@ -97,7 +94,7 @@ const Certifications = ({ className }: CertificationsProps) => {
               </p>
 
               <button
-                className="glass-dark text-sm font-medium text-white hover:bg-primary/90 transition-all flex items-center cursor-pointer px-3 py-1.5 rounded-full mt-2"
+                className="glass-dark text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary/90 transition-all flex items-center cursor-pointer px-3 py-1.5 rounded-full mt-2"
                 onClick={(e) => {
                   e.stopPropagation(); // Prevent card click event
                   // Don't highlight the card when viewing certificate

@@ -76,7 +76,7 @@ const Experience = ({ className }: ExperienceProps) => {
   return (
     <section
       id="experience"
-      className={cn("py-10 md:py-16 bg-background", className)}
+      className={cn("py-10 md:py-16", className)}
       ref={containerRef}
     >
       <div className="container mx-auto px-6">

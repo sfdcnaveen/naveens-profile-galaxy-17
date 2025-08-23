@@ -67,7 +67,7 @@ const Projects = ({ className }: ProjectsProps) => {
   return (
     <section
       id="projects"
-      className={cn("py-10 md:py-16 bg-background", className)}
+      className={cn("py-10 md:py-16", className)}
       ref={containerRef}
     >
       <div className="container mx-auto px-6">

@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { Link, useLocation } from "react-router-dom";
-import ResumeDownload from "../ui/ResumeDownload";
-import { useTheme } from "next-themes";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -25,7 +22,6 @@ interface NavbarProps {
 
 const Navbar = ({ className }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -49,11 +45,7 @@ const Navbar = ({ className }: NavbarProps) => {
         className
       )}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#home" className="text-xl font-display font-medium">
-          Naveen Kumar P.
-        </a>
-
+      <div className="container mx-auto px-6 flex items-center justify-center">
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           {navItems.map((item) =>
@@ -81,8 +73,9 @@ const Navbar = ({ className }: NavbarProps) => {
               </a>
             )
           )}
-          {/* ResumeDownload button removed from navbar, now a separate section */}
         </nav>
+
+        {/* Clean navbar without time indicator */}
 
         {/* Mobile Menu Button (top right) */}
         <button
@@ -150,6 +143,7 @@ const Navbar = ({ className }: NavbarProps) => {
                 </a>
               )
             )}
+            {/* Clean mobile menu without time indicator */}
           </nav>
         </div>
       )}
