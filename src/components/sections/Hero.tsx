@@ -76,6 +76,10 @@ const Hero = ({ className }: HeroProps) => {
                   : "text-gray-100 dark:text-gray-900"
               )}
             >
+              {/* Enhanced SEO content for better keyword targeting */}
+              <span className="sr-only">
+                Naveen Kumar Pasupuleti - Software Development Engineer in Test (SDET) at TestVagrant Technologies | Salesforce Automation Expert | Playwright TypeScript Testing Professional
+              </span>
               <AnimatedText
                 text="Naveen Kumar"
                 delay={200}
