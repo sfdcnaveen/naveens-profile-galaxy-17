@@ -6,12 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/use-theme";
 import AnimatedBackground from "@/components/ui/AnimatedBackground";
 import Index from "./pages/Index";
-import HomePage from "./pages/Home";
-import AboutPage from "./pages/About";
-import ExperiencePage from "./pages/Experience";
-import SkillsPage from "./pages/Skills";
-import ProjectsPage from "./pages/Projects";
-import CertificationsPage from "./pages/Certifications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

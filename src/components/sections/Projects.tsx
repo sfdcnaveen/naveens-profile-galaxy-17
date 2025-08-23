@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import { cn } from "@/lib/utils";
 import AnimatedText from "../ui/AnimatedText";
 import { motion, useInView } from "framer-motion";
@@ -18,7 +18,6 @@ interface ProjectsProps {
 }
 
 const Projects = ({ className }: ProjectsProps) => {
-  const [activeProject, setActiveProject] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.1 });
 
@@ -67,11 +66,11 @@ const Projects = ({ className }: ProjectsProps) => {
   return (
     <section
       id="projects"
-      className={cn("py-10 md:py-16", className)}
+      className={cn("py-6 md:py-10", className)}
       ref={containerRef}
     >
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-12 text-center">
+        <div className="max-w-3xl mx-auto mb-8 text-center">
           <AnimatedText
             text="Projects"
             className="text-3xl md:text-4xl font-bold mb-6"
@@ -90,10 +89,6 @@ const Projects = ({ className }: ProjectsProps) => {
               key={index}
               project={project}
               index={index}
-              isActive={activeProject === index}
-              onClick={() =>
-                setActiveProject(activeProject === index ? null : index)
-              }
               isInView={isInView}
             />
           ))}
@@ -113,16 +108,12 @@ const Projects = ({ className }: ProjectsProps) => {
 interface ProjectCardProps {
   project: ProjectProps;
   index: number;
-  isActive: boolean;
-  onClick: () => void;
   isInView: boolean;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
   project,
   index,
-  isActive,
-  onClick,
   isInView,
 }) => {
   return (
@@ -130,10 +121,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={cn(
-        "glass-card rounded-xl overflow-hidden transition-all duration-300 group",
-        isActive ? "ring-2 ring-primary" : ""
-      )}
+      className="glass-card rounded-xl overflow-hidden transition-all duration-300 group hover:shadow-lg"
     >
       {/* Full-Width Project Image */}
       <div className="relative w-full h-80 md:h-96 overflow-hidden">
@@ -167,52 +155,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
       {/* Project Content */}
       <div className="p-6">
-        <p className="text-muted-foreground mb-6 text-lg leading-relaxed line-clamp-3">
+        <p className="text-muted-foreground mb-6 text-base leading-relaxed">
           {project.description}
         </p>
 
-        <div className="flex justify-between items-center">
-          <button
-            className="text-primary text-sm font-medium flex items-center hover:text-primary/80 transition-colors"
-            onClick={onClick}
-          >
-            {isActive ? (
-              <>
-                Show Less
-                <svg
-                  className="ml-1 h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 15l7-7 7 7"
-                  />
-                </svg>
-              </>
-            ) : (
-              <>
-                Show More
-                <svg
-                  className="ml-1 h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </>
-            )}
-          </button>
-
+        <div className="flex justify-end items-center">
           <div className="flex gap-2">
             {project.link && (
               <a
@@ -256,154 +203,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             )}
           </div>
         </div>
-
-        {/* Expanded Content */}
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{
-            height: isActive ? "auto" : 0,
-            opacity: isActive ? 1 : 0,
-          }}
-          transition={{ duration: 0.3 }}
-          className="overflow-hidden mt-4"
-        >
-          <div className="pt-4 border-t border-border">
-            <h4 className="font-medium mb-2">All Technologies:</h4>
-            <div className="flex flex-wrap gap-2 mb-4">
-              {project.technologies.map((tech, idx) => (
-                <span
-                  key={idx}
-                  className="glass-dark px-3 py-1 rounded-full text-xs font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-
-            {project.title ===
-            "Salesforce Service Cloud Implementation for Financial Services" ? (
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-medium mb-2">Business Use Case:</h4>
-                  <p className="text-muted-foreground mb-2">
-                    The organization needed a system to manage complaints from
-                    both existing customers and non-customers. We implemented
-                    two case record types:
-                  </p>
-                  <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                    <li>
-                      Customer Complaint – for complaints raised by customers
-                      within the organization.
-                    </li>
-                    <li>
-                      Non-Customer Complaint – for issues reported by external
-                      individuals.
-                    </li>
-                  </ul>
-                  <p className="text-muted-foreground mt-2 mb-2">
-                    We also configured various case statuses as per business
-                    needs, such as:
-                  </p>
-                  <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                    <li>Open</li>
-                    <li>Under Investigation</li>
-                    <li>Escalated</li>
-                    <li>Reopened</li>
-                    <li>Closed</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-medium mb-2">
-                    Key Features Implemented:
-                  </h4>
-                  <ol className="list-decimal pl-5 space-y-2">
-                    <li>
-                      <p className="font-medium">Email-to-Case & Web-to-Case</p>
-                      <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                        <li>
-                          Configured Email-to-Case to automatically create cases
-                          from customer emails.
-                        </li>
-                        <li>
-                          Configured Web-to-Case to allow non-customers to
-                          submit complaints via an online form.
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <p className="font-medium">Case Notifications</p>
-                      <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                        <li>
-                          Implemented automated notifications to customers upon
-                          complaint creation.
-                        </li>
-                        <li>
-                          Configured email alerts for case status updates.
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <p className="font-medium">
-                        Case Escalation & Assignment Rules
-                      </p>
-                      <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                        <li>
-                          Defined escalation rules to ensure high-priority cases
-                          get assigned to the right teams.
-                        </li>
-                        <li>
-                          Implemented case assignment rules based on complaint
-                          type and customer segment.
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <p className="font-medium">
-                        Service-Level Agreements (SLAs)
-                      </p>
-                      <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                        <li>
-                          Defined response and resolution timelines for
-                          different types of cases.
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <p className="font-medium">Reporting & Dashboards</p>
-                      <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                        <li>
-                          Created custom reports and dashboards for tracking
-                          case trends, resolution times, and agent performance.
-                        </li>
-                      </ul>
-                    </li>
-                  </ol>
-                </div>
-
-                <div>
-                  <h4 className="font-medium mb-2">Results & Impact:</h4>
-                  <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                    <li>
-                      Improved case resolution efficiency by 30% through
-                      automation.
-                    </li>
-                    <li>
-                      Reduced manual case creation effort using Email-to-Case &
-                      Web-to-Case.
-                    </li>
-                    <li>
-                      Enhanced customer satisfaction by implementing real-time
-                      case notifications and status tracking.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            ) : (
-              <p className="text-muted-foreground">{project.description}</p>
-            )}
-          </div>
-        </motion.div>
       </div>
     </motion.div>
   );

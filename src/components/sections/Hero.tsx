@@ -23,18 +23,21 @@ const Hero = ({ className }: HeroProps) => {
     return () => clearInterval(timer);
   }, []);
 
-  // Format date and time
+  // Format date and time properly in IST
   const dateOptions: Intl.DateTimeFormatOptions = {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: "Asia/Kolkata"
   };
-  const formattedDate = currentTime.toLocaleDateString(undefined, dateOptions);
-  const formattedTime = `${currentTime.getHours()}:${currentTime
-    .getMinutes()
-    .toString()
-    .padStart(2, "0")}`;
+  const formattedDate = currentTime.toLocaleDateString("en-IN", dateOptions);
+  const formattedTime = new Intl.DateTimeFormat('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit'
+  }).format(currentTime);
 
   return (
     <section

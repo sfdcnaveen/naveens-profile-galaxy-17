@@ -10,13 +10,36 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 // Function to determine if it's day or night in India (IST)
 const isDayTime = () => {
+  // Get current time properly in IST (Asia/Kolkata timezone)
   const now = new Date();
-  // Convert to IST (UTC+5:30)
-  const istTime = new Date(now.getTime() + 5.5 * 60 * 60 * 1000);
-  const hour = istTime.getHours();
+  
+  // Create a date formatter for IST
+  const istFormatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Asia/Kolkata',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    hour12: false
+  });
+  
+  // Get IST time parts
+  const istTimeParts = istFormatter.formatToParts(now);
+  const hour = parseInt(istTimeParts.find(part => part.type === 'hour')?.value || '0');
+  
+  // Format current IST time for logging
+  const istTimeString = new Intl.DateTimeFormat('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  }).format(now);
+  
+  console.log('Current IST time:', istTimeString);
+  console.log('Hour:', hour, 'isDayTime:', hour >= 6 && hour < 18);
 
-  // Day time: 6:00 AM to 6:00 PM (IST)
-  // Night time: 6:00 PM to 6:00 AM (IST)
+  // Day time: 6:00 AM to 6:00 PM (IST) - Light theme
+  // Night time: 6:00 PM to 6:00 AM (IST) - Dark theme
   return hour >= 6 && hour < 18;
 };
 

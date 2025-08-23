@@ -27,8 +27,6 @@ const Navbar = ({ className }: NavbarProps) => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
-
-      // No longer needed: Detect active section based on scroll position
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -143,7 +141,7 @@ const Navbar = ({ className }: NavbarProps) => {
                 </a>
               )
             )}
-            {/* Clean mobile menu without time indicator */}
+            {/* Mobile menu items */}
           </nav>
         </div>
       )}
