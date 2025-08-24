@@ -21,31 +21,29 @@ const Index: React.FC<IndexProps> = ({ section }) => {
   useEffect(() => {
     const updateMetaTags = () => {
       const titles: Record<string, string> = {
-        "/": "Naveen Pasupuleti - Full Stack Developer & Cloud Architect",
-        "/about":
-          "About Naveen Pasupuleti - Full Stack Developer & Cloud Architect",
-        "/experience": "Experience - Naveen Pasupuleti - Full Stack Developer",
-        "/projects": "Projects - Naveen Pasupuleti - Full Stack Developer",
-        "/skills": "Skills - Naveen Pasupuleti - Full Stack Developer",
-        "/certifications":
-          "Certifications - Naveen Pasupuleti - Cloud Architect",
-        "/contact": "Contact Naveen Pasupuleti - Full Stack Developer",
+        "/": "Naveen Pasupuleti - SDET",
+        "/about": "About Naveen Pasupuleti - SDET",
+        "/experience": "Experience - Naveen Pasupuleti - SDET",
+        "/projects": "Projects - Naveen Pasupuleti - SDET",
+        "/skills": "Skills - Naveen Pasupuleti - SDET",
+        "/certifications": "Certifications - Naveen Pasupuleti - SDET",
+        "/contact": "Contact Naveen Pasupuleti - SDET",
       };
 
       const descriptions: Record<string, string> = {
-        "/": "Full Stack Developer & Cloud Architect with expertise in React, Node.js, AWS, and modern web technologies. View my portfolio and projects.",
+        "/": "SDET with expertise in Salesforce automation, Playwright, TypeScript, and test framework development. View my portfolio and projects.",
         "/about":
-          "Learn about Naveen Pasupuleti's background, passion for technology, and journey as a Full Stack Developer and Cloud Architect.",
+          "Learn about Naveen Pasupuleti's background, passion for technology, and journey as an SDET specializing in Salesforce automation.",
         "/experience":
-          "Explore Naveen Pasupuleti's professional experience in full stack development, cloud architecture, and software engineering.",
+          "Explore Naveen Pasupuleti's professional experience in software testing, test automation, and quality assurance engineering.",
         "/projects":
-          "View Naveen Pasupuleti's portfolio of full stack development projects, web applications, and cloud solutions.",
+          "View Naveen Pasupuleti's portfolio of test automation projects, Salesforce testing solutions, and quality assurance tools.",
         "/skills":
-          "Discover Naveen Pasupuleti's technical skills in React, Node.js, AWS, Python, and modern development technologies.",
+          "Discover Naveen Pasupuleti's technical skills in Playwright, TypeScript, Salesforce automation, and modern testing technologies.",
         "/certifications":
-          "View Naveen Pasupuleti's professional certifications in AWS, cloud computing, and software development.",
+          "View Naveen Pasupuleti's professional certifications in Salesforce, test automation, and software quality assurance.",
         "/contact":
-          "Get in touch with Naveen Pasupuleti for full stack development, cloud architecture, or collaboration opportunities.",
+          "Get in touch with Naveen Pasupuleti for SDET opportunities, test automation consulting, or collaboration on quality assurance projects.",
       };
 
       const currentPath = location.pathname;
