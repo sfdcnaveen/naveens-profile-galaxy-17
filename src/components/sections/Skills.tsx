@@ -69,19 +69,19 @@ const Skills = ({ className }: SkillsProps) => {
     delay?: number;
   }) => {
     return (
-      <div className="mb-6 transform transition-all duration-300 hover:scale-105">
+      <div className="mb-6 last:mb-0 transform transition-all duration-300 hover:scale-[1.02]">
         <div className="flex justify-between items-center mb-2">
-          <span className="font-medium">{skill.name}</span>
-          <span className="text-sm text-primary font-medium">
+          <span className="font-medium text-sm">{skill.name}</span>
+          <span className="text-xs text-primary font-semibold">
             {skill.level}%
           </span>
         </div>
-        <div className="skill-bar hover:shadow-md transition-all duration-300">
+        <div className="h-2.5 bg-muted rounded-full overflow-hidden">
           <div
-            className="skill-progress"
+            className="h-full rounded-full transition-all duration-1000 ease-out"
             style={{
               width: animated ? `${skill.level}%` : "0%",
-              backgroundColor: skill.color,
+              backgroundColor: skill.color || "hsl(var(--primary))",
               transitionDelay: `${delay}ms`,
             }}
           ></div>
@@ -93,11 +93,11 @@ const Skills = ({ className }: SkillsProps) => {
   return (
     <section
       id="skills"
-      className={cn("py-10 md:py-16", className)}
+      className={cn("py-16 md:py-24", className)}
       ref={containerRef}
     >
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-12 text-center">
+        <div className="max-w-3xl mx-auto mb-16 text-center">
           <AnimatedText
             text="Technical Skills"
             className="text-3xl md:text-4xl font-bold mb-6"
@@ -109,25 +109,25 @@ const Skills = ({ className }: SkillsProps) => {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-          <div>
-            <h3 className="text-xl font-semibold mb-6 flex items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="glass-card rounded-2xl p-6 md:p-8">
+            <h3 className="text-xl font-bold mb-6 flex items-center">
               <img
                 src="/images/salesforce_logo.jpeg"
                 alt="Salesforce"
-                className="w-8 h-8 mr-3"
+                className="w-8 h-8 mr-3 rounded"
               />
               Salesforce Ecosystem
             </h3>
-            <div className="glass-card rounded-xl p-6">
+            <div className="space-y-1">
               {salesforceSkills.map((skill, index) => (
                 <SkillBar key={index} skill={skill} delay={index * 100} />
               ))}
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xl font-semibold mb-6 flex items-center">
+          <div className="glass-card rounded-2xl p-6 md:p-8">
+            <h3 className="text-xl font-bold mb-6 flex items-center">
               <svg
                 className="w-8 h-8 mr-3 text-primary"
                 viewBox="0 0 24 24"
@@ -158,7 +158,7 @@ const Skills = ({ className }: SkillsProps) => {
               </svg>
               Automation Skills
             </h3>
-            <div className="glass-card rounded-xl p-6">
+            <div className="space-y-1">
               {webSkills.map((skill, index) => (
                 <SkillBar
                   key={index}
