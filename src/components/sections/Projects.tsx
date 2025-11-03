@@ -73,7 +73,7 @@ const Projects = ({ className }: ProjectsProps) => {
         "Vite",
       ],
       category: "web",
-      link: "https://naveens-profile-galaxy-17.vercel.app/",
+      link: "https://www.naveenpasupuleti.com/",
       github: "https://github.com/sfdcnaveen/naveens-profile-galaxy-17",
     },
   ];
