@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 import AnimatedText from "../ui/AnimatedText";
 import { motion, useInView } from "framer-motion";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface ExperienceProps {
   className?: string;
@@ -76,11 +77,11 @@ const Experience = ({ className }: ExperienceProps) => {
   return (
     <section
       id="experience"
-      className={cn("py-10 md:py-16", className)}
+      className={cn("py-16 md:py-24", className)}
       ref={containerRef}
     >
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-12 text-center">
+        <div className="max-w-3xl mx-auto mb-16 text-center">
           <AnimatedText
             text="Professional Experience"
             className="text-3xl md:text-4xl font-bold mb-6"
@@ -93,69 +94,78 @@ const Experience = ({ className }: ExperienceProps) => {
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block"></div>
-
-            {/* Experience items */}
-            <div className="space-y-12">
-              {experiences.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  className="flex flex-col md:flex-row gap-6 relative"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
+          <div className="space-y-6">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                className="glass-card rounded-2xl overflow-hidden shadow-lg"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                {/* Experience Header */}
+                <div
+                  className="p-6 md:p-8 cursor-pointer flex items-start justify-between"
+                  onClick={() =>
+                    setExpandedIndex(expandedIndex === index ? null : index)
+                  }
                 >
-                  {/* Company logo for timeline */}
-                  <div className="flex-none hidden md:block z-10">
-                    <div className="h-16 w-16 rounded-full glass-dark flex items-center justify-center shadow-md">
+                  <div className="flex items-start gap-6">
+                    <div className="h-16 w-16 rounded-xl glass-dark flex items-center justify-center shadow-md flex-shrink-0">
                       <img
                         src={exp.logo}
                         alt={exp.company}
                         className="h-8 w-8 object-contain"
                       />
                     </div>
-                  </div>
-
-                  {/* Content */}
-                  <div
-                    className="glass-card rounded-2xl p-6 md:ml-8 interactive-card glass-hover flex-1 cursor-pointer transition-all duration-300"
-                    onClick={() =>
-                      setExpandedIndex(expandedIndex === index ? null : index)
-                    }
-                  >
-                    <div className="flex items-center flex-wrap gap-4 mb-4">
-                      <div className="md:hidden h-12 w-12 rounded-full glass-dark flex items-center justify-center shadow-md">
-                        <img
-                          src={exp.logo}
-                          alt={exp.company}
-                          className="h-6 w-6 object-contain"
-                        />
+                    <div>
+                      <h3 className="text-xl font-bold">{exp.title}</h3>
+                      <div className="text-primary font-semibold">
+                        {exp.company}
                       </div>
-                      <div>
-                        <h3 className="text-xl font-semibold">{exp.title}</h3>
-                        <div className="text-primary font-medium">
-                          {exp.company}
-                        </div>
-                        <div className="text-sm text-muted-foreground">
-                          {exp.period}
-                        </div>
+                      <div className="text-sm text-muted-foreground mt-1">
+                        {exp.period}
                       </div>
+                      <p className="text-muted-foreground mt-3">
+                        {exp.description}
+                      </p>
                     </div>
+                  </div>
+                  
+                  <button
+                    className="p-2 rounded-lg hover:bg-primary/10 transition-colors flex-shrink-0"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setExpandedIndex(expandedIndex === index ? null : index);
+                    }}
+                  >
+                    {expandedIndex === index ? (
+                      <ChevronUp className="h-5 w-5 text-primary" />
+                    ) : (
+                      <ChevronDown className="h-5 w-5 text-primary" />
+                    )}
+                  </button>
+                </div>
 
-                    <p className="text-muted-foreground mb-4">
-                      {exp.description}
-                    </p>
-
+                {/* Expandable Content */}
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{
+                    height: expandedIndex === index ? "auto" : 0,
+                    opacity: expandedIndex === index ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden"
+                >
+                  <div className="px-6 md:px-8 pb-8 border-t border-white/10">
                     {/* Technologies */}
-                    <div className="mb-4">
-                      <h4 className="font-medium mb-2">Technologies:</h4>
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-3">Technologies:</h4>
                       <div className="flex flex-wrap gap-2">
                         {exp.technologies.map((tech, idx) => (
                           <span
                             key={idx}
-                            className="glass-dark px-3 py-1 rounded-full text-xs font-medium"
+                            className="glass-dark px-3 py-1.5 rounded-full text-sm font-medium"
                           >
                             {tech}
                           </span>
@@ -163,89 +173,24 @@ const Experience = ({ className }: ExperienceProps) => {
                       </div>
                     </div>
 
-                    {/* Expand/collapse animation */}
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{
-                        height: expandedIndex === index ? "auto" : 0,
-                        opacity: expandedIndex === index ? 1 : 0,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <h4 className="font-medium mb-2">
+                    {/* Responsibilities */}
+                    <div>
+                      <h4 className="font-semibold mb-3">
                         Key Responsibilities:
                       </h4>
                       <ul className="space-y-2">
                         {exp.responsibilities.map((responsibility, idx) => (
                           <li key={idx} className="flex items-start">
-                            <svg
-                              className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0"
-                              viewBox="0 0 20 20"
-                              fill="currentColor"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clipRule="evenodd"
-                              />
-                            </svg>
-                            <span>{responsibility}</span>
+                            <div className="h-2 w-2 rounded-full bg-primary mt-2 mr-3 flex-shrink-0"></div>
+                            <span className="text-muted-foreground">{responsibility}</span>
                           </li>
                         ))}
                       </ul>
-                    </motion.div>
-
-                    {/* Show more/less button */}
-                    <button
-                      className="mt-4 text-primary text-sm font-medium flex items-center"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setExpandedIndex(
-                          expandedIndex === index ? null : index
-                        );
-                      }}
-                    >
-                      {expandedIndex === index ? (
-                        <>
-                          Show Less
-                          <svg
-                            className="ml-1 h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 15l7-7 7 7"
-                            />
-                          </svg>
-                        </>
-                      ) : (
-                        <>
-                          Show More
-                          <svg
-                            className="ml-1 h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 9l-7 7-7-7"
-                            />
-                          </svg>
-                        </>
-                      )}
-                    </button>
+                    </div>
                   </div>
                 </motion.div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

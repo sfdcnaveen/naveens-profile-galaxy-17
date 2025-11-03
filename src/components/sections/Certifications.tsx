@@ -44,15 +44,15 @@ const Certifications = ({ className }: CertificationsProps) => {
       date: "2024",
       logo: "/images/salesforce_logo.jpeg",
       description:
-        "Validates proficiency in AI-powered CRM features, including data analysis, predictive modeling, and ethical AI use. It’s ideal for professionals who want to learn how to use AI to improve business operations in Salesforce.",
+        "Validates proficiency in AI-powered CRM features, including data analysis, predictive modeling, and ethical AI use. It's ideal for professionals who want to learn how to use AI to improve business operations in Salesforce.",
       link: "/certifications/SF_Certified_AI_Associate.png",
     },
   ];
 
   return (
-    <section id="certifications" className={cn("py-10 md:py-16", className)}>
+    <section id="certifications" className={cn("py-16 md:py-24", className)}>
       <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto mb-12 text-center">
+        <div className="max-w-3xl mx-auto mb-16 text-center">
           <AnimatedText
             text="Certifications"
             className="text-3xl md:text-4xl font-bold mb-6"
@@ -64,16 +64,20 @@ const Certifications = ({ className }: CertificationsProps) => {
           />
         </div>
 
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 justify-items-center">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {certifications.map((cert, index) => (
             <div
               key={index}
               className={cn(
-                "glass-card rounded-xl p-6 relative overflow-hidden transition-all duration-300 w-full max-w-sm",
-                "hover:shadow-lg hover:-translate-y-1 glass-hover"
+                "glass-card rounded-2xl p-6 relative overflow-hidden transition-all duration-300",
+                "hover:shadow-xl hover:-translate-y-1 cursor-pointer group"
               )}
+              onClick={() => setSelectedCert(index)}
             >
-              <div className="flex items-center mb-4">
+              {/* Badge corner indicator */}
+              <div className="absolute top-0 right-0 w-0 h-0 border-t-24 border-r-24 border-primary/20 border-l-24 border-l-transparent border-b-24 border-b-transparent rounded-br-2xl"></div>
+              
+              <div className="flex items-start mb-4">
                 <img
                   src={cert.logo}
                   alt={cert.issuer}
@@ -83,38 +87,53 @@ const Certifications = ({ className }: CertificationsProps) => {
                   <div className="text-xs text-muted-foreground">
                     {cert.issuer}
                   </div>
-                  <div className="text-sm font-medium">{cert.date}</div>
+                  <div className="text-sm font-semibold">{cert.date}</div>
                 </div>
               </div>
 
-              <h3 className="text-lg font-semibold mb-3">{cert.title}</h3>
+              <h3 className="text-lg font-bold mb-3 group-hover:text-primary transition-colors">
+                {cert.title}
+              </h3>
 
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
                 {cert.description}
               </p>
 
-              <button
-                className="glass-dark text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary/90 transition-all flex items-center cursor-pointer px-3 py-1.5 rounded-full mt-2"
-                onClick={(e) => {
-                  e.stopPropagation(); // Prevent card click event
-                  // Don't highlight the card when viewing certificate
-                  setSelectedCert(index);
-                }}
-                aria-label={`View ${cert.title} certificate`}
-              >
-                View Certificate
-                <svg
-                  className="w-4 h-4 ml-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
+              <div className="flex justify-between items-center">
+                <button
+                  className="text-xs font-semibold text-primary hover:text-primary-foreground hover:bg-primary/90 transition-all flex items-center px-3 py-1.5 rounded-full glass-dark"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedCert(index);
+                  }}
+                  aria-label={`View ${cert.title} certificate`}
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
+                  View Certificate
+                  <svg
+                    className="w-3 h-3 ml-1"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </button>
+                
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg
+                    className="w-4 h-4 text-primary"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </div>
+              </div>
             </div>
           ))}
         </div>

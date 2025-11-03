@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -38,14 +39,14 @@ const Navbar = ({ className }: NavbarProps) => {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-md",
         scrolled
-          ? "py-3 bg-card/30 backdrop-blur-xl border-b border-white/5 shadow-lg"
-          : "py-5 bg-transparent",
+          ? "py-3 bg-card/80 border-b border-white/10 shadow-lg"
+          : "py-4 bg-transparent",
         className
       )}
     >
-      <div className="container mx-auto px-6 flex items-center justify-center">
+      <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-1">
           {navItems.map((item) =>
@@ -56,7 +57,9 @@ const Navbar = ({ className }: NavbarProps) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 text-foreground hover:text-primary hover:bg-primary/5"
+                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
+                  "text-foreground hover:text-primary hover:bg-primary/10",
+                  location.pathname === item.href && "text-primary bg-primary/10"
                 )}
               >
                 {item.label}
@@ -66,10 +69,9 @@ const Navbar = ({ className }: NavbarProps) => {
                 key={item.label}
                 to={item.href}
                 className={cn(
-                  "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                  location.pathname === item.href
-                    ? "text-primary bg-primary/10"
-                    : "text-foreground hover:text-primary hover:bg-primary/5"
+                  "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
+                  "text-foreground hover:text-primary hover:bg-primary/10",
+                  location.pathname === item.href && "text-primary bg-primary/10"
                 )}
               >
                 {item.label}
@@ -78,45 +80,37 @@ const Navbar = ({ className }: NavbarProps) => {
           )}
         </nav>
 
-        {/* Clean navbar without time indicator */}
-
-        {/* Mobile Menu Button (top right) */}
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden flex flex-col space-y-1.5 p-2 ml-auto"
-          aria-label="Open menu"
-          style={{ position: "absolute", right: "1.5rem", top: "1.25rem" }}
+          className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
+          aria-label="Toggle menu"
         >
-          <span
-            className={cn(
-              "w-6 h-0.5 bg-foreground transition-transform duration-300",
-              mobileMenuOpen && "transform rotate-45 translate-y-2"
-            )}
-          />
-          <span
-            className={cn(
-              "w-6 h-0.5 bg-foreground transition-opacity duration-300",
-              mobileMenuOpen && "opacity-0"
-            )}
-          />
-          <span
-            className={cn(
-              "w-6 h-0.5 bg-foreground transition-transform duration-300",
-              mobileMenuOpen && "transform -rotate-45 -translate-y-2"
-            )}
-          />
+          {mobileMenuOpen ? (
+            <X className="h-6 w-6 text-foreground" />
+          ) : (
+            <Menu className="h-6 w-6 text-foreground" />
+          )}
         </button>
       </div>
 
       {/* Mobile Navigation Overlay */}
       {mobileMenuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex flex-col"
+          className="fixed inset-0 z-50 bg-background/95 backdrop-blur-lg flex flex-col"
           onClick={() => setMobileMenuOpen(false)}
         >
+          <div className="container mx-auto px-6 py-4 flex justify-end">
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-2 rounded-lg hover:bg-primary/10 transition-colors"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6 text-foreground" />
+            </button>
+          </div>
           <nav
-            className="bg-card/90 rounded-xl mx-4 mt-24 p-6 flex flex-col space-y-4 shadow-2xl"
-            style={{ maxWidth: 320, alignSelf: "flex-end" }}
+            className="flex flex-col space-y-2 px-6 py-4 flex-1"
             onClick={(e) => e.stopPropagation()}
           >
             {navItems.map((item) =>
@@ -128,7 +122,9 @@ const Navbar = ({ className }: NavbarProps) => {
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
-                    "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300 text-foreground hover:text-primary"
+                    "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300",
+                    "text-foreground hover:text-primary hover:bg-primary/10",
+                    location.pathname === item.href && "text-primary bg-primary/10"
                   )}
                 >
                   {item.label}
@@ -140,16 +136,14 @@ const Navbar = ({ className }: NavbarProps) => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={cn(
                     "px-4 py-3 rounded-lg text-base font-medium transition-all duration-300",
-                    location.pathname === item.href
-                      ? "text-primary bg-primary/10"
-                      : "text-foreground hover:text-primary"
+                    "text-foreground hover:text-primary hover:bg-primary/10",
+                    location.pathname === item.href && "text-primary bg-primary/10"
                   )}
                 >
                   {item.label}
                 </Link>
               )
             )}
-            {/* Mobile menu items */}
           </nav>
         </div>
       )}

@@ -141,8 +141,10 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["SF Pro Display", "Inter", "ui-sans-serif", "system-ui"],
+        display: ["Montserrat", "Inter", "ui-sans-serif", "system-ui"],
         mono: ["SF Mono", "ui-monospace", "monospace"],
+        heading: ["Montserrat", "sans-serif"],
+        body: ["Source Sans 3", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
