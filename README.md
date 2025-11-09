@@ -1,6 +1,4 @@
-# Naveen Kumar P. - Portfolio Website
-
-A modern, responsive portfolio website showcasing professional experience, skills, and projects in software testing and automation.
+# Naveen Kumar P. 
 
 ## About me :wave:
 
