@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import App from "./App.tsx"; // <--- Make sure this points to your new .tsx file
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

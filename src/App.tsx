@@ -1,502 +1,546 @@
-"use client";
-
-import React, { useState, useRef, useEffect } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  AnimatePresence,
-} from "framer-motion";
+import React, { useState, useEffect, ReactNode } from "react";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
-  Download,
-  Mail,
   Github,
   Linkedin,
-  Hash,
-  Terminal,
-  Cpu,
+  Mail,
+  Layers,
+  CheckCircle2,
 } from "lucide-react";
-// Fonts are loaded via CSS (see index.css)
-// Using standard CSS classes for font families
+// @ts-ignore - explicitly ignoring if types aren't found, though commonly included
+import { ReactLenis } from "@studio-freight/react-lenis";
 
-// --- Content Data ---
-const EXPERIENCE = [
+// --- TYPES & INTERFACES ---
+
+interface ExperienceItem {
+  company: string;
+  role: string;
+  period: string;
+  desc: string;
+}
+
+interface ProjectItem {
+  name: string;
+  tag: string;
+  tech: string[];
+  desc: string;
+}
+
+interface CertificationItem {
+  name: string;
+  issuer: string;
+  year: string;
+}
+
+// --- DATA SOURCE ---
+
+const EXPERIENCE: ExperienceItem[] = [
   {
-    company: "TestVagrant",
-    role: "SDET",
-    year: "2025—Present",
-    details: [
-      "Architecting scalable Salesforce automation frameworks.",
-      "Playwright & TypeScript ecosystem leadership.",
-      "CI/CD Pipeline orchestration.",
-    ],
+    company: "TestVagrant Technologies",
+    role: "Software Development Engineer in Test",
+    period: "2025 — Present",
+    desc: "Spearheading Salesforce automation initiatives. Architecting scalable testing frameworks using Playwright & TypeScript to ensure robust CI/CD pipelines.",
   },
   {
     company: "Capgemini",
     role: "Consultant",
-    year: "2023—2025",
-    details: [
-      "Led migration: Legacy → Playwright (40% efficiency boost).",
-      "Hybrid framework implementation.",
-      "Salesforce QA delivery lead.",
-    ],
+    period: "2023 — 2025",
+    desc: "Led the migration of legacy QA systems to modern Playwright suites. Focused on API integration testing and Salesforce functional assurance.",
   },
   {
     company: "Capgemini",
-    role: "Assoc. Consultant",
-    year: "2021—2023",
-    details: [
-      "Foundational Salesforce QA.",
-      "Java/Selenium automation scripting.",
-      "Agile workflow integration.",
-    ],
+    role: "Associate Consultant",
+    period: "2021 — 2023",
+    desc: "Contributed to core Salesforce QA automation. Developed regression suites and enhanced test coverage by 40%.",
   },
 ];
 
-const PROJECTS = [
+const PROJECTS: ProjectItem[] = [
   {
-    id: "01",
     name: "Aldar Properties",
-    tag: "Real Estate / Dubai",
-    stack: "Salesforce • Automation",
-    desc: "Ensuring 99.9% reliability for critical leasing flows.",
+    tag: "Dubai Real Estate | Salesforce",
+    tech: ["Salesforce", "Playwright", "Jenkins"],
+    desc: "Comprehensive automation framework for one of Dubai's largest real estate developers, handling complex property management flows.",
   },
   {
-    id: "02",
-    name: "ANZ CMOS",
-    tag: "FinTech / Banking",
-    stack: "Compliance • QA",
-    desc: "Regulatory workflow validation for banking systems.",
+    name: "ANZ Bank CMOS",
+    tag: "FinTech | Complaint Mgmt",
+    tech: ["Java", "Selenium", "API"],
+    desc: "End-to-end testing solution for the Complaint Management Operating System, ensuring strict compliance and data integrity.",
   },
   {
-    id: "03",
-    name: "SF Auto-Suite",
-    tag: "Architecture",
-    stack: "Playwright • TS",
-    desc: "Custom-built hybrid framework architecture.",
-  },
-  {
-    id: "04",
-    name: "Portfolio V2",
-    tag: "Engineering",
-    stack: "Next.js • Framer",
-    desc: "High-performance distinct design engineering.",
+    name: "Framework Core",
+    tag: "Internal Tooling",
+    tech: ["TypeScript", "Playwright", "GitHub Actions"],
+    desc: "A custom-built, reusable test automation framework designed to accelerate QA setup for new Salesforce modules.",
   },
 ];
 
-const SKILLS = [
-  { name: "Salesforce QA", level: 95 },
-  { name: "Playwright", level: 90 },
-  { name: "TypeScript", level: 88 },
-  { name: "CI/CD Pipelines", level: 85 },
-  { name: "API Testing", level: 82 },
+const SKILLS: string[] = [
+  "Salesforce QA",
+  "Playwright",
+  "TypeScript",
+  "JavaScript",
+  "Java",
+  "WDIO",
+  "API Testing",
+  "CI/CD Pipelines",
+  "Git & GitHub",
+  "HTML5/CSS3",
+  "Agile Methodologies",
 ];
 
-// --- Sub-Components ---
+const CERTIFICATIONS: CertificationItem[] = [
+  { name: "Platform Developer I", issuer: "Salesforce", year: "2022" },
+  { name: "Certified Associate", issuer: "Salesforce", year: "2023" },
+  { name: "AI Associate", issuer: "Salesforce", year: "2024" },
+];
 
-const MagneticCursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+// --- COMPONENTS ---
+
+interface SectionHeadingProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const SectionHeading: React.FC<SectionHeadingProps> = ({
+  children,
+  className = "",
+}) => (
+  <motion.h2
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-100px" }}
+    transition={{ duration: 0.5 }}
+    className={`text-4xl md:text-7xl font-display font-bold uppercase tracking-tighter mb-16 ${className}`}
+  >
+    {children}
+  </motion.h2>
+);
+
+interface RevealTextProps {
+  text: string;
+  delay?: number;
+}
+
+const RevealText: React.FC<RevealTextProps> = ({ text, delay = 0 }) => (
+  <div className="overflow-hidden">
+    <motion.div
+      initial={{ y: "100%" }}
+      whileInView={{ y: 0 }}
+      transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay }}
+      viewport={{ once: true }}
+    >
+      {text}
+    </motion.div>
+  </div>
+);
+
+const NavBar: React.FC = () => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetId: string
+  ) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  return (
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-6 mix-blend-difference text-white"
+    >
+      <span className="font-bold tracking-tight text-xl">N / K / P</span>
+      <div className="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
+        <a
+          href="#home"
+          onClick={(e) => handleNavClick(e, "home")}
+          className="hover:text-lime-400 transition-colors"
+        >
+          Home
+        </a>
+        <a
+          href="#about"
+          onClick={(e) => handleNavClick(e, "about")}
+          className="hover:text-lime-400 transition-colors"
+        >
+          About
+        </a>
+        <a
+          href="#experience"
+          onClick={(e) => handleNavClick(e, "experience")}
+          className="hover:text-lime-400 transition-colors"
+        >
+          Experience
+        </a>
+        <a
+          href="#projects"
+          onClick={(e) => handleNavClick(e, "projects")}
+          className="hover:text-lime-400 transition-colors"
+        >
+          Work
+        </a>
+        <a
+          href="#contact"
+          onClick={(e) => handleNavClick(e, "contact")}
+          className="hover:text-lime-400 transition-colors"
+        >
+          Contact
+        </a>
+      </div>
+      <a
+        href="#contact"
+        onClick={(e) => handleNavClick(e, "contact")}
+        className="border border-white/30 px-4 py-2 rounded-full text-xs uppercase hover:bg-white hover:text-black transition-all"
+      >
+        Let's Connect
+      </a>
+    </motion.nav>
+  );
+};
+
+const CursorFollower: React.FC = () => {
+  const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
 
   useEffect(() => {
-    const updateMouse = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    let animationFrameId: number;
+    
+    const updateMousePosition = (e: MouseEvent) => {
+      // Throttle the updates to reduce CPU usage
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+      
+      animationFrameId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
+      });
     };
-    window.addEventListener("mousemove", updateMouse);
-    return () => window.removeEventListener("mousemove", updateMouse);
+    
+    window.addEventListener("mousemove", updateMousePosition);
+    return () => {
+      window.removeEventListener("mousemove", updateMousePosition);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
   }, []);
 
   return (
     <motion.div
-      ref={cursorRef}
-      className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full mix-blend-difference pointer-events-none z-[100] hidden md:block"
-      animate={{ x: mousePosition.x - 8, y: mousePosition.y - 8 }}
-      transition={{ type: "spring", damping: 20, stiffness: 400, mass: 0.5 }}
+      className="fixed w-8 h-8 rounded-full border border-lime-400 z-50 pointer-events-none hidden md:block mix-blend-difference"
+      animate={{ x: mousePosition.x - 16, y: mousePosition.y - 16 }}
+      transition={{ type: "spring", stiffness: 500, damping: 28 }}
     />
   );
 };
 
-const SmoothScrollText = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <motion.div
-      initial={{ y: "100%" }}
-      whileInView={{ y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }} // Bezier for "editorial" feel
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-};
-
-// --- Main Page Component ---
+// --- MAIN PAGE ---
 
 export default function Portfolio() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   return (
-    <div
-      className={`bg-[#0a0a0a] text-[#e1e1e1] min-h-screen selection:bg-[#e1e1e1] selection:text-[#0a0a0a] font-manrope cursor-none`}
-    >
-      <MagneticCursor />
+    <>
+      <div className="bg-[#050505] text-[#e0e0e0] min-h-screen font-sans selection:bg-lime-400 selection:text-black overflow-x-hidden">
+        {!isMobile && <CursorFollower />}
+        <NavBar />
 
-      {/* Progress Bar */}
-      <motion.div
-        style={{ scaleX }}
-        className="fixed top-0 left-0 right-0 h-1 bg-white origin-left z-50 mix-blend-difference"
-      />
-
-      {/* Grain Overlay for Texture */}
-      <div
-        className="fixed inset-0 opacity-[0.04] pointer-events-none z-[40]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")`,
-        }}
-      ></div>
-
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full p-8 flex justify-between items-start z-40 mix-blend-difference text-white">
-        <div className="flex flex-col text-xs font-bold tracking-widest uppercase leading-relaxed">
-          <span>Naveen K. Pasupuleti</span>
-          <span className="opacity-50">SDET / Engineer</span>
-        </div>
-        <div className="flex gap-8 text-xs font-bold tracking-widest uppercase">
-          {["About", "Work", "Skills", "Contact"].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="hover:line-through decoration-2 decoration-white transition-all"
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-end px-4 md:px-12 pb-12 pt-32 relative overflow-hidden">
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 opacity-10 font-black text-[40vw] leading-none text-white pointer-events-none select-none">
-          QA
-        </div>
-
-        <div className="max-w-[90vw] z-10">
-          <div className="overflow-hidden">
-            <SmoothScrollText
-              className={`text-[13vw] md:text-[11vw] leading-[0.85] font-bold tracking-tight uppercase text-white font-syne`}
-            >
-              Code.
-            </SmoothScrollText>
+        {/* HERO SECTION */}
+        <header
+          className="relative h-screen flex flex-col justify-center px-6 md:px-20 pt-20"
+          id="home"
+        >
+          <div className="flex flex-col gap-2">
+            <h1 className="text-[12vw] leading-[0.9] font-display font-black uppercase tracking-normal text-white">
+              <RevealText text="Naveen" />
+            </h1>
+            <h1 className="text-[12vw] leading-[0.9] font-display font-black uppercase tracking-normal flex items-center gap-4">
+              <RevealText text="Kumar" delay={0.1} />
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: "20vw" }}
+                transition={{ duration: 1, delay: 0.5 }}
+                className="h-[2vw] bg-lime-400 rounded-full mt-2 hidden md:block"
+              />
+            </h1>
           </div>
-          <div className="overflow-hidden">
-            <SmoothScrollText
-              className={`text-[13vw] md:text-[11vw] leading-[0.85] font-bold tracking-tight uppercase text-white ml-[10vw] font-syne`}
+
+          <div className="mt-12 md:mt-20 flex flex-col md:flex-row justify-between items-start md:items-end border-t border-white/10 pt-8">
+            <div className="max-w-md">
+              <p className="text-xl md:text-2xl font-light text-gray-400 leading-relaxed">
+                SDET @{" "}
+                <span className="text-white font-medium">TestVagrant</span>.{" "}
+                <br />
+                Crafting robust{" "}
+                <span className="text-lime-400">Salesforce</span> automation
+                architectures with Playwright & TypeScript.
+              </p>
+            </div>
+            <motion.div
+              className="mt-8 md:mt-0 flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
             >
-              Test.
-            </SmoothScrollText>
-          </div>
-          <div className="overflow-hidden">
-            <SmoothScrollText
-              className={`text-[13vw] md:text-[11vw] leading-[0.85] font-bold tracking-tight uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600 font-syne`}
-            >
-              Deploy.
-            </SmoothScrollText>
-          </div>
-        </div>
-
-        <div className="flex flex-col md:flex-row justify-between items-end mt-16 border-t border-white/20 pt-6">
-          <p className="max-w-md text-sm md:text-base text-gray-400 leading-relaxed">
-            Based in India. Transforming manual scenarios into high-speed
-            automated delivery at{" "}
-            <span className="text-white font-bold">
-              TestVagrant Technologies
-            </span>
-            .
-          </p>
-          <div className="mt-8 md:mt-0 animate-spin-slow">
-            <Terminal size={48} strokeWidth={1} />
-          </div>
-        </div>
-      </section>
-
-      {/* About / Manifesto */}
-      <section id="about" className="py-32 px-4 md:px-12">
-        <div className="max-w-5xl">
-          <h2 className="text-xs font-bold tracking-[0.2em] uppercase mb-8 text-gray-500">
-            / The Manifesto
-          </h2>
-          <p
-            className={`text-3xl md:text-5xl leading-[1.2] font-medium indent-24 font-syne`}
-          >
-            I don't just find bugs; I engineer the systems that prevent them.
-            With a deep focus on{" "}
-            <span className="text-white border-b border-white/30">
-              Salesforce Automation
-            </span>{" "}
-            and the{" "}
-            <span className="text-white border-b border-white/30">
-              Playwright ecosystem
-            </span>
-            , I build testing architectures that are as robust as the code they
-            verify.
-          </p>
-        </div>
-      </section>
-
-      {/* Experience - The Timeline */}
-      <section
-        id="work"
-        className="py-24 px-4 md:px-12 border-t border-white/10"
-      >
-        <div className="grid md:grid-cols-[1fr_2fr] gap-16">
-          <div className="sticky top-24 h-fit">
-            <h2 className={`text-6xl font-bold mb-4 font-syne`}>Exp.</h2>
-            <p className="text-sm text-gray-500">
-              A history of quality assurance.
-            </p>
-            <div className="mt-8">
-              <a
-                href="/resume.pdf"
-                className="inline-flex items-center gap-2 border border-white/20 px-6 py-3 rounded-full hover:bg-white hover:text-black transition-colors duration-300"
+              <a 
+                href="#projects" 
+                className="group flex items-center gap-2 bg-white text-black px-6 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-lime-400 transition-colors"
               >
-                <Download size={16} /> Download Resume
+                View Projects{" "}
+                <ArrowUpRight className="group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
               </a>
+            </motion.div>
+          </div>
+        </header>
+
+        {/* ABOUT / NARRATIVE */}
+        <section
+          id="about"
+          className="py-32 px-6 md:px-20 border-t border-white/10"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+            <div className="md:col-span-4">
+              <span className="block text-lime-400 font-mono text-sm mb-4">
+                ( 01 — ABOUT )
+              </span>
+              <div className="w-full h-[1px] bg-white/20 mb-8"></div>
+              <p className="text-gray-400">
+                Based in India. <br />
+                Available for global consulting.
+              </p>
+            </div>
+            <div className="md:col-span-8">
+              <p className="text-3xl md:text-5xl font-light leading-tight">
+                I bridge the gap between development and quality assurance. As a
+                specialist in{" "}
+                <span className="text-white font-serif italic">
+                  Salesforce ecosystems
+                </span>
+                , I don't just write tests; I engineer stability.
+              </p>
+              <p className="mt-12 text-xl text-gray-400 max-w-2xl">
+                My work focuses on building self-healing automation frameworks
+                that adapt to the dynamic nature of enterprise applications.
+                When I'm not optimizing Playwright selectors, I'm exploring
+                photography or fine-tuning my WFH setup.
+              </p>
             </div>
           </div>
+        </section>
 
-          <div className="space-y-24">
-            {EXPERIENCE.map((exp, i) => (
+        {/* EXPERIENCE TIMELINE */}
+        <section id="experience" className="py-32 px-6 md:px-20 bg-[#0a0a0a]">
+          <SectionHeading>Experience</SectionHeading>
+
+          <div className="flex flex-col">
+            {EXPERIENCE.map((job, index) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 50 }}
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="group"
+                transition={{ delay: index * 0.1, duration: 0.4 }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="group border-t border-white/10 py-16 hover:bg-white/5 transition-colors cursor-pointer"
               >
-                <div className="flex items-baseline justify-between mb-4 border-b border-white/10 pb-4">
-                  <h3
-                    className={`text-3xl font-bold group-hover:text-white transition-colors font-syne`}
-                  >
-                    {exp.company}
-                  </h3>
-                  <span className="font-mono text-sm text-gray-500">
-                    {exp.year}
-                  </span>
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-baseline">
+                  <div className="md:col-span-2 text-lime-400 font-mono text-sm">
+                    {job.period}
+                  </div>
+                  <div className="md:col-span-4">
+                    <h3 className="text-3xl font-display uppercase font-bold">
+                      {job.company}
+                    </h3>
+                    <span className="text-lg text-gray-400">{job.role}</span>
+                  </div>
+                  <div className="md:col-span-6">
+                    <p className="text-xl font-light text-gray-300 leading-relaxed group-hover:text-white transition-colors">
+                      {job.desc}
+                    </p>
+                  </div>
                 </div>
-                <h4 className="text-xl text-white mb-6">{exp.role}</h4>
-                <ul className="space-y-3">
-                  {exp.details.map((detail, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start gap-3 text-gray-400 font-light"
-                    >
-                      <span className="mt-1.5 w-1.5 h-1.5 bg-white/20 rounded-full group-hover:bg-white transition-colors" />
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Project Catalogue */}
-      <section className="py-32 px-4 md:px-12 bg-[#0f0f0f]">
-        <div className="flex items-end justify-between mb-16">
-          <h2 className={`text-7xl md:text-9xl font-bold opacity-10 font-syne`}>
-            WORK
-          </h2>
-          <span className="hidden md:block text-xs font-bold tracking-widest">
-            SCROLL TO EXPLORE
-          </span>
-        </div>
+        {/* SELECTED PROJECTS */}
+        <section id="projects" className="py-32 px-6 md:px-20">
+          <div className="flex justify-between items-end mb-20">
+            <SectionHeading className="mb-0">
+              Selected
+              <br />
+              Works
+            </SectionHeading>
+            <span className="hidden md:block text-gray-500 font-mono text-right">
+              SYSTEM ARCHITECTURE <br /> & AUTOMATION
+            </span>
+          </div>
 
-        <div className="border-t border-white/20">
-          {PROJECTS.map((project, i) => (
-            <motion.div
-              key={i}
-              className="group relative border-b border-white/20 py-12 md:py-16 cursor-pointer transition-colors hover:bg-white/5"
-              initial="initial"
-              whileHover="hover"
-            >
-              <div className="flex flex-col md:flex-row md:items-baseline justify-between relative z-10 px-4">
-                <div className="md:w-1/4 mb-4 md:mb-0">
-                  <span className="font-mono text-xs text-gray-500">
-                    /{project.id}
-                  </span>
-                </div>
-                <div className="md:w-2/4">
-                  <h3
-                    className={`text-4xl md:text-5xl font-bold mb-2 group-hover:ml-4 transition-all duration-300 font-syne`}
-                  >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {PROJECTS.map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ scale: 0.98 }}
+                className={`bg-[#111] p-8 md:p-12 rounded-3xl border border-white/5 flex flex-col justify-between min-h-[400px] ${
+                  i === 0 ? "md:col-span-2" : ""
+                }`}
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-8">
+                    <div className="flex gap-2">
+                      {project.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="px-3 py-1 rounded-full border border-white/20 text-xs text-gray-300 uppercase tracking-wider"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <ArrowUpRight className="text-lime-400 w-8 h-8" />
+                  </div>
+                  <h3 className="text-4xl md:text-6xl font-display font-bold uppercase mb-4">
                     {project.name}
                   </h3>
-                  <p className="text-gray-400 text-sm md:w-2/3 group-hover:ml-4 transition-all duration-300 delay-75">
+                  <p className="text-xl text-gray-400 font-light">
+                    {project.tag}
+                  </p>
+                </div>
+                <div className="mt-12">
+                  <p className="text-lg text-gray-300 border-l-2 border-lime-400 pl-4">
                     {project.desc}
                   </p>
                 </div>
-                <div className="md:w-1/4 text-right mt-4 md:mt-0">
-                  <div className="text-xs font-bold uppercase tracking-wider text-white">
-                    {project.tag}
-                  </div>
-                  <div className="text-[10px] text-gray-500 font-mono mt-1">
-                    {project.stack}
-                  </div>
-                </div>
-              </div>
-
-              {/* Hover Icon Reveal */}
-              <motion.div
-                variants={{
-                  initial: { scale: 0, opacity: 0 },
-                  hover: { scale: 1, opacity: 1 },
-                }}
-                className="absolute right-12 top-1/2 -translate-y-1/2 p-4 bg-white rounded-full text-black hidden md:block"
-              >
-                <ArrowUpRight size={32} />
               </motion.div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Skills Matrix */}
-      <section id="skills" className="py-24 px-4 md:px-12">
-        <div className="grid md:grid-cols-2 gap-16">
-          <div>
-            <h2 className={`text-4xl font-bold mb-8 font-syne`}>
-              Technical <br /> Proficiency.
-            </h2>
-            <p className="text-gray-400 leading-relaxed max-w-md">
-              My stack is chosen for reliability and speed. I specialize in the
-              intersection of application logic and automated verification.
-            </p>
-
-            <div className="mt-12 flex flex-wrap gap-4">
-              {["Git", "Jenkins", "Docker", "JIRA", "Postman", "Figma"].map(
-                (tool) => (
-                  <div
-                    key={tool}
-                    className="px-4 py-2 border border-white/10 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all"
-                  >
-                    {tool}
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-
-          <div className="space-y-8">
-            {SKILLS.map((skill, i) => (
-              <div key={i} className="group">
-                <div className="flex justify-between mb-2 text-sm font-bold uppercase tracking-wider">
-                  <span>{skill.name}</span>
-                  <span className="font-mono opacity-50">{skill.level}%</span>
-                </div>
-                <div className="h-[2px] w-full bg-gray-800 relative overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.level}%` }}
-                    transition={{ duration: 1.5, ease: "circOut" }}
-                    className="absolute top-0 left-0 h-full bg-white"
-                  />
-                </div>
-              </div>
             ))}
+          </div>
+        </section>
 
-            {/* Certifications Block */}
-            <div className="pt-12 mt-12 border-t border-white/10">
-              <div className="flex items-center gap-4 mb-6">
-                <Cpu className="text-white" />
-                <h3 className="font-bold uppercase tracking-widest">
-                  Certifications
-                </h3>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {["PD1", "Associate", "AI Associate"].map((cert) => (
-                  <div
-                    key={cert}
-                    className="border border-white/10 p-4 text-center hover:bg-white hover:text-black transition-colors duration-300"
-                  >
-                    <span className="block font-bold text-sm">Salesforce</span>
-                    <span className="text-xs block mt-1 opacity-70">
-                      {cert}
-                    </span>
+        {/* SKILLS & CERTIFICATIONS MARQUEE */}
+        <section className="py-20 overflow-hidden bg-lime-400 text-black">
+          <div className="flex whitespace-nowrap">
+            <motion.div
+              animate={{ x: "-50%" }}
+              transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
+              className="flex gap-12"
+            >
+              {[...SKILLS].map((skill, i) => (
+                <span
+                  key={i}
+                  className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter flex items-center gap-4"
+                >
+                  {skill}{" "}
+                  <span className="w-3 h-3 rounded-full bg-black"></span>
+                </span>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="py-32 px-6 md:px-20 grid grid-cols-1 md:grid-cols-2 gap-20">
+          <div>
+            <h3 className="text-3xl font-display uppercase mb-12 flex items-center gap-3">
+              <Layers className="text-lime-400" /> Technical Arsenal
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {SKILLS.map((skill) => (
+                <span
+                  key={skill}
+                  className="text-2xl hover:text-lime-400 transition-colors cursor-default select-none"
+                >
+                  {skill} <span className="text-gray-700 mx-2">/</span>
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-3xl font-display uppercase mb-12 flex items-center gap-3">
+              <CheckCircle2 className="text-lime-400" /> Certifications
+            </h3>
+            <div className="flex flex-col gap-6">
+              {CERTIFICATIONS.map((cert, i) => (
+                <div
+                  key={i}
+                  className="flex justify-between items-center border-b border-white/10 pb-6 group hover:pl-4 transition-all"
+                >
+                  <div>
+                    <h4 className="text-xl font-bold group-hover:text-lime-400 transition-colors">
+                      {cert.name}
+                    </h4>
+                    <p className="text-gray-500 text-sm mt-1">{cert.issuer}</p>
                   </div>
-                ))}
+                  <span className="font-mono text-gray-500">{cert.year}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CONTACT / FOOTER */}
+        <footer
+          id="contact"
+          className="py-32 px-6 md:px-20 border-t border-white/10 relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-lime-400/10 blur-[120px] rounded-full pointer-events-none" />
+
+          <div className="relative z-10">
+            <h2 className="text-[10vw] leading-[0.8] font-display font-black uppercase tracking-tighter mb-12 text-center md:text-left">
+              Let's <span className="text-lime-400">Connect</span>
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20">
+              <div className="md:col-span-2">
+                <p className="text-2xl text-gray-400 font-light max-w-xl">
+                  Currently open to full-time roles and technical consulting in
+                  Salesforce Automation.
+                </p>
+                <div className="mt-12 flex flex-wrap gap-4">
+                  <a
+                    href="mailto:naveen@example.com"
+                    className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-lime-400 transition-colors flex items-center gap-2"
+                  >
+                    <Mail size={18} /> Email Me
+                  </a>
+                  <a
+                    href="#"
+                    className="border border-white/30 px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors flex items-center gap-2"
+                  >
+                    <Linkedin size={18} /> LinkedIn
+                  </a>
+                  <a
+                    href="#"
+                    className="border border-white/30 px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-white hover:text-black transition-colors flex items-center gap-2"
+                  >
+                    <Github size={18} /> GitHub
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-end text-right text-gray-500 text-sm font-mono">
+                <p>&copy; 2025 NAVEEN KUMAR P.</p>
+                <p>DESIGNED & DEVELOPED WITH REACT</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer
-        id="contact"
-        className="py-32 px-4 md:px-12 border-t border-white/10 relative overflow-hidden"
-      >
-        <div className="flex flex-col items-center justify-center text-center z-10 relative">
-          <span className="text-xs font-bold uppercase tracking-[0.4em] mb-8 animate-pulse">
-            Availability: Open
-          </span>
-
-          <a
-            href="mailto:naveen@example.com"
-            className={`text-[10vw] leading-none font-bold hover:text-gray-500 transition-colors duration-300 font-syne`}
-          >
-            SAY HELLO
-          </a>
-
-          <div className="flex gap-12 mt-16">
-            <a href="#" className="group flex flex-col items-center gap-2">
-              <div className="p-4 border border-white/20 rounded-full group-hover:bg-white group-hover:text-black transition-all">
-                <Mail size={24} />
-              </div>
-              <span className="text-[10px] uppercase tracking-widest opacity-50">
-                Email
-              </span>
-            </a>
-            <a href="#" className="group flex flex-col items-center gap-2">
-              <div className="p-4 border border-white/20 rounded-full group-hover:bg-white group-hover:text-black transition-all">
-                <Linkedin size={24} />
-              </div>
-              <span className="text-[10px] uppercase tracking-widest opacity-50">
-                LinkedIn
-              </span>
-            </a>
-            <a href="#" className="group flex flex-col items-center gap-2">
-              <div className="p-4 border border-white/20 rounded-full group-hover:bg-white group-hover:text-black transition-all">
-                <Github size={24} />
-              </div>
-              <span className="text-[10px] uppercase tracking-widest opacity-50">
-                GitHub
-              </span>
-            </a>
-          </div>
-
-          <div className="absolute bottom-0 w-full flex justify-between text-[10px] uppercase tracking-widest opacity-30 py-4 px-12">
-            <span>© 2025 NKP.DEV</span>
-            <span>
-              Local Time:{" "}
-              {new Date().toLocaleTimeString("en-IN", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </span>
-          </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </>
   );
 }

@@ -6,17 +6,18 @@ export default {
     ],
     theme: {
         extend: {
-            animation: {
-                marquee: 'marquee 25s linear infinite',
+            fontFamily: {
+                // This is key for the "Bold Typography" look
+                display: ['Syne', 'sans-serif'],
+                sans: ['Manrope', 'sans-serif'],
             },
-            keyframes: {
-                marquee: {
-                    '0%': { transform: 'translateX(0%)' },
-                    '100%': { transform: 'translateX(-100%)' },
-                },
-            },
+            colors: {
+                // This is the specific lime green accent
+                lime: {
+                    400: '#a3ff12',
+                }
+            }
         },
     },
     plugins: [],
 }
-
