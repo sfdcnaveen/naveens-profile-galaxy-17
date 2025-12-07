@@ -212,18 +212,18 @@ const CursorFollower: React.FC = () => {
 
   useEffect(() => {
     let animationFrameId: number;
-    
+
     const updateMousePosition = (e: MouseEvent) => {
       // Throttle the updates to reduce CPU usage
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
-      
+
       animationFrameId = requestAnimationFrame(() => {
         setMousePosition({ x: e.clientX, y: e.clientY });
       });
     };
-    
+
     window.addEventListener("mousemove", updateMousePosition);
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
@@ -294,8 +294,8 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <a 
-                href="#projects" 
+              <a
+                href="#projects"
                 className="group flex items-center gap-2 bg-white text-black px-6 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-lime-400 transition-colors"
               >
                 View Projects{" "}
