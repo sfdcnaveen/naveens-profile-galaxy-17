@@ -480,6 +480,10 @@
 
         <!-- Hero Section -->
         <section class="hero">
+            <div id="visitor-greeting"
+                style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--meta-color); margin-bottom: 0.5rem; height: 1.5rem; opacity: 0; transition: opacity 1s ease;">
+                <!-- Greeting will fade in here -->
+            </div>
             <h2 class="role">SOFTWARE DEVELOPMENT ENGINEER IN TEST</h2>
             <h1>NAVEEN KUMAR<br>PASUPULETI</h1>
             <p class="tagline">Automating the future at TestVagrant Technologies.<br>Salesforce Automation Expert |
@@ -870,6 +874,51 @@
         }
 
         fetchLastFmTracks();
+
+        // --- 4. Personalised IP Geolocation Greeting ---
+        async function fetchVisitorGreeting() {
+            const greetingEl = document.getElementById('visitor-greeting');
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                if (!response.ok) throw new Error('API Rate Limit or Blocked');
+                const data = await response.json();
+
+                if (data.city && data.utc_offset) {
+                    // Calculate local time based on their UTC offset string (e.g., "+0530")
+                    const offsetStr = data.utc_offset;
+                    const isNegative = offsetStr.startsWith('-');
+                    let hrs = parseInt(offsetStr.substring(1, 3), 10);
+                    let mins = parseInt(offsetStr.substring(3, 5), 10);
+
+                    let totalOffsetMins = (hrs * 60) + mins;
+                    if (isNegative) totalOffsetMins = -totalOffsetMins;
+
+                    // Get UTC time, then apply their offset
+                    const now = new Date();
+                    const utcNow = now.getTime() + (now.getTimezoneOffset() * 60000);
+                    const localVisitorTime = new Date(utcNow + (totalOffsetMins * 60000));
+
+                    const hours = localVisitorTime.getHours();
+                    let greetingText = 'Hello';
+                    if (hours >= 5 && hours < 12) greetingText = 'Good Morning';
+                    else if (hours >= 12 && hours < 18) greetingText = 'Good Afternoon';
+                    else if (hours >= 18 && hours < 22) greetingText = 'Good Evening';
+                    else greetingText = 'Hello';
+
+                    greetingEl.textContent = `${greetingText} from Kavali, Nellore`;
+                } else {
+                    greetingEl.textContent = `Hello from Kavali, Nellore`;
+                }
+            } catch (error) {
+                console.log('Greeting API skipped:', error.message);
+                greetingEl.textContent = 'Hello from Kavali, Nellore';
+            }
+
+            // Fade in gracefully
+            greetingEl.style.opacity = '1';
+        }
+
+        fetchVisitorGreeting();
 
         // Add subtle bottom border to header when scrolling
         window.addEventListener('scroll', () => {
