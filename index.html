@@ -899,19 +899,19 @@
                     const localVisitorTime = new Date(utcNow + (totalOffsetMins * 60000));
 
                     const hours = localVisitorTime.getHours();
-                    let greetingText = 'Hello';
-                    if (hours >= 5 && hours < 12) greetingText = 'Good Morning';
-                    else if (hours >= 12 && hours < 18) greetingText = 'Good Afternoon';
-                    else if (hours >= 18 && hours < 22) greetingText = 'Good Evening';
-                    else greetingText = 'Hello';
+                    let greetingText = 'Hello 👋';
+                    if (hours >= 5 && hours < 12) greetingText = 'Good Morning 🌅';
+                    else if (hours >= 12 && hours < 18) greetingText = 'Good Afternoon ☀️';
+                    else if (hours >= 18 && hours < 22) greetingText = 'Good Evening 🌇';
+                    else greetingText = 'Good Night 🌙';
 
-                    greetingEl.textContent = `${greetingText} from Kavali, Nellore`;
+                    greetingEl.textContent = `${greetingText} from Nellore`;
                 } else {
-                    greetingEl.textContent = `Hello from Kavali, Nellore`;
+                    greetingEl.textContent = `Hello 👋 from Nellore`;
                 }
             } catch (error) {
                 console.log('Greeting API skipped:', error.message);
-                greetingEl.textContent = 'Hello from Kavali, Nellore';
+                greetingEl.textContent = 'Hello 👋 from Nellore';
             }
 
             // Fade in gracefully
