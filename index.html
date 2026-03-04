@@ -1,693 +1,890 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Naveen Kumar Pasupuleti | SDET Portfolio</title>
+<html lang="en">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600&family=Syne:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              void: "#050505",
-              charcoal: "#121212",
-              "neon-lime": "#ccff00",
-              "electric-blue": "#3b82f6",
-              "salesforce-blue": "#00a1e0",
-              glass: "rgba(255, 255, 255, 0.05)",
-            },
-            fontFamily: {
-              display: ['"Syne"', "sans-serif"],
-              body: ['"Space Grotesk"', "sans-serif"],
-            },
-            animation: {
-              marquee: "marquee 25s linear infinite",
-              float: "float 6s ease-in-out infinite",
-            },
-            keyframes: {
-              marquee: {
-                "0%": { transform: "translateX(0%)" },
-                "100%": { transform: "translateX(-100%)" },
-              },
-              float: {
-                "0%, 100%": { transform: "translateY(0)" },
-                "50%": { transform: "translateY(-20px)" },
-              },
-            },
-          },
-        },
-      };
-    </script>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveen Kumar Pasupuleti</title>
+    <!-- Favicon: Simple SVG with NKP text -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%231A1A1A%22/><text x=%2250%%22 y=%2250%%22 font-family=%22sans-serif%22 font-weight=%22bold%22 font-size=%2240%22 fill=%22%23FCFCFB%22 dominant-baseline=%22central%22 text-anchor=%22middle%22>NKP</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-      body {
-        background-color: #050505;
-        color: #e5e5e5;
-        overflow-x: hidden;
-      }
+        :root {
+            /* Warm off-white background to match editorial print feel */
+            --bg-color: #FCFCFB;
+            --text-color: #1A1A1A;
+            --meta-color: #888888;
+            --accent-color: #666666;
+            --gap-extralarge: 12vw;
+            --gap-large: 8vw;
+            --gap-medium: 4vw;
+        }
 
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #050505;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #ccff00;
-      }
+        [data-theme="dark"] {
+            --bg-color: #111111;
+            --text-color: #EEEEEE;
+            --meta-color: #777777;
+            --accent-color: #AAAAAA;
+        }
 
-      /* Typographic Utilities */
-      .text-outline {
-        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
-        color: transparent;
-        transition: all 0.3s ease;
-      }
-      .group:hover .text-outline {
-        -webkit-text-stroke: 1px #ccff00;
-        color: #ccff00;
-      }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      .glass-panel {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 15px;
+            /* Editorial scale */
+            font-weight: 300;
+            line-height: 1.8;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-      .nav-link {
-        position: relative;
-      }
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 1px;
-        bottom: -2px;
-        left: 0;
-        background-color: #ccff00;
-        transition: width 0.3s;
-      }
-      .nav-link:hover::after {
-        width: 100%;
-      }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Container Layout - Wide but with strong side margins */
+        .container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 6vw;
+        }
+
+        /* Typography Hierarchy */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-weight: 400;
+            color: var(--text-color);
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 2rem;
+            color: var(--meta-color);
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--bg-color);
+            /* Add translucent effect when scrolling */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: color-mix(in srgb, var(--bg-color) 85%, transparent);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            margin-bottom: var(--gap-large);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+
+            /* Ensure it covers full width correctly while matching container inner spacing */
+            margin-left: -6vw;
+            margin-right: -6vw;
+            padding-left: 6vw;
+            padding-right: 6vw;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+
+        .header-title {
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a,
+        .theme-toggle {
+            color: var(--text-color);
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0 0 0.3rem 0;
+            font-family: inherit;
+            font-size: inherit;
+            text-transform: inherit;
+            letter-spacing: inherit;
+        }
+
+        /* Subtle hover underline for nav items */
+        nav a::after,
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        nav a:hover::after,
+        .theme-toggle:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        nav a:hover,
+        .theme-toggle:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Menu Hamburger */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-color);
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: var(--gap-large);
+            scroll-margin-top: 8rem;
+        }
+
+        /* Hero Marquee */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            border-top: 1px solid var(--meta-color);
+            border-bottom: 1px solid var(--meta-color);
+            padding: 1rem 0;
+            margin-bottom: var(--gap-large);
+        }
+
+        .marquee {
+            display: inline-block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--meta-color);
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: var(--gap-medium);
+            text-align: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h2.role {
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            color: var(--meta-color);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .hero .tagline {
+            font-size: 1.25rem;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Lists Generic Styles */
+        .content-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 900px;
+        }
+
+        /* Experience Item */
+        .experience-item,
+        .project-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            align-items: baseline;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--meta-color);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .item-meta {
+            color: var(--meta-color);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .item-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .item-subtitle {
+            font-size: 1rem;
+            color: var(--meta-color);
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+            color: var(--meta-color);
+        }
+
+        ul.bullet-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 0.5rem;
+            color: var(--text-color);
+        }
+
+        ul.bullet-list li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        ul.bullet-list li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-card .item-meta {
+            margin-bottom: 0.5rem;
+        }
+
+        .music-card:hover .item-content {
+            opacity: 0.8;
+            transform: translateX(5px);
+        }
+
+        /* Skills/Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 2rem;
+            border: 1px solid var(--meta-color);
+            border-radius: 4px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--meta-color);
+        }
+
+        /* Footer Grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--meta-color);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--meta-color);
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                justify-content: center;
+                gap: 3rem;
+                z-index: 90;
+                font-size: 1.25rem;
+            }
+
+            nav.open {
+                display: flex;
+            }
+
+            .experience-item,
+            .project-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .item-meta {
+                order: -1;
+                margin-bottom: 0.25rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  </head>
-  <body
-    class="font-body antialiased selection:bg-neon-lime selection:text-black"
-  >
-    <!-- Availability Banner -->
-    <div
-      class="bg-neon-lime text-black text-xs font-bold uppercase tracking-widest py-2 text-center font-display"
-    >
-      <span>● Open for Full-time Roles & Technical Consulting</span>
+</head>
+
+<body>
+
+    <div class="container" id="top">
+        <!-- Header -->
+        <header id="main-header">
+            <a href="#top" class="header-title">NKP</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">Menu</button>
+            <nav id="nav-menu">
+                <a href="#about" onclick="closeMobileMenu()">About</a>
+                <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+                <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+                <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+                <a href="#music" onclick="closeMobileMenu()">Music</a>
+                <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">Dark Mode</button>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2 class="role">SOFTWARE DEVELOPMENT ENGINEER IN TEST</h2>
+            <h1>NAVEEN KUMAR<br>PASUPULETI</h1>
+            <p class="tagline">Automating the future at TestVagrant Technologies.<br>Salesforce Automation Expert |
+                Playwright Specialist.</p>
+        </section>
+
+        <!-- Marquee -->
+        <div class="marquee-container">
+            <div class="marquee">
+                SALESFORCE AUTOMATION - PLAYWRIGHT - TYPESCRIPT - CI/CD PIPELINES - TEST ARCHITECTURE - API AUTOMATION -
+                SELENIUM - SALESFORCE AUTOMATION - PLAYWRIGHT - TYPESCRIPT -
+                SALESFORCE AUTOMATION - PLAYWRIGHT - TYPESCRIPT - CI/CD PIPELINES - TEST ARCHITECTURE - API AUTOMATION -
+                SELENIUM - SALESFORCE AUTOMATION - PLAYWRIGHT - TYPESCRIPT -
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <div class="content-list">
+                <div>
+                    <h3>CRAFTING QUALITY.<br></h3>
+                    <p class="item-desc" style="max-width: 800px; font-size: 1.1rem; color: var(--text-color);">
+                        I am a passionate <strong>SDET</strong> dedicated to building robust automation frameworks that
+                        break boundaries, not builds. Currently driving excellence at <strong>TestVagrant
+                            Technologies</strong>.
+                        <br><br>
+                        With deep expertise in Salesforce ecosystem and modern JS automation (Playwright/TypeScript), I
+                        bridge the gap between complex manual scenarios and high-speed automated delivery.
+                    </p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span class="stat-value">4.5+</span>
+                        <span class="stat-label">YEARS EXP</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">SALESFORCE CERTS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Career Timeline</h2>
+            <div class="content-list">
+
+                <div class="experience-item">
+                    <div class="item-meta">2025 — Present</div>
+                    <div class="item-content">
+                        <div class="item-title">SDET</div>
+                        <div class="item-subtitle">TestVagrant Technologies</div>
+                        <p class="item-desc">Driving automation strategy for complex enterprise applications.</p>
+                        <ul class="bullet-list">
+                            <li>Automating scalable Salesforce applications.</li>
+                            <li>Building frameworks with Playwright, TypeScript, and API automation.</li>
+                            <li>Integrating tests into CI/CD pipelines for rapid release cycles.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-meta">2023 — 2025</div>
+                    <div class="item-content">
+                        <div class="item-title">Consultant</div>
+                        <div class="item-subtitle">Capgemini</div>
+                        <p class="item-desc">Led QA migration initiatives and Salesforce testing.</p>
+                        <ul class="bullet-list">
+                            <li>Salesforce QA & Migration to Playwright framework.</li>
+                            <li>Implemented hybrid automation strategies reducing regression time by 40%.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="item-meta">2021 — 2023</div>
+                    <div class="item-content">
+                        <div class="item-title">Associate Consultant</div>
+                        <div class="item-subtitle">Capgemini</div>
+                        <p class="item-desc">Contributed to Salesforce QA automation and learned foundational testing
+                            methodologies.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Projects / Featured Work -->
+        <section id="projects">
+            <h2>Featured Work (04)</h2>
+            <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="item-meta">REAL ESTATE / DUBAI</div>
+                    <div class="item-content">
+                        <div class="item-title">Aldar</div>
+                        <p class="item-desc">Comprehensive Salesforce testing for Dubai's leading real estate developer.
+                            Automating critical post sales/service flows.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="item-meta">BANKING / ANZ</div>
+                    <div class="item-content">
+                        <div class="item-title">CMOS (Complaint Mgmt)</div>
+                        <p class="item-desc">Ensuring compliance and reliability for ANZ Bank's Complaint Management
+                            System through rigorous QA.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="item-meta">FRAMEWORK ARCHITECTURE</div>
+                    <div class="item-content">
+                        <div class="item-title">SF Automation Suite</div>
+                        <p class="item-desc">A custom-built Playwright & TypeScript framework integrated with CI/CD for
+                            robust Salesforce UI testing.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Tech Arsenal & Certifications</h2>
+            <div class="content-list">
+
+                <div class="experience-item" style="border: none;">
+                    <div class="item-meta" style="flex: 1;">TECH ARSENAL</div>
+                    <div class="item-content" style="flex: 2;">
+                        <ul
+                            style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: var(--text-color); padding: 0;">
+                            <li><strong>SALESFORCE QA:</strong> 95%</li>
+                            <li><strong>PLAYWRIGHT / TYPESCRIPT:</strong> 90%</li>
+                            <li><strong>JAVASCRIPT / JAVA:</strong> 85%</li>
+                        </ul>
+                        <p class="item-desc" style="margin-top: 1rem;">
+                            Also working with: Selenium, WDIO, Git, Jenkins, Rest Assured.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="experience-item" style="border: none;">
+                    <div class="item-meta" style="flex: 1;">CERTIFIED PRO</div>
+                    <div class="item-content" style="flex: 2; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <div class="item-title" style="font-size: 1rem;">Salesforce Platform Developer I</div>
+                            <div class="item-meta" style="margin-top: 0.25rem; display: block;">ISSUED 2022</div>
+                        </div>
+                        <div>
+                            <div class="item-title" style="font-size: 1rem;">Salesforce Certified Associate</div>
+                            <div class="item-meta" style="margin-top: 0.25rem; display: block;">ISSUED 2023</div>
+                        </div>
+                        <div>
+                            <div class="item-title" style="font-size: 1rem;">Salesforce Certified AI Associate</div>
+                            <div class="item-meta" style="margin-top: 0.25rem; display: block;">ISSUED 2024</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Music / On Rotation Section -->
+        <section id="music">
+            <h2>My Top 3 Tracks On Rotation</h2>
+            <div class="projects-grid" id="lastfm-tracks">
+                <!-- Tracks will be dynamically injected here -->
+                <div class="project-card">
+                    <div class="item-meta">LOADING TRACKS...</div>
+                    <div class="item-content">
+                        <div class="item-title" style="color: var(--meta-color);">Connecting to Last.fm API...</div>
+                    </div>
+                </div>
+            </div>
+            <p class="item-desc"
+                style="margin-top: 2.5rem; font-size: 0.8rem; border-top: 1px dotted var(--meta-color); padding-top: 1rem; max-width: 600px;">
+                * Click any track to search and play on YouTube Music.
+            </p>
+        </section>
+
+        <!-- Footer / Contact -->
+        <footer id="contact">
+            <div class="footer-grid">
+                <div>
+                    <h2 style="color: var(--text-color); font-size: 1.25rem;">WHAT'S NEXT?</h2>
+                    <p class="item-desc">LET'S CONNECT</p>
+                </div>
+
+                <div class="social-links">
+                    <a href="mailto:pasupulatink@gmail.com">Email ↗</a>
+                    <a href="https://www.linkedin.com/in/naveenkumarpasupuleti/" target="_blank">LinkedIn ↗</a>
+                    <a href="https://github.com/sfdcnaveen" target="_blank">GitHub ↗</a>
+                </div>
+            </div>
+
+            <p class="copyright">© 2025 Naveen Kumar Pasupuleti. Designed with Code & Creativity.</p>
+        </footer>
     </div>
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-10 px-4 mix-blend-difference">
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a
-          href="#"
-          class="font-display font-bold text-2xl tracking-tighter text-white"
-          >NKP<span class="text-neon-lime">.</span></a
-        >
-
-        <div
-          class="hidden md:flex space-x-8 text-sm uppercase tracking-widest font-bold text-white"
-        >
-          <a href="#about" class="nav-link hover:text-neon-lime transition"
-            >About</a
-          >
-          <a href="#experience" class="nav-link hover:text-neon-lime transition"
-            >Experience</a
-          >
-          <a href="#projects" class="nav-link hover:text-neon-lime transition"
-            >Projects</a
-          >
-          <a href="#skills" class="nav-link hover:text-neon-lime transition"
-            >Skills</a
-          >
-          <a href="#contact" class="nav-link hover:text-neon-lime transition"
-            >Contact</a
-          >
-        </div>
-
-        <a
-          href="https://naveen-kumar-pasupuleti-resume.vercel.app/"
-          class="hidden md:inline-block border border-white px-6 py-2 text-xs uppercase font-bold hover:bg-white hover:text-black transition duration-300"
-        >
-          Resume
-        </a>
-
-        <!-- Mobile Menu Button (Visual Only for Template) -->
-        <button class="md:hidden text-white text-2xl">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header
-      class="relative h-screen flex flex-col justify-center items-center overflow-hidden pt-20"
-    >
-      <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-charcoal via-void to-void -z-10"
-      ></div>
-
-      <div
-        class="text-center z-10 px-4"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-      >
-        <p
-          class="text-neon-lime uppercase tracking-[0.3em] text-sm font-bold mb-4"
-        >
-          Software Development Engineer in Test
-        </p>
-        <h1
-          class="font-display font-extrabold text-6xl md:text-9xl leading-tight text-white"
-        >
-          NAVEEN <br />
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-600"
-            >KUMAR</span
-          >
-        </h1>
-        <p
-          class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light"
-        >
-          Automating the future at
-          <strong class="text-white">TestVagrant Technologies</strong>. <br />
-          Salesforce Automation Expert | Playwright Specialist.
-        </p>
-      </div>
-
-      <!-- Infinite Marquee -->
-      <div
-        class="absolute bottom-10 w-full overflow-hidden bg-white text-black py-4 rotate-1 scale-110 border-y-4 border-neon-lime"
-      >
-        <div
-          class="whitespace-nowrap animate-marquee font-display font-black text-4xl uppercase"
-        >
-          Salesforce Automation • Playwright • TypeScript • CI/CD Pipelines •
-          Test Architecture • API Automation • Selenium • Salesforce Automation
-          • Playwright • TypeScript •
-        </div>
-      </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 px-4 md:px-12 max-w-7xl mx-auto">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div data-aos="fade-right">
-          <h2
-            class="font-display text-5xl md:text-7xl font-bold mb-6 leading-none"
-          >
-            CRAFTING <br />
-            <span class="text-outline">QUALITY.</span>
-          </h2>
-        </div>
-        <div data-aos="fade-left">
-          <p class="text-xl text-gray-300 leading-relaxed mb-6">
-            I am a passionate <span class="text-neon-lime">SDET</span> dedicated
-            to building robust automation frameworks that break boundaries, not
-            builds. Currently driving excellence at
-            <span class="text-white font-bold">TestVagrant Technologies</span>.
-          </p>
-          <p class="text-gray-400 mb-8">
-            With deep expertise in Salesforce ecosystem and modern JS automation
-            (Playwright/TypeScript), I bridge the gap between complex manual
-            scenarios and high-speed automated delivery.
-          </p>
-
-          <!-- Stats Grid -->
-          <div class="grid grid-cols-2 gap-4 border-t border-gray-800 pt-8">
-            <div>
-              <span class="block text-3xl font-display font-bold text-white"
-                >4.5+</span
-              >
-              <span class="text-xs text-gray-500 uppercase tracking-widest"
-                >Years Exp</span
-              >
-            </div>
-            <div>
-              <span class="block text-3xl font-display font-bold text-white"
-                >3</span
-              >
-              <span class="text-xs text-gray-500 uppercase tracking-widest"
-                >Salesforce Certs</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 bg-charcoal relative">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2
-          class="font-display text-4xl md:text-6xl font-bold mb-16 text-center"
-        >
-          <span class="text-neon-lime">/</span> CAREER TIMELINE
-        </h2>
-
-        <div
-          class="relative border-l border-gray-800 ml-4 md:ml-0 md:pl-0 space-y-16"
-        >
-          <!-- Item 1 -->
-          <div class="md:flex group" data-aos="fade-up">
-            <div
-              class="md:w-1/3 mb-4 md:mb-0 pl-8 md:pl-0 md:pr-12 md:text-right relative"
-            >
-              <div
-                class="absolute -left-[5px] md:left-auto md:-right-[5px] top-2 w-3 h-3 bg-neon-lime rounded-full shadow-[0_0_10px_#ccff00]"
-              ></div>
-              <h3 class="text-2xl font-display font-bold text-white">SDET</h3>
-              <p class="text-neon-lime font-mono text-sm mt-1">
-                2025 — Present
-              </p>
-            </div>
-            <div class="md:w-2/3 pl-8 border-l border-gray-800 md:border-none">
-              <h4 class="text-xl font-bold mb-2">TestVagrant Technologies</h4>
-              <p class="text-gray-400 mb-4">
-                Driving automation strategy for complex enterprise applications.
-              </p>
-              <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
-                <li>Automating scalable Salesforce applications.</li>
-                <li>
-                  Building frameworks with Playwright, TypeScript, and API
-                  automation.
-                </li>
-                <li>
-                  Integrating tests into CI/CD pipelines for rapid release
-                  cycles.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Item 2 -->
-          <div class="md:flex group" data-aos="fade-up" data-aos-delay="100">
-            <div
-              class="md:w-1/3 mb-4 md:mb-0 pl-8 md:pl-0 md:pr-12 md:text-right relative"
-            >
-              <div
-                class="absolute -left-[5px] md:left-auto md:-right-[5px] top-2 w-3 h-3 bg-gray-600 group-hover:bg-white transition rounded-full"
-              ></div>
-              <h3
-                class="text-2xl font-display font-bold text-gray-300 group-hover:text-white transition"
-              >
-                Consultant
-              </h3>
-              <p class="text-gray-500 font-mono text-sm mt-1">2023 — 2025</p>
-            </div>
-            <div class="md:w-2/3 pl-8 border-l border-gray-800 md:border-none">
-              <h4 class="text-xl font-bold mb-2">Capgemini</h4>
-              <p class="text-gray-400 mb-4">
-                Led QA migration initiatives and Salesforce testing.
-              </p>
-              <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
-                <li>Salesforce QA & Migration to Playwright framework.</li>
-                <li>
-                  Implemented hybrid automation strategies reducing regression
-                  time by 40%.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Item 3 -->
-          <div class="md:flex group" data-aos="fade-up" data-aos-delay="200">
-            <div
-              class="md:w-1/3 mb-4 md:mb-0 pl-8 md:pl-0 md:pr-12 md:text-right relative"
-            >
-              <div
-                class="absolute -left-[5px] md:left-auto md:-right-[5px] top-2 w-3 h-3 bg-gray-600 group-hover:bg-white transition rounded-full"
-              ></div>
-              <h3
-                class="text-2xl font-display font-bold text-gray-300 group-hover:text-white transition"
-              >
-                Associate Consultant
-              </h3>
-              <p class="text-gray-500 font-mono text-sm mt-1">2021 — 2023</p>
-            </div>
-            <div class="md:w-2/3 pl-8 border-l border-gray-800 md:border-none">
-              <h4 class="text-xl font-bold mb-2">Capgemini</h4>
-              <p class="text-gray-400">
-                Contributed to Salesforce QA automation and learned foundational
-                testing methodologies.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 px-4 max-w-7xl mx-auto">
-      <div class="flex justify-between items-end mb-16">
-        <h2 class="font-display text-5xl font-bold">
-          FEATURED <br />
-          WORK
-        </h2>
-        <span class="hidden md:block text-neon-lime font-mono text-xl"
-          >(04)</span
-        >
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Project 1 -->
-        <div
-          class="group relative overflow-hidden rounded-none border border-gray-800 bg-charcoal aspect-[4/3]"
-          data-aos="zoom-in"
-        >
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"
-          ></div>
-          <div
-            class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition duration-500"
-          >
-            <p class="text-neon-lime text-xs font-bold tracking-widest mb-2">
-              REAL ESTATE / DUBAI
-            </p>
-            <h3 class="font-display text-3xl font-bold text-white mb-2">
-              Aldar
-            </h3>
-            <p
-              class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 delay-100"
-            >
-              Comprehensive Salesforce testing for Dubai's leading real estate
-              developer. Automated critical leasing and sales flows.
-            </p>
-          </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div
-          class="group relative overflow-hidden rounded-none border border-gray-800 bg-charcoal aspect-[4/3]"
-          data-aos="zoom-in"
-          data-aos-delay="100"
-        >
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"
-          ></div>
-          <div
-            class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition duration-500"
-          >
-            <p class="text-neon-lime text-xs font-bold tracking-widest mb-2">
-              BANKING / ANZ
-            </p>
-            <h3 class="font-display text-3xl font-bold text-white mb-2">
-              CMOS (Complaint Mgmt)
-            </h3>
-            <p
-              class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 delay-100"
-            >
-              Ensuring compliance and reliability for ANZ Bank's Complaint
-              Management System through rigorous QA.
-            </p>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div
-          class="group relative overflow-hidden rounded-none border border-gray-800 bg-charcoal aspect-[4/3]"
-          data-aos="zoom-in"
-        >
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"
-          ></div>
-          <div
-            class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition duration-500"
-          >
-            <p class="text-neon-lime text-xs font-bold tracking-widest mb-2">
-              FRAMEWORK ARCHITECTURE
-            </p>
-            <h3 class="font-display text-3xl font-bold text-white mb-2">
-              SF Automation Suite
-            </h3>
-            <p
-              class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 delay-100"
-            >
-              A custom-built Playwright & TypeScript framework integrated with
-              CI/CD for robust Salesforce UI testing.
-            </p>
-          </div>
-        </div>
-
-        <!-- Project 4 -->
-        <div
-          class="group relative overflow-hidden rounded-none border border-gray-800 bg-charcoal aspect-[4/3]"
-          data-aos="zoom-in"
-          data-aos-delay="100"
-        >
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"
-          ></div>
-          <div
-            class="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition duration-500"
-          >
-            <p class="text-neon-lime text-xs font-bold tracking-widest mb-2">
-              FRONTEND
-            </p>
-            <h3 class="font-display text-3xl font-bold text-white mb-2">
-              Portfolio V2
-            </h3>
-            <p
-              class="text-gray-400 text-sm opacity-0 group-hover:opacity-100 transition duration-500 delay-100"
-            >
-              Built with React, TypeScript, and Tailwind to showcase modern
-              design principles and responsiveness.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills & Certifications Hybrid Section -->
-    <section id="skills" class="py-24 bg-charcoal">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-2 gap-12">
-          <!-- Skills -->
-          <div>
-            <h3 class="font-display text-3xl font-bold mb-8 text-white">
-              TECH <span class="text-neon-lime">ARSENAL</span>
-            </h3>
-
-            <div class="space-y-8">
-              <div>
-                <div
-                  class="flex justify-between text-sm uppercase font-bold mb-2"
-                >
-                  <span>Salesforce QA</span>
-                  <span class="text-neon-lime">95%</span>
-                </div>
-                <div class="h-1 bg-gray-800">
-                  <div class="h-1 bg-white w-[95%]"></div>
-                </div>
-              </div>
-
-              <div>
-                <div
-                  class="flex justify-between text-sm uppercase font-bold mb-2"
-                >
-                  <span>Playwright / TypeScript</span>
-                  <span class="text-neon-lime">90%</span>
-                </div>
-                <div class="h-1 bg-gray-800">
-                  <div class="h-1 bg-white w-[90%]"></div>
-                </div>
-              </div>
-
-              <div>
-                <div
-                  class="flex justify-between text-sm uppercase font-bold mb-2"
-                >
-                  <span>JavaScript / Java</span>
-                  <span class="text-neon-lime">85%</span>
-                </div>
-                <div class="h-1 bg-gray-800">
-                  <div class="h-1 bg-white w-[85%]"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-10 flex flex-wrap gap-3">
-              <span
-                class="px-4 py-2 border border-gray-700 text-sm hover:border-neon-lime hover:text-neon-lime transition cursor-default"
-                >Selenium</span
-              >
-              <span
-                class="px-4 py-2 border border-gray-700 text-sm hover:border-neon-lime hover:text-neon-lime transition cursor-default"
-                >WDIO</span
-              >
-              <span
-                class="px-4 py-2 border border-gray-700 text-sm hover:border-neon-lime hover:text-neon-lime transition cursor-default"
-                >Git</span
-              >
-              <span
-                class="px-4 py-2 border border-gray-700 text-sm hover:border-neon-lime hover:text-neon-lime transition cursor-default"
-                >Jenkins</span
-              >
-              <span
-                class="px-4 py-2 border border-gray-700 text-sm hover:border-neon-lime hover:text-neon-lime transition cursor-default"
-                >Rest Assured</span
-              >
-            </div>
-          </div>
-
-          <!-- Certifications -->
-          <div>
-            <h3 class="font-display text-3xl font-bold mb-8 text-white">
-              CERTIFIED <span class="text-salesforce-blue">PRO</span>
-            </h3>
-            <div class="space-y-4">
-              <!-- Cert 1 -->
-              <div
-                class="glass-panel p-6 flex items-start gap-4 group hover:bg-white hover:bg-opacity-5 transition duration-300"
-              >
-                <i
-                  class="fab fa-salesforce text-4xl text-salesforce-blue group-hover:scale-110 transition"
-                ></i>
-                <div>
-                  <h4 class="font-bold text-lg">
-                    Salesforce Platform Developer I
-                  </h4>
-                  <p class="text-xs text-gray-500 mt-1">ISSUED 2022</p>
-                </div>
-              </div>
-              <!-- Cert 2 -->
-              <div
-                class="glass-panel p-6 flex items-start gap-4 group hover:bg-white hover:bg-opacity-5 transition duration-300"
-              >
-                <i
-                  class="fab fa-salesforce text-4xl text-salesforce-blue group-hover:scale-110 transition"
-                ></i>
-                <div>
-                  <h4 class="font-bold text-lg">
-                    Salesforce Certified Associate
-                  </h4>
-                  <p class="text-xs text-gray-500 mt-1">ISSUED 2023</p>
-                </div>
-              </div>
-              <!-- Cert 3 -->
-              <div
-                class="glass-panel p-6 flex items-start gap-4 group hover:bg-white hover:bg-opacity-5 transition duration-300"
-              >
-                <i
-                  class="fas fa-robot text-4xl text-salesforce-blue group-hover:scale-110 transition"
-                ></i>
-                <div>
-                  <h4 class="font-bold text-lg">
-                    Salesforce Certified AI Associate
-                  </h4>
-                  <p class="text-xs text-gray-500 mt-1">ISSUED 2024</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <footer id="contact" class="py-24 px-4 relative overflow-hidden">
-      <!-- Abstract background element -->
-      <div
-        class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"
-      ></div>
-
-      <div class="max-w-5xl mx-auto text-center relative z-10">
-        <p class="text-neon-lime font-mono mb-6" data-aos="fade-down">
-          WHAT'S NEXT?
-        </p>
-        <h2
-          class="font-display text-6xl md:text-8xl font-black text-white mb-12 hover:text-outline transition duration-500 cursor-default"
-        >
-          LET'S CONNECT
-        </h2>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-          <a
-            href="mailto:pasupulatink@gmail.com"
-            class="glass-panel py-8 flex flex-col items-center justify-center hover:bg-neon-lime hover:text-black transition duration-300 group"
-          >
-            <i class="fas fa-envelope text-3xl mb-4"></i>
-            <span class="font-bold uppercase text-sm">Email</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/naveenkumarpasupuleti/"
-            class="glass-panel py-8 flex flex-col items-center justify-center hover:bg-[#0077b5] hover:text-white transition duration-300 group"
-          >
-            <i class="fab fa-linkedin text-3xl mb-4"></i>
-            <span class="font-bold uppercase text-sm">LinkedIn</span>
-          </a>
-          <a
-            href="https://wa.me/918500070061?text=Hello%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect%20professionally."
-            class="glass-panel py-8 flex flex-col items-center justify-center hover:bg-[#25D366] hover:text-white transition duration-300 group"
-          >
-            <i class="fab fa-whatsapp text-3xl mb-4"></i>
-            <span class="font-bold uppercase text-sm">WhatsApp</span>
-          </a>
-          <a
-            href="https://github.com/sfdcnaveen"
-            class="glass-panel py-8 flex flex-col items-center justify-center hover:bg-white hover:text-black transition duration-300 group"
-          >
-            <i class="fab fa-github text-3xl mb-4"></i>
-            <span class="font-bold uppercase text-sm">GitHub</span>
-          </a>
-        </div>
-
-        <p class="text-gray-600 text-sm font-mono">
-          © 2025 Naveen Kumar Pasupuleti. Designed with
-          <span class="text-neon-lime">Code & Creativity</span>.
-        </p>
-      </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Vanilla Javascript -->
     <script>
-      // Initialize Animate On Scroll
-      AOS.init({
-        once: true,
-        offset: 100,
-        duration: 800,
-        easing: "ease-out-cubic",
-      });
+        // --- 1. Light / Dark Theme Toggle ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      // Simple Parallax for Marquee
-      window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset;
-        const marquee = document.querySelector(".animate-marquee");
-        // marquee.style.transform = `translateX(-${scrolled * 0.5}px)`;
-        // (Optional: if you want scroll-controlled marquee instead of auto)
-      });
+        if (currentTheme === 'dark' || (!currentTheme && prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = 'Light Mode';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.textContent = 'Dark Mode';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = 'Dark Mode';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = 'Light Mode';
+            }
+        });
+
+        // --- 2. Mobile Menu Toggle ---
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            if (navMenu.classList.contains('open')) {
+                menuBtn.textContent = 'Close';
+                document.body.style.overflow = 'hidden';
+            } else {
+                menuBtn.textContent = 'Menu';
+                document.body.style.overflow = '';
+            }
+        });
+
+        function closeMobileMenu() {
+            if (window.innerWidth <= 900) {
+                navMenu.classList.remove('open');
+                menuBtn.textContent = 'Menu';
+                document.body.style.overflow = '';
+            }
+        }
+
+        // --- 3. Last.fm API - On Rotation ---
+        const lastFmUsername = 'PNaveen';
+        const lastFmApiKey = '68e1b3b3f1102498aad61817583d3de4';
+
+        async function fetchLastFmTracks() {
+            const tracksContainer = document.getElementById('lastfm-tracks');
+            if (!lastFmUsername || lastFmUsername === 'YOUR_LASTFM_USERNAME' || !lastFmApiKey || lastFmApiKey === 'YOUR_LASTFM_API_KEY') {
+                tracksContainer.innerHTML = `
+                    <div class="project-card">
+                        <div class="item-meta">MISSING CREDENTIALS</div>
+                        <div class="item-content">
+                            <div class="item-title" style="font-size: 1.1rem;">Last.fm Setup Required</div>
+                            <div class="item-desc">Please add your Last.fm API Key and Username in the source code (bottom of index.html) to view your top rotating tracks.</div>
+                        </div>
+                    </div>`;
+                return;
+            }
+
+            try {
+                // Fetch top tracks for the last 7 days to simulate "on rotation"
+                const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${lastFmUsername}&api_key=${lastFmApiKey}&period=7day&limit=3&format=json`);
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.message);
+                }
+
+                const tracks = data.toptracks.track;
+                tracksContainer.innerHTML = ''; // Clear loading state
+
+                if (!tracks || tracks.length === 0) {
+                    tracksContainer.innerHTML = `<div class="item-meta">No tracks found for this week.</div>`;
+                    return;
+                }
+
+                for (let index = 0; index < tracks.length; index++) {
+                    const track = tracks[index];
+
+                    // Try to fetch 30-second preview from iTunes API
+                    let previewUrl = null;
+                    try {
+                        const itunesSearchTerm = encodeURIComponent(`${track.artist.name} ${track.name}`);
+                        const itunesResponse = await fetch(`https://itunes.apple.com/search?term=${itunesSearchTerm}&limit=1&entity=song`);
+                        const itunesData = await itunesResponse.json();
+                        if (itunesData.results && itunesData.results.length > 0 && itunesData.results[0].previewUrl) {
+                            previewUrl = itunesData.results[0].previewUrl;
+                        }
+                    } catch (e) {
+                        console.log('Could not fetch iTunes preview for:', track.name);
+                    }
+
+                    // Create search link for YouTube Music
+                    const ytSearchQuery = encodeURIComponent(`${track.artist.name} ${track.name}`);
+                    const ytMusicUrl = `https://music.youtube.com/search?q=${ytSearchQuery}`;
+
+                    const trackEl = document.createElement('div');
+                    trackEl.className = 'project-card music-card';
+
+                    // Style the inner container to handle hover effects setup in CSS
+                    const innerContainer = document.createElement('div');
+                    innerContainer.className = 'item-content';
+                    innerContainer.style.flexDirection = 'row';
+                    innerContainer.style.alignItems = 'center';
+                    innerContainer.style.gap = '1.5rem';
+                    innerContainer.style.marginTop = '0.5rem';
+                    innerContainer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+
+                    trackEl.innerHTML = `
+                        <div class="item-meta">TOP TRACK ${index + 1} &nbsp;—&nbsp; ${track.playcount || '?'} PLAYS</div>
+                    `;
+
+                    let previewHtml = '';
+                    if (previewUrl) {
+                        previewHtml = `
+                            <button onclick="playPreview(this, '${previewUrl}')" style="background: var(--text-color); color: var(--bg-color); border: none; padding: 4px 10px; border-radius: 4px; font-family: inherit; font-size: 0.75rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 0.25rem;">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 30s Preview
+                            </button>
+                        `;
+                    }
+
+                    innerContainer.innerHTML = `
+                        <div style="display:flex; flex-direction: column; gap: 0.2rem;">
+                            <div class="item-title" style="font-size: 1.1rem;">${track.name}</div>
+                            <div class="item-subtitle" style="font-size: 0.9rem;">${track.artist.name}</div>
+                            <div class="item-actions" style="display: flex; align-items: center; gap: 1rem; margin-top: 0.4rem;">
+                                ${previewHtml}
+                                <a href="${ytMusicUrl}" target="_blank" rel="noopener noreferrer" class="item-desc" style="display: inline-flex; align-items: center; gap: 0.3rem; color: var(--text-color); font-weight: 500; font-size: 0.8rem; text-decoration: none;">
+                                    YouTube Search ↗
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+                    trackEl.appendChild(innerContainer);
+                    tracksContainer.appendChild(trackEl);
+                }
+
+            } catch (error) {
+                tracksContainer.innerHTML = `
+                    <div class="project-card">
+                        <div class="item-meta">ERROR</div>
+                        <div class="item-content">
+                            <div class="item-title" style="font-size: 1.1rem;">Failed to fetch Last.fm tracks</div>
+                            <div class="item-desc">${error.message}</div>
+                        </div>
+                    </div>`;
+            }
+        }
+
+        // Global Audio object for preview playback
+        let currentAudio = null;
+        let currentButton = null;
+
+        function playPreview(btn, url) {
+            if (currentAudio) {
+                currentAudio.pause();
+                if (currentButton) {
+                    currentButton.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 30s Preview`;
+                }
+                if (currentAudio.src === url) {
+                    currentAudio = null;
+                    currentButton = null;
+                    return; // Pause if clicked again
+                }
+            }
+
+            currentAudio = new Audio(url);
+            currentAudio.play();
+            currentButton = btn;
+            btn.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg> Playing...`;
+
+            currentAudio.onended = () => {
+                btn.innerHTML = `<svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg> 30s Preview`;
+                currentAudio = null;
+                currentButton = null;
+            };
+        }
+
+        fetchLastFmTracks();
+
+        // Add subtle bottom border to header when scrolling
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 20) {
+                header.style.borderBottom = '1px solid var(--meta-color)';
+            } else {
+                header.style.borderBottom = '1px solid transparent';
+            }
+        });
     </script>
-  </body>
+</body>
+
 </html>
