@@ -10,7 +10,9 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%231A1A1A%22/><text x=%2250%%22 y=%2250%%22 font-family=%22sans-serif%22 font-weight=%22bold%22 font-size=%2240%22 fill=%22%23FCFCFB%22 dominant-baseline=%22central%22 text-anchor=%22middle%22>NKP</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@400&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-color: #FAFAFA;
@@ -145,7 +147,7 @@
         }
 
         [data-theme="dark"] .nav-pill {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
         }
 
@@ -352,8 +354,15 @@
         }
 
         @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.05; }
-            100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.12; }
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.05;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.12;
+            }
         }
 
         .hero .tagline {
@@ -479,7 +488,10 @@
         .project-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: var(--text-color);
             transform: scaleY(0);
             transform-origin: bottom;
@@ -495,7 +507,7 @@
             transform: scaleY(1);
         }
 
-        .project-card > * {
+        .project-card>* {
             position: relative;
             z-index: 1;
             transition: color 0.4s ease;
@@ -568,7 +580,7 @@
             text-align: center;
             align-items: center;
         }
-        
+
         .footer-grid h2 {
             font-family: 'Syne', sans-serif;
             font-size: clamp(3rem, 10vw, 7rem);
@@ -611,13 +623,89 @@
             margin-top: 4rem;
         }
 
+        .portfolio-cta {
+            margin: 0 auto var(--gap-large);
+            max-width: 1400px;
+            padding: 1.2rem 1rem 0.6rem;
+            text-align: center;
+        }
+
+        .portfolio-cta-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.9rem;
+        }
+
+        .portfolio-cta-copy {
+            font-family: 'Bitcount Prop Single', monospace;
+            font-size: clamp(1rem, 2.3vw, 1.85rem);
+            letter-spacing: 0.01em;
+            color: color-mix(in srgb, var(--text-color) 70%, var(--meta-color));
+            line-height: 1.3;
+            max-width: 1450px;
+        }
+
+        .portfolio-cta-subline {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            color: color-mix(in srgb, var(--text-color) 80%, var(--meta-color));
+            line-height: 1.5;
+            max-width: 980px;
+        }
+
+        .portfolio-cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid color-mix(in srgb, var(--text-color) 24%, transparent);
+            background: color-mix(in srgb, var(--bg-color) 88%, var(--text-color) 12%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 1rem 2.8rem;
+            margin-top: 0.8rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--text-color);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+        }
+
+        .portfolio-cta-button:hover {
+            transform: translateY(-1px);
+            border-color: color-mix(in srgb, var(--text-color) 36%, transparent);
+            box-shadow: 0 8px 24px color-mix(in srgb, var(--text-color) 18%, transparent);
+            background: color-mix(in srgb, var(--bg-color) 80%, var(--text-color) 20%);
+        }
+
         /* Responsive Design */
         @keyframes swipeHint {
-            0%, 100% { transform: translateX(0); }
-            15% { transform: translateX(-15px); }
-            30% { transform: translateX(5px); }
-            45% { transform: translateX(-10px); }
-            60% { transform: translateX(0); }
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            15% {
+                transform: translateX(-15px);
+            }
+
+            30% {
+                transform: translateX(5px);
+            }
+
+            45% {
+                transform: translateX(-10px);
+            }
+
+            60% {
+                transform: translateX(0);
+            }
         }
 
         @media (max-width: 900px) {
@@ -627,7 +715,7 @@
                 justify-content: flex-start;
                 gap: 0.75rem;
             }
-            
+
             .header-title {
                 flex-shrink: 0;
                 width: 2.75rem;
@@ -656,11 +744,11 @@
             nav::-webkit-scrollbar {
                 height: 3px;
             }
-            
+
             nav::-webkit-scrollbar-track {
                 background: transparent;
             }
-            
+
             nav::-webkit-scrollbar-thumb {
                 background: color-mix(in srgb, var(--text-color) 20%, transparent);
                 border-radius: 10px;
@@ -684,13 +772,27 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+
+            .portfolio-cta-copy {
+                font-size: 1.1rem;
+            }
+
+            .portfolio-cta-subline {
+                font-size: 0.92rem;
+            }
+
+            .portfolio-cta-button {
+                min-width: 230px;
+                font-size: 0.9rem;
+                padding: 0.9rem 2.2rem;
+            }
         }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJ42T57QL"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'G-HGJ42T57QL');
@@ -711,9 +813,9 @@
                     <a href="#experience" onclick="closeMobileMenu()">Experience</a>
                     <a href="#projects" onclick="closeMobileMenu()">Projects</a>
                     <a href="#skills" onclick="closeMobileMenu()">Skills</a>
-                    <a href="https://naveen-photography-portfolio.vercel.app/" target="_blank" onclick="closeMobileMenu(); if(typeof gtag === 'function') gtag('event', 'click_photography_nav', {'event_category': 'navigation', 'event_label': 'Photography Portfolio'});">Photography</a>
                     <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">Dark Mode</button>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">Dark
+                        Mode</button>
                 </nav>
             </div>
         </header>
@@ -829,7 +931,8 @@
                 <div class="project-card">
                     <div class="item-meta">REAL ESTATE / DUBAI</div>
                     <div class="item-content">
-                        <div class="item-title">Aldar</div>
+                        <div class="item-title"><a href="https://www.aldar.com/en" target="_blank"
+                                rel="noopener noreferrer">Aldar ↗</a></div>
                         <p class="item-desc">Comprehensive Salesforce testing for Dubai's leading real estate developer.
                             Automating critical post sales/service flows.</p>
                     </div>
@@ -838,9 +941,20 @@
                 <div class="project-card">
                     <div class="item-meta">BANKING / ANZ</div>
                     <div class="item-content">
-                        <div class="item-title">CMOS (Complaint Mgmt)</div>
+                        <div class="item-title"><a href="https://www.anz.com.au/support/complaints/" target="_blank"
+                                rel="noopener noreferrer">CMOS (Complaint Mgmt) ↗</a></div>
                         <p class="item-desc">Ensuring compliance and reliability for ANZ Bank's Complaint Management
                             System through rigorous QA.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="item-meta">MACOS UTILITY / SWIFT</div>
+                    <div class="item-content">
+                        <div class="item-title"><a href="https://github.com/sfdcnaveen/NewNet" target="_blank">NewNet
+                                ↗</a></div>
+                        <p class="item-desc">A lightning-fast, native macOS menu-bar download manager powered by yt-dlp.
+                            Features explicit format selection, resumable downloads, and auto-merging.</p>
                     </div>
                 </div>
 
@@ -850,14 +964,6 @@
                         <div class="item-title">SF Automation Suite</div>
                         <p class="item-desc">A custom-built Playwright & TypeScript framework integrated with CI/CD for
                             robust Salesforce UI testing.</p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="item-meta">MACOS UTILITY / SWIFT</div>
-                    <div class="item-content">
-                        <div class="item-title"><a href="https://github.com/sfdcnaveen/NewNet" target="_blank">NewNet ↗</a></div>
-                        <p class="item-desc">A lightning-fast, native macOS menu-bar download manager powered by yt-dlp. Features explicit format selection, resumable downloads, and auto-merging.</p>
                     </div>
                 </div>
 
@@ -906,12 +1012,26 @@
             </div>
         </section>
 
+        <section class="portfolio-cta" aria-label="Photography portfolio call to action">
+            <div class="portfolio-cta-inner">
+                <p class="portfolio-cta-copy">Want to see more of my creative side?</p>
+                <p class="portfolio-cta-subline">A part of me lives in quiet frames—
+                    captured through the lens I always carry.
+                    Just everyday moments, seen with feeling.
+                    Take a look.</p>
+                <a id="portfolio-cta-button" class="portfolio-cta-button"
+                    href="https://naveen-photography-portfolio.vercel.app/" target="_blank"
+                    rel="noopener noreferrer">Photography</a>
+            </div>
+        </section>
+
         <!-- Footer / Contact -->
         <footer id="contact">
             <div class="footer-grid">
                 <div>
                     <h2>LET'S BUILD<br>THE FUTURE</h2>
-                    <p class="item-desc" style="font-size: 1.2rem; margin-top: 2rem;">Ready for your next big thing? Let's connect.</p>
+                    <p class="item-desc" style="font-size: 1.2rem; margin-top: 2rem;">Ready for your next big thing?
+                        Let's connect.</p>
                 </div>
 
                 <div class="social-links">
@@ -921,7 +1041,9 @@
                 </div>
             </div>
 
-            <p class="copyright" style="text-align: center; border-top: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent); padding-top: 2rem;">© 2026 Naveen Kumar Pasupuleti. Designed with Code & Creativity.</p>
+            <p class="copyright"
+                style="text-align: center; border-top: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent); padding-top: 2rem;">
+                © 2026 Naveen Kumar Pasupuleti. Designed with Code & Creativity.</p>
         </footer>
     </div>
 
@@ -1040,8 +1162,21 @@
             observer.observe(section);
         });
 
+        const portfolioCtaButton = document.getElementById('portfolio-cta-button');
+        if (portfolioCtaButton) {
+            portfolioCtaButton.addEventListener('click', () => {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'click_portfolio_cta', {
+                        'event_category': 'navigation',
+                        'event_label': 'Personal Portfolio to Photography Website',
+                        'destination_url': 'https://naveen-photography-portfolio.vercel.app/'
+                    });
+                }
+            });
+        }
+
         // --- 6. Generic Click Tracking for GA4 ---
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             const target = e.target.closest('a, button');
             if (target && typeof gtag === 'function') {
                 const label = target.innerText.trim().substring(0, 50) || target.id || target.className || 'unknown';
