@@ -119,43 +119,60 @@
             position: sticky;
             top: 2rem;
             z-index: 1000;
-            background-color: color-mix(in srgb, var(--bg-color) 60%, transparent);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            padding: 0.8rem 2rem;
             margin: 2rem auto var(--gap-large);
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-
-            border-radius: 100px;
-            border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
             width: fit-content;
-            gap: 3rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            gap: 1rem;
         }
 
-        [data-theme="dark"] header {
+        .nav-pill {
+            background-color: color-mix(in srgb, var(--bg-color) 60%, transparent);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 100px;
+            border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            padding: 0.85rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        [data-theme="dark"] .nav-pill {
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
         }
 
         .header-title {
-            font-weight: 500;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.12em;
             text-decoration: none;
             color: var(--text-color);
+            background-color: color-mix(in srgb, var(--bg-color) 55%, transparent);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent);
+            border-radius: 999px;
+            width: 3rem;
+            height: 3rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
         nav {
             display: flex;
             gap: 2.5rem;
             align-items: center;
+            min-height: 1.25rem;
         }
 
         nav a,
@@ -165,11 +182,15 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0 0 0.3rem 0;
+            padding: 0;
             font-family: inherit;
             font-size: inherit;
             text-transform: inherit;
             letter-spacing: inherit;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            min-height: 1.25rem;
         }
 
         /* Subtle hover underline for nav items */
@@ -179,7 +200,7 @@
             position: absolute;
             width: 100%;
             height: 1px;
-            bottom: 0;
+            bottom: -0.4rem;
             left: 0;
             background-color: var(--accent-color);
             transform: scaleX(0);
@@ -284,7 +305,7 @@
 
         .hero-title {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
+            font-size: clamp(1.8rem, 8.5vw, 8rem);
             font-weight: 800;
             line-height: 0.85;
             letter-spacing: -0.03em;
@@ -591,28 +612,62 @@
         }
 
         /* Responsive Design */
+        @keyframes swipeHint {
+            0%, 100% { transform: translateX(0); }
+            15% { transform: translateX(-15px); }
+            30% { transform: translateX(5px); }
+            45% { transform: translateX(-10px); }
+            60% { transform: translateX(0); }
+        }
+
         @media (max-width: 900px) {
-            .mobile-menu-btn {
-                display: block;
+            header {
+                width: 90vw;
+                max-width: 100%;
+                justify-content: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .header-title {
+                flex-shrink: 0;
+                width: 2.75rem;
+                height: 2.75rem;
+            }
+
+            .nav-pill {
+                flex: 1;
+                min-width: 0;
+                padding: 0.8rem 1.2rem;
             }
 
             nav {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background-color: var(--bg-color);
-                flex-direction: column;
-                justify-content: center;
-                gap: 3rem;
-                z-index: 90;
-                font-size: 1.25rem;
+                display: flex;
+                flex: 1;
+                min-width: 0;
+                gap: 1.5rem;
+                white-space: nowrap;
+                overflow-x: auto;
+                scrollbar-width: thin;
+                scrollbar-color: color-mix(in srgb, var(--text-color) 20%, transparent) transparent;
+                padding-bottom: 4px;
+                animation: swipeHint 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1s 1;
             }
 
-            nav.open {
-                display: flex;
+            nav::-webkit-scrollbar {
+                height: 3px;
+            }
+            
+            nav::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            
+            nav::-webkit-scrollbar-thumb {
+                background: color-mix(in srgb, var(--text-color) 20%, transparent);
+                border-radius: 10px;
+            }
+
+            .mobile-menu-btn {
+                display: none;
             }
 
             .experience-item,
@@ -631,6 +686,15 @@
             }
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJ42T57QL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-HGJ42T57QL');
+    </script>
 </head>
 
 <body>
@@ -640,16 +704,18 @@
         <!-- Header -->
         <header id="main-header">
             <a href="#top" class="header-title">NKP</a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">Menu</button>
-            <nav id="nav-menu">
-                <a href="#about" onclick="closeMobileMenu()">About</a>
-                <a href="#experience" onclick="closeMobileMenu()">Experience</a>
-                <a href="#projects" onclick="closeMobileMenu()">Projects</a>
-                <a href="#skills" onclick="closeMobileMenu()">Skills</a>
-                <a href="https://naveen-photography-portfolio.vercel.app/" target="_blank" onclick="closeMobileMenu()">Photography</a>
-                <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">Dark Mode</button>
-            </nav>
+            <div class="nav-pill">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">Menu</button>
+                <nav id="nav-menu">
+                    <a href="#about" onclick="closeMobileMenu()">About</a>
+                    <a href="#experience" onclick="closeMobileMenu()">Experience</a>
+                    <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+                    <a href="#skills" onclick="closeMobileMenu()">Skills</a>
+                    <a href="https://naveen-photography-portfolio.vercel.app/" target="_blank" onclick="closeMobileMenu(); if(typeof gtag === 'function') gtag('event', 'click_photography_nav', {'event_category': 'navigation', 'event_label': 'Photography Portfolio'});">Photography</a>
+                    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">Dark Mode</button>
+                </nav>
+            </div>
         </header>
 
         <!-- Hero Section -->
@@ -956,6 +1022,36 @@
         fetchVisitorGreeting();
 
         // Header scroll effect is handled by CSS, no JS needed for border
+
+        // --- 5. Google Analytics Section Tracking ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && typeof gtag === 'function') {
+                    const sectionName = entry.target.id || entry.target.className;
+                    gtag('event', 'section_view', {
+                        'event_category': 'Engagement',
+                        'event_label': sectionName
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- 6. Generic Click Tracking for GA4 ---
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a, button');
+            if (target && typeof gtag === 'function') {
+                const label = target.innerText.trim().substring(0, 50) || target.id || target.className || 'unknown';
+                gtag('event', 'ui_interaction', {
+                    'event_category': 'click',
+                    'event_label': label,
+                    'element_type': target.tagName.toLowerCase()
+                });
+            }
+        });
     </script>
 </body>
 
