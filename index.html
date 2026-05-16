@@ -975,13 +975,13 @@
                     </p>
                 </article>
 
-                <div class="stats-grid">
+                <div class="stats-grid" id="about-stats-grid">
                     <div class="stat-card">
-                        <span class="stat-value">5+</span>
+                        <span class="stat-value" id="years-exp-count">5+</span>
                         <span class="stat-label">YEARS EXP</span>
                     </div>
                     <div class="stat-card">
-                        <span class="stat-value">4</span>
+                        <span class="stat-value" id="certs-count">4</span>
                         <span class="stat-label">SALESFORCE CERTS</span>
                     </div>
                     <div class="stat-card" id="github-stat-card">
@@ -1345,7 +1345,43 @@
 
         // Header scroll effect is handled by CSS, no JS needed for border
 
-        // --- 4.2 GitHub API Integration (Dynamic Stat Card) ---
+        // --- 4.2 Shared Counter Animation & Static Stats ---
+        function animateStatCounter(element, endValue, appendText = '', duration = 1500) {
+            if (!element) return;
+            let start = 0;
+            const increment = endValue / (duration / 16);
+            
+            const animate = () => {
+                start += increment;
+                if (start < endValue) {
+                    element.innerText = Math.ceil(start) + appendText;
+                    requestAnimationFrame(animate);
+                } else {
+                    element.innerText = endValue + appendText;
+                }
+            };
+            
+            // Start from 0 immediately so it doesn't flash the final value
+            element.innerText = '0' + appendText;
+            requestAnimationFrame(animate);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const yearsEl = document.getElementById('years-exp-count');
+                    const certsEl = document.getElementById('certs-count');
+                    if (yearsEl) animateStatCounter(yearsEl, 5, '+');
+                    if (certsEl) animateStatCounter(certsEl, 4, '');
+                    statsObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        const statsGridElement = document.getElementById('about-stats-grid');
+        if (statsGridElement) statsObserver.observe(statsGridElement);
+
+        // --- 4.3 GitHub API Integration (Dynamic Stat Card) ---
         async function fetchGitHubStats() {
             try {
                 // Fetch public repositories count for sfdcnaveen
@@ -1355,22 +1391,8 @@
                 
                 const repoCountElement = document.getElementById('github-repo-count');
                 if (repoCountElement && data.public_repos !== undefined) {
-                    // Animate the counter for premium UI feel
-                    let start = 0;
-                    const end = data.public_repos;
-                    const duration = 1500; // 1.5 seconds animation
-                    const increment = end / (duration / 16);
-                    
-                    const animateCounter = () => {
-                        start += increment;
-                        if (start < end) {
-                            repoCountElement.innerText = Math.ceil(start) + '+';
-                            requestAnimationFrame(animateCounter);
-                        } else {
-                            repoCountElement.innerText = end;
-                        }
-                    };
-                    requestAnimationFrame(animateCounter);
+                    // Re-use the animation function for GitHub API data
+                    animateStatCounter(repoCountElement, data.public_repos, '+');
                 }
             } catch (error) {
                 console.log('GitHub API skipped, using fallback stats:', error.message);
