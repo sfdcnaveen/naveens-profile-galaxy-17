@@ -1443,29 +1443,61 @@
             const trackTextEl = document.getElementById('status-track');
             if (!trackTextEl) return;
             
-            // Configured with the user's Last.fm credentials.
-            const username = 'PNaveen'; 
-            const apiKey = 'a1e4d83894da64c09d4fb442b8469a19';
-            
             let currentTrack = "Blinding Lights from After Hours";
+            let previewUrl = null;
 
             try {
-                const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`);
-                if (!response.ok) throw new Error('Last.fm API Error');
+                const response = await fetch('/api/get-recent-track');
+                if (!response.ok) throw new Error('Serverless Function API Error');
                 const data = await response.json();
                 
-                if (data && data.recenttracks && data.recenttracks.track && data.recenttracks.track.length > 0) {
-                    const t = data.recenttracks.track[0];
-                    let albumName = t.album['#text'] ? t.album['#text'] : "Unknown Album";
-                    if (albumName.includes('(')) {
-                        albumName = albumName.substring(0, albumName.indexOf('(')).trim();
-                    }
-                    currentTrack = `${t.name} - ${albumName}`;
+                if (data.currentTrack) {
+                    currentTrack = data.currentTrack;
+                }
+                if (data.previewUrl) {
+                    previewUrl = data.previewUrl;
                 }
             } catch (error) {
                 console.log('Music API fallback:', error.message);
             }
-            trackTextEl.innerText = currentTrack;
+            
+            if (previewUrl) {
+                trackTextEl.innerHTML = `
+                    <span style="display: inline-flex; align-items: center; gap: 0.4rem; vertical-align: middle;">
+                        ${currentTrack}
+                        <button id="preview-play-btn" aria-label="Play 30s preview" style="background: var(--text-color); border: none; cursor: pointer; padding: 4px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--bg-color); transition: transform 0.2s ease, background 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </button>
+                        <audio id="track-preview-audio" src="${previewUrl}"></audio>
+                    </span>
+                `;
+                
+                const playBtn = document.getElementById('preview-play-btn');
+                const audio = document.getElementById('track-preview-audio');
+                let isPlaying = false;
+                
+                playBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (isPlaying) {
+                        audio.pause();
+                        playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+                        playBtn.style.background = 'var(--text-color)';
+                    } else {
+                        audio.play();
+                        playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+                        playBtn.style.background = '#fa243c';
+                    }
+                    isPlaying = !isPlaying;
+                });
+                
+                audio.addEventListener('ended', () => {
+                    isPlaying = false;
+                    playBtn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>';
+                    playBtn.style.background = 'var(--text-color)';
+                });
+            } else {
+                trackTextEl.innerText = currentTrack;
+            }
         }
 
         // --- 8. Live GitHub Pulse ---
