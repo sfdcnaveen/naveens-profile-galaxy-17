@@ -942,8 +942,8 @@
                 <div class="hero-decorative-blur"></div>
             </div>
             
-            <div id="live-status-widget" style="opacity: 0; transition: opacity 1s ease; margin-top: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 50px; background: color-mix(in srgb, var(--text-color) 3%, transparent); border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent); text-align: center; line-height: 1.6; font-size: 0.95rem; font-family: 'Outfit', sans-serif; letter-spacing: 0.02em; color: color-mix(in srgb, var(--text-color) 90%, transparent); max-width: 90vw;">
-                Grooving <span id="status-track" style="font-weight: 600; color: #fa243c; white-space: nowrap;">fetching track...</span> in Nellore weather <span id="status-weather" style="font-weight: 600; white-space: nowrap;">fetching weather...</span>
+            <div id="live-status-widget" style="opacity: 0; transition: opacity 1s ease; margin-top: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 30px; background: color-mix(in srgb, var(--text-color) 3%, transparent); border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent); text-align: center; line-height: 1.6; font-size: 0.95rem; font-family: 'Outfit', sans-serif; letter-spacing: 0.02em; color: color-mix(in srgb, var(--text-color) 90%, transparent); max-width: 90vw; display: inline-block; word-break: break-word;">
+                <span id="status-verb">Grooving to</span> <span id="status-track" style="font-weight: 600; color: #fa243c;">fetching track...</span> at <span id="status-weather" style="font-weight: 600; white-space: nowrap;">fetching weather...</span>
             </div>
 
             <p class="tagline" style="margin-top: 1rem;">Automating the future at TestVagrant Technologies.<br>Salesforce Automation Expert |
@@ -1054,7 +1054,7 @@
                     <div class="project-header">
                         <img src="aldar.png" alt="Aldar logo" class="project-icon">
                         <div class="item-title"><a href="https://www.aldar.com/en" target="_blank"
-                                rel="noopener noreferrer">Aldar ↗</a></div>
+                                rel="noopener noreferrer">Aldar &#x2197;&#xFE0E;</a></div>
                     </div>
                     <div class="item-content">
                         <p class="item-desc">Architected full-cycle Salesforce quality assurance for Dubai's premier developer, ensuring flawless post-sales and service operations through intelligent automation.</p>
@@ -1066,7 +1066,7 @@
                     <div class="project-header">
                         <img src="anz.png" alt="ANZ Bank logo" class="project-icon">
                         <div class="item-title"><a href="https://www.anz.com.au/support/complaints/" target="_blank"
-                                rel="noopener noreferrer">CMOS ↗</a></div>
+                                rel="noopener noreferrer">CMOS &#x2197;&#xFE0E;</a></div>
                     </div>
                     <div class="item-content">
                         <p class="item-desc">Secured the reliability of ANZ Bank's Complaint Management System, implementing rigorous validation frameworks to maintain absolute data integrity and regulatory compliance.</p>
@@ -1078,7 +1078,7 @@
                     <div class="project-header">
                         <img src="newnet.png" alt="NewNet application icon" class="project-icon">
                         <div class="item-title"><a href="https://sfdcnaveen.github.io/NewNetWebsite/" target="_blank">NewNet
-                                ↗</a></div>
+                                &#x2197;&#xFE0E;</a></div>
                     </div>
                     <div class="item-content">
                         <p class="item-desc">Engineered a native macOS menu-bar utility that simplifies media management via yt-dlp, focusing on low-overhead performance and user-centric format selection.</p>
@@ -1159,11 +1159,11 @@
                     <div id="tech-radar-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
                         <!-- Filled by JS -->
                         <div>
-                            <div class="item-title" style="font-size: 1rem;"><a href="https://playwright.dev/" target="_blank">Playwright Documentation ↗</a></div>
+                            <div class="item-title" style="font-size: 1rem;"><a href="https://playwright.dev/" target="_blank">Playwright Documentation &#x2197;&#xFE0E;</a></div>
                             <div class="item-meta" style="margin-top: 0.25rem; display: block;">END-TO-END TESTING</div>
                         </div>
                         <div>
-                            <div class="item-title" style="font-size: 1rem;"><a href="https://developer.salesforce.com/" target="_blank">Salesforce Developer ↗</a></div>
+                            <div class="item-title" style="font-size: 1rem;"><a href="https://developer.salesforce.com/" target="_blank">Salesforce Developer &#x2197;&#xFE0E;</a></div>
                             <div class="item-meta" style="margin-top: 0.25rem; display: block;">CRM PLATFORM</div>
                         </div>
                     </div>
@@ -1212,9 +1212,9 @@
                 </div>
 
                 <div class="social-links">
-                    <a href="mailto:pasupulatink@gmail.com">Email ↗</a>
-                    <a href="https://www.linkedin.com/in/naveenkumarpasupuleti/" target="_blank">LinkedIn ↗</a>
-                    <a href="https://github.com/sfdcnaveen" target="_blank">GitHub ↗</a>
+                    <a href="mailto:pasupulatink@gmail.com">Email &#x2197;&#xFE0E;</a>
+                    <a href="https://www.linkedin.com/in/naveenkumarpasupuleti/" target="_blank">LinkedIn &#x2197;&#xFE0E;</a>
+                    <a href="https://github.com/sfdcnaveen" target="_blank">GitHub &#x2197;&#xFE0E;</a>
                 </div>
             </div>
 
@@ -1457,15 +1457,19 @@
                 if (data.previewUrl) {
                     previewUrl = data.previewUrl;
                 }
+                if (data.verb) {
+                    const verbEl = document.getElementById('status-verb');
+                    if (verbEl) verbEl.innerText = data.verb;
+                }
             } catch (error) {
                 console.log('Music API fallback:', error.message);
             }
             
             if (previewUrl) {
                 trackTextEl.innerHTML = `
-                    <span style="display: inline-flex; align-items: center; gap: 0.4rem; vertical-align: middle;">
+                    <span>
                         ${currentTrack}
-                        <button id="preview-play-btn" aria-label="Play 30s preview" style="background: var(--text-color); border: none; cursor: pointer; padding: 4px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--bg-color); transition: transform 0.2s ease, background 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                        <button id="preview-play-btn" aria-label="Play 30s preview" style="background: var(--text-color); border: none; cursor: pointer; padding: 4px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: var(--bg-color); transition: transform 0.2s ease, background 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2); vertical-align: middle; margin-left: 0.25rem;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 2px;"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                         </button>
                         <audio id="track-preview-audio" src="${previewUrl}"></audio>
@@ -1552,7 +1556,7 @@
                     if (stories.length === 2) {
                         container.innerHTML = stories.map(story => `
                             <div>
-                                <div class="item-title" style="font-size: 1rem;"><a href="${story.url || `https://news.ycombinator.com/item?id=${story.id}`}" target="_blank">${story.title.substring(0, 50)}${story.title.length > 50 ? '...' : ''} ↗</a></div>
+                                <div class="item-title" style="font-size: 1rem;"><a href="${story.url || `https://news.ycombinator.com/item?id=${story.id}`}" target="_blank">${story.title.substring(0, 50)}${story.title.length > 50 ? '...' : ''} &#x2197;&#xFE0E;</a></div>
                                 <div class="item-meta" style="margin-top: 0.25rem; display: block;">TRENDING ON HACKER NEWS</div>
                             </div>
                         `).join('');
@@ -1564,11 +1568,11 @@
                 console.log('HN API down, using fallback:', error.message);
                 container.innerHTML = `
                     <div>
-                        <div class="item-title" style="font-size: 1rem;"><a href="https://playwright.dev/" target="_blank">Playwright Documentation ↗</a></div>
+                        <div class="item-title" style="font-size: 1rem;"><a href="https://playwright.dev/" target="_blank">Playwright Documentation &#x2197;&#xFE0E;</a></div>
                         <div class="item-meta" style="margin-top: 0.25rem; display: block;">END-TO-END TESTING</div>
                     </div>
                     <div>
-                        <div class="item-title" style="font-size: 1rem;"><a href="https://developer.salesforce.com/" target="_blank">Salesforce Developer ↗</a></div>
+                        <div class="item-title" style="font-size: 1rem;"><a href="https://developer.salesforce.com/" target="_blank">Salesforce Developer &#x2197;&#xFE0E;</a></div>
                         <div class="item-meta" style="margin-top: 0.25rem; display: block;">CRM PLATFORM</div>
                     </div>
                 `;
