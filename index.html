@@ -1443,40 +1443,19 @@
             const trackTextEl = document.getElementById('status-track');
             if (!trackTextEl) return;
             
-            // Configured with the user's Last.fm credentials.
-            const username = 'PNaveen'; 
-            const apiKey = 'a1e4d83894da64c09d4fb442b8469a19';
-            
             let currentTrack = "Blinding Lights from After Hours";
             let previewUrl = null;
 
             try {
-                const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`);
-                if (!response.ok) throw new Error('Last.fm API Error');
+                const response = await fetch('/api/get-recent-track');
+                if (!response.ok) throw new Error('Serverless Function API Error');
                 const data = await response.json();
                 
-                if (data && data.recenttracks && data.recenttracks.track && data.recenttracks.track.length > 0) {
-                    const t = data.recenttracks.track[0];
-                    let albumName = t.album['#text'] ? t.album['#text'] : "Unknown Album";
-                    if (albumName.includes('(')) {
-                        albumName = albumName.substring(0, albumName.indexOf('(')).trim();
-                    }
-                    currentTrack = `${t.name} - ${albumName}`;
-
-                    const artistName = t.artist ? t.artist['#text'] : '';
-                    if (t.name && artistName) {
-                        try {
-                            const itunesRes = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(t.name + ' ' + artistName)}&entity=song&limit=1`);
-                            if (itunesRes.ok) {
-                                const itunesData = await itunesRes.json();
-                                if (itunesData.results && itunesData.results.length > 0 && itunesData.results[0].previewUrl) {
-                                    previewUrl = itunesData.results[0].previewUrl;
-                                }
-                            }
-                        } catch (e) {
-                            console.log('iTunes API fallback:', e.message);
-                        }
-                    }
+                if (data.currentTrack) {
+                    currentTrack = data.currentTrack;
+                }
+                if (data.previewUrl) {
+                    previewUrl = data.previewUrl;
                 }
             } catch (error) {
                 console.log('Music API fallback:', error.message);
