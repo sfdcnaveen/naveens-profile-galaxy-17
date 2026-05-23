@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 export default function Footer() {
     return (
@@ -64,14 +63,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="testimonial-art" data-reveal="right">
-                            <div className="art-img-wrapper" style={{ minHeight: '280px', maxHeight: '30vh' }}>
-                                <Image
-                                    src="/testimonial-art.png"
-                                    alt="Visual representation of automated pipeline metrics"
-                                    fill
-                                    style={{ objectFit: 'contain' }}
-                                />
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -113,14 +105,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <div className="cta-art" data-reveal="right">
-                            <div className="art-img-wrapper" style={{ minHeight: '300px', maxHeight: '35vh' }}>
-                                <Image
-                                    src="/cta-art.png"
-                                    alt="Abstract automation visual composition"
-                                    fill
-                                    style={{ objectFit: 'contain' }}
-                                />
-                            </div>
+
                             <div className="index">Nº 08</div>
                             <div className="ribbon">NAVEEN KUMAR &nbsp;·&nbsp; FIN.</div>
                         </div>

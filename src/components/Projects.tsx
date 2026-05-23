@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 
 export default function Projects() {
     const [isMobile, setIsMobile] = useState(false);
@@ -109,14 +108,7 @@ export default function Projects() {
                                     </div>
                                     <h3>Aldar Real Estate</h3>
                                     <p>Architected full-cycle Salesforce QA for Dubai Aldar, automated service & sales cloud flows.</p>
-                                    <div className="img" style={{ position: 'relative' }}>
-                                        <Image 
-                                            src="/aldar.png" 
-                                            alt="Aldar logo" 
-                                            fill
-                                            style={{ objectFit: 'contain', padding: '16px' }}
-                                        />
-                                    </div>
+
                                     <div className="meta-row">
                                         <span className="year">2025 · DUBAI</span>
                                         <span>REAL ESTATE</span>
@@ -139,14 +131,7 @@ export default function Projects() {
                                     </div>
                                     <h3>CMOS / ANZ</h3>
                                     <p>Reliability testing for ANZ complaint management. Built data-integrity verification scripts.</p>
-                                    <div className="img" style={{ position: 'relative' }}>
-                                        <Image 
-                                            src="/anz.png" 
-                                            alt="ANZ Bank logo" 
-                                            fill
-                                            style={{ objectFit: 'contain', padding: '16px' }}
-                                        />
-                                    </div>
+
                                     <div className="meta-row">
                                         <span className="year">2024 · BANKING</span>
                                         <span>COMPLIANCE</span>
@@ -169,14 +154,7 @@ export default function Projects() {
                                     </div>
                                     <h3>NewNet Swift Utility</h3>
                                     <p>Native Swift menu-bar media manager utilizing yt-dlp. Low overhead, custom format selection.</p>
-                                    <div className="img" style={{ position: 'relative' }}>
-                                        <Image 
-                                            src="/newnet.png" 
-                                            alt="NewNet application icon" 
-                                            fill
-                                            style={{ objectFit: 'contain', padding: '16px' }}
-                                        />
-                                    </div>
+
                                     <div className="meta-row">
                                         <span className="year">2024 · MACOS</span>
                                         <span>SWIFT / UTILITY</span>
@@ -196,14 +174,7 @@ export default function Projects() {
                                     </div>
                                     <h3>SF Automation Suite</h3>
                                     <p>Playwright-based engine for complex Salesforce UI elements. Integrated into CI actions.</p>
-                                    <div className="img" style={{ position: 'relative' }}>
-                                        <Image 
-                                            src="/sf_clean.png" 
-                                            alt="SF Automation Suite logo" 
-                                            fill
-                                            style={{ objectFit: 'contain', padding: '16px' }}
-                                        />
-                                    </div>
+
                                     <div className="meta-row">
                                         <span className="year">2024 · ENGINE</span>
                                         <span>TEST ARCHITECTURE</span>

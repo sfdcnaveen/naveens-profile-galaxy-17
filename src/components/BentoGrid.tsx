@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 
 interface HNStory {
     id: number;
@@ -166,17 +165,7 @@ export default function BentoGrid() {
                     {/* Item 1: Tech Radar */}
                     {(filter === 'All' || filter === 'News') && (
                         <div className="lab" data-reveal>
-                            <div className="lab-img">
-                                <span className="badge">News</span>
-                                <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-                                    <Image 
-                                        src="/radar-art.png" 
-                                        alt="Tech Radar abstract illustration" 
-                                        fill
-                                        style={{ objectFit: 'cover' }}
-                                    />
-                                </div>
-                            </div>
+                            <span className="badge" style={{ display: 'inline-block', marginBottom: '8px', padding: '4px 8px', background: 'var(--ink)', color: 'var(--paper)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>News</span>
                             <div className="num-row">
                                 <span>Nº 01</span>
                                 <span>HN API</span>
@@ -200,17 +189,7 @@ export default function BentoGrid() {
                     {/* Item 2: Creative Lens */}
                     {(filter === 'All' || filter === 'Creative') && (
                         <div className="lab" data-reveal>
-                            <div className="lab-img">
-                                <span className="badge">Creative</span>
-                                <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-                                    <Image 
-                                        src="/photography-art.png" 
-                                        alt="Photography lens abstract illustration" 
-                                        fill
-                                        style={{ objectFit: 'cover' }}
-                                    />
-                                </div>
-                            </div>
+                            <span className="badge" style={{ display: 'inline-block', marginBottom: '8px', padding: '4px 8px', background: 'var(--ink)', color: 'var(--paper)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Creative</span>
                             <div className="num-row">
                                 <span>Nº 02</span>
                                 <span>Lens</span>
@@ -239,17 +218,7 @@ export default function BentoGrid() {
                             onClick={fetchDeveloperJoke}
                             style={{ cursor: 'pointer' }}
                         >
-                            <div className="lab-img">
-                                <span className="badge">Joke</span>
-                                <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-                                    <Image 
-                                        src="/coffee-art.png" 
-                                        alt="Coffee break abstract illustration" 
-                                        fill
-                                        style={{ objectFit: 'cover' }}
-                                    />
-                                </div>
-                            </div>
+                            <span className="badge" style={{ display: 'inline-block', marginBottom: '8px', padding: '4px 8px', background: 'var(--ink)', color: 'var(--paper)', fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Joke</span>
                             <div className="num-row">
                                 <span>Nº 03</span>
                                 <span>Joke API</span>

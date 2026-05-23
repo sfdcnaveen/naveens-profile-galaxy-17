@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 export default function Skills() {
     return (
@@ -20,14 +19,7 @@ export default function Skills() {
                     <div className="capabilities-art" data-reveal="left">
                         <span className="corner tl"></span>
                         <span className="corner br"></span>
-                        <div className="art-img-wrapper" style={{ minHeight: '300px', maxHeight: '35vh' }}>
-                            <Image 
-                                src="/capabilities-art.png" 
-                                alt="Minimalist grid diagram showing capabilities and testing metrics"
-                                fill
-                                style={{ objectFit: 'contain' }}
-                            />
-                        </div>
+
                         <div className="ribbon"><b>NAVEEN KUMAR</b> &nbsp;·&nbsp; CAPABILITIES MATRIX &nbsp;·&nbsp; NKP/26</div>
                     </div>
                     <div className="capabilities-copy" data-reveal>

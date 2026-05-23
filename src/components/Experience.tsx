@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 export default function Experience() {
     return (
@@ -48,14 +47,6 @@ export default function Experience() {
                         <p>
                             Architecting scalable quality assurance strategies for Salesforce. Custom TypeScript-Playwright suites.
                         </p>
-                        <div className="img" style={{ position: 'relative', width: '100%', height: '130px', marginTop: '16px' }}>
-                            <Image 
-                                src="/method-1.png" 
-                                alt="Visual diagram showing execution pipeline" 
-                                fill
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
                     </div>
 
                     {/* Stage 2 */}
@@ -68,14 +59,6 @@ export default function Experience() {
                         <p>
                             Led Salesforce QA migrations. Shifted legacy test suites to Playwright, reducing regression runs by 40%.
                         </p>
-                        <div className="img" style={{ position: 'relative', width: '100%', height: '130px', marginTop: '16px' }}>
-                            <Image 
-                                src="/method-2.png" 
-                                alt="Visual diagram showing legacy migration" 
-                                fill
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
                     </div>
 
                     {/* Stage 3 */}
@@ -88,14 +71,6 @@ export default function Experience() {
                         <p>
                             Established foundational testing methodologies for global Salesforce client rollouts and CRM features.
                         </p>
-                        <div className="img" style={{ position: 'relative', width: '100%', height: '130px', marginTop: '16px' }}>
-                            <Image 
-                                src="/method-3.png" 
-                                alt="Visual diagram showing foundational test setup" 
-                                fill
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
                     </div>
 
                     {/* Stage 4 */}
@@ -108,14 +83,6 @@ export default function Experience() {
                         <p>
                             Ready for new challenges in test architecture, framework engineering, and high-impact QA leadership.
                         </p>
-                        <div className="img" style={{ position: 'relative', width: '100%', height: '130px', marginTop: '16px' }}>
-                            <Image 
-                                src="/method-4.png" 
-                                alt="Visual diagram showing future growth" 
-                                fill
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
                     </div>
                 </div>
                 <div className="method-foot">

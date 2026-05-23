@@ -438,7 +438,7 @@ body::before {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  grid-template-columns: 1fr;
   gap: 36px;
   align-items: stretch;
   width: 100%;
@@ -453,7 +453,7 @@ body::before {
 .hero-copy .label { margin-bottom: 18px; }
 .hero-copy .lead { margin-bottom: 18px; max-width: 38ch; font-size: 15px; }
 .hero h1 {
-  font-size: clamp(36px, 4.2vw, 58px);
+  font-size: clamp(48px, 7vw, 92px);
   line-height: 1.0;
   margin-bottom: 18px;
 }
@@ -635,165 +635,15 @@ section.tight {
 }
 .section-header .lead { margin-top: 22px; }
 
-/* ---------- WIRE / GLOBAL TICKER ----------
- *
- * Slim editorial strip between the hero and the About section. Two
- * counter-scrolling marquees (cities → and contributors ←) signal that
- * the project is global and community-driven, without disrupting the
- * existing roman-numeral section count. Pure CSS animation; the track
- * content is duplicated in markup so the loop wraps seamlessly.
- */
-.wire {
-  border-bottom: 1px solid var(--line);
-  padding: 26px 0 28px;
-  background: var(--paper);
-  position: relative;
-  overflow: hidden;
-}
-.wire-inner {
-  display: grid;
-  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
-}
-.wire-left {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  border-right: 1px solid var(--line);
-  padding-right: 24px;
-  min-height: 56px;
-}
-.wire-mark {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.wire-pulse {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--coral);
-  display: inline-block;
-  animation: pulse 2.4s ease-in-out infinite;
-}
-.wire-title {
-  font-family: var(--sans);
-  font-size: 11px;
-  line-height: 1.4;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.wire-title b {
-  color: var(--ink);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-.wire-title span {
-  color: var(--ink-faint);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.wire-rows {
-  display: grid;
-  gap: 8px;
-  min-width: 0;
-}
-.wire-row {
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-}
-.marquee-track {
-  display: inline-flex;
-  align-items: center;
-  gap: 36px;
-  width: max-content;
-  white-space: nowrap;
-  animation: marquee-x 52s linear infinite;
-  will-change: transform;
-}
-.wire-row.reverse .marquee-track {
-  animation-direction: reverse;
-  animation-duration: 64s;
-}
-.wire-row:hover .marquee-track {
-  animation-play-state: paused;
-}
-@keyframes marquee-x {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.wire-item {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  font-family: var(--sans);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  color: var(--ink-mute);
-  text-decoration: none;
-  flex-shrink: 0;
-}
-.wire-item .wire-dot {
-  color: var(--coral);
-  font-size: 16px;
-  line-height: 0;
-  position: relative;
-  top: -1px;
-  margin-right: 2px;
-}
-.wire-item .wire-coord {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  color: var(--ink-faint);
-  letter-spacing: 0;
-}
-.wire-item .wire-name {
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--ink);
-  font-weight: 500;
-}
-.wire-item .wire-handle {
-  font-family: var(--mono);
-  color: var(--ink);
-  font-size: 11.5px;
-  font-weight: 500;
-}
-.wire-item .wire-role {
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--coral);
-  font-size: 10px;
-}
-.wire-item.is-link {
-  transition: color 160ms ease;
-}
-.wire-item.is-link:hover .wire-handle {
-  color: var(--coral);
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
-
 /* ---------- ABOUT ---------- */
 .about-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1fr;
   gap: 80px;
   align-items: center;
 }
 .about h2 {
-  font-size: clamp(32px, 4vw, 56px);
+  font-size: clamp(42px, 6vw, 84px);
   margin: 20px 0 24px;
 }
 .about .label { margin-bottom: 18px; }
@@ -878,7 +728,7 @@ section.tight {
 /* ---------- CAPABILITIES ---------- */
 .capabilities-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
 }
@@ -904,7 +754,7 @@ section.tight {
 .capabilities-art .corner { position: absolute; width: 22px; height: 22px; border-color: var(--ink-faint); border-style: solid; border-width: 0; }
 .capabilities-art .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
 .capabilities-art .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
-.capabilities-copy h2 { font-size: clamp(32px, 4vw, 54px); margin: 18px 0 22px; }
+.capabilities-copy h2 { font-size: clamp(42px, 6vw, 84px); margin: 18px 0 22px; }
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1296,7 +1146,7 @@ section.tight {
 .work-rule .roman { color: var(--coral); font-family: var(--serif); font-style: italic; font-size: 14px; letter-spacing: 0.04em; text-transform: none; }
 .work-grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr 0.85fr;
+  grid-template-columns: 1fr;
   gap: 48px;
   align-items: center;
   position: relative;
@@ -1322,7 +1172,7 @@ section.tight {
 .work-copy h2 {
   font-family: var(--sans);
   font-weight: 800;
-  font-size: clamp(32px, 4vw, 54px);
+  font-size: clamp(42px, 6vw, 84px);
   line-height: 1.0;
   letter-spacing: -0.024em;
   margin: 20px 0 24px;
@@ -1450,13 +1300,13 @@ section.tight {
 /* ---------- TESTIMONIAL / COLLABORATORS ---------- */
 .testimonial-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 80px;
   align-items: center;
 }
 .testimonial-copy h2 {
   font-family: var(--sans);
-  font-size: clamp(36px, 4vw, 54px);
+  font-size: clamp(42px, 6vw, 84px);
   font-weight: 700;
   letter-spacing: -0.022em;
   line-height: 1.12;
@@ -1573,12 +1423,12 @@ section.tight {
 /* ---------- CTA ---------- */
 .cta-grid {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1fr;
   gap: 50px;
   align-items: center;
 }
 .cta h2 {
-  font-size: clamp(40px, 5.2vw, 76px);
+  font-size: clamp(48px, 7vw, 92px);
   margin: 20px 0 24px;
 }
 .cta .lead { margin-bottom: 24px; max-width: 36ch; font-size: 15px; }
@@ -1887,15 +1737,6 @@ footer {
   .work-arrows { position: relative; right: auto; bottom: auto; margin-top: 36px; justify-content: center; width: 100%; }
   .partners { grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .nav-links, .brand-meta, .nav-cta { display: none; }
-  /* wire — stack the field label above the marquee rows */
-  .wire-inner { grid-template-columns: 1fr; gap: 14px; }
-  .wire-left {
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-    padding-right: 0;
-    padding-bottom: 12px;
-    min-height: 0;
-  }
 }
 @media (max-width: 560px) {
   .container { padding: 0 16px; }

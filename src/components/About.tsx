@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 export default function About() {
     return (
@@ -45,23 +44,10 @@ export default function About() {
                                 <span style={{ color: 'var(--ink)' }}>Est. MMXXI</span>
                             </span>
                         </div>
-                    </div>
-                    <div className="about-art" data-reveal="right">
-                        <div className="art-img-wrapper" style={{ minHeight: '300px', maxHeight: '35vh' }}>
-                            <Image 
-                                src="/about-art.png" 
-                                alt="Abstract visual composition representing automated testing flows"
-                                fill
-                                style={{ objectFit: 'contain' }}
-                            />
-                        </div>
-                        <div className="about-side-note">
-                            <b></b>
-                            From script execution<br />to full test coverage,<br />we construct<br />deterministic systems<br />of quality.
-                        </div>
-                        <div className="about-caption">
-                            <b>Studies in validation · stability · automated execution.</b>
-                            (Naveen Kumar, MMXXVI)
+                        <div className="about-side-note" style={{ marginTop: '40px', borderTop: '1px solid var(--line)', paddingTop: '20px' }}>
+                            <b>Studies in validation · stability · automated execution.</b><br />
+                            From script execution to full test coverage, we construct deterministic systems of quality.<br />
+                            <span style={{ fontSize: '10px', color: 'var(--ink-faint)' }}>(Naveen Kumar, MMXXVI)</span>
                         </div>
                     </div>
                 </div>

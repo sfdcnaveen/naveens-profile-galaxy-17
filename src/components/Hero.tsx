@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 
 const weatherCodes: { [key: number]: { desc: string; icon: string } } = {
     0: { desc: 'Clear sky', icon: '☀️' },
@@ -37,7 +36,6 @@ export default function Hero() {
         currentTrack: 'fetching track...',
         previewUrl: null
     });
-    const [githubPulse, setGithubPulse] = useState('Actively coding & automating');
     const [githubRepos, setGithubRepos] = useState(20);
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -83,7 +81,7 @@ export default function Hero() {
         fetchRecentMusic();
     }, []);
 
-    // Fetch GitHub Pulse & Repos count
+    // Fetch GitHub Repos count
     useEffect(() => {
         async function fetchGithubData() {
             try {
@@ -95,28 +93,6 @@ export default function Hero() {
                     }
                 }
             } catch (err) {}
-
-            try {
-                const eventsRes = await fetch('https://api.github.com/users/sfdcnaveen/events/public?per_page=1');
-                if (eventsRes.ok) {
-                    const eventsData = await eventsRes.json();
-                    if (eventsData && eventsData.length > 0) {
-                        const latestEvent = eventsData[0];
-                        let actionText = 'Actively contributing to open source';
-                        const repoName = latestEvent.repo?.name ? latestEvent.repo.name.split('/')[1] : '';
-                        if (latestEvent.type === 'PushEvent' && repoName) {
-                            actionText = `Recently pushed to ${repoName}`;
-                        } else if (latestEvent.type === 'PullRequestEvent' && repoName) {
-                            actionText = `Recently opened a PR in ${repoName}`;
-                        } else if (latestEvent.type === 'CreateEvent' && repoName) {
-                            actionText = `Recently created repository ${repoName}`;
-                        }
-                        setGithubPulse(actionText);
-                    }
-                }
-            } catch (err) {
-                setGithubPulse('Actively coding and contributing');
-            }
         }
         fetchGithubData();
     }, []);
@@ -278,99 +254,11 @@ export default function Hero() {
                             <span className="coord">14.4426° N · 79.9865° E</span>
                         </div>
                     </div>
-                    <div className="hero-art" data-reveal="scale">
-                        <span className="corner tl"></span>
-                        <span className="corner tr"></span>
-                        <span className="corner bl"></span>
-                        <span className="corner br"></span>
-                        <span className="annot annot-tl coord">FIG. 01 / NKP-26</span>
-                        <span className="annot annot-tr">Plate Nº 01</span>
-                        <span className="annot annot-bl coord">LOC · Nellore, IN</span>
-                        <span className="annot annot-br">
-                            Composed in <span style={{ color: 'var(--coral)' }}>Next.js</span>
-                        </span>
-                        
-                        <div 
-                            style={{ 
-                                width: '100%', 
-                                height: '100%', 
-                                position: 'relative',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center'
-                            }}
-                        >
-                            <Image 
-                                src="/avatar.jpg" 
-                                alt="Naveen Kumar Pasupuleti"
-                                fill
-                                style={{ objectFit: 'contain', objectPosition: 'right center' }}
-                                priority
-                            />
-                        </div>
 
-                        <div className="index">
-                            <span>
-                                <span className="n">01</span>Plan
-                            </span>
-                            <span className="on">
-                                <span className="n">02</span>Automate
-                            </span>
-                            <span>
-                                <span className="n">03</span>Execute
-                            </span>
-                            <span>
-                                <span className="n">04</span>Verify
-                            </span>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            {/* Global Ticker Wire Section */}
-            <section className="wire" data-od-id="wire" aria-label="Global wire — cities and contributor activities">
-                <div className="container wire-inner">
-                    <div className="wire-left">
-                        <span className="wire-mark" aria-hidden="true">
-                            <span className="wire-pulse"></span>
-                        </span>
-                        <span className="wire-title">
-                            <b>Activity Feed</b>
-                            <span>Nellore · Bangalore · Live</span>
-                        </span>
-                    </div>
-                    <div className="wire-rows">
-                        <div className="wire-row">
-                            <div className="marquee-track" aria-hidden="true">
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">14.44°N</span><span className="wire-name">Nellore</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">12.97°N</span><span className="wire-name">Bangalore</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">13.08°N</span><span className="wire-name">Chennai</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">19.07°N</span><span className="wire-name">Mumbai</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">28.61°N</span><span className="wire-name">Delhi</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">52.52°N</span><span className="wire-name">Berlin</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">37.77°N</span><span className="wire-name">San Francisco</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">14.44°N</span><span className="wire-name">Nellore</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">12.97°N</span><span className="wire-name">Bangalore</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">13.08°N</span><span className="wire-name">Chennai</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">19.07°N</span><span className="wire-name">Mumbai</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-coord">28.61°N</span><span className="wire-name">Delhi</span></span>
-                            </div>
-                        </div>
-                        <div className="wire-row reverse">
-                            <div className="marquee-track">
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@sfdcnaveen</span><span className="wire-role">{githubPulse}</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@playwright</span><span className="wire-role">TEST AUTOMATION</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@salesforce</span><span className="wire-role">CRM ENGINEERING</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@typescript</span><span className="wire-role">TYPE-SAFE CODE</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@sfdcnaveen</span><span className="wire-role">ACTIVELY CONTRIBUTING</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@github-actions</span><span className="wire-role">CI/CD INTEGRATION</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@sfdcnaveen</span><span className="wire-role">{githubPulse}</span></span>
-                                <span className="wire-item"><span className="wire-dot">·</span><span className="wire-handle">@playwright</span><span className="wire-role">TEST AUTOMATION</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
         </>
     );
 }
