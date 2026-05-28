@@ -1,0 +1,60 @@
+@import './variables.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: var(--slds-g-color-neutral-base-95);
+    color: var(--slds-g-color-neutral-base-10);
+    font-family: var(--slds-g-font-family-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overflow-y: scroll; /* Force scrollbar to prevent horizontal layout shift on short tabs */
+    line-height: 1.5;
+    font-size: 14px; /* Typical SLDS base font size */
+}
+
+/* Typography Utilities */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--slds-g-color-neutral-base-10);
+}
+
+p {
+    color: var(--slds-g-color-neutral-base-30);
+}
+
+/* Layout Utilities */
+.container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--slds-g-spacing-large);
+}
+
+a {
+    color: var(--slds-g-color-brand-base-50);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--slds-g-color-brand-base-60);
+    text-decoration: underline;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Global Selection */
+::selection {
+    background-color: var(--slds-g-color-brand-base-50);
+    color: var(--slds-g-color-neutral-base-100);
+}
