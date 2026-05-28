@@ -1,10 +1,10 @@
 import React from 'react';
 import { experienceContent } from '@/data/content';
-import Card from './Card';
+import Accordion from './Accordion';
 
 export default function Experience() {
     return (
-        <Card title="Work Experience">
+        <Accordion title="Work Experience">
             <div style={{ padding: 'var(--slds-g-spacing-small)' }}>
                 {experienceContent.timeline.map((step, index) => (
                     <div key={index} style={{ marginBottom: 'var(--slds-g-spacing-large)', position: 'relative', paddingLeft: 'var(--slds-g-spacing-large)', borderLeft: '2px solid var(--slds-g-color-border-base-40)' }}>
@@ -15,6 +15,6 @@ export default function Experience() {
                     </div>
                 ))}
             </div>
-        </Card>
+        </Accordion>
     );
 }

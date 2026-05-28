@@ -1,10 +1,10 @@
 import React from 'react';
 import { skillsContent } from '@/data/content';
-import Card from './Card';
+import Accordion from './Accordion';
 
 export default function Skills() {
     return (
-        <Card title="Skills & Core Competencies">
+        <Accordion title="Skills & Core Competencies">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--slds-g-spacing-medium)' }}>
                 {skillsContent.skills.map((skill, index) => (
                     <div key={index} style={{ border: '1px solid var(--slds-g-color-border-base-40)', padding: 'var(--slds-g-spacing-medium)', borderRadius: '4px' }}>
@@ -17,6 +17,6 @@ export default function Skills() {
                     </div>
                 ))}
             </div>
-        </Card>
+        </Accordion>
     );
 }

@@ -9,10 +9,18 @@ const GlobalHeader = () => {
                     {/* App Launcher Icon mock */}
                     <div className={styles.appLauncher}>
                         <svg viewBox="0 0 52 52" className={styles.icon}>
-                            <path d="M10 10h10v10H10zm11 0h10v10H21zm11 0h10v10H32zM10 21h10v10H10zm11 0h10v10H21zm11 0h10v10H32zM10 32h10v10H10zm11 0h10v10H21zm11 0h10v10H32z"/>
+                            <circle cx="10" cy="10" r="4" fill="currentColor" />
+                            <circle cx="26" cy="10" r="4" fill="currentColor" />
+                            <circle cx="42" cy="10" r="4" fill="currentColor" />
+                            <circle cx="10" cy="26" r="4" fill="currentColor" />
+                            <circle cx="26" cy="26" r="4" fill="currentColor" />
+                            <circle cx="42" cy="26" r="4" fill="currentColor" />
+                            <circle cx="10" cy="42" r="4" fill="currentColor" />
+                            <circle cx="26" cy="42" r="4" fill="currentColor" />
+                            <circle cx="42" cy="42" r="4" fill="currentColor" />
                         </svg>
                     </div>
-                    <span className={styles.appName}>Portfolio App</span>
+                    <span className={styles.appName}>Portfolio</span>
                 </div>
                 <div className={styles.center}>
                     <div className={styles.searchBar}>

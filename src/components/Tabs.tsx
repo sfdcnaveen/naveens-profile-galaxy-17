@@ -6,6 +6,7 @@ import styles from './Tabs.module.css';
 interface TabItem {
     id: string;
     label: string;
+    icon?: string;
     content: React.ReactNode;
 }
 
@@ -32,7 +33,10 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
                             aria-selected={activeTab === tab.id}
                             onClick={() => setActiveTab(tab.id)}
                         >
-                            {tab.label}
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                {tab.icon && <img src={tab.icon} alt="" style={{ width: '16px', height: '16px', borderRadius: '4px' }} />}
+                                {tab.label}
+                            </span>
                         </button>
                     </li>
                 ))}

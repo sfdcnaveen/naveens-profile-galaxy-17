@@ -1,10 +1,10 @@
 import React from 'react';
 import { aboutContent } from '@/data/content';
-import Card from './Card';
+import Accordion from './Accordion';
 
 export default function About() {
     return (
-        <Card title="About Me">
+        <Accordion title="About Me">
             <div style={{ padding: '0 var(--slds-g-spacing-small)' }}>
                 <p style={{ marginBottom: 'var(--slds-g-spacing-medium)', color: 'var(--slds-g-color-neutral-base-10)' }}>
                     {aboutContent.description}
@@ -15,6 +15,6 @@ export default function About() {
                     <p style={{ marginTop: 'var(--slds-g-spacing-small)', fontStyle: 'italic' }}>- {aboutContent.sideNote.signature}</p>
                 </div>
             </div>
-        </Card>
+        </Accordion>
     );
 }

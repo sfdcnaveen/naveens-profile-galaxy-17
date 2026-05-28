@@ -1,10 +1,10 @@
 import React from 'react';
 import { projectsContent } from '@/data/content';
-import Card from './Card';
+import Accordion from './Accordion';
 
 export default function Projects() {
     return (
-        <Card title="Projects & Open Source">
+        <Accordion title="Projects & Open Source">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--slds-g-spacing-medium)' }}>
                 {projectsContent.projects.map((project, index) => {
                     const CardWrapper = project.link ? 'a' : 'div';
@@ -30,6 +30,6 @@ export default function Projects() {
                     View GitHub Projects ↗
                 </a>
             </div>
-        </Card>
+        </Accordion>
     );
 }

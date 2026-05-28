@@ -51,7 +51,7 @@ export const aboutContent = {
     sideNote: {
         title: 'Studies in validation · stability · automated execution.',
         desc: 'From script execution to full test coverage, we construct deterministic systems of quality.',
-        signature: '(Naveen Kumar, MMXXVI)'
+        signature: '(Naveen Kumar, Pasupuleti)'
     }
 };
 
@@ -66,15 +66,15 @@ export const skillsContent = {
     skills: [
         {
             num: '01',
-            tag: 'Automation',
-            title: 'Core Web\nAutomation',
-            desc: 'Modern test suites using Playwright and TypeScript (90% capacity). Experienced in Selenium and WebdriverIO.',
-        },
-        {
-            num: '02',
             tag: 'Salesforce',
             title: 'Salesforce\nQA Specialist',
             desc: 'Certified Platform Developer I & II, AI Associate, and Platform Foundations. Expert in service/sales cloud testing.',
+        },
+        {
+            num: '02',
+            tag: 'Automation',
+            title: 'Core Web\nAutomation',
+            desc: 'Modern test suites using Playwright and TypeScript (90% capacity). Experienced in Selenium and WebdriverIO.',
         },
         {
             num: '03',
@@ -103,18 +103,6 @@ export const experienceContent = {
     note: 'Each milestone represents a deep dive into execution speed, test stability, and platform engineering.',
     timeline: [
         {
-            num: '01',
-            role: 'SDET',
-            meta: 'TestVagrant · 2025 — Present',
-            desc: 'Architecting scalable quality assurance strategies for Salesforce. Custom TypeScript-Playwright suites.',
-        },
-        {
-            num: '02',
-            role: 'Consultant',
-            meta: 'Capgemini · 2023 — 2025',
-            desc: 'Led Salesforce QA migrations. Shifted legacy test suites to Playwright, reducing regression runs by 40%.',
-        },
-        {
             num: '03',
             role: 'Associate',
             meta: 'Capgemini · 2021 — 2023',
@@ -122,6 +110,18 @@ export const experienceContent = {
         },
         {
             num: '04',
+            role: 'Consultant',
+            meta: 'Capgemini · 2023 — 2025',
+            desc: 'Led Salesforce QA migrations. Shifted legacy test suites to Playwright, reducing regression runs by 40%.',
+        },
+        {
+            num: '02',
+            role: 'SDET',
+            meta: 'TestVagrant · 2025 — Present',
+            desc: 'Architecting scalable quality assurance strategies for Salesforce. Custom TypeScript-Playwright suites.',
+        },
+        {
+            num: '01',
             role: 'Next Chapter',
             meta: 'Future · Opportunities',
             desc: 'Ready for new challenges in test architecture, framework engineering, and high-impact QA leadership.',
@@ -221,7 +221,7 @@ export const footerContent = {
         quote: "Naveen's shift-left automation design reduced our Salesforce regression cycles by 40%. Flakiness was eliminated, and our deployment velocity doubled.",
         authorInitial: 'C',
         authorRole: 'Lead Delivery Manager',
-        authorCompany: 'Capgemini Salesforce Operations',
+        authorCompany: 'ANZ Salesforce Operations',
     },
     partners: [
         { icon: '🎭', name: 'Playwright', type: 'Testing' },

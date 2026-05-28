@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://sfdcnaveen.github.io/',
     },
+    icons: {
+        icon: '/avatar.png',
+    },
     openGraph: {
         type: 'website',
         title: 'Naveen Kumar Pasupuleti — Salesforce Automation & SDET Expert',

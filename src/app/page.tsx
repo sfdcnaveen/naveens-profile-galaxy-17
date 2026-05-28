@@ -6,7 +6,6 @@ import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
-import Labs from '@/components/Labs';
 import Card from '@/components/Card';
 import { footerContent } from '@/data/content';
 
@@ -18,8 +17,8 @@ export default function Home() {
                 <HighlightsPanel />
                 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 'var(--slds-g-spacing-large)', alignItems: 'start' }}>
-                    <div className="main-column">
-                        <div style={{ backgroundColor: 'var(--slds-g-color-neutral-base-100)', border: '1px solid var(--slds-g-color-border-base-40)', borderRadius: '4px', boxShadow: 'var(--slds-g-shadow-depth-1)' }}>
+                    <div className="main-column" style={{ minHeight: '65vh', minWidth: 0 }}>
+                        <div style={{ backgroundColor: 'var(--slds-g-color-neutral-base-100)', border: '1px solid var(--slds-g-color-border-base-40)', borderRadius: '4px', boxShadow: 'var(--slds-g-shadow-depth-1)', height: '100%' }}>
                             <Tabs
                                 defaultActiveTab="details"
                                 tabs={[
@@ -29,7 +28,8 @@ export default function Home() {
                                         content: (
                                             <div style={{ padding: '0 var(--slds-g-spacing-medium)', display: 'flex', flexDirection: 'column', gap: 'var(--slds-g-spacing-medium)' }}>
                                                 <About />
-                                                <Skills />
+                                                <Experience />
+                                                <Projects />
                                             </div>
                                         )
                                     },
@@ -38,17 +38,7 @@ export default function Home() {
                                         label: 'Related',
                                         content: (
                                             <div style={{ padding: '0 var(--slds-g-spacing-medium)', display: 'flex', flexDirection: 'column', gap: 'var(--slds-g-spacing-medium)' }}>
-                                                <Experience />
-                                                <Projects />
-                                            </div>
-                                        )
-                                    },
-                                    {
-                                        id: 'labs',
-                                        label: 'Labs',
-                                        content: (
-                                            <div style={{ padding: '0 var(--slds-g-spacing-medium)', display: 'flex', flexDirection: 'column', gap: 'var(--slds-g-spacing-medium)' }}>
-                                                <Labs />
+                                                <Skills />
                                             </div>
                                         )
                                     }
@@ -60,10 +50,6 @@ export default function Home() {
                     <aside className="sidebar" style={{ display: 'flex', flexDirection: 'column', gap: 'var(--slds-g-spacing-medium)' }}>
                         <Card title="Contact Info">
                             <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.875rem' }}>
-                                <li style={{ padding: 'var(--slds-g-spacing-small) 0', borderBottom: '1px solid var(--slds-g-color-border-base-40)' }}>
-                                    <span style={{ color: 'var(--slds-g-color-neutral-base-30)', display: 'block', fontSize: '0.75rem' }}>Email</span>
-                                    <a href="mailto:pasupulatink@gmail.com">pasupulatink@gmail.com</a>
-                                </li>
                                 <li style={{ padding: 'var(--slds-g-spacing-small) 0', borderBottom: '1px solid var(--slds-g-color-border-base-40)' }}>
                                     <span style={{ color: 'var(--slds-g-color-neutral-base-30)', display: 'block', fontSize: '0.75rem' }}>LinkedIn</span>
                                     <a href="https://linkedin.com/in/naveenkumarpasupuleti" target="_blank" rel="noreferrer">linkedin.com/in/naveenkumarpasupuleti</a>
