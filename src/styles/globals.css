@@ -6,20 +6,27 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     background-color: var(--slds-g-color-neutral-base-95);
     color: var(--slds-g-color-neutral-base-10);
     font-family: var(--slds-g-font-family-base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-    overflow-y: scroll; /* Force scrollbar to prevent horizontal layout shift on short tabs */
     line-height: 1.5;
     font-size: 14px; /* Typical SLDS base font size */
 }
+html {
+    overflow-y: scroll; /* Force scrollbar to prevent horizontal layout shift on short tabs */
+}
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 400;
     line-height: 1.25;
     color: var(--slds-g-color-neutral-base-10);
@@ -34,6 +41,19 @@ p {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 var(--slds-g-spacing-large);
+}
+
+.page-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--slds-g-spacing-large);
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .page-layout {
+        grid-template-columns: 1fr 300px;
+    }
 }
 
 a {

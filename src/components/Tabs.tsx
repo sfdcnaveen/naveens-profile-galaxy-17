@@ -28,13 +28,24 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
                         role="presentation"
                     >
                         <button
+                            type="button"
                             className={styles.tabButton}
                             role="tab"
                             aria-selected={activeTab === tab.id}
                             onClick={() => setActiveTab(tab.id)}
                         >
                             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                {tab.icon && <img src={tab.icon} alt="" style={{ width: '16px', height: '16px', borderRadius: '4px' }} />}
+                                {tab.icon && (
+                                    <img
+                                        src={tab.icon}
+                                        alt=""
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            borderRadius: '4px',
+                                        }}
+                                    />
+                                )}
                                 {tab.label}
                             </span>
                         </button>
