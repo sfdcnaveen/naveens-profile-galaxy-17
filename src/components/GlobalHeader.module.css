@@ -1,0 +1,93 @@
+.globalHeader {
+    background-color: var(--slds-g-color-neutral-base-100);
+    border-bottom: 1px solid var(--slds-g-color-border-base-40);
+    height: 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 var(--slds-g-spacing-large);
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: var(--slds-g-spacing-small);
+}
+
+.appLauncher {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.appLauncher:hover {
+    background-color: var(--slds-g-color-neutral-base-95);
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--slds-g-color-neutral-base-30);
+}
+
+.appName {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--slds-g-color-neutral-base-10);
+}
+
+.center {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 var(--slds-g-spacing-large);
+}
+
+.searchBar {
+    background-color: var(--slds-g-color-neutral-base-100);
+    border: 1px solid var(--slds-g-color-border-base-40);
+    border-radius: 4px;
+    padding: 0.25rem var(--slds-g-spacing-medium);
+    width: 100%;
+    color: var(--slds-g-color-neutral-base-30);
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    cursor: text;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.userProfile {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--slds-g-color-neutral-base-95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.userProfile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
