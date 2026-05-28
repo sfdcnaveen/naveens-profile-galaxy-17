@@ -945,7 +945,15 @@
 
         <!-- Hero Section -->
         <section class="hero" style="padding-top: 4rem;">
+            <!-- Festival Greeting Container -->
+            <div id="festival-greeting" style="display: none; opacity: 0; transition: opacity 1s ease; margin-top: -4.5rem; margin-bottom: 5.5rem; padding: 0.85rem 1.5rem; border-radius: 30px; background: color-mix(in srgb, var(--text-color) 3%, transparent); border: 1px solid color-mix(in srgb, var(--text-color) 10%, transparent); text-align: center; line-height: 1.6; font-size: 0.95rem; font-family: 'Outfit', sans-serif; letter-spacing: 0.02em; color: color-mix(in srgb, var(--text-color) 90%, transparent); max-width: 90vw; word-break: break-word; z-index: 3;">
+                <span id="festival-icon">✨</span>
+                <span id="festival-text" style="font-weight: 600; margin: 0 8px;">Happy Festival!</span>
+                <span id="festival-icon-right">✨</span>
+            </div>
+
             <div class="hero-title-wrapper" style="margin-top: -2.5rem;">
+
                 <h1 class="hero-title">
                     <span class="line-1">NAVEEN</span>
                     <span class="line-2">KUMAR</span>
@@ -1633,6 +1641,49 @@
                 }
             });
         }
+
+        // --- Festival Greetings ---
+        async function setFestivalGreeting() {
+            try {
+                const response = await fetch('/api/festivals.json');
+                if (!response.ok) return;
+                const data = await response.json();
+                
+                // Get today's date in YYYY-MM-DD format based on local time
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const day = String(today.getDate()).padStart(2, '0');
+                const dateString = `${year}-${month}-${day}`;
+                
+                const todayFestival = data[dateString];
+                
+                if (todayFestival) {
+                    const greetingElement = document.getElementById('festival-greeting');
+                    const textElement = document.getElementById('festival-text');
+                    const iconElement = document.getElementById('festival-icon');
+                    const iconRightElement = document.getElementById('festival-icon-right');
+                    
+                    if (greetingElement && textElement && iconElement && iconRightElement) {
+                        textElement.textContent = 'Happy ' + todayFestival.event + '!';
+                        
+                        const emoji = todayFestival.icon || '✨';
+                        iconElement.textContent = emoji;
+                        iconRightElement.textContent = emoji;
+                        
+                        greetingElement.style.display = 'inline-block';
+                        // Trigger reflow before changing opacity
+                        void greetingElement.offsetWidth;
+                        greetingElement.style.opacity = '1';
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch festival data:", error);
+            }
+        }
+        
+        // Initialize festival greeting
+        setFestivalGreeting();
 
         // --- 6. Generic Click Tracking for GA4 ---
         document.addEventListener('click', function (e) {
