@@ -1,7 +1,8 @@
 export const siteConfig = {
     name: 'Naveen Kumar Pasupuleti',
     title: 'Salesforce Automation & SDET Expert',
-    description: 'High-impact SDET and Salesforce Automation expert specializing in Playwright, TypeScript, and CI/CD test architecture.',
+    description:
+        'High-impact SDET and Salesforce Automation expert specializing in Playwright, TypeScript, and CI/CD test architecture.',
     url: 'https://sfdcnaveen.github.io/',
     location: {
         city: 'Nellore',
@@ -15,7 +16,7 @@ export const siteConfig = {
     },
     meta: {
         keywords: 'Salesforce Automation, Playwright, TypeScript, CI/CD, SDET, Quality Engineering',
-    }
+    },
 };
 
 export const heroContent = {
@@ -28,7 +29,8 @@ export const heroContent = {
         part3: 'and',
         highlight3: 'scale',
     },
-    description: 'High-impact SDET expert specializing in the Salesforce ecosystem, Playwright automation systems, CI/CD pipeline integrations, and deterministic engineering feedback loops.',
+    description:
+        'High-impact SDET expert specializing in the Salesforce ecosystem, Playwright automation systems, CI/CD pipeline integrations, and deterministic engineering feedback loops.',
     stats: [
         { value: '5+', labelPart1: 'years', labelPart2: 'exp', highlight: false },
         { value: '4', labelPart1: 'salesforce', labelPart2: 'certs', highlight: false },
@@ -46,13 +48,14 @@ export const aboutContent = {
         highlight2: 'uncompromising',
         part3: 'software',
     },
-    description: 'I am a modern quality engineer and automation architect. Specializing in the Salesforce ecosystem and modern JS automation using Playwright and TypeScript, with a focus on deterministic test suites, rapid feedback, and enterprise-scale quality engineering.',
+    description:
+        'I am a modern quality engineer and automation architect. Specializing in the Salesforce ecosystem and modern JS automation using Playwright and TypeScript, with a focus on deterministic test suites, rapid feedback, and enterprise-scale quality engineering.',
     footerRow: 'Plan · Automate · Execute · Verify · Repeat',
     sideNote: {
         title: 'Studies in validation · stability · automated execution.',
         desc: 'From script execution to full test coverage, we construct deterministic systems of quality.',
-        signature: '(Naveen Kumar, Pasupuleti)'
-    }
+        signature: '(Naveen Kumar, Pasupuleti)',
+    },
 };
 
 export const skillsContent = {
@@ -62,7 +65,8 @@ export const skillsContent = {
         highlight1: 'for enterprise',
         part2: 'reliability',
     },
-    description: 'I build automated verification systems tailored for complex Salesforce application logic and modern web frameworks, focusing on execution speed and stability.',
+    description:
+        'I build automated verification systems tailored for complex Salesforce application logic and modern web frameworks, focusing on execution speed and stability.',
     skills: [
         {
             num: '01',
@@ -87,8 +91,8 @@ export const skillsContent = {
             tag: 'APIs',
             title: 'Integration\n& APIs',
             desc: 'REST Assured automation and mock API designs. Validation of service interfaces and backend contracts.',
-        }
-    ]
+        },
+    ],
 };
 
 export const experienceContent = {
@@ -125,8 +129,8 @@ export const experienceContent = {
             role: 'Next Chapter',
             meta: 'Future · Opportunities',
             desc: 'Ready for new challenges in test architecture, framework engineering, and high-impact QA leadership.',
-        }
-    ]
+        },
+    ],
 };
 
 export const projectsContent = {
@@ -136,11 +140,7 @@ export const projectsContent = {
         highlight1: 'deterministic',
         part2: 'feedback loops',
     },
-    meta: [
-        '● sfdcnaveen / repositories',
-        '● Nellore · Bangalore',
-        '● Verified build state: green'
-    ],
+    meta: ['● sfdcnaveen / repositories', '● Nellore · Bangalore', '● Verified build state: green'],
     projects: [
         {
             label: 'Featured Client QA',
@@ -150,6 +150,7 @@ export const projectsContent = {
             year: '2025 · DUBAI',
             tags: 'REAL ESTATE',
             link: 'https://www.aldar.com/en',
+            icon: '/aldar.png',
         },
         {
             label: 'Compliance Testing',
@@ -159,6 +160,7 @@ export const projectsContent = {
             year: '2024 · BANKING',
             tags: 'COMPLIANCE',
             link: 'https://www.anz.com.au/support/complaints/',
+            icon: '/anz.png',
         },
         {
             label: 'macOS Utility',
@@ -168,6 +170,7 @@ export const projectsContent = {
             year: '2024 · MACOS',
             tags: 'SWIFT / UTILITY',
             link: 'https://sfdcnaveen.github.io/NewNetWebsite/',
+            icon: '/newnet.png',
         },
         {
             label: 'Proprietary Engine',
@@ -177,42 +180,9 @@ export const projectsContent = {
             year: '2024 · ENGINE',
             tags: 'TEST ARCHITECTURE',
             link: null, // No link
-        }
-    ]
-};
-
-export const bentoContent = {
-    label: 'Labs · Nº 04',
-    headline: {
-        part1: 'A living archive of',
-        highlight1: 'experiments',
-        part2: ', widgets, and',
-        highlight2: 'creative escapes',
-    },
-    items: [
-        {
-            id: 'News',
-            num: 'Nº 01',
-            type: 'HN API',
-            title: 'Tech Radar',
-            desc: 'Fetching real-time HackerNews top tech stories.',
+            icon: '/sf_clean.png',
         },
-        {
-            id: 'Creative',
-            num: 'Nº 02',
-            type: 'Lens',
-            title: 'Creative Lens',
-            desc: 'A part of me lives in quiet frames. Captured through the lens I always carry. Everyday moments, seen with feeling.',
-            link: 'https://naveen-photography-portfolio.vercel.app/'
-        },
-        {
-            id: 'Joke',
-            num: 'Nº 03',
-            type: 'Joke API',
-            title: 'Coffee Break',
-            desc: 'Dynamic developer jokes to lighten the mood.'
-        }
-    ]
+    ],
 };
 
 export const footerContent = {
@@ -223,23 +193,4 @@ export const footerContent = {
         authorRole: 'Lead Delivery Manager',
         authorCompany: 'ANZ Salesforce Operations',
     },
-    partners: [
-        { icon: '🎭', name: 'Playwright', type: 'Testing' },
-        { icon: 'TS', name: 'TypeScript', type: 'Language' },
-        { icon: '⚙️', name: 'Actions', type: 'CI/CD' },
-        { icon: '🐳', name: 'Docker', type: 'Containers' },
-        { icon: '📊', name: 'Meteo', type: 'API' },
-        { icon: '🎵', name: 'Last.fm', type: 'Media' },
-    ],
-    cta: {
-        label: 'Start a conversation · Nº 07',
-        headline: {
-            part1: "Let's build something",
-            highlight1: 'robust',
-            part2: 'and',
-            highlight2: 'seamlessly',
-            part3: 'automated',
-        },
-        desc: "I am available for automation framework reviews, Capgemini/Salesforce QA consulting, or high-impact SDET leadership roles. Let's define your testing standards.",
-    }
 };
