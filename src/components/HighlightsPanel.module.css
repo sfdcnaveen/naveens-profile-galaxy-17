@@ -9,6 +9,7 @@
 
 .mainInfo {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: var(--slds-g-spacing-medium);
     margin-bottom: var(--slds-g-spacing-medium);
@@ -107,6 +108,7 @@
 
 .keyFields {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     margin: 0;
     padding: 0;
