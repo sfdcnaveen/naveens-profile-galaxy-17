@@ -1,6 +1,30 @@
 import React from 'react';
 import { projectsContent } from '@/data/content';
 import Accordion from './Accordion';
+function ProjectCard({
+    project,
+    children,
+}: {
+    project: (typeof projectsContent.projects)[0];
+    children: React.ReactNode;
+}) {
+    const style: React.CSSProperties = {
+        display: 'block',
+        border: '1px solid var(--slds-g-color-border-base-40)',
+        borderRadius: '4px',
+        padding: 'var(--slds-g-spacing-medium)',
+        color: 'inherit',
+        textDecoration: 'none',
+    };
+    if (project.link) {
+        return (
+            <a href={project.link} target="_blank" rel="noreferrer noopener" style={style}>
+                {children}
+            </a>
+        );
+    }
+    return <div style={style}>{children}</div>;
+}
 
 export default function Projects() {
     return (
@@ -13,28 +37,8 @@ export default function Projects() {
                 }}
             >
                 {projectsContent.projects.map((project, index) => {
-                    const CardWrapper = project.link ? 'a' : 'div';
-                    const props = project.link
-                        ? ({
-                              href: project.link,
-                              target: '_blank',
-                              rel: 'noreferrer noopener',
-                          } as React.AnchorHTMLAttributes<HTMLAnchorElement>)
-                        : {};
-
                     return (
-                        <CardWrapper
-                            key={index}
-                            {...props}
-                            style={{
-                                display: 'block',
-                                border: '1px solid var(--slds-g-color-border-base-40)',
-                                borderRadius: '4px',
-                                padding: 'var(--slds-g-spacing-medium)',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
+                        <ProjectCard key={index} project={project}>
                             <div
                                 style={{
                                     display: 'flex',
@@ -110,7 +114,7 @@ export default function Projects() {
                             >
                                 {project.tags}
                             </div>
-                        </CardWrapper>
+                        </ProjectCard>
                     );
                 })}
             </div>
