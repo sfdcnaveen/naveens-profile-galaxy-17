@@ -1,5 +1,8 @@
 .tabsContainer {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .tabNav {
@@ -30,12 +33,13 @@
 
 .tabItem.active .tabButton {
     border-bottom-color: var(--slds-g-color-brand-base-50);
-    font-weight: 700;
+    text-shadow: 0.4px 0 0 currentColor;
     color: var(--slds-g-color-neutral-base-10);
 }
 
 .tabContent {
     padding: var(--slds-g-spacing-medium) 0;
+    flex-grow: 1;
 }
 
 .tabPanel {

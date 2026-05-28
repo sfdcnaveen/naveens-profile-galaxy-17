@@ -5,8 +5,8 @@ import '@/styles/globals.css';
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://sfdcnaveen.github.io'),
-    title: 'Naveen Kumar Pasupuleti — Salesforce Automation & SDET Expert',
-    description: 'Naveen Kumar Pasupuleti is a high-impact SDET and Salesforce Automation expert specializing in Playwright, TypeScript, and CI/CD test architecture.',
+    title: 'Naveen Kumar Pasupuleti — Salesforce QA, Tester & SDET Expert',
+    description: 'Naveen Kumar Pasupuleti is a high-impact SDET, Salesforce QA, and automation expert specializing in Playwright, SFDC testing, and CI/CD architecture.',
     alternates: {
         canonical: 'https://sfdcnaveen.github.io/',
     },
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     },
     openGraph: {
         type: 'website',
-        title: 'Naveen Kumar Pasupuleti — Salesforce Automation & SDET Expert',
-        description: 'SDET at TestVagrant Technologies. Building robust automation frameworks for enterprise Salesforce applications.',
+        title: 'Naveen Kumar Pasupuleti — Salesforce QA, Tester & SDET Expert',
+        description: 'SDET at TestVagrant Technologies. Building robust automation frameworks for enterprise SFDC testing and Salesforce QA.',
         url: 'https://sfdcnaveen.github.io/',
         images: [
             {
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Naveen Kumar Pasupuleti — SDET Expert',
-        description: 'Salesforce Automation Specialist and Playwright Architect.',
+        title: 'Naveen Kumar Pasupuleti — Salesforce QA & SDET Expert',
+        description: 'Salesforce Automation Specialist, SFDC Tester, and Playwright Architect.',
         images: ['/avatar.png'],
     }
 };
@@ -38,7 +38,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <head>
                 {/* Google tag (gtag.js) */}
                 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HGJ42T57QL"></script>
@@ -49,6 +49,54 @@ export default function RootLayout({
                             function gtag() { dataLayer.push(arguments); }
                             gtag('js', new Date());
                             gtag('config', 'G-HGJ42T57QL');
+                        `
+                    }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Person",
+                            "name": "Naveen Kumar Pasupuleti",
+                            "jobTitle": "SDET (Software Development Engineer in Test)",
+                            "description": "Salesforce Automation Expert and Playwright Specialist dedicated to building robust automation frameworks.",
+                            "url": "https://sfdcnaveen.github.io/",
+                            "image": "https://sfdcnaveen.github.io/avatar.png",
+                            "sameAs": [
+                                "https://www.linkedin.com/in/naveenkumarpasupuleti/",
+                                "https://github.com/sfdcnaveen"
+                            ],
+                            "worksFor": {
+                                "@type": "Organization",
+                                "name": "TestVagrant Technologies"
+                            },
+                            "knowsAbout": [
+                                "Salesforce QA",
+                                "Salesforce Tester",
+                                "SFDC Testing",
+                                "Salesforce Automation",
+                                "Playwright",
+                                "TypeScript",
+                                "CI/CD Pipelines",
+                                "Test Architecture",
+                                "API Automation",
+                                "Selenium"
+                            ]
+                        })
+                    }}
+                />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                try {
+                                    var theme = localStorage.getItem('theme');
+                                    if (theme) {
+                                        document.documentElement.setAttribute('data-theme', theme);
+                                    }
+                                } catch (e) {}
+                            })();
                         `
                     }}
                 />

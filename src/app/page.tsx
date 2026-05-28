@@ -6,7 +6,9 @@ import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Experience from '@/components/Experience';
 import Projects from '@/components/Projects';
+import Certifications from '@/components/Certifications';
 import Card from '@/components/Card';
+import LastFmWidget from '@/components/LastFmWidget';
 import { footerContent } from '@/data/content';
 
 export default function Home() {
@@ -17,8 +19,8 @@ export default function Home() {
                 <HighlightsPanel />
                 
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 'var(--slds-g-spacing-large)', alignItems: 'start' }}>
-                    <div className="main-column" style={{ minHeight: '65vh', minWidth: 0 }}>
-                        <div style={{ backgroundColor: 'var(--slds-g-color-neutral-base-100)', border: '1px solid var(--slds-g-color-border-base-40)', borderRadius: '4px', boxShadow: 'var(--slds-g-shadow-depth-1)', height: '100%' }}>
+                    <div className="main-column" style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}>
+                        <div style={{ minHeight: '65vh', backgroundColor: 'var(--slds-g-color-neutral-base-100)', border: '1px solid var(--slds-g-color-border-base-40)', borderRadius: '4px', boxShadow: 'var(--slds-g-shadow-depth-1)', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                             <Tabs
                                 defaultActiveTab="details"
                                 tabs={[
@@ -29,7 +31,24 @@ export default function Home() {
                                             <div style={{ padding: '0 var(--slds-g-spacing-medium)', display: 'flex', flexDirection: 'column', gap: 'var(--slds-g-spacing-medium)' }}>
                                                 <About />
                                                 <Experience />
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'projects',
+                                        label: 'Projects',
+                                        content: (
+                                            <div style={{ padding: '0 var(--slds-g-spacing-medium)' }}>
                                                 <Projects />
+                                            </div>
+                                        )
+                                    },
+                                    {
+                                        id: 'certifications',
+                                        label: 'Certifications',
+                                        content: (
+                                            <div style={{ padding: '0 var(--slds-g-spacing-medium)' }}>
+                                                <Certifications />
                                             </div>
                                         )
                                     },
@@ -69,6 +88,8 @@ export default function Home() {
                                 - {footerContent.testimonial.authorRole}, {footerContent.testimonial.authorCompany}
                             </div>
                         </Card>
+                        
+                        <LastFmWidget />
                     </aside>
                 </div>
             </main>

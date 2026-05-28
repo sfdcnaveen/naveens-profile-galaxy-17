@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './GlobalHeader.module.css';
+import ThemeToggle from './ThemeToggle';
 
 const GlobalHeader = () => {
     return (
@@ -27,7 +28,8 @@ const GlobalHeader = () => {
                         <span>Search Salesforce...</span>
                     </div>
                 </div>
-                <div className={styles.right}>
+                <div className={styles.right} style={{ display: 'flex', alignItems: 'center' }}>
+                    <ThemeToggle />
                     <div className={styles.userProfile}>
                         <img src="/avatar.png" alt="User Profile" />
                     </div>

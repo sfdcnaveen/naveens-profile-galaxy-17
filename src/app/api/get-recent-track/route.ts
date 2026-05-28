@@ -9,7 +9,7 @@ export async function GET() {
         return NextResponse.json({
             currentTrack: "Blinding Lights - After Hours",
             previewUrl: "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/17/b4/8f/17b48f9a-0b93-6bb8-fe1d-3a16623c2cfb/mzaf_9560252727299052414.plus.aac.p.m4a",
-            verb: "Listening to"
+            verb: "Listening To"
         }, {
             headers: {
                 'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=600',

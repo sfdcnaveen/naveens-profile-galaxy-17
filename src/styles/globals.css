@@ -13,6 +13,7 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    overflow-y: scroll; /* Force scrollbar to prevent horizontal layout shift on short tabs */
     line-height: 1.5;
     font-size: 14px; /* Typical SLDS base font size */
 }

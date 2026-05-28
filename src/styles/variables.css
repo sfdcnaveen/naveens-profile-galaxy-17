@@ -25,3 +25,17 @@
   /* Fonts */
   --slds-g-font-family-base: "Salesforce Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
+[data-theme="dark"] {
+  --slds-g-color-neutral-base-95: #0A0A0A;
+  --slds-g-color-neutral-base-100: #121212;
+  --slds-g-color-neutral-base-10: #FAFAFA;
+  --slds-g-color-neutral-base-30: #8A8A8A;
+  --slds-g-color-brand-base-50: #64B5F6; /* Use a SLDS blue for brand so links are visible */
+  --slds-g-color-brand-base-60: #42A5F5;
+  --slds-g-color-border-base-40: #333333;
+  --slds-g-color-border-base-10: #444444;
+  
+  --slds-g-shadow-depth-1: 0 2px 2px 0 rgba(0, 0, 0, 0.4);
+  --slds-g-shadow-depth-2: 0 4px 4px 0 rgba(0, 0, 0, 0.6);
+}
