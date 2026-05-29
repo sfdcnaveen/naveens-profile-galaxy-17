@@ -9,21 +9,35 @@ const HighlightsPanel = () => {
     useEffect(() => {
         const fetchWeather = async () => {
             try {
-                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=14.442599&longitude=79.986458&current=temperature_2m,weather_code');
+                const response = await fetch(
+                    'https://api.open-meteo.com/v1/forecast?latitude=14.442599&longitude=79.986458&current=temperature_2m,weather_code'
+                );
                 if (!response.ok) return;
                 const data = await response.json();
-                
+
                 const weatherCodes: Record<number, { icon: string }> = {
-                    0: { icon: '☀️' }, 1: { icon: '🌤️' }, 2: { icon: '⛅' }, 3: { icon: '☁️' },
-                    45: { icon: '🌫️' }, 48: { icon: '🌫️' }, 51: { icon: '🌦️' }, 53: { icon: '🌦️' },
-                    55: { icon: '🌦️' }, 61: { icon: '🌧️' }, 63: { icon: '🌧️' }, 65: { icon: '🌧️' },
-                    71: { icon: '❄️' }, 73: { icon: '❄️' }, 75: { icon: '❄️' }, 95: { icon: '⛈️' }
+                    0: { icon: '☀️' },
+                    1: { icon: '🌤️' },
+                    2: { icon: '⛅' },
+                    3: { icon: '☁️' },
+                    45: { icon: '🌫️' },
+                    48: { icon: '🌫️' },
+                    51: { icon: '🌦️' },
+                    53: { icon: '🌦️' },
+                    55: { icon: '🌦️' },
+                    61: { icon: '🌧️' },
+                    63: { icon: '🌧️' },
+                    65: { icon: '🌧️' },
+                    71: { icon: '❄️' },
+                    73: { icon: '❄️' },
+                    75: { icon: '❄️' },
+                    95: { icon: '⛈️' },
                 };
-                
+
                 const temp = Math.round(data.current.temperature_2m);
                 const code = data.current.weather_code;
                 const icon = weatherCodes[code]?.icon || '☀️';
-                
+
                 setWeather(`${icon} ${temp}°C`);
             } catch (error) {
                 console.log('Weather API failed', error);
@@ -40,16 +54,20 @@ const HighlightsPanel = () => {
                 </div>
                 <div className={styles.textInfo}>
                     <span className={styles.entityName}>Profile Record</span>
-                    <h1 className={styles.recordName}>Naveen's Portfolio</h1>
+                    <h1 className={styles.recordName}>Naveen&apos;s Portfolio</h1>
                 </div>
                 <div className={styles.actions}>
-                    <a href="https://naveen-photography-portfolio.vercel.app/" target="_blank" rel="noreferrer" style={{ textDecoration: 'none' }}>
-                        <button className={styles.buttonNeutral}>Creative Lens</button>
+                    <a
+                        href="https://naveen-kumar-pasupuleti-resume.vercel.app"
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <button className={styles.buttonNeutral}>Resume</button>
                     </a>
                     <a href="/api/contact" style={{ textDecoration: 'none' }}>
                         <button className={styles.buttonBrand}>Send Email</button>
                     </a>
-                    
                 </div>
             </div>
             <ul className={styles.keyFields}>
@@ -67,8 +85,19 @@ const HighlightsPanel = () => {
                 </li>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>GitHub Pulse</span>
-                    <span className={styles.fieldValue} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <span style={{ width: '8px', height: '8px', backgroundColor: '#4ade80', borderRadius: '50%', display: 'inline-block' }}></span>
+                    <span
+                        className={styles.fieldValue}
+                        style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
+                    >
+                        <span
+                            style={{
+                                width: '8px',
+                                height: '8px',
+                                backgroundColor: '#4ade80',
+                                borderRadius: '50%',
+                                display: 'inline-block',
+                            }}
+                        ></span>
                         Actively coding
                     </span>
                 </li>
