@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Tabs.module.css';
 
 interface TabItem {
@@ -17,6 +17,23 @@ interface TabsProps {
 
 const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
     const [activeTab, setActiveTab] = useState(defaultActiveTab || tabs[0].id);
+
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash.replace('#', '');
+            if (!hash) return;
+
+            const matchedTab = tabs.find((t) => hash.startsWith(`tab-${t.id}`));
+            if (matchedTab) {
+                setActiveTab(matchedTab.id);
+            }
+        };
+
+        window.addEventListener('hashchange', handleHashChange);
+        handleHashChange();
+
+        return () => window.removeEventListener('hashchange', handleHashChange);
+    }, [tabs]);
 
     return (
         <div className={styles.tabsContainer}>
