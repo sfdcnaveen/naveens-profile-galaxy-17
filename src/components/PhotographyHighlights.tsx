@@ -49,7 +49,10 @@ const PhotographyHighlights = () => {
     return (
         <div className={styles.highlightsPanel}>
             <div className={styles.mainInfo}>
-                <div className={styles.iconContainer} style={{ backgroundColor: '#ff5a5f' }}>
+                <div
+                    className={styles.iconContainer}
+                    style={{ backgroundColor: 'var(--slds-g-color-brand-base-50)' }}
+                >
                     <svg
                         viewBox="0 0 24 24"
                         style={{ width: '32px', height: '32px', fill: 'white' }}

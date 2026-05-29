@@ -76,7 +76,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
                         role="tabpanel"
                         className={`${styles.tabPanel} ${activeTab === tab.id ? styles.activePanel : ''}`}
                     >
-                        {activeTab === tab.id && tab.content}
+                        {tab.content}
                     </div>
                 ))}
             </div>

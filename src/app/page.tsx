@@ -47,7 +47,6 @@ export default function Home() {
                                         content: (
                                             <div
                                                 style={{
-                                                    padding: '0 var(--slds-g-spacing-medium)',
                                                     display: 'flex',
                                                     flexDirection: 'column',
                                                     gap: 'var(--slds-g-spacing-medium)',
@@ -64,7 +63,8 @@ export default function Home() {
                                         content: (
                                             <div
                                                 style={{
-                                                    padding: '0 var(--slds-g-spacing-medium)',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
                                                 }}
                                             >
                                                 <Projects />
@@ -77,7 +77,8 @@ export default function Home() {
                                         content: (
                                             <div
                                                 style={{
-                                                    padding: '0 var(--slds-g-spacing-medium)',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
                                                 }}
                                             >
                                                 <Certifications />
@@ -90,7 +91,6 @@ export default function Home() {
                                         content: (
                                             <div
                                                 style={{
-                                                    padding: '0 var(--slds-g-spacing-medium)',
                                                     display: 'flex',
                                                     flexDirection: 'column',
                                                     gap: 'var(--slds-g-spacing-medium)',

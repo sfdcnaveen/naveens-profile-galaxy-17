@@ -15,10 +15,19 @@ export default function PhotographyPage() {
             <GlobalHeader />
             <main
                 className="container"
-                style={{ flexGrow: 1, paddingBottom: 'var(--slds-g-spacing-large)' }}
+                style={{
+                    flexGrow: 1,
+                    paddingBottom: 'var(--slds-g-spacing-large)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'stretch',
+                    width: '100%',
+                }}
             >
                 <PhotographyHighlights />
-                <PhotographyGallery />
+                <div style={{ width: '100%', flexGrow: 1 }}>
+                    <PhotographyGallery />
+                </div>
             </main>
         </div>
     );
