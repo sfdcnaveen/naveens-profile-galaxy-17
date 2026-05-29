@@ -195,9 +195,10 @@ const GlobalHeader = () => {
                                         </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href="https://naveen-photography-portfolio.vercel.app/"
+                                        <Link
+                                            href="/photography"
                                             className={styles.appItem}
+                                            onClick={() => setIsAppLauncherOpen(false)}
                                         >
                                             <div
                                                 className={styles.appIconWrapper}
@@ -227,7 +228,7 @@ const GlobalHeader = () => {
                                                     Creative visual captures
                                                 </span>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
