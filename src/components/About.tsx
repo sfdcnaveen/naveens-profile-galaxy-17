@@ -65,7 +65,7 @@ export default function About() {
                                 textTransform: 'uppercase',
                                 color: 'var(--slds-g-color-neutral-base-30)',
                                 marginTop: '0.5rem',
-                                letterSpacing: '0.05em',
+                                letterSpacing: 0,
                                 fontWeight: 600,
                             }}
                         >
@@ -99,7 +99,7 @@ export default function About() {
                                 textTransform: 'uppercase',
                                 color: 'var(--slds-g-color-neutral-base-30)',
                                 marginTop: '0.5rem',
-                                letterSpacing: '0.05em',
+                                letterSpacing: 0,
                                 fontWeight: 600,
                             }}
                         >
@@ -133,7 +133,7 @@ export default function About() {
                                 textTransform: 'uppercase',
                                 color: 'var(--slds-g-color-neutral-base-30)',
                                 marginTop: '0.5rem',
-                                letterSpacing: '0.05em',
+                                letterSpacing: 0,
                                 fontWeight: 600,
                             }}
                         >

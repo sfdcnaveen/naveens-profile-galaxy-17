@@ -1,7 +1,8 @@
 .globalHeader {
     background-color: var(--slds-g-color-neutral-base-100);
     border-bottom: 1px solid var(--slds-g-color-border-base-40);
-    height: 50px;
+    box-shadow: 0 1px 0 rgba(24, 24, 24, 0.04);
+    height: 56px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -12,7 +13,8 @@
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 var(--slds-g-spacing-large);
+    padding: 0 var(--slds-g-spacing-medium);
+    gap: var(--slds-g-spacing-medium);
 }
 
 .left {
@@ -28,17 +30,24 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border-radius: 4px;
+    border: 1px solid transparent;
+    border-radius: var(--slds-g-radius-border-1);
+    color: var(--slds-g-color-brand-base-50);
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
 
 .appLauncher:hover {
-    background-color: var(--slds-g-color-neutral-base-95);
+    background-color: var(--slds-g-color-brand-base-90);
+    border-color: rgba(1, 118, 211, 0.24);
 }
 
 .icon {
     width: 20px;
     height: 20px;
-    fill: var(--slds-g-color-neutral-base-30);
+    fill: currentColor;
 }
 
 .appLauncherWrapper {
@@ -52,23 +61,26 @@
     top: 100%;
     left: 0;
     margin-top: 0.5rem;
-    width: 320px;
+    width: 360px;
     background-color: var(--slds-g-color-neutral-base-100);
     border: 1px solid var(--slds-g-color-border-base-40);
-    border-radius: 4px;
+    border-radius: var(--slds-g-radius-border-2);
     box-shadow: var(--slds-g-shadow-depth-2, 0 2px 4px rgba(0, 0, 0, 0.1));
+    overflow: hidden;
     z-index: 9000;
 }
 
 .appLauncherHeader {
-    padding: var(--slds-g-spacing-small) var(--slds-g-spacing-medium);
+    padding: var(--slds-g-spacing-medium);
     border-bottom: 1px solid var(--slds-g-color-border-base-40);
     font-weight: 700;
     font-size: 1rem;
     color: var(--slds-g-color-neutral-base-10);
-    background-color: var(--slds-g-color-neutral-base-95);
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    background: linear-gradient(
+        180deg,
+        var(--slds-g-color-brand-base-90),
+        var(--slds-g-color-neutral-base-100)
+    );
 }
 
 .appList {
@@ -85,17 +97,22 @@
     padding: var(--slds-g-spacing-medium);
     text-decoration: none;
     color: inherit;
-    transition: background-color 0.1s ease;
+    border-left: 3px solid transparent;
+    transition:
+        background-color 0.1s ease,
+        border-color 0.1s ease;
 }
 
 .appItem:hover {
-    background-color: var(--slds-g-color-neutral-base-95);
+    background-color: var(--slds-g-color-brand-base-90);
+    border-left-color: var(--slds-g-color-brand-base-50);
+    text-decoration: none;
 }
 
 .appIconWrapper {
     width: 36px;
     height: 36px;
-    border-radius: 4px;
+    border-radius: var(--slds-g-radius-border-2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -129,8 +146,9 @@
 
 .appName {
     font-weight: 600;
-    font-size: 1.125rem;
-    color: var(--slds-g-color-neutral-base-10);
+    font-size: 1rem;
+    color: var(--slds-g-color-brand-base-70);
+    white-space: nowrap;
 }
 
 .center {
@@ -147,12 +165,12 @@
 }
 
 .searchBar {
-    background-color: var(--slds-g-color-neutral-base-100);
+    background-color: var(--slds-g-color-neutral-base-95);
     border: 1px solid var(--slds-g-color-border-base-40);
-    border-radius: 4px;
-    padding: 0 0.5rem;
+    border-radius: var(--slds-g-radius-border-1);
+    padding: 0 0.625rem;
     width: 100%;
-    height: 32px;
+    height: 36px;
     color: var(--slds-g-color-neutral-base-30);
     display: flex;
     align-items: center;
@@ -162,7 +180,8 @@
 
 .searchBar:focus-within {
     border-color: var(--slds-g-color-brand-base-50);
-    box-shadow: 0 0 3px var(--slds-g-color-brand-base-50);
+    background-color: var(--slds-g-color-neutral-base-100);
+    box-shadow: var(--slds-g-shadow-focus);
 }
 
 .searchIcon {
@@ -194,11 +213,11 @@
     margin-top: 4px;
     background-color: var(--slds-g-color-neutral-base-100);
     border: 1px solid var(--slds-g-color-border-base-40);
-    border-radius: 4px;
+    border-radius: var(--slds-g-radius-border-2);
     box-shadow: var(--slds-g-shadow-depth-2, 0 2px 4px rgba(0, 0, 0, 0.1));
     z-index: 9000;
     max-height: 400px;
-    overflow-y: auto;
+    overflow: hidden auto;
 }
 
 .searchList {
@@ -224,8 +243,9 @@
 }
 
 a.searchResultLink:hover {
-    background-color: var(--slds-g-color-neutral-base-95);
+    background-color: var(--slds-g-color-brand-base-90);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .searchResultContent {
@@ -274,6 +294,8 @@ a.searchResultLink:hover {
     border-radius: 50%;
     overflow: hidden;
     background-color: var(--slds-g-color-neutral-base-95);
+    border: 2px solid var(--slds-g-color-neutral-base-100);
+    box-shadow: 0 0 0 1px var(--slds-g-color-border-base-40);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,4 +306,30 @@ a.searchResultLink:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+@media (max-width: 760px) {
+    .globalHeader {
+        height: auto;
+    }
+
+    .container {
+        flex-wrap: wrap;
+        padding: var(--slds-g-spacing-small);
+    }
+
+    .left {
+        flex: 1 1 auto;
+    }
+
+    .center {
+        flex-basis: 100%;
+        order: 3;
+        max-width: none;
+        margin: 0;
+    }
+
+    .appLauncherMenu {
+        width: min(360px, calc(100vw - 1.5rem));
+    }
 }
