@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { trackEvent } from '@/lib/tracking';
 import styles from './Tabs.module.css';
 
 interface TabItem {
@@ -49,7 +50,10 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
                             className={styles.tabButton}
                             role="tab"
                             aria-selected={activeTab === tab.id}
-                            onClick={() => setActiveTab(tab.id)}
+                            onClick={() => {
+                                setActiveTab(tab.id);
+                                trackEvent('tab_clicked', { tab_id: tab.id, tab_label: tab.label });
+                            }}
                         >
                             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 {tab.icon && (

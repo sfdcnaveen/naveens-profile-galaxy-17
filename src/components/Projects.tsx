@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { trackEvent } from '@/lib/tracking';
 import { projectsContent } from '@/data/content';
 import Accordion from './Accordion';
 function ProjectCard({
@@ -18,7 +21,18 @@ function ProjectCard({
     };
     if (project.link) {
         return (
-            <a href={project.link} target="_blank" rel="noreferrer noopener" style={style}>
+            <a
+                href={project.link}
+                target="_blank"
+                rel="noreferrer noopener"
+                style={style}
+                onClick={() =>
+                    trackEvent('project_clicked', {
+                        project_title: project.title,
+                        project_link: project.link || '',
+                    })
+                }
+            >
                 {children}
             </a>
         );
@@ -124,6 +138,7 @@ export default function Projects() {
                     target="_blank"
                     rel="noreferrer noopener"
                     style={{ fontSize: '0.875rem', fontWeight: 600 }}
+                    onClick={() => trackEvent('github_projects_clicked')}
                 >
                     View GitHub Projects ↗
                 </a>
