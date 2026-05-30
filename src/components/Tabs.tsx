@@ -37,7 +37,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
 
     return (
         <div className={styles.tabsContainer}>
-            <ul className={styles.tabNav} role="tablist">
+            <ul className={styles.tabNav} role="tablist" data-tour="record-tabs">
                 {tabs.map((tab) => (
                     <li
                         key={tab.id}

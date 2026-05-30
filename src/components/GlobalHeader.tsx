@@ -128,6 +128,10 @@ const GlobalHeader = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const startTour = () => {
+        window.dispatchEvent(new Event('portfolio:start-tour'));
+    };
+
     return (
         <header className={styles.globalHeader}>
             <div className={styles.container}>
@@ -136,6 +140,7 @@ const GlobalHeader = () => {
                     <div className={styles.appLauncherWrapper} ref={appLauncherRef}>
                         <div
                             className={styles.appLauncher}
+                            data-tour="app-launcher"
                             onClick={() => setIsAppLauncherOpen(!isAppLauncherOpen)}
                             role="button"
                             tabIndex={0}
@@ -241,7 +246,7 @@ const GlobalHeader = () => {
                 </div>
                 <div className={styles.center}>
                     <div className={styles.searchContainer} ref={searchRef}>
-                        <div className={styles.searchBar}>
+                        <div className={styles.searchBar} data-tour="global-search">
                             <svg viewBox="0 0 24 24" className={styles.searchIcon}>
                                 <path
                                     d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
@@ -338,6 +343,21 @@ const GlobalHeader = () => {
                     </div>
                 </div>
                 <div className={styles.right} style={{ display: 'flex', alignItems: 'center' }}>
+                    <button
+                        type="button"
+                        className={styles.tourButton}
+                        onClick={startTour}
+                        aria-label="Start portfolio tour"
+                        title="Start tour"
+                    >
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm0 17.5A7.5 7.5 0 1 1 19.5 12 7.51 7.51 0 0 1 12 19.5Zm.05-4.3a1.15 1.15 0 1 0 1.15 1.15 1.15 1.15 0 0 0-1.15-1.15Zm.22-8.35a3.2 3.2 0 0 0-3.37 3.07h2.15a1.14 1.14 0 0 1 1.2-1.05 1.08 1.08 0 0 1 1.18 1.08c0 .58-.33.91-1.04 1.38a3.02 3.02 0 0 0-1.55 2.73v.32h2.03v-.28c0-.68.26-.98 1.01-1.47a3.04 3.04 0 0 0 1.66-2.74 3.06 3.06 0 0 0-3.27-3.04Z"
+                                fill="currentColor"
+                            />
+                        </svg>
+                        <span>Tour</span>
+                    </button>
                     <ThemeToggle />
                     <div className={styles.userProfile}>
                         <img src="/avatar.png" alt="User Profile" />
