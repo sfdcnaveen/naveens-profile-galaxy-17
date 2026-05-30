@@ -9,6 +9,9 @@
 html,
 body {
     background-color: var(--slds-g-color-neutral-base-95);
+    background-image:
+        linear-gradient(180deg, var(--slds-g-color-cloud-blue) 0, transparent 210px),
+        radial-gradient(circle at 15% 0, rgba(1, 118, 211, 0.12), transparent 260px);
     color: var(--slds-g-color-neutral-base-10);
     font-family: var(--slds-g-font-family-base);
     -webkit-font-smoothing: antialiased;
@@ -43,6 +46,18 @@ p {
     padding: 0 var(--slds-g-spacing-large);
 }
 
+.record-workspace {
+    min-height: 65vh;
+    background-color: var(--slds-g-color-neutral-base-100);
+    border: 1px solid var(--slds-g-color-border-base-40);
+    border-radius: var(--slds-g-radius-border-2);
+    box-shadow: var(--slds-g-shadow-depth-1);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 .page-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -71,6 +86,13 @@ button {
     border: none;
     cursor: pointer;
     font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: none;
+    box-shadow: var(--slds-g-shadow-focus);
 }
 
 /* Global Selection */

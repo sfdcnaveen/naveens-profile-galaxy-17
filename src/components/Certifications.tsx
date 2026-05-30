@@ -15,7 +15,7 @@ export default function Certifications() {
                 {certs.map((cert, index) => (
                     <div key={index} style={{ marginBottom: 'var(--slds-g-spacing-medium)', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                         <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--slds-g-color-neutral-base-10)' }}>{cert.name}</h3>
-                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--slds-g-color-neutral-base-30)' }}>
+                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 0, color: 'var(--slds-g-color-neutral-base-30)' }}>
                             ISSUED {cert.date}
                         </div>
                     </div>

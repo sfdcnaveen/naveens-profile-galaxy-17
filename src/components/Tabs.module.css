@@ -10,11 +10,13 @@
     list-style: none;
     border-bottom: 1px solid var(--slds-g-color-border-base-40);
     margin: 0;
-    padding: 0;
+    padding: 0 var(--slds-g-spacing-medium);
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    background:
+        linear-gradient(180deg, var(--slds-g-color-neutral-base-100), var(--slds-g-color-neutral-base-95));
 }
 .tabNav::-webkit-scrollbar {
     display: none;
@@ -22,31 +24,42 @@
 
 .tabItem {
     margin-bottom: -1px; /* Overlap the border */
+    padding-top: var(--slds-g-spacing-small);
 }
 
 .tabButton {
-    padding: var(--slds-g-spacing-medium) var(--slds-g-spacing-large);
-    font-size: 1rem;
+    padding: 0.85rem var(--slds-g-spacing-large);
+    font-size: 0.95rem;
     color: var(--slds-g-color-neutral-base-10);
-    border: none;
+    border: 1px solid transparent;
     background: transparent;
     border-bottom: 2px solid transparent;
     font-weight: 400;
     cursor: pointer;
+    border-radius: var(--slds-g-radius-border-1) var(--slds-g-radius-border-1) 0 0;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
 }
 
 .tabButton:hover {
     color: var(--slds-g-color-brand-base-60);
+    background-color: var(--slds-g-color-brand-base-90);
 }
 
 .tabItem.active .tabButton {
     border-bottom-color: var(--slds-g-color-brand-base-50);
+    border-left-color: var(--slds-g-color-border-base-40);
+    border-right-color: var(--slds-g-color-border-base-40);
+    border-top-color: var(--slds-g-color-border-base-40);
+    background-color: var(--slds-g-color-neutral-base-100);
     text-shadow: 0.4px 0 0 currentColor;
-    color: var(--slds-g-color-neutral-base-10);
+    color: var(--slds-g-color-brand-base-70);
 }
 
 .tabContent {
-    padding: var(--slds-g-spacing-medium);
+    padding: var(--slds-g-spacing-large);
     flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr;

@@ -1,6 +1,6 @@
 :root {
   /* Colors - SLDS 2 Standard Light Mode */
-  --slds-g-color-neutral-base-95: #f3f3f3; /* Global Background */
+  --slds-g-color-neutral-base-95: #f3f7fb; /* Global Background */
   --slds-g-color-neutral-base-100: #ffffff; /* Card/Panel Background */
   
   --slds-g-color-neutral-base-10: #181818; /* Primary Text */
@@ -8,34 +8,50 @@
   
   --slds-g-color-brand-base-50: #0176d3; /* Brand Primary (Buttons, Links) */
   --slds-g-color-brand-base-60: #0b5cab; /* Brand Hover */
+  --slds-g-color-brand-base-70: #032d60;
+  --slds-g-color-brand-base-90: #eef4ff;
   
   --slds-g-color-border-base-40: #dddbda; /* Standard Border */
   --slds-g-color-border-base-10: #c9c7c5; /* Darker Border */
+  --slds-g-color-cloud-blue: #eaf5fe;
+  --slds-g-color-success-base-50: #2e844a;
 
   /* Spacing & Layout */
+  --slds-g-spacing-x-small: 0.5rem;
   --slds-g-spacing-small: 0.75rem;
   --slds-g-spacing-medium: 1rem;
   --slds-g-spacing-large: 1.5rem;
+  --slds-g-spacing-x-large: 2rem;
   --container-max: 1440px; /* Wider for enterprise app feel */
 
+  /* Shape */
+  --slds-g-radius-border-1: 0.25rem;
+  --slds-g-radius-border-2: 0.5rem;
+  --slds-g-radius-border-3: 0.75rem;
+
   /* Shadows */
-  --slds-g-shadow-depth-1: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-  --slds-g-shadow-depth-2: 0 4px 4px 0 rgba(0, 0, 0, 0.16);
+  --slds-g-shadow-depth-1: 0 1px 2px 0 rgba(24, 24, 24, 0.08);
+  --slds-g-shadow-depth-2: 0 8px 24px rgba(24, 24, 24, 0.14);
+  --slds-g-shadow-focus: 0 0 0 3px rgba(1, 118, 211, 0.16);
 
   /* Fonts */
   --slds-g-font-family-base: "Salesforce Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 [data-theme="dark"] {
-  --slds-g-color-neutral-base-95: #0A0A0A;
-  --slds-g-color-neutral-base-100: #121212;
+  --slds-g-color-neutral-base-95: #0f1720;
+  --slds-g-color-neutral-base-100: #161f2a;
   --slds-g-color-neutral-base-10: #FAFAFA;
-  --slds-g-color-neutral-base-30: #8A8A8A;
+  --slds-g-color-neutral-base-30: #c9d3df;
   --slds-g-color-brand-base-50: #64B5F6; /* Use a SLDS blue for brand so links are visible */
   --slds-g-color-brand-base-60: #42A5F5;
-  --slds-g-color-border-base-40: #333333;
-  --slds-g-color-border-base-10: #444444;
+  --slds-g-color-brand-base-70: #b8e0ff;
+  --slds-g-color-brand-base-90: #132d45;
+  --slds-g-color-border-base-40: #2f3b49;
+  --slds-g-color-border-base-10: #465568;
+  --slds-g-color-cloud-blue: #10263b;
+  --slds-g-color-success-base-50: #45c65a;
   
-  --slds-g-shadow-depth-1: 0 2px 2px 0 rgba(0, 0, 0, 0.4);
-  --slds-g-shadow-depth-2: 0 4px 4px 0 rgba(0, 0, 0, 0.6);
+  --slds-g-shadow-depth-1: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --slds-g-shadow-depth-2: 0 12px 32px rgba(0, 0, 0, 0.45);
 }

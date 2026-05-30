@@ -26,18 +26,7 @@ export default function Home() {
                         className="main-column"
                         style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}
                     >
-                        <div
-                            style={{
-                                minHeight: '65vh',
-                                backgroundColor: 'var(--slds-g-color-neutral-base-100)',
-                                border: '1px solid var(--slds-g-color-border-base-40)',
-                                borderRadius: '4px',
-                                boxShadow: 'var(--slds-g-shadow-depth-1)',
-                                flexGrow: 1,
-                                display: 'flex',
-                                flexDirection: 'column',
-                            }}
-                        >
+                        <div className="record-workspace">
                             <Tabs
                                 defaultActiveTab="details"
                                 tabs={[

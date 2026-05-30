@@ -5,7 +5,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    gap: var(--slds-g-spacing-medium);
+    gap: var(--slds-g-spacing-large);
     width: 100%;
     justify-items: stretch;
 }
@@ -36,7 +36,7 @@
 
 .gridItem {
     position: relative;
-    border-radius: 4px;
+    border-radius: var(--slds-g-radius-border-2);
     overflow: hidden;
     cursor: pointer;
     background: var(--slds-g-color-neutral-base-95);
@@ -45,6 +45,16 @@
     height: 100%;
     box-shadow: var(--slds-g-shadow-depth-1, 0 2px 2px 0 rgba(0, 0, 0, 0.1));
     border: 1px solid var(--slds-g-color-border-base-40);
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.gridItem:hover {
+    border-color: var(--slds-g-color-brand-base-50);
+    box-shadow: var(--slds-g-shadow-depth-2);
+    transform: translateY(-2px);
 }
 
 .image {
@@ -72,14 +82,14 @@
     border: 1px solid var(--slds-g-color-border-base-40);
     color: var(--slds-g-color-brand-base-50);
     padding: 0.5rem 1rem;
-    border-radius: 4px;
+    border-radius: var(--slds-g-radius-border-1);
     font-weight: 600;
     transition: all 0.2s ease;
     cursor: pointer;
 }
 
 .pageBtn:hover:not(:disabled) {
-    background-color: var(--slds-g-color-neutral-base-95);
+    background-color: var(--slds-g-color-brand-base-90);
 }
 
 .pageBtn:disabled {
@@ -113,7 +123,7 @@
 
 .lightboxImg {
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: var(--slds-g-radius-border-2);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
