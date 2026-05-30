@@ -286,6 +286,31 @@ a.searchResultLink:hover {
 .right {
     display: flex;
     align-items: center;
+    gap: var(--slds-g-spacing-x-small);
+}
+
+.tourButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    height: 32px;
+    padding: 0 var(--slds-g-spacing-small);
+    border: 1px solid var(--slds-g-color-border-base-40);
+    border-radius: var(--slds-g-radius-border-1);
+    background-color: var(--slds-g-color-neutral-base-100);
+    color: var(--slds-g-color-brand-base-70);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.tourButton:hover {
+    background-color: var(--slds-g-color-brand-base-90);
+}
+
+.tourButton svg {
+    width: 16px;
+    height: 16px;
 }
 
 .userProfile {

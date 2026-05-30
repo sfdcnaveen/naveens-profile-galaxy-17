@@ -26,7 +26,7 @@ export default function Home() {
                         className="main-column"
                         style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}
                     >
-                        <div className="record-workspace">
+                        <div className="record-workspace" data-tour="record-workspace">
                             <Tabs
                                 defaultActiveTab="details"
                                 tabs={[
@@ -96,6 +96,7 @@ export default function Home() {
 
                     <aside
                         className="sidebar"
+                        data-tour="profile-sidebar"
                         style={{
                             display: 'flex',
                             flexDirection: 'column',

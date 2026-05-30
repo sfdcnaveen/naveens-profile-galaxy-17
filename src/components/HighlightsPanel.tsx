@@ -47,7 +47,7 @@ const HighlightsPanel = () => {
     }, []);
 
     return (
-        <div className={styles.highlightsPanel}>
+        <div className={styles.highlightsPanel} data-tour="highlights-panel">
             <div className={styles.mainInfo}>
                 <div className={styles.iconContainer}>
                     <img src="/avatar.png" alt="Naveen" className={styles.avatar} />
@@ -56,7 +56,7 @@ const HighlightsPanel = () => {
                     <span className={styles.entityName}>Profile Record</span>
                     <h1 className={styles.recordName}>Naveen&apos;s Portfolio</h1>
                 </div>
-                <div className={styles.actions}>
+                <div className={styles.actions} data-tour="record-actions">
                     <a
                         href="https://naveen-kumar-pasupuleti-resume.vercel.app"
                         target="_blank"
