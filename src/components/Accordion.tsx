@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { trackEvent } from '@/lib/tracking';
 import styles from './Accordion.module.css';
 
 interface AccordionProps {
@@ -39,7 +40,14 @@ const Accordion: React.FC<AccordionProps> = ({
             <header className={styles.header}>
                 <button
                     className={styles.headerButton}
-                    onClick={() => setIsExpanded(!isExpanded)}
+                    onClick={() => {
+                        const newState = !isExpanded;
+                        setIsExpanded(newState);
+                        trackEvent('accordion_toggled', {
+                            accordion_title: title,
+                            is_expanded: newState,
+                        });
+                    }}
                     aria-expanded={isExpanded}
                 >
                     <div className={styles.headerContent}>

@@ -2,7 +2,7 @@ export const siteConfig = {
     name: 'Naveen Kumar Pasupuleti',
     title: 'Salesforce QA, Tester & SDET Expert',
     description:
-        'High-impact SDET and Salesforce QA expert specializing in SFDC testing, Playwright, TypeScript, and CI/CD test architecture.',
+        'Naveen Kumar Pasupuleti is a high-impact SDET and Salesforce QA with more than five years of experience, specializing in SFDC testing, Playwright, TypeScript, and CI/CD test architecture.',
     url: 'https://sfdcnaveen.github.io/',
     location: {
         city: 'Nellore',
@@ -15,7 +15,8 @@ export const siteConfig = {
         email: 'pasupulatink@gmail.com',
     },
     meta: {
-        keywords: 'Salesforce QA, Salesforce Tester, SFDC Testing, Salesforce Automation, Playwright, TypeScript, CI/CD, SDET, Quality Engineering',
+        keywords:
+            'Salesforce QA, Salesforce Tester, SFDC Testing, Salesforce Automation, Playwright, TypeScript, CI/CD, SDET, Quality Engineering',
     },
 };
 
@@ -30,7 +31,7 @@ export const heroContent = {
         highlight3: 'scale',
     },
     description:
-        'High-impact SDET and Salesforce Tester specializing in the Salesforce ecosystem, Playwright automation systems, CI/CD pipeline integrations, and deterministic SFDC testing loops.',
+        'I am a Salesforce QA with more than five years of experience, specializing in the Salesforce ecosystem, Playwright automation systems, CI/CD pipeline integrations, and deterministic SFDC testing loops.',
     stats: [
         { value: '5+', labelPart1: 'years', labelPart2: 'exp', highlight: false },
         { value: '4', labelPart1: 'salesforce', labelPart2: 'certs', highlight: false },
@@ -49,7 +50,7 @@ export const aboutContent = {
         part3: 'software',
     },
     description:
-        'I am a modern quality engineer and automation architect. Specializing in SFDC testing and modern JS automation using Playwright and TypeScript, with a focus on deterministic test suites, rapid feedback, and enterprise-scale Salesforce QA.',
+        'I am Naveen Kumar Pasupuleti, a modern quality engineer and Salesforce QA with more than five years of experience. Specializing in SFDC testing and modern JS automation using Playwright and TypeScript, with a focus on deterministic test suites, rapid feedback, and enterprise-scale QA.',
     footerRow: 'Plan · Automate · Execute · Verify · Repeat',
     sideNote: {
         title: 'Studies in validation · stability · automated execution.',
