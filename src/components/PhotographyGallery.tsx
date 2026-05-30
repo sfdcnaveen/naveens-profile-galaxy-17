@@ -5,7 +5,7 @@ import Image from 'next/image';
 import styles from './PhotographyGallery.module.css';
 import { photographyImages } from '@/data/photography';
 
-const ITEMS_PER_PAGE = 25;
+const ITEMS_PER_PAGE = 28;
 
 export default function PhotographyGallery() {
     const [currentPage, setCurrentPage] = useState(1);
