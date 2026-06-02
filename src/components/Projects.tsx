@@ -2,13 +2,14 @@
 
 import React from 'react';
 import { trackEvent } from '@/lib/tracking';
-import { projectsContent } from '@/data/content';
+import { SFProject } from '@/types/salesforce';
 import Accordion from './Accordion';
+
 function ProjectCard({
     project,
     children,
 }: {
-    project: (typeof projectsContent.projects)[0];
+    project: SFProject;
     children: React.ReactNode;
 }) {
     const style: React.CSSProperties = {
@@ -19,17 +20,17 @@ function ProjectCard({
         color: 'inherit',
         textDecoration: 'none',
     };
-    if (project.link) {
+    if (project.Live_Link__c) {
         return (
             <a
-                href={project.link}
+                href={project.Live_Link__c}
                 target="_blank"
                 rel="noreferrer noopener"
                 style={style}
                 onClick={() =>
                     trackEvent('project_clicked', {
-                        project_title: project.title,
-                        project_link: project.link || '',
+                        project_title: project.Title__c,
+                        project_link: project.Live_Link__c || '',
                     })
                 }
             >
@@ -40,7 +41,21 @@ function ProjectCard({
     return <div style={style}>{children}</div>;
 }
 
-export default function Projects() {
+interface ProjectsProps {
+    projectsData?: SFProject[];
+}
+
+export default function Projects({ projectsData = [] }: ProjectsProps) {
+    if (!projectsData || projectsData.length === 0) {
+        return (
+            <Accordion title="Projects & Open Source">
+                <div style={{ padding: 'var(--slds-g-spacing-medium)', textAlign: 'center', color: 'var(--slds-g-color-neutral-base-50)' }}>
+                    No projects found in Salesforce.
+                </div>
+            </Accordion>
+        );
+    }
+
     return (
         <Accordion title="Projects & Open Source">
             <div
@@ -50,9 +65,9 @@ export default function Projects() {
                     gap: 'var(--slds-g-spacing-medium)',
                 }}
             >
-                {projectsContent.projects.map((project, index) => {
+                {projectsData.map((project) => {
                     return (
-                        <ProjectCard key={index} project={project}>
+                        <ProjectCard key={project.Id} project={project}>
                             <div
                                 style={{
                                     display: 'flex',
@@ -69,15 +84,7 @@ export default function Projects() {
                                         color: 'var(--slds-g-color-neutral-base-30)',
                                     }}
                                 >
-                                    {project.label}
-                                </span>
-                                <span
-                                    style={{
-                                        fontSize: '0.75rem',
-                                        color: 'var(--slds-g-color-brand-base-50)',
-                                    }}
-                                >
-                                    {project.year}
+                                    PROJECT
                                 </span>
                             </div>
                             <div
@@ -88,11 +95,11 @@ export default function Projects() {
                                     marginBottom: 'var(--slds-g-spacing-small)',
                                 }}
                             >
-                                {project.icon && (
+                                {project.Image_URL__c && (
                                     <>
                                         {/* eslint-disable-next-line @next/next/no-img-element */}
                                         <img
-                                            src={project.icon}
+                                            src={project.Image_URL__c}
                                             alt=""
                                             style={{
                                                 width: '32px',
@@ -109,7 +116,7 @@ export default function Projects() {
                                         color: 'var(--slds-g-color-brand-base-50)',
                                     }}
                                 >
-                                    {project.title}
+                                    {project.Title__c}
                                 </h3>
                             </div>
                             <p
@@ -118,7 +125,7 @@ export default function Projects() {
                                     marginBottom: 'var(--slds-g-spacing-small)',
                                 }}
                             >
-                                {project.desc}
+                                {project.Description__c}
                             </p>
                             <div
                                 style={{
@@ -126,7 +133,7 @@ export default function Projects() {
                                     color: 'var(--slds-g-color-neutral-base-30)',
                                 }}
                             >
-                                {project.tags}
+                                {project.Tech_Stack__c}
                             </div>
                         </ProjectCard>
                     );
@@ -140,7 +147,7 @@ export default function Projects() {
                     style={{ fontSize: '0.875rem', fontWeight: 600 }}
                     onClick={() => trackEvent('github_projects_clicked')}
                 >
-                    View GitHub Projects ↗
+                    View GitHub Profile ↗
                 </a>
             </div>
         </Accordion>

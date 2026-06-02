@@ -3,10 +3,16 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import styles from './GlobalHeader.module.css';
 import ThemeToggle from './ThemeToggle';
-import { skillsContent, experienceContent, projectsContent } from '@/data/content';
 import Link from 'next/link';
+import { SFProject, SFSkill, SFWorkExperience } from '@/types/salesforce';
 
-const GlobalHeader = () => {
+interface GlobalHeaderProps {
+    experienceData?: SFWorkExperience[];
+    projectsData?: SFProject[];
+    skillsData?: SFSkill[];
+}
+
+const GlobalHeader = ({ experienceData = [], projectsData = [], skillsData = [] }: GlobalHeaderProps) => {
     const [isAppLauncherOpen, setIsAppLauncherOpen] = useState(false);
     const appLauncherRef = useRef<HTMLDivElement>(null);
 
@@ -45,9 +51,9 @@ const GlobalHeader = () => {
         });
         items.push({
             type: 'Tab',
-            title: 'Related',
+            title: 'Skills',
             desc: 'Skills & Core Competencies',
-            link: '#tab-related',
+            link: '#tab-skills',
         });
 
         // Add Accordion sections
@@ -67,41 +73,41 @@ const GlobalHeader = () => {
             type: 'Section',
             title: 'Skills & Core Competencies',
             desc: 'Frameworks, platforms, and strategies',
-            link: '#tab-related_accordion-capabilities',
+            link: '#tab-skills',
         });
 
-        projectsContent.projects.forEach((p) => {
+        projectsData.forEach((p) => {
             items.push({
                 type: 'Project',
-                title: p.title,
-                desc: p.desc,
-                tags: p.tags,
+                title: p.Title__c,
+                desc: p.Description__c || '',
+                tags: p.Tech_Stack__c,
                 link: '#tab-projects',
             });
         });
 
-        skillsContent.skills.forEach((s) => {
+        skillsData.forEach((s) => {
             items.push({
                 type: 'Skill',
-                title: s.title.replace('\n', ' '),
-                desc: s.desc,
-                tags: s.tag,
-                link: '#tab-related_accordion-capabilities',
+                title: s.Name.replace('\n', ' '),
+                desc: s.Category__c || '',
+                tags: s.Description__c || '',
+                link: '#tab-skills',
             });
         });
 
-        experienceContent.timeline.forEach((e) => {
+        experienceData.forEach((e) => {
             items.push({
                 type: 'Experience',
-                title: e.role,
-                desc: e.desc,
-                tags: e.meta,
+                title: e.Role__c,
+                desc: e.Company__c,
+                tags: `${e.Start_Date__c} - ${e.End_Date__c}`,
                 link: '#tab-details_accordion-experience',
             });
         });
 
         return items;
-    }, []);
+    }, [projectsData, skillsData, experienceData]);
 
     const searchResults = useMemo(() => {
         if (!searchQuery.trim()) return [];
