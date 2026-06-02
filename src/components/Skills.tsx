@@ -1,8 +1,22 @@
 import React from 'react';
-import { skillsContent } from '@/data/content';
+import { SFSkill } from '@/types/salesforce';
 import Accordion from './Accordion';
 
-export default function Skills() {
+interface SkillsProps {
+    skillsData?: SFSkill[];
+}
+
+export default function Skills({ skillsData = [] }: SkillsProps) {
+    if (!skillsData || skillsData.length === 0) {
+        return (
+            <Accordion title="Skills & Core Competencies" id="tab-related_accordion-capabilities">
+                <div style={{ padding: 'var(--slds-g-spacing-medium)', textAlign: 'center', color: 'var(--slds-g-color-neutral-base-50)' }}>
+                    No skills found in Salesforce.
+                </div>
+            </Accordion>
+        );
+    }
+
     return (
         <Accordion title="Skills & Core Competencies" id="tab-related_accordion-capabilities">
             <div
@@ -12,9 +26,9 @@ export default function Skills() {
                     gap: 'var(--slds-g-spacing-medium)',
                 }}
             >
-                {skillsContent.skills.map((skill, index) => (
+                {skillsData.map((skill) => (
                     <div
-                        key={index}
+                        key={skill.Id}
                         style={{
                             border: '1px solid var(--slds-g-color-border-base-40)',
                             padding: 'var(--slds-g-spacing-medium)',
@@ -30,16 +44,8 @@ export default function Skills() {
                             }}
                         >
                             <strong style={{ color: 'var(--slds-g-color-brand-base-50)' }}>
-                                {skill.tag}
+                                {skill.Category__c}
                             </strong>
-                            <span
-                                style={{
-                                    fontSize: '0.75rem',
-                                    color: 'var(--slds-g-color-neutral-base-30)',
-                                }}
-                            >
-                                {skill.num}
-                            </span>
                         </div>
                         <h3
                             style={{
@@ -47,9 +53,11 @@ export default function Skills() {
                                 marginBottom: 'var(--slds-g-spacing-small)',
                             }}
                         >
-                            {skill.title}
+                            {skill.Name}
                         </h3>
-                        <p style={{ fontSize: '0.875rem' }}>{skill.desc}</p>
+                        {skill.Description__c && (
+                            <p style={{ fontSize: '0.875rem' }}>{skill.Description__c}</p>
+                        )}
                     </div>
                 ))}
             </div>

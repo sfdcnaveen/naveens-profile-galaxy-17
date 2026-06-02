@@ -2,8 +2,20 @@
 
 import React from 'react';
 import { trackEvent } from '@/lib/tracking';
+import { SFPortfolioSettings } from '@/types/salesforce';
 
-export default function SocialLinks() {
+interface SocialLinksProps {
+    settings?: SFPortfolioSettings | null;
+}
+
+export default function SocialLinks({ settings }: SocialLinksProps) {
+    const linkedinUrl = settings?.LinkedIn_URL__c || 'https://linkedin.com/in/naveenkumarpasupuleti';
+    const githubUrl = settings?.GitHub_URL__c || 'https://github.com/sfdcnaveen';
+    const emailAddress = settings?.Email_Address__c || 'pasupulatink@gmail.com';
+    
+    const formatUrlDisplay = (url: string) => {
+        return url.replace(/^https?:\/\/(www\.)?/, '');
+    };
     return (
         <ul
             style={{
@@ -29,12 +41,12 @@ export default function SocialLinks() {
                     LinkedIn
                 </span>
                 <a
-                    href="https://linkedin.com/in/naveenkumarpasupuleti"
+                    href={linkedinUrl}
                     target="_blank"
                     rel="noreferrer noopener"
                     onClick={() => trackEvent('social_link_clicked', { platform: 'linkedin' })}
                 >
-                    linkedin.com/in/naveenkumarpasupuleti
+                    {formatUrlDisplay(linkedinUrl)}
                 </a>
             </li>
             <li style={{ padding: 'var(--slds-g-spacing-small) 0' }}>
@@ -48,12 +60,12 @@ export default function SocialLinks() {
                     GitHub
                 </span>
                 <a
-                    href="https://github.com/sfdcnaveen"
+                    href={githubUrl}
                     target="_blank"
                     rel="noreferrer noopener"
                     onClick={() => trackEvent('social_link_clicked', { platform: 'github' })}
                 >
-                    github.com/sfdcnaveen
+                    {formatUrlDisplay(githubUrl)}
                 </a>
             </li>
         </ul>

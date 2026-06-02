@@ -1,8 +1,12 @@
 import React from 'react';
-import { aboutContent } from '@/data/content';
+import { SFPortfolioSettings } from '@/types/salesforce';
 import Accordion from './Accordion';
 
-export default function About() {
+interface AboutProps {
+    settings?: SFPortfolioSettings | null;
+}
+
+export default function About({ settings }: AboutProps) {
     return (
         <Accordion title="About Me" id="tab-details_accordion-about">
             <div style={{ padding: '0 var(--slds-g-spacing-small)' }}>
@@ -12,7 +16,7 @@ export default function About() {
                         color: 'var(--slds-g-color-neutral-base-10)',
                     }}
                 >
-                    {aboutContent.description}
+                    {settings?.About_Me_Description__c}
                 </p>
                 <div
                     style={{
@@ -22,12 +26,12 @@ export default function About() {
                         borderLeft: '3px solid var(--slds-g-color-brand-base-50)',
                     }}
                 >
-                    <strong>{aboutContent.sideNote.title}</strong>
+                    <strong>{settings?.Side_Note_Title__c}</strong>
                     <p style={{ marginTop: 'var(--slds-g-spacing-small)' }}>
-                        {aboutContent.sideNote.desc}
+                        {settings?.Side_Note_Description__c}
                     </p>
                     <p style={{ marginTop: 'var(--slds-g-spacing-small)', fontStyle: 'italic' }}>
-                        - {aboutContent.sideNote.signature}
+                        - {settings?.Full_Name__c ? `(${settings.Full_Name__c})` : ''}
                     </p>
                 </div>
                 <div
@@ -57,7 +61,7 @@ export default function About() {
                                 lineHeight: 1,
                             }}
                         >
-                            5+
+                            {settings?.Years_of_Experience__c ? `${settings.Years_of_Experience__c}+` : '5+'}
                         </span>
                         <span
                             style={{
@@ -91,7 +95,7 @@ export default function About() {
                                 lineHeight: 1,
                             }}
                         >
-                            4
+                            {settings?.Total_Certifications__c || '4'}
                         </span>
                         <span
                             style={{
@@ -125,7 +129,7 @@ export default function About() {
                                 lineHeight: 1,
                             }}
                         >
-                            20+
+                            {settings?.Total_GitHub_Repos__c ? `${settings.Total_GitHub_Repos__c}+` : '20+'}
                         </span>
                         <span
                             style={{

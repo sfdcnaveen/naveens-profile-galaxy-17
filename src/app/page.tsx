@@ -10,17 +10,29 @@ import Certifications from '@/components/Certifications';
 import Card from '@/components/Card';
 import SocialLinks from '@/components/SocialLinks';
 import LastFmWidget from '@/components/LastFmWidget';
-import { footerContent } from '@/data/content';
+import { getProjects, getWorkExperience, getSkills, getPortfolioSettings, getCertifications } from '@/lib/salesforce';
 
-export default function Home() {
+export const revalidate = 0;
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+    const experienceData = await getWorkExperience();
+    const projectsData = await getProjects();
+    const skillsData = await getSkills();
+    const settings = await getPortfolioSettings();
+    const certificationsData = await getCertifications();
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <GlobalHeader />
+            <GlobalHeader 
+                experienceData={experienceData} 
+                projectsData={projectsData} 
+                skillsData={skillsData} 
+            />
             <main
                 className="container"
                 style={{ flexGrow: 1, paddingBottom: 'var(--slds-g-spacing-large)' }}
             >
-                <HighlightsPanel />
+                <HighlightsPanel settings={settings} />
 
                 <div className="page-layout">
                     <div
@@ -28,70 +40,42 @@ export default function Home() {
                         style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}
                     >
                         <div className="record-workspace" data-tour="record-workspace">
-                            <Tabs
-                                defaultActiveTab="details"
-                                tabs={[
-                                    {
-                                        id: 'details',
-                                        label: 'Details',
-                                        content: (
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    gap: 'var(--slds-g-spacing-medium)',
-                                                }}
-                                            >
-                                                <About />
-                                                <Experience />
-                                            </div>
-                                        ),
-                                    },
-                                    {
-                                        id: 'projects',
-                                        label: 'Projects',
-                                        content: (
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                }}
-                                            >
-                                                <Projects />
-                                            </div>
-                                        ),
-                                    },
-                                    {
-                                        id: 'certifications',
-                                        label: 'Certifications',
-                                        content: (
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                }}
-                                            >
-                                                <Certifications />
-                                            </div>
-                                        ),
-                                    },
-                                    {
-                                        id: 'related',
-                                        label: 'Related',
-                                        content: (
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    flexDirection: 'column',
-                                                    gap: 'var(--slds-g-spacing-medium)',
-                                                }}
-                                            >
-                                                <Skills />
-                                            </div>
-                                        ),
-                                    },
-                                ]}
-                            />
+                                <Tabs
+                                    defaultActiveTab="details"
+                                    tabs={[
+                                        {
+                                            id: 'details',
+                                            label: 'Details',
+                                            content: (
+                                                <div
+                                                    style={{
+                                                        display: 'flex',
+                                                        flexDirection: 'column',
+                                                        gap: 'var(--slds-g-spacing-medium)',
+                                                    }}
+                                                >
+                                                    <About settings={settings} />
+                                                    <Experience experienceData={experienceData} />
+                                                </div>
+                                            ),
+                                        },
+                                        {
+                                            id: 'projects',
+                                            label: 'Projects',
+                                            content: <Projects projectsData={projectsData} />,
+                                        },
+                                        {
+                                            id: 'skills',
+                                            label: 'Skills',
+                                            content: <Skills skillsData={skillsData} />,
+                                        },
+                                        {
+                                            id: 'certifications',
+                                            label: 'Certifications',
+                                            content: <Certifications certificationsData={certificationsData} />,
+                                        },
+                                    ]}
+                                />
                         </div>
                     </div>
 
@@ -105,7 +89,7 @@ export default function Home() {
                         }}
                     >
                         <Card title="Contact Info">
-                            <SocialLinks />
+                            <SocialLinks settings={settings} />
                         </Card>
 
                         <Card title="Testimonial">
@@ -116,7 +100,7 @@ export default function Home() {
                                     marginBottom: 'var(--slds-g-spacing-small)',
                                 }}
                             >
-                                &quot;{footerContent.testimonial.quote}&quot;
+                                &quot;{settings?.Testimonial_Quote__c}&quot;
                             </div>
                             <div
                                 style={{
@@ -125,8 +109,8 @@ export default function Home() {
                                     color: 'var(--slds-g-color-brand-base-50)',
                                 }}
                             >
-                                - {footerContent.testimonial.authorRole},{' '}
-                                {footerContent.testimonial.authorCompany}
+                                - {settings?.Testimonial_Role__c},{' '}
+                                {settings?.Testimonial_Company__c}
                             </div>
                         </Card>
 
