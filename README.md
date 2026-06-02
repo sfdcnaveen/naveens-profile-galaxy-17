@@ -21,8 +21,8 @@ No hardcoded data. No deployment required to update your resume. Just edit a rec
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/salesforce-lightning-portfolio.git
-cd salesforce-lightning-portfolio
+git clone https://github.com/sfdcnaveen/naveens-profile-galaxy-17.git
+cd naveens-profile-galaxy-17
 npm install
 ```
 
