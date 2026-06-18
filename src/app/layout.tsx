@@ -1,9 +1,16 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import OnboardingTour from '@/components/OnboardingTour';
+import EinsteinAgent from '@/components/EinsteinAgent';
 import '@/styles/globals.css';
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    minimumScale: 1,
+};
 
 export const metadata: Metadata = {
     metadataBase: new URL('https://naveens-portfolio-three.vercel.app'),
@@ -104,6 +111,7 @@ export default function RootLayout({
             <body>
                 {children}
                 <OnboardingTour />
+                <EinsteinAgent />
                 <Analytics />
                 <SpeedInsights />
                 <GoogleAnalytics gaId="G-HGJ42T57QL" />
