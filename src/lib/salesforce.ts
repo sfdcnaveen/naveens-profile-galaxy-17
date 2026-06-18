@@ -184,13 +184,16 @@ export async function getCertifications(): Promise<SFCertification[]> {
         const result = await sfConnection.query(
             'SELECT Id, MasterLabel, Issue_Date__c FROM Certification__mdt ORDER BY Order__c ASC NULLS LAST'
         );
-        return result.records.map(
-            (record: { Id: string; MasterLabel: string; Issue_Date__c: string }) => ({
-                Id: record.Id,
-                Name: record.MasterLabel,
-                Issue_Date__c: record.Issue_Date__c,
-            })
-        ) as SFCertification[];
+        const records = result.records as unknown as Array<{
+            Id: string;
+            MasterLabel: string;
+            Issue_Date__c: string;
+        }>;
+        return records.map((record) => ({
+            Id: record.Id,
+            Name: record.MasterLabel,
+            Issue_Date__c: record.Issue_Date__c,
+        })) as SFCertification[];
     } catch (error) {
         console.error('Error fetching certifications:', error);
         return [];
