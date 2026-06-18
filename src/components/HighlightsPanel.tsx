@@ -56,13 +56,22 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
         <div className={styles.highlightsPanel} data-tour="highlights-panel">
             <div className={styles.mainInfo}>
                 <div className={styles.iconContainer}>
-                    <img src="/avatar.png" alt="Naveen" className={styles.avatar} />
+                    <img
+                        src="/avatar.png"
+                        alt="Naveen Kumar Pasupuleti - Salesforce QA Expert"
+                        className={styles.avatar}
+                    />
                 </div>
                 <div className={styles.textInfo}>
                     <span className={styles.entityName}>Profile Record</span>
-                    <h1 className={styles.recordName}>{settings?.Full_Name__c || "Naveen's Portfolio"}</h1>
+                    <h1 className={styles.recordName}>
+                        {settings?.Full_Name__c || "Naveen's Portfolio"}
+                    </h1>
                 </div>
                 <div className={styles.actions} data-tour="record-actions">
+                    <a href="/about" style={{ textDecoration: 'none' }}>
+                        <button className={styles.buttonNeutral}>Read Bio</button>
+                    </a>
                     <a
                         href={settings?.Resume_URL__c || '#'}
                         target="_blank"
@@ -79,15 +88,21 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
             <ul className={styles.keyFields}>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Title</span>
-                    <span className={styles.fieldValue}>{settings?.Headline_Title__c || 'SDET & Salesforce Automation Expert'}</span>
+                    <span className={styles.fieldValue}>
+                        {settings?.Headline_Title__c || 'SDET & Salesforce Automation Expert'}
+                    </span>
                 </li>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Company</span>
-                    <span className={styles.fieldValue}>{settings?.Current_Company__c || 'TestVagrant Technologies'}</span>
+                    <span className={styles.fieldValue}>
+                        {settings?.Current_Company__c || 'TestVagrant Technologies'}
+                    </span>
                 </li>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Location</span>
-                    <span className={styles.fieldValue}>{settings?.Location__c || 'Nellore'} ({weather})</span>
+                    <span className={styles.fieldValue}>
+                        {settings?.Location__c || 'Nellore'} ({weather})
+                    </span>
                 </li>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>GitHub Pulse</span>

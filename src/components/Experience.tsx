@@ -9,10 +9,19 @@ interface ExperienceProps {
 export default function Experience({ experienceData = [] }: ExperienceProps) {
     if (!experienceData || experienceData.length === 0) {
         return (
-            <Accordion title="Work Experience" id="tab-details_accordion-experience">
+            <Accordion
+                title="Naveen Kumar Pasupuleti's Work Experience"
+                id="tab-details_accordion-experience"
+            >
                 <div style={{ padding: 'var(--slds-g-spacing-small)' }}>
-                    <p style={{ fontSize: '0.875rem', color: 'var(--slds-g-color-neutral-base-50)' }}>
-                        No work experience data found in Salesforce or connection failed. Please configure Salesforce credentials.
+                    <p
+                        style={{
+                            fontSize: '0.875rem',
+                            color: 'var(--slds-g-color-neutral-base-50)',
+                        }}
+                    >
+                        No work experience data found in Salesforce or connection failed. Please
+                        configure Salesforce credentials.
                     </p>
                 </div>
             </Accordion>
@@ -20,13 +29,20 @@ export default function Experience({ experienceData = [] }: ExperienceProps) {
     }
 
     return (
-        <Accordion title="Work Experience" id="tab-details_accordion-experience">
+        <Accordion
+            title="Naveen Kumar Pasupuleti's Work Experience"
+            id="tab-details_accordion-experience"
+        >
             <div style={{ padding: 'var(--slds-g-spacing-small)' }}>
                 {experienceData.map((step) => {
-                    const startYear = step.Start_Date__c ? new Date(step.Start_Date__c).getFullYear() : '';
-                    const endYear = step.End_Date__c ? new Date(step.End_Date__c).getFullYear() : 'Present';
+                    const startYear = step.Start_Date__c
+                        ? new Date(step.Start_Date__c).getFullYear()
+                        : '';
+                    const endYear = step.End_Date__c
+                        ? new Date(step.End_Date__c).getFullYear()
+                        : 'Present';
                     const meta = `${startYear} - ${endYear} · ${step.Company__c}`;
-                    
+
                     return (
                         <div
                             key={step.Id}

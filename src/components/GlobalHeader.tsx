@@ -12,7 +12,11 @@ interface GlobalHeaderProps {
     skillsData?: SFSkill[];
 }
 
-const GlobalHeader = ({ experienceData = [], projectsData = [], skillsData = [] }: GlobalHeaderProps) => {
+const GlobalHeader = ({
+    experienceData = [],
+    projectsData = [],
+    skillsData = [],
+}: GlobalHeaderProps) => {
     const [isAppLauncherOpen, setIsAppLauncherOpen] = useState(false);
     const appLauncherRef = useRef<HTMLDivElement>(null);
 
@@ -366,7 +370,10 @@ const GlobalHeader = ({ experienceData = [], projectsData = [], skillsData = [] 
                     </button>
                     <ThemeToggle />
                     <div className={styles.userProfile}>
-                        <img src="/avatar.png" alt="User Profile" />
+                        <img
+                            src="/avatar.png"
+                            alt="Naveen Kumar Pasupuleti - Salesforce QA Expert"
+                        />
                     </div>
                 </div>
             </div>

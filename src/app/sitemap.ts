@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 export default function sitemap(): MetadataRoute.Sitemap {
     return [
         {
-            url: 'https://sfdcnaveen.github.io',
+            url: 'https://naveens-portfolio-three.vercel.app',
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 1,

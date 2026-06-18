@@ -11,21 +11,47 @@ export default function Certifications({ certificationsData = [] }: Certificatio
         { name: 'Salesforce Platform Developer I', date: 'Oct 2022' },
         { name: 'Salesforce Certified Associate', date: 'May 2023' },
         { name: 'Salesforce Platform Developer II', date: 'July 2023' },
-        { name: 'Salesforce Certified AI Associate', date: 'March 2025' }
+        { name: 'Salesforce Certified AI Associate', date: 'March 2025' },
     ];
 
-    const displayCerts = certificationsData.length > 0 ? certificationsData.map(c => ({
-        name: c.Name,
-        date: c.Issue_Date__c
-    })) : certs;
+    const displayCerts =
+        certificationsData.length > 0
+            ? certificationsData.map((c) => ({
+                  name: c.Name,
+                  date: c.Issue_Date__c,
+              }))
+            : certs;
 
     return (
-        <Accordion title="Certifications">
+        <Accordion title="Naveen Kumar Pasupuleti's Certifications">
             <div style={{ padding: 'var(--slds-g-spacing-small)' }}>
                 {displayCerts.map((cert, index) => (
-                    <div key={index} style={{ marginBottom: 'var(--slds-g-spacing-medium)', display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                        <h3 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--slds-g-color-neutral-base-10)' }}>{cert.name}</h3>
-                        <div style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: 0, color: 'var(--slds-g-color-neutral-base-30)' }}>
+                    <div
+                        key={index}
+                        style={{
+                            marginBottom: 'var(--slds-g-spacing-medium)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '0.25rem',
+                        }}
+                    >
+                        <h3
+                            style={{
+                                fontSize: '1rem',
+                                fontWeight: 600,
+                                color: 'var(--slds-g-color-neutral-base-10)',
+                            }}
+                        >
+                            {cert.name}
+                        </h3>
+                        <div
+                            style={{
+                                fontSize: '0.75rem',
+                                textTransform: 'uppercase',
+                                letterSpacing: 0,
+                                color: 'var(--slds-g-color-neutral-base-30)',
+                            }}
+                        >
                             ISSUED {cert.date}
                         </div>
                     </div>

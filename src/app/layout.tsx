@@ -6,22 +6,22 @@ import OnboardingTour from '@/components/OnboardingTour';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://sfdcnaveen.github.io'),
-    title: 'Naveen Kumar Pasupuleti — Salesforce QA with more than five years of experience',
+    metadataBase: new URL('https://naveens-portfolio-three.vercel.app'),
+    title: 'Naveen Kumar Pasupuleti — Salesforce QA & Playwright Expert',
     description:
-        'Naveen Kumar Pasupuleti is a high-impact SDET and Salesforce QA with more than five years of experience, specializing in Playwright, SFDC testing, and CI/CD architecture.',
+        'Naveen Kumar Pasupuleti is a Salesforce QA & Playwright Expert. The engineer who transitions legacy SFDC testing to modern deterministic Playwright suites.',
     alternates: {
-        canonical: 'https://sfdcnaveen.github.io/',
+        canonical: 'https://naveens-portfolio-three.vercel.app/',
     },
     icons: {
         icon: '/avatar.png',
     },
     openGraph: {
         type: 'website',
-        title: 'Naveen Kumar Pasupuleti — Salesforce QA with more than five years of experience',
+        title: 'Naveen Kumar Pasupuleti — Salesforce QA & Playwright Expert',
         description:
-            'Naveen Kumar Pasupuleti is a Salesforce QA with more than five years of experience, building robust automation frameworks for enterprise SFDC testing.',
-        url: 'https://sfdcnaveen.github.io/',
+            'Naveen Kumar Pasupuleti is a Salesforce QA & Playwright Expert, transitioning legacy SFDC testing to modern deterministic Playwright suites.',
+        url: 'https://naveens-portfolio-three.vercel.app/',
         images: [
             {
                 url: '/avatar.png',
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'Naveen Kumar Pasupuleti — Salesforce QA with more than five years of experience',
+        title: 'Naveen Kumar Pasupuleti — Salesforce QA & Playwright Expert',
         description:
-            'Naveen Kumar Pasupuleti is a Salesforce QA with more than five years of experience. Automation Specialist, SFDC Tester, and Playwright Architect.',
+            'Naveen Kumar Pasupuleti is a Salesforce QA & Playwright Expert. Transitioning legacy SFDC testing to modern Playwright suites.',
         images: ['/avatar.png'],
     },
 };
@@ -52,11 +52,17 @@ export default function RootLayout({
                             '@context': 'https://schema.org',
                             '@type': 'Person',
                             name: 'Naveen Kumar Pasupuleti',
-                            jobTitle: 'Salesforce QA',
+                            jobTitle: ['SDET', 'Salesforce QA & Playwright Expert'],
+                            gender: 'Male',
+                            nationality: 'Indian',
+                            alumniOf: {
+                                '@type': 'CollegeOrUniversity',
+                                name: 'JNTU Anantapur',
+                            },
                             description:
-                                'Naveen Kumar Pasupuleti is a Salesforce QA with more than five years of experience, dedicated to building robust automation frameworks.',
-                            url: 'https://sfdcnaveen.github.io/',
-                            image: 'https://sfdcnaveen.github.io/avatar.png',
+                                'Naveen Kumar Pasupuleti is a Salesforce QA & Playwright Expert who transitions legacy SFDC testing to modern deterministic Playwright suites.',
+                            url: 'https://naveens-portfolio-three.vercel.app/',
+                            image: 'https://naveens-portfolio-three.vercel.app/avatar.png',
                             sameAs: [
                                 'https://www.linkedin.com/in/naveenkumarpasupuleti/',
                                 'https://github.com/sfdcnaveen',
