@@ -5,13 +5,7 @@ import { trackEvent } from '@/lib/tracking';
 import { SFProject } from '@/types/salesforce';
 import Accordion from './Accordion';
 
-function ProjectCard({
-    project,
-    children,
-}: {
-    project: SFProject;
-    children: React.ReactNode;
-}) {
+function ProjectCard({ project, children }: { project: SFProject; children: React.ReactNode }) {
     const style: React.CSSProperties = {
         display: 'block',
         border: '1px solid var(--slds-g-color-border-base-40)',
@@ -48,8 +42,14 @@ interface ProjectsProps {
 export default function Projects({ projectsData = [] }: ProjectsProps) {
     if (!projectsData || projectsData.length === 0) {
         return (
-            <Accordion title="Projects & Open Source">
-                <div style={{ padding: 'var(--slds-g-spacing-medium)', textAlign: 'center', color: 'var(--slds-g-color-neutral-base-50)' }}>
+            <Accordion title="Naveen Kumar Pasupuleti's Projects & Open Source">
+                <div
+                    style={{
+                        padding: 'var(--slds-g-spacing-medium)',
+                        textAlign: 'center',
+                        color: 'var(--slds-g-color-neutral-base-50)',
+                    }}
+                >
                     No projects found in Salesforce.
                 </div>
             </Accordion>
@@ -57,7 +57,7 @@ export default function Projects({ projectsData = [] }: ProjectsProps) {
     }
 
     return (
-        <Accordion title="Projects & Open Source">
+        <Accordion title="Naveen Kumar Pasupuleti's Projects & Open Source">
             <div
                 style={{
                     display: 'flex',

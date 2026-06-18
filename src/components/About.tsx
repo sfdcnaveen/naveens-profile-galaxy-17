@@ -8,7 +8,7 @@ interface AboutProps {
 
 export default function About({ settings }: AboutProps) {
     return (
-        <Accordion title="About Me" id="tab-details_accordion-about">
+        <Accordion title="About Naveen Kumar Pasupuleti" id="tab-details_accordion-about">
             <div style={{ padding: '0 var(--slds-g-spacing-small)' }}>
                 <p
                     style={{
@@ -61,7 +61,9 @@ export default function About({ settings }: AboutProps) {
                                 lineHeight: 1,
                             }}
                         >
-                            {settings?.Years_of_Experience__c ? `${settings.Years_of_Experience__c}+` : '5+'}
+                            {settings?.Years_of_Experience__c
+                                ? `${settings.Years_of_Experience__c}+`
+                                : '5+'}
                         </span>
                         <span
                             style={{
@@ -129,7 +131,9 @@ export default function About({ settings }: AboutProps) {
                                 lineHeight: 1,
                             }}
                         >
-                            {settings?.Total_GitHub_Repos__c ? `${settings.Total_GitHub_Repos__c}+` : '20+'}
+                            {settings?.Total_GitHub_Repos__c
+                                ? `${settings.Total_GitHub_Repos__c}+`
+                                : '20+'}
                         </span>
                         <span
                             style={{

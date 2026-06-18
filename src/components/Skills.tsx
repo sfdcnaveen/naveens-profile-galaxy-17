@@ -9,8 +9,17 @@ interface SkillsProps {
 export default function Skills({ skillsData = [] }: SkillsProps) {
     if (!skillsData || skillsData.length === 0) {
         return (
-            <Accordion title="Skills & Core Competencies" id="tab-related_accordion-capabilities">
-                <div style={{ padding: 'var(--slds-g-spacing-medium)', textAlign: 'center', color: 'var(--slds-g-color-neutral-base-50)' }}>
+            <Accordion
+                title="Naveen Kumar Pasupuleti's Skills & Core Competencies"
+                id="tab-related_accordion-capabilities"
+            >
+                <div
+                    style={{
+                        padding: 'var(--slds-g-spacing-medium)',
+                        textAlign: 'center',
+                        color: 'var(--slds-g-color-neutral-base-50)',
+                    }}
+                >
                     No skills found in Salesforce.
                 </div>
             </Accordion>
@@ -18,7 +27,10 @@ export default function Skills({ skillsData = [] }: SkillsProps) {
     }
 
     return (
-        <Accordion title="Skills & Core Competencies" id="tab-related_accordion-capabilities">
+        <Accordion
+            title="Naveen Kumar Pasupuleti's Skills & Core Competencies"
+            id="tab-related_accordion-capabilities"
+        >
             <div
                 style={{
                     display: 'grid',

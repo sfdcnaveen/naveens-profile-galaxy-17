@@ -10,7 +10,13 @@ import Certifications from '@/components/Certifications';
 import Card from '@/components/Card';
 import SocialLinks from '@/components/SocialLinks';
 import LastFmWidget from '@/components/LastFmWidget';
-import { getProjects, getWorkExperience, getSkills, getPortfolioSettings, getCertifications } from '@/lib/salesforce';
+import {
+    getProjects,
+    getWorkExperience,
+    getSkills,
+    getPortfolioSettings,
+    getCertifications,
+} from '@/lib/salesforce';
 
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
@@ -21,12 +27,20 @@ export default async function Home() {
     const skillsData = await getSkills();
     const settings = await getPortfolioSettings();
     const certificationsData = await getCertifications();
+
+    // SEO Branding Overrides
+    if (settings) {
+        settings.Headline_Title__c = 'Salesforce QA & Playwright Expert';
+        settings.About_Me_Description__c =
+            "I am Naveen Kumar Pasupuleti, a Salesforce QA & Playwright Expert. I'm not just a QA; I am the engineer who transitions legacy SFDC testing to modern deterministic Playwright suites.";
+    }
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <GlobalHeader 
-                experienceData={experienceData} 
-                projectsData={projectsData} 
-                skillsData={skillsData} 
+            <GlobalHeader
+                experienceData={experienceData}
+                projectsData={projectsData}
+                skillsData={skillsData}
             />
             <main
                 className="container"
@@ -40,42 +54,46 @@ export default async function Home() {
                         style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}
                     >
                         <div className="record-workspace" data-tour="record-workspace">
-                                <Tabs
-                                    defaultActiveTab="details"
-                                    tabs={[
-                                        {
-                                            id: 'details',
-                                            label: 'Details',
-                                            content: (
-                                                <div
-                                                    style={{
-                                                        display: 'flex',
-                                                        flexDirection: 'column',
-                                                        gap: 'var(--slds-g-spacing-medium)',
-                                                    }}
-                                                >
-                                                    <About settings={settings} />
-                                                    <Experience experienceData={experienceData} />
-                                                </div>
-                                            ),
-                                        },
-                                        {
-                                            id: 'projects',
-                                            label: 'Projects',
-                                            content: <Projects projectsData={projectsData} />,
-                                        },
-                                        {
-                                            id: 'skills',
-                                            label: 'Skills',
-                                            content: <Skills skillsData={skillsData} />,
-                                        },
-                                        {
-                                            id: 'certifications',
-                                            label: 'Certifications',
-                                            content: <Certifications certificationsData={certificationsData} />,
-                                        },
-                                    ]}
-                                />
+                            <Tabs
+                                defaultActiveTab="details"
+                                tabs={[
+                                    {
+                                        id: 'details',
+                                        label: 'Details',
+                                        content: (
+                                            <div
+                                                style={{
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    gap: 'var(--slds-g-spacing-medium)',
+                                                }}
+                                            >
+                                                <About settings={settings} />
+                                                <Experience experienceData={experienceData} />
+                                            </div>
+                                        ),
+                                    },
+                                    {
+                                        id: 'projects',
+                                        label: 'Projects',
+                                        content: <Projects projectsData={projectsData} />,
+                                    },
+                                    {
+                                        id: 'skills',
+                                        label: 'Skills',
+                                        content: <Skills skillsData={skillsData} />,
+                                    },
+                                    {
+                                        id: 'certifications',
+                                        label: 'Certifications',
+                                        content: (
+                                            <Certifications
+                                                certificationsData={certificationsData}
+                                            />
+                                        ),
+                                    },
+                                ]}
+                            />
                         </div>
                     </div>
 

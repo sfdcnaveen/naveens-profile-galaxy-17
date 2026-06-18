@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: '*',
             allow: '/',
         },
-        sitemap: 'https://sfdcnaveen.github.io/sitemap.xml',
+        sitemap: 'https://naveens-portfolio-three.vercel.app/sitemap.xml',
     };
 }
