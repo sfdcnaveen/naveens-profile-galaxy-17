@@ -15,8 +15,7 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    background:
-        linear-gradient(180deg, var(--slds-g-color-neutral-base-100), var(--slds-g-color-neutral-base-95));
+    background: transparent;
 }
 .tabNav::-webkit-scrollbar {
     display: none;
@@ -53,7 +52,7 @@
     border-left-color: var(--slds-g-color-border-base-40);
     border-right-color: var(--slds-g-color-border-base-40);
     border-top-color: var(--slds-g-color-border-base-40);
-    background-color: var(--slds-g-color-neutral-base-100);
+    background-color: transparent;
     text-shadow: 0.4px 0 0 currentColor;
     color: var(--slds-g-color-brand-base-70);
 }
@@ -74,10 +73,16 @@
     visibility: hidden;
     pointer-events: none;
     height: 100%;
+    transform: translateY(4px);
+    transition:
+        opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+        transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+        visibility 0.3s;
 }
 
 .activePanel {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
+    transform: translateY(0);
 }
