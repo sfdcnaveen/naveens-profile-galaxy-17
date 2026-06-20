@@ -5,6 +5,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import OnboardingTour from '@/components/OnboardingTour';
 import EinsteinAgent from '@/components/EinsteinAgent';
 import '@/styles/globals.css';
+import '@/styles/einstein-bot.css';
 
 export const viewport: Viewport = {
     width: 'device-width',

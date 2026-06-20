@@ -1,0 +1,373 @@
+/* Einstein Bot Apple HIG Redesign Overrides */
+
+:root {
+    /* Apple HIG Variables */
+    --bot-spring-curve: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --bot-ease-curve: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --bot-bg-light: rgba(255, 255, 255, 0.85);
+    --bot-bg-dark: rgba(28, 28, 30, 0.85);
+    --bot-blur: blur(20px) saturate(180%);
+
+    --bot-user-bubble-bg: #0176d3;
+    --bot-user-bubble-text: #ffffff;
+
+    --bot-system-bubble-bg: #f2f2f7;
+    --bot-system-bubble-bg-dark: #3a3a3c;
+    --bot-system-bubble-text: #000000;
+    --bot-system-bubble-text-dark: #ffffff;
+
+    --bot-header-bg-dark: #2c2c2e;
+    --bot-input-bg-dark: #2c2c2e;
+
+    --bot-font-family:
+        -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial,
+        sans-serif;
+    --bot-safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Base resets for the embedded chat container */
+.embeddedServiceHelpButton,
+.embeddedServiceSidebar,
+.embeddedMessagingConversation {
+    font-family: var(--bot-font-family) !important;
+}
+
+/* ==========================================================================
+   TRIGGER BUTTON (Ask Me Anything)
+   ========================================================================== */
+.embeddedServiceHelpButton .helpButton .uiButton {
+    background-color: var(--bot-user-bubble-bg) !important;
+    font-family: var(--bot-font-family) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(1, 118, 211, 0.3) !important;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.embeddedServiceHelpButton .helpButton .uiButton:hover {
+    transform: scale(1.04) !important;
+    box-shadow: 0 6px 16px rgba(1, 118, 211, 0.4) !important;
+}
+
+/* Desktop Trigger: Pill shape */
+@media (min-width: 768px) {
+    .embeddedServiceHelpButton .helpButton .uiButton {
+        border-radius: 24px !important;
+        padding: 12px 24px !important;
+    }
+}
+
+/* Mobile Trigger: 52px Circle */
+@media (max-width: 767px) {
+    .embeddedServiceHelpButton .helpButton .uiButton {
+        width: 52px !important;
+        height: 52px !important;
+        border-radius: 50% !important;
+        padding: 0 !important;
+    }
+    .embeddedServiceHelpButton .helpButton .uiButton .helpButtonLabel {
+        display: none !important; /* Hide label on mobile */
+    }
+}
+
+/* Trigger Button Entrance Animation */
+@keyframes botTriggerSpringIn {
+    0% {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.embeddedServiceHelpButton.bot-loaded .helpButton {
+    animation: botTriggerSpringIn 0.32s var(--bot-spring-curve) forwards;
+}
+
+/* ==========================================================================
+   CHAT WINDOW (Sidebar)
+   ========================================================================== */
+
+.embeddedServiceSidebar {
+    background: var(--bot-bg-light) !important;
+    backdrop-filter: var(--bot-blur) !important;
+    -webkit-backdrop-filter: var(--bot-blur) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+    z-index: 999999 !important;
+}
+
+html.dark .embeddedServiceSidebar {
+    background: var(--bot-bg-dark) !important;
+    border: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Desktop Chat Window */
+@media (min-width: 768px) {
+    .embeddedServiceSidebar {
+        width: 380px !important;
+        height: 560px !important;
+        border-radius: 16px !important;
+        bottom: 24px !important;
+        right: 24px !important;
+        top: auto !important;
+        transform-origin: bottom right;
+    }
+
+    .embeddedServiceSidebar.is-open {
+        animation: botWindowScaleUp 0.28s var(--bot-spring-curve) forwards;
+    }
+
+    .embeddedServiceSidebar.is-closing {
+        animation: botWindowScaleDown 0.2s ease-in forwards;
+    }
+}
+
+@keyframes botWindowScaleUp {
+    0% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes botWindowScaleDown {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+}
+
+/* Mobile Chat Window (Bottom Sheet) */
+@media (max-width: 767px) {
+    .embeddedServiceSidebar {
+        width: 100% !important;
+        height: 88vh !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        border-radius: 20px 20px 0 0 !important;
+        transform: translateY(100%);
+        transition: transform 0.3s var(--bot-spring-curve);
+    }
+
+    .embeddedServiceSidebar.is-open {
+        transform: translateY(0);
+    }
+
+    .embeddedServiceSidebar.is-closing {
+        transform: translateY(100%);
+        transition: transform 0.25s ease-in;
+    }
+
+    /* Drag Handle */
+    .embeddedServiceSidebar::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 36px;
+        height: 4px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+        z-index: 10;
+    }
+
+    html.dark .embeddedServiceSidebar::before {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ==========================================================================
+   HEADER & INPUT AREA
+   ========================================================================== */
+
+/* Header */
+.embeddedServiceSidebar .sidebarHeader {
+    background: transparent !important;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html.dark .embeddedServiceSidebar .sidebarHeader {
+    background: var(--bot-header-bg-dark) !important;
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.embeddedServiceSidebar .sidebarHeader h2 {
+    font-family: var(--bot-font-family) !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+}
+
+/* Input Area */
+.embeddedServiceSidebar .chatInput {
+    background: transparent !important;
+    padding-bottom: calc(16px + var(--bot-safe-bottom)) !important;
+}
+
+html.dark .embeddedServiceSidebar .chatInput {
+    background: var(--bot-input-bg-dark) !important;
+}
+
+.embeddedServiceSidebar .chatInput textarea {
+    font-size: 16px !important; /* Prevents iOS zoom */
+    border-radius: 18px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    transition: border-color 0.2s ease !important;
+    padding: 10px 14px !important;
+}
+
+.embeddedServiceSidebar .chatInput textarea:focus {
+    border-color: var(--bot-user-bubble-bg) !important;
+    outline: none !important;
+}
+
+html.dark .embeddedServiceSidebar .chatInput textarea {
+    background: #1c1c1e !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+html.dark .embeddedServiceSidebar .chatInput textarea::placeholder {
+    color: #8e8e93 !important;
+}
+
+/* Minimum Tap Targets */
+.embeddedServiceSidebar button {
+    min-width: 44px !important;
+    min-height: 44px !important;
+}
+
+/* Send Button Micro-interaction */
+.embeddedServiceSidebar .chatInput button.sendButton {
+    transition: transform 0.1s ease !important;
+}
+.embeddedServiceSidebar .chatInput button.sendButton:active {
+    transform: scale(0.9);
+}
+
+/* ==========================================================================
+   MESSAGE BUBBLES
+   ========================================================================== */
+
+.embeddedServiceSidebar .chatMessage {
+    padding: 0 16px !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+.embeddedServiceSidebar .chatMessage .bubble {
+    border-radius: 18px !important;
+    padding: 10px 14px !important;
+    font-size: 17px !important;
+    line-height: 1.4 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    animation: bubbleSlideUp 0.3s ease forwards;
+}
+
+/* Bot Bubbles */
+.embeddedServiceSidebar .chatMessage.agent .bubble {
+    background: var(--bot-system-bubble-bg) !important;
+    color: var(--bot-system-bubble-text) !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+html.dark .embeddedServiceSidebar .chatMessage.agent .bubble {
+    background: var(--bot-system-bubble-bg-dark) !important;
+    color: var(--bot-system-bubble-text-dark) !important;
+}
+
+/* User Bubbles */
+.embeddedServiceSidebar .chatMessage.chasitor .bubble {
+    background: var(--bot-user-bubble-bg) !important;
+    color: var(--bot-user-bubble-text) !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+/* Timestamps */
+.embeddedServiceSidebar .chatMessage .timestamp {
+    font-size: 13px !important;
+    color: #8e8e93 !important;
+}
+
+@keyframes bubbleSlideUp {
+    0% {
+        transform: translateY(8px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Typing Indicator Override */
+.bot-typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    background: var(--bot-system-bubble-bg);
+    border-radius: 18px;
+    width: fit-content;
+}
+html.dark .bot-typing-indicator {
+    background: var(--bot-system-bubble-bg-dark);
+}
+.bot-typing-indicator .dot {
+    width: 8px;
+    height: 8px;
+    background: #8e8e93;
+    border-radius: 50%;
+    animation: typingPulse 1.4s infinite ease-in-out;
+}
+.bot-typing-indicator .dot:nth-child(1) {
+    animation-delay: 0s;
+}
+.bot-typing-indicator .dot:nth-child(2) {
+    animation-delay: 0.16s;
+}
+.bot-typing-indicator .dot:nth-child(3) {
+    animation-delay: 0.32s;
+}
+
+@keyframes typingPulse {
+    0%,
+    100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    .embeddedServiceSidebar,
+    .embeddedServiceSidebar.is-open,
+    .embeddedServiceSidebar.is-closing,
+    .embeddedServiceHelpButton.bot-loaded .helpButton,
+    .embeddedServiceSidebar .chatMessage .bubble {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
