@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './HighlightsPanel.module.css';
+import Image from 'next/image';
 
 import { SFPortfolioSettings } from '@/types/salesforce';
 
@@ -56,10 +57,13 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
         <div className={styles.highlightsPanel} data-tour="highlights-panel">
             <div className={styles.mainInfo}>
                 <div className={styles.iconContainer}>
-                    <img
+                    <Image
                         src="/avatar.png"
                         alt="Naveen Kumar Pasupuleti - Salesforce QA Expert"
                         className={styles.avatar}
+                        width={56}
+                        height={56}
+                        priority
                     />
                 </div>
                 <div className={styles.textInfo}>
