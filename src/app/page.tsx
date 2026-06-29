@@ -18,15 +18,17 @@ import {
     getCertifications,
 } from '@/lib/salesforce';
 
-export const revalidate = 0;
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export default async function Home() {
-    const experienceData = await getWorkExperience();
-    const projectsData = await getProjects();
-    const skillsData = await getSkills();
-    const settings = await getPortfolioSettings();
-    const certificationsData = await getCertifications();
+    const [experienceData, projectsData, skillsData, settings, certificationsData] =
+        await Promise.all([
+            getWorkExperience(),
+            getProjects(),
+            getSkills(),
+            getPortfolioSettings(),
+            getCertifications(),
+        ]);
 
     // SEO Branding Overrides
     if (settings) {

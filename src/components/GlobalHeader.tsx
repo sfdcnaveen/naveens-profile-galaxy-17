@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react';
 import styles from './GlobalHeader.module.css';
 import ThemeToggle from './ThemeToggle';
 import Link from 'next/link';
+import Image from 'next/image';
 import { SFProject, SFSkill, SFWorkExperience } from '@/types/salesforce';
 
 interface GlobalHeaderProps {
@@ -370,9 +371,12 @@ const GlobalHeader = ({
                     </button>
                     <ThemeToggle />
                     <div className={styles.userProfile}>
-                        <img
+                        <Image
                             src="/avatar.png"
                             alt="Naveen Kumar Pasupuleti - Salesforce QA Expert"
+                            width={32}
+                            height={32}
+                            priority
                         />
                     </div>
                 </div>
