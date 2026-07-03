@@ -18,9 +18,7 @@ const Card: React.FC<CardProps> = ({ title, icon, children, actions }) => {
                 </div>
                 {actions && <div className={styles.actions}>{actions}</div>}
             </header>
-            <div className={styles.body}>
-                {children}
-            </div>
+            <div className={styles.body}>{children}</div>
         </article>
     );
 };

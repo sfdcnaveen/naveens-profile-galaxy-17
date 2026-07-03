@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { trackEvent } from '@/lib/tracking';
 import styles from './Tabs.module.css';
 
@@ -57,12 +58,12 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
                         >
                             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                 {tab.icon && (
-                                    <img
+                                    <Image
                                         src={tab.icon}
                                         alt=""
+                                        width={16}
+                                        height={16}
                                         style={{
-                                            width: '16px',
-                                            height: '16px',
                                             borderRadius: '4px',
                                         }}
                                     />

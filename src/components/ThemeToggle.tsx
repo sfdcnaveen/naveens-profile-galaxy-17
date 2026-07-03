@@ -11,7 +11,7 @@ export default function ThemeToggle() {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setMounted(true);
         const savedTheme = document.documentElement.getAttribute('data-theme') || 'light';
-         
+
         setTheme(savedTheme);
     }, []);
 

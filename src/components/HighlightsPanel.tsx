@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HighlightsPanel.module.css';
 import Image from 'next/image';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { SFPortfolioSettings } from '@/types/salesforce';
 
@@ -58,7 +59,7 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
             <div className={styles.mainInfo}>
                 <div className={styles.iconContainer}>
                     <Image
-                        src="/avatar.png"
+                        src="/new-avatar.png"
                         alt="Naveen Kumar Pasupuleti - Salesforce QA Expert"
                         className={styles.avatar}
                         width={56}
@@ -124,6 +125,24 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
                             }}
                         ></span>
                         Actively coding
+                    </span>
+                </li>
+                <li className={styles.keyField}>
+                    <span className={styles.fieldLabel}>Daily Steps</span>
+                    <span
+                        className={styles.fieldValue}
+                        style={{ display: 'flex', alignItems: 'center' }}
+                    >
+                        <div style={{ width: '24px', height: '24px', marginRight: '8px' }}>
+                            <DotLottieReact
+                                src="https://lottie.host/4d7b5193-965d-40ec-a7bd-ff1abb7b4d02/Pw2CtDFM0Y.lottie"
+                                loop
+                                autoplay
+                            />
+                        </div>
+                        {settings?.Daily_Steps__c
+                            ? settings.Daily_Steps__c.toLocaleString()
+                            : '13,261'}
                     </span>
                 </li>
             </ul>

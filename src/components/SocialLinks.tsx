@@ -9,10 +9,11 @@ interface SocialLinksProps {
 }
 
 export default function SocialLinks({ settings }: SocialLinksProps) {
-    const linkedinUrl = settings?.LinkedIn_URL__c || 'https://linkedin.com/in/naveenkumarpasupuleti';
+    const linkedinUrl =
+        settings?.LinkedIn_URL__c || 'https://linkedin.com/in/naveenkumarpasupuleti';
     const githubUrl = settings?.GitHub_URL__c || 'https://github.com/sfdcnaveen';
     const emailAddress = settings?.Email_Address__c || 'pasupulatink@gmail.com';
-    
+
     const formatUrlDisplay = (url: string) => {
         return url.replace(/^https?:\/\/(www\.)?/, '');
     };

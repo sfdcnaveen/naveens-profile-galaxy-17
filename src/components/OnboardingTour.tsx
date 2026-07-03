@@ -175,7 +175,12 @@ export default function OnboardingTour() {
     const tooltipStyle = getTooltipStyle(highlightRect);
 
     return (
-        <div className={styles.tourLayer} role="dialog" aria-modal="true" aria-labelledby="tour-title">
+        <div
+            className={styles.tourLayer}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tour-title"
+        >
             <div className={styles.scrim} />
 
             {highlightRect && (

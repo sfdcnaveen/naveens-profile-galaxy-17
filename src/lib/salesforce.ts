@@ -164,7 +164,7 @@ export async function getPortfolioSettings(): Promise<SFPortfolioSettings | null
 
     try {
         const result = await sfConnection.query(
-            "SELECT Id, Full_Name__c, Headline_Title__c, Current_Company__c, Location__c, About_Me_Description__c, Side_Note_Title__c, Side_Note_Description__c, Years_of_Experience__c, Total_Certifications__c, Total_GitHub_Repos__c, LinkedIn_URL__c, GitHub_URL__c, Email_Address__c, Testimonial_Quote__c, Testimonial_Author__c, Testimonial_Role__c, Testimonial_Company__c, Resume_URL__c FROM Portfolio_Settings__mdt WHERE DeveloperName = 'Naveen_Profile' LIMIT 1"
+            "SELECT Id, Full_Name__c, Headline_Title__c, Current_Company__c, Location__c, About_Me_Description__c, Side_Note_Title__c, Side_Note_Description__c, Years_of_Experience__c, Total_Certifications__c, Total_GitHub_Repos__c, LinkedIn_URL__c, GitHub_URL__c, Email_Address__c, Testimonial_Quote__c, Testimonial_Author__c, Testimonial_Role__c, Testimonial_Company__c, Resume_URL__c, Daily_Steps__c FROM Portfolio_Settings__mdt WHERE DeveloperName = 'Naveen_Profile' LIMIT 1"
         );
         if (result.records && result.records.length > 0) {
             return result.records[0] as unknown as SFPortfolioSettings;

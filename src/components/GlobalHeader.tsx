@@ -372,7 +372,7 @@ const GlobalHeader = ({
                     <ThemeToggle />
                     <div className={styles.userProfile}>
                         <Image
-                            src="/avatar.png"
+                            src="/new-avatar.png"
                             alt="Naveen Kumar Pasupuleti - Salesforce QA Expert"
                             width={32}
                             height={32}
