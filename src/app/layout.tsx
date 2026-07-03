@@ -21,9 +21,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: 'https://naveens-portfolio-three.vercel.app/',
     },
-    icons: {
-        icon: '/avatar.png',
-    },
+
     openGraph: {
         type: 'website',
         title: 'Naveen Kumar Pasupuleti — Salesforce QA & Playwright Expert',
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
         url: 'https://naveens-portfolio-three.vercel.app/',
         images: [
             {
-                url: '/avatar.png',
+                url: '/new-avatar.png',
             },
         ],
     },
@@ -41,7 +39,7 @@ export const metadata: Metadata = {
         title: 'Naveen Kumar Pasupuleti — Salesforce QA & Playwright Expert',
         description:
             'Naveen Kumar Pasupuleti is a Salesforce QA & Playwright Expert. Transitioning legacy SFDC testing to modern Playwright suites.',
-        images: ['/avatar.png'],
+        images: ['/new-avatar.png'],
     },
 };
 
@@ -70,7 +68,7 @@ export default function RootLayout({
                             description:
                                 'Naveen Kumar Pasupuleti is a Salesforce QA & Playwright Expert who transitions legacy SFDC testing to modern deterministic Playwright suites.',
                             url: 'https://naveens-portfolio-three.vercel.app/',
-                            image: 'https://naveens-portfolio-three.vercel.app/avatar.png',
+                            image: 'https://naveens-portfolio-three.vercel.app/new-avatar.png',
                             sameAs: [
                                 'https://www.linkedin.com/in/naveenkumarpasupuleti/',
                                 'https://github.com/sfdcnaveen',

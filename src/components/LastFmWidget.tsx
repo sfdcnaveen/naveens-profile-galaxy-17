@@ -17,7 +17,7 @@ export default function LastFmWidget() {
 
     useEffect(() => {
         fetch('/api/get-recent-track')
-            .then(res => res.json())
+            .then((res) => res.json())
             .then((json: TrackData) => {
                 setData(json);
                 setLoading(false);
@@ -29,7 +29,7 @@ export default function LastFmWidget() {
 
     const togglePlay = () => {
         if (!audioRef.current) return;
-        
+
         if (isPlaying) {
             audioRef.current.pause();
         } else {
@@ -41,8 +41,22 @@ export default function LastFmWidget() {
     if (loading) {
         return (
             <Card title="Music Info">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem' }}>
-                    <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: 'var(--slds-g-color-neutral-base-60)' }}></div>
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        fontSize: '0.875rem',
+                    }}
+                >
+                    <div
+                        style={{
+                            width: '12px',
+                            height: '12px',
+                            borderRadius: '50%',
+                            backgroundColor: 'var(--slds-g-color-neutral-base-60)',
+                        }}
+                    ></div>
                     Fetching live track...
                 </div>
             </Card>
@@ -53,23 +67,48 @@ export default function LastFmWidget() {
 
     return (
         <Card title="Live Status">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.875rem' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.75rem',
+                    fontSize: '0.875rem',
+                }}
+            >
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                    <div style={{ width: '10px', height: '10px', borderRadius: '50%', backgroundColor: '#fa243c', marginTop: '0.35rem', boxShadow: '0 0 8px rgba(250, 36, 60, 0.6)' }}></div>
+                    <div
+                        style={{
+                            width: '10px',
+                            height: '10px',
+                            borderRadius: '50%',
+                            backgroundColor: '#fa243c',
+                            marginTop: '0.35rem',
+                            boxShadow: '0 0 8px rgba(250, 36, 60, 0.6)',
+                        }}
+                    ></div>
                     <div style={{ flex: 1, lineHeight: 1.5 }}>
-                        <span style={{ color: 'var(--slds-g-color-neutral-base-30)' }}>{data.verb} </span>
-                        <strong style={{ color: 'var(--slds-g-color-brand-base-50)', display: 'inline-block' }}>{data.currentTrack}</strong>
+                        <span style={{ color: 'var(--slds-g-color-neutral-base-30)' }}>
+                            {data.verb}{' '}
+                        </span>
+                        <strong
+                            style={{
+                                color: 'var(--slds-g-color-brand-base-50)',
+                                display: 'inline-block',
+                            }}
+                        >
+                            {data.currentTrack}
+                        </strong>
                     </div>
                 </div>
-                
+
                 {data.previewUrl && (
                     <div style={{ marginTop: '0.25rem' }}>
-                        <audio 
-                            ref={audioRef} 
-                            src={data.previewUrl} 
-                            onEnded={() => setIsPlaying(false)} 
+                        <audio
+                            ref={audioRef}
+                            src={data.previewUrl}
+                            onEnded={() => setIsPlaying(false)}
                         />
-                        <button 
+                        <button
                             onClick={togglePlay}
                             style={{
                                 display: 'inline-flex',
@@ -83,25 +122,41 @@ export default function LastFmWidget() {
                                 cursor: 'pointer',
                                 fontSize: '0.75rem',
                                 fontWeight: 600,
-                                transition: 'all 0.2s ease'
+                                transition: 'all 0.2s ease',
                             }}
                             onMouseOver={(e) => {
-                                e.currentTarget.style.borderColor = 'var(--slds-g-color-brand-base-50)';
+                                e.currentTarget.style.borderColor =
+                                    'var(--slds-g-color-brand-base-50)';
                                 e.currentTarget.style.color = 'var(--slds-g-color-brand-base-50)';
                             }}
                             onMouseOut={(e) => {
-                                e.currentTarget.style.borderColor = 'var(--slds-g-color-border-base-40)';
+                                e.currentTarget.style.borderColor =
+                                    'var(--slds-g-color-border-base-40)';
                                 e.currentTarget.style.color = 'var(--slds-g-color-neutral-base-10)';
                             }}
                         >
                             {isPlaying ? (
                                 <>
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>
+                                    <svg
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
+                                    </svg>
                                     Pause Preview
                                 </>
                             ) : (
                                 <>
-                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg
+                                        width="12"
+                                        height="12"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
                                     Play Preview
                                 </>
                             )}
