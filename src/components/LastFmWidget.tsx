@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import Card from './Card';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 interface TrackData {
     currentTrack: string;
@@ -78,14 +79,13 @@ export default function LastFmWidget() {
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
                     <div
                         style={{
-                            width: '10px',
-                            height: '10px',
-                            borderRadius: '50%',
-                            backgroundColor: '#fa243c',
-                            marginTop: '0.35rem',
-                            boxShadow: '0 0 8px rgba(250, 36, 60, 0.6)',
+                            width: '36px',
+                            height: '36px',
+                            marginTop: '-0.25rem',
                         }}
-                    ></div>
+                    >
+                        <DotLottieReact src="/lotties/equalizer.lottie" loop autoplay />
+                    </div>
                     <div style={{ flex: 1, lineHeight: 1.5 }}>
                         <span style={{ color: 'var(--slds-g-color-neutral-base-30)' }}>
                             {data.verb}{' '}

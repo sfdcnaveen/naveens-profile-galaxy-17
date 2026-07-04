@@ -115,34 +115,10 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
                         className={styles.fieldValue}
                         style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
                     >
-                        <span
-                            style={{
-                                width: '8px',
-                                height: '8px',
-                                backgroundColor: '#4ade80',
-                                borderRadius: '50%',
-                                display: 'inline-block',
-                            }}
-                        ></span>
-                        Actively coding
-                    </span>
-                </li>
-                <li className={styles.keyField}>
-                    <span className={styles.fieldLabel}>Daily Steps</span>
-                    <span
-                        className={styles.fieldValue}
-                        style={{ display: 'flex', alignItems: 'center' }}
-                    >
-                        <div style={{ width: '24px', height: '24px', marginRight: '8px' }}>
-                            <DotLottieReact
-                                src="https://lottie.host/4d7b5193-965d-40ec-a7bd-ff1abb7b4d02/Pw2CtDFM0Y.lottie"
-                                loop
-                                autoplay
-                            />
+                        <div style={{ width: '16px', height: '16px' }}>
+                            <DotLottieReact src="/lotties/pulse.lottie" loop autoplay />
                         </div>
-                        {settings?.Daily_Steps__c
-                            ? settings.Daily_Steps__c.toLocaleString()
-                            : '13,261'}
+                        Actively coding
                     </span>
                 </li>
             </ul>
