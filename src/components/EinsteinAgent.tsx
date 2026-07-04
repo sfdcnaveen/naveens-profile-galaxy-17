@@ -35,19 +35,26 @@ export default function EinsteinAgent() {
                         helpButtonContainer.classList.add('bot-loaded');
                     }
 
-                    // Custom Agent Lottie Injection
-                    const helpButton = document.querySelector(
-                        '.embeddedServiceHelpButton .helpButton .uiButton'
+                    // Custom Agent Lottie Injection - Robust overlay method
+                    const helpButtonWrapper = document.querySelector(
+                        '.embeddedServiceHelpButton .helpButton'
                     );
-                    if (helpButton && !helpButton.classList.contains('lottie-injected')) {
-                        helpButton.classList.add('lottie-injected');
-                        helpButton.innerHTML = '';
-                        const root = createRoot(helpButton);
+                    if (helpButtonWrapper && !document.querySelector('.custom-agent-lottie')) {
+                        const lottieOverlay = document.createElement('div');
+                        lottieOverlay.className = 'custom-agent-lottie';
+                        lottieOverlay.style.position = 'absolute';
+                        lottieOverlay.style.top = '50%';
+                        lottieOverlay.style.left = '50%';
+                        lottieOverlay.style.transform = 'translate(-50%, -50%)';
+                        lottieOverlay.style.pointerEvents = 'none'; // Allow clicks to pass to the real button
+                        helpButtonWrapper.appendChild(lottieOverlay);
+
+                        const root = createRoot(lottieOverlay);
                         root.render(
                             <div
                                 style={{
-                                    width: '64px',
-                                    height: '64px',
+                                    width: '80px',
+                                    height: '80px',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
