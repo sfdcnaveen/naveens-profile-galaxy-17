@@ -2,8 +2,6 @@
 
 import React, { useEffect } from 'react';
 import Script from 'next/script';
-import { createRoot } from 'react-dom/client';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function EinsteinAgent() {
     // These should be populated from your Salesforce MIAW (Messaging for In-App and Web) deployment
@@ -25,44 +23,9 @@ export default function EinsteinAgent() {
             for (const mutation of mutations) {
                 if (mutation.addedNodes.length) {
                     // 1. Entrance animation for the Help Button
-                    const helpButtonContainer = document.querySelector(
-                        '.embeddedServiceHelpButton'
-                    );
-                    if (
-                        helpButtonContainer &&
-                        !helpButtonContainer.classList.contains('bot-loaded')
-                    ) {
-                        helpButtonContainer.classList.add('bot-loaded');
-                    }
-
-                    // Custom Agent Lottie Injection - Robust overlay method
-                    const helpButtonWrapper = document.querySelector(
-                        '.embeddedServiceHelpButton .helpButton'
-                    );
-                    if (helpButtonWrapper && !document.querySelector('.custom-agent-lottie')) {
-                        const lottieOverlay = document.createElement('div');
-                        lottieOverlay.className = 'custom-agent-lottie';
-                        lottieOverlay.style.position = 'absolute';
-                        lottieOverlay.style.top = '50%';
-                        lottieOverlay.style.left = '50%';
-                        lottieOverlay.style.transform = 'translate(-50%, -50%)';
-                        lottieOverlay.style.pointerEvents = 'none'; // Allow clicks to pass to the real button
-                        helpButtonWrapper.appendChild(lottieOverlay);
-
-                        const root = createRoot(lottieOverlay);
-                        root.render(
-                            <div
-                                style={{
-                                    width: '80px',
-                                    height: '80px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                <DotLottieReact src="/lotties/agent.lottie" loop autoplay />
-                            </div>
-                        );
+                    const helpButton = document.querySelector('.embeddedServiceHelpButton');
+                    if (helpButton && !helpButton.classList.contains('bot-loaded')) {
+                        helpButton.classList.add('bot-loaded');
                     }
 
                     // 2. Chat Window logic (Drag-to-dismiss & Keyboard handling)

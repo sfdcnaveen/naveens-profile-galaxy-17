@@ -37,16 +37,6 @@ export default function UpdateNotification() {
 
                 <ul className={styles.list}>
                     <li className={styles.listItem}>
-                        <div className={styles.icon}>✨</div>
-                        <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>Meet the Agentforce Agent</h3>
-                            <p className={styles.itemDesc}>
-                                A new, interactive AI assistant is now available to answer your
-                                questions right from the floating chat button!
-                            </p>
-                        </div>
-                    </li>
-                    <li className={styles.listItem}>
                         <div className={styles.icon}>🚶</div>
                         <div className={styles.itemContent}>
                             <h3 className={styles.itemTitle}>Daily Steps Tracking</h3>
