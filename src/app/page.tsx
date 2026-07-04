@@ -9,6 +9,7 @@ import Projects from '@/components/Projects';
 import Certifications from '@/components/Certifications';
 import Card from '@/components/Card';
 import SocialLinks from '@/components/SocialLinks';
+import DailyStepsWidget from '@/components/DailyStepsWidget';
 import LastFmWidget from '@/components/LastFmWidget';
 import {
     getProjects,
@@ -134,6 +135,7 @@ export default async function Home() {
                             </div>
                         </Card>
 
+                        <DailyStepsWidget settings={settings} />
                         <LastFmWidget />
                     </aside>
                 </div>

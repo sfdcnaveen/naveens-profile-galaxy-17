@@ -2,6 +2,8 @@
 
 import React, { useEffect } from 'react';
 import Script from 'next/script';
+import { createRoot } from 'react-dom/client';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function EinsteinAgent() {
     // These should be populated from your Salesforce MIAW (Messaging for In-App and Web) deployment
@@ -23,9 +25,37 @@ export default function EinsteinAgent() {
             for (const mutation of mutations) {
                 if (mutation.addedNodes.length) {
                     // 1. Entrance animation for the Help Button
-                    const helpButton = document.querySelector('.embeddedServiceHelpButton');
-                    if (helpButton && !helpButton.classList.contains('bot-loaded')) {
-                        helpButton.classList.add('bot-loaded');
+                    const helpButtonContainer = document.querySelector(
+                        '.embeddedServiceHelpButton'
+                    );
+                    if (
+                        helpButtonContainer &&
+                        !helpButtonContainer.classList.contains('bot-loaded')
+                    ) {
+                        helpButtonContainer.classList.add('bot-loaded');
+                    }
+
+                    // Custom Agent Lottie Injection
+                    const helpButton = document.querySelector(
+                        '.embeddedServiceHelpButton .helpButton .uiButton'
+                    );
+                    if (helpButton && !helpButton.classList.contains('lottie-injected')) {
+                        helpButton.classList.add('lottie-injected');
+                        helpButton.innerHTML = '';
+                        const root = createRoot(helpButton);
+                        root.render(
+                            <div
+                                style={{
+                                    width: '64px',
+                                    height: '64px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                <DotLottieReact src="/lotties/agent.lottie" loop autoplay />
+                            </div>
+                        );
                     }
 
                     // 2. Chat Window logic (Drag-to-dismiss & Keyboard handling)
