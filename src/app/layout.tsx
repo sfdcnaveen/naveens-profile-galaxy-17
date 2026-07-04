@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import OnboardingTour from '@/components/OnboardingTour';
 import EinsteinAgent from '@/components/EinsteinAgent';
+import UpdateNotification from '@/components/UpdateNotification';
 import '@/styles/globals.css';
 import '@/styles/einstein-bot.css';
 
@@ -110,6 +111,7 @@ export default function RootLayout({
             <body>
                 {children}
                 <OnboardingTour />
+                <UpdateNotification />
                 <EinsteinAgent />
                 <Analytics />
                 <SpeedInsights />
