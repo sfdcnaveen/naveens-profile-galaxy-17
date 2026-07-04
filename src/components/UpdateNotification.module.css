@@ -1,0 +1,155 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.modal {
+    background: var(--slds-g-color-neutral-base-100, #ffffff);
+    border-radius: 20px;
+    padding: 32px;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s forwards;
+}
+
+[data-theme='dark'] .modal {
+    background: var(--slds-g-color-neutral-base-10, #1c1c1e);
+    border: 1px solid var(--slds-g-color-neutral-base-30, #3a3a3c);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--slds-g-color-neutral-base-10, #000);
+    margin: 0 0 8px;
+}
+
+[data-theme='dark'] .title {
+    color: #fff;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--slds-g-color-neutral-base-40, #666);
+    margin: 0;
+}
+
+[data-theme='dark'] .subtitle {
+    color: #999;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.listItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    background: var(--slds-g-color-neutral-base-95, #f2f2f7);
+    padding: 12px;
+    border-radius: 12px;
+}
+
+[data-theme='dark'] .icon {
+    background: var(--slds-g-color-neutral-base-20, #2c2c2e);
+}
+
+.itemContent {
+    flex: 1;
+}
+
+.itemTitle {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--slds-g-color-neutral-base-10, #000);
+    margin: 0 0 4px;
+}
+
+[data-theme='dark'] .itemTitle {
+    color: #fff;
+}
+
+.itemDesc {
+    font-size: 0.9rem;
+    color: var(--slds-g-color-neutral-base-40, #666);
+    margin: 0;
+    line-height: 1.4;
+}
+
+[data-theme='dark'] .itemDesc {
+    color: #aaa;
+}
+
+.button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: var(--slds-g-color-brand-base-50, #0176d3);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+}
+
+.button:hover {
+    background: var(--slds-g-color-brand-base-40, #014486);
+    transform: scale(1.02);
+}
+
+.button:active {
+    transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
