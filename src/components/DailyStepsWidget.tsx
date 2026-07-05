@@ -33,9 +33,11 @@ export default function DailyStepsWidget({ settings }: DailyStepsWidgetProps) {
                 <div style={{ flex: 1 }}>
                     <div
                         style={{
-                            fontSize: '1.5rem',
+                            fontSize: '2.25rem',
                             fontWeight: 700,
+                            lineHeight: 1.1,
                             color: 'var(--slds-g-color-neutral-base-10)',
+                            letterSpacing: '-0.02em',
                         }}
                     >
                         {steps}

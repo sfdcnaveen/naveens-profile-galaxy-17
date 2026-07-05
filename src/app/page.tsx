@@ -109,7 +109,7 @@ export default async function Home() {
                             gap: 'var(--slds-g-spacing-medium)',
                         }}
                     >
-                        <Card title="Contact Info">
+                        <Card title="Connect">
                             <SocialLinks settings={settings} />
                         </Card>
 

@@ -67,7 +67,7 @@ export default function LastFmWidget() {
     if (!data) return null;
 
     return (
-        <Card title="Live Status">
+        <Card title="Listening To">
             <div
                 style={{
                     display: 'flex',
@@ -76,93 +76,106 @@ export default function LastFmWidget() {
                     fontSize: '0.875rem',
                 }}
             >
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                     <div
                         style={{
-                            width: '36px',
-                            height: '36px',
-                            marginTop: '-0.25rem',
+                            width: '68px',
+                            height: '68px',
+                            marginTop: '-0.55rem',
+                            flexShrink: 0,
                         }}
                     >
                         <DotLottieReact src="/lotties/equalizer.lottie" loop autoplay />
                     </div>
-                    <div style={{ flex: 1, lineHeight: 1.5 }}>
-                        <span style={{ color: 'var(--slds-g-color-neutral-base-30)' }}>
-                            {data.verb}{' '}
-                        </span>
-                        <strong
+                    <div style={{ flex: 1, lineHeight: 1.4, minWidth: 0 }}>
+                        <div
                             style={{
                                 color: 'var(--slds-g-color-brand-base-50)',
-                                display: 'inline-block',
+                                fontWeight: 700,
+                                fontSize: '0.9rem',
+                                marginBottom: '2px',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
                             }}
                         >
-                            {data.currentTrack}
-                        </strong>
-                    </div>
-                </div>
-
-                {data.previewUrl && (
-                    <div style={{ marginTop: '0.25rem' }}>
-                        <audio
-                            ref={audioRef}
-                            src={data.previewUrl}
-                            onEnded={() => setIsPlaying(false)}
-                        />
-                        <button
-                            onClick={togglePlay}
+                            {data.currentTrack.split(' - ')[0]}
+                        </div>
+                        <div
                             style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '0.5rem',
-                                background: 'transparent',
-                                border: '1px solid var(--slds-g-color-border-base-40)',
-                                borderRadius: '999px',
-                                padding: '0.35rem 0.8rem',
-                                color: 'var(--slds-g-color-neutral-base-10)',
-                                cursor: 'pointer',
-                                fontSize: '0.75rem',
-                                fontWeight: 600,
-                                transition: 'all 0.2s ease',
-                            }}
-                            onMouseOver={(e) => {
-                                e.currentTarget.style.borderColor =
-                                    'var(--slds-g-color-brand-base-50)';
-                                e.currentTarget.style.color = 'var(--slds-g-color-brand-base-50)';
-                            }}
-                            onMouseOut={(e) => {
-                                e.currentTarget.style.borderColor =
-                                    'var(--slds-g-color-border-base-40)';
-                                e.currentTarget.style.color = 'var(--slds-g-color-neutral-base-10)';
+                                color: 'var(--slds-g-color-neutral-base-30)',
+                                fontSize: '0.8rem',
+                                whiteSpace: 'nowrap',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
                             }}
                         >
-                            {isPlaying ? (
-                                <>
+                            {data.currentTrack.split(' - ').slice(1).join(' - ')}
+                        </div>
+                    </div>
+
+                    {data.previewUrl && (
+                        <div style={{ flexShrink: 0 }}>
+                            <audio
+                                ref={audioRef}
+                                src={data.previewUrl}
+                                onEnded={() => setIsPlaying(false)}
+                            />
+                            <button
+                                onClick={togglePlay}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    width: '36px',
+                                    height: '36px',
+                                    background: 'transparent',
+                                    border: '1px solid var(--slds-g-color-border-base-40)',
+                                    borderRadius: '50%',
+                                    color: 'var(--slds-g-color-neutral-base-10)',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.2s ease',
+                                }}
+                                onMouseOver={(e) => {
+                                    e.currentTarget.style.borderColor =
+                                        'var(--slds-g-color-brand-base-50)';
+                                    e.currentTarget.style.color =
+                                        'var(--slds-g-color-brand-base-50)';
+                                }}
+                                onMouseOut={(e) => {
+                                    e.currentTarget.style.borderColor =
+                                        'var(--slds-g-color-border-base-40)';
+                                    e.currentTarget.style.color =
+                                        'var(--slds-g-color-neutral-base-10)';
+                                }}
+                                aria-label={isPlaying ? 'Pause' : 'Play'}
+                            >
+                                {isPlaying ? (
                                     <svg
-                                        width="12"
-                                        height="12"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg"
                                     >
                                         <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
                                     </svg>
-                                    Pause Preview
-                                </>
-                            ) : (
-                                <>
+                                ) : (
                                     <svg
-                                        width="12"
-                                        height="12"
+                                        width="14"
+                                        height="14"
                                         viewBox="0 0 24 24"
                                         fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        style={{ marginLeft: '2px' }}
                                     >
                                         <path d="M8 5v14l11-7z" />
                                     </svg>
-                                    Play Preview
-                                </>
-                            )}
-                        </button>
-                    </div>
-                )}
+                                )}
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
         </Card>
     );
