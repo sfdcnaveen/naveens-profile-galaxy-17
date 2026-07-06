@@ -135,7 +135,7 @@ export default async function Home() {
                             </div>
                         </Card>
 
-                        <DailyStepsWidget settings={settings} />
+                        <DailyStepsWidget />
                         <LastFmWidget />
                     </aside>
                 </div>
