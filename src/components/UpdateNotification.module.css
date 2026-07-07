@@ -26,7 +26,7 @@
     animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s forwards;
 }
 
-:global([data-theme='dark']) .modal {
+:global([data-theme='dark']) :local(.modal) {
     background: var(--slds-g-color-neutral-base-10, #1c1c1e);
     border: 1px solid var(--slds-g-color-neutral-base-30, #3a3a3c);
 }
@@ -43,7 +43,7 @@
     margin: 0 0 8px;
 }
 
-:global([data-theme='dark']) .title {
+:global([data-theme='dark']) :local(.title) {
     color: #fff;
 }
 
@@ -53,7 +53,7 @@
     margin: 0;
 }
 
-:global([data-theme='dark']) .subtitle {
+:global([data-theme='dark']) :local(.subtitle) {
     color: #999;
 }
 
@@ -80,7 +80,7 @@
     border-radius: 12px;
 }
 
-:global([data-theme='dark']) .icon {
+:global([data-theme='dark']) :local(.icon) {
     background: var(--slds-g-color-neutral-base-20, #2c2c2e);
 }
 
@@ -95,7 +95,7 @@
     margin: 0 0 4px;
 }
 
-:global([data-theme='dark']) .itemTitle {
+:global([data-theme='dark']) :local(.itemTitle) {
     color: #fff;
 }
 
@@ -106,7 +106,7 @@
     line-height: 1.4;
 }
 
-:global([data-theme='dark']) .itemDesc {
+:global([data-theme='dark']) :local(.itemDesc) {
     color: #aaa;
 }
 
