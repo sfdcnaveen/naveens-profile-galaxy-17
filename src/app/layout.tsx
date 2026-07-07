@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import OnboardingTour from '@/components/OnboardingTour';
+import AgentTrigger from '@/components/AgentTrigger';
 import EinsteinAgent from '@/components/EinsteinAgent';
 import UpdateNotification from '@/components/UpdateNotification';
 import '@/styles/globals.css';
@@ -112,6 +113,7 @@ export default function RootLayout({
                 {children}
                 <OnboardingTour />
                 <UpdateNotification />
+                <AgentTrigger />
                 <EinsteinAgent />
                 <Analytics />
                 <SpeedInsights />

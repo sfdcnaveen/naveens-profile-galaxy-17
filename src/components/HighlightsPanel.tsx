@@ -93,20 +93,16 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
             <ul className={styles.keyFields}>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Title</span>
-                    <span className={styles.fieldValue}>
-                        {settings?.Headline_Title__c || 'SDET & Salesforce Automation Expert'}
-                    </span>
+                    <span className={styles.fieldValue}>{settings?.Headline_Title__c || ''}</span>
                 </li>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Company</span>
-                    <span className={styles.fieldValue}>
-                        {settings?.Current_Company__c || 'TestVagrant Technologies'}
-                    </span>
+                    <span className={styles.fieldValue}>{settings?.Current_Company__c || ''}</span>
                 </li>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Location</span>
                     <span className={styles.fieldValue}>
-                        {settings?.Location__c || 'Nellore'} ({weather})
+                        {settings?.Location__c || ''} {weather ? `(${weather})` : ''}
                     </span>
                 </li>
                 <li className={styles.keyField}>

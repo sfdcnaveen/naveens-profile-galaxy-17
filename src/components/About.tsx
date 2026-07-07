@@ -63,7 +63,7 @@ export default function About({ settings }: AboutProps) {
                         >
                             {settings?.Years_of_Experience__c
                                 ? `${settings.Years_of_Experience__c}+`
-                                : '5+'}
+                                : ''}
                         </span>
                         <span
                             style={{
@@ -97,7 +97,7 @@ export default function About({ settings }: AboutProps) {
                                 lineHeight: 1,
                             }}
                         >
-                            {settings?.Total_Certifications__c || '4'}
+                            {settings?.Total_Certifications__c || ''}
                         </span>
                         <span
                             style={{
@@ -133,7 +133,7 @@ export default function About({ settings }: AboutProps) {
                         >
                             {settings?.Total_GitHub_Repos__c
                                 ? `${settings.Total_GitHub_Repos__c}+`
-                                : '20+'}
+                                : ''}
                         </span>
                         <span
                             style={{
