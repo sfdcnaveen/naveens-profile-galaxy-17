@@ -8,7 +8,7 @@ export default function UpdateNotification() {
 
     useEffect(() => {
         // Only show once per user for this specific update version
-        const hasSeenUpdate = localStorage.getItem('hasSeenUpdate_v2');
+        const hasSeenUpdate = localStorage.getItem('hasSeenUpdate_v2_1');
         if (!hasSeenUpdate) {
             // Slight delay so it doesn't pop up instantly before page loads
             const timer = setTimeout(() => {
@@ -20,7 +20,7 @@ export default function UpdateNotification() {
 
     const handleDismiss = () => {
         setIsVisible(false);
-        localStorage.setItem('hasSeenUpdate_v2', 'true');
+        localStorage.setItem('hasSeenUpdate_v2_1', 'true');
     };
 
     if (!isVisible) return null;
@@ -32,27 +32,47 @@ export default function UpdateNotification() {
                     <h2 id="update-title" className={styles.title}>
                         🎉 What&apos;s New
                     </h2>
-                    <p className={styles.subtitle}>Version 2.0 is here!</p>
+                    <p className={styles.subtitle}>Version 2.1 is here!</p>
                 </div>
 
                 <ul className={styles.list}>
                     <li className={styles.listItem}>
-                        <div className={styles.icon}>✨</div>
+                        <div className={styles.icon}>☁️</div>
                         <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>Meet the Agentforce Agent</h3>
+                            <h3 className={styles.itemTitle}>New Salesforce Org & Data Cloud</h3>
                             <p className={styles.itemDesc}>
-                                A new, interactive AI assistant is now available to answer your
-                                questions right from the floating chat button!
+                                Shifted from the old org to a new org for better data management,
+                                leveraging Agentforce and Data Cloud!
+                            </p>
+                        </div>
+                    </li>
+                    <li className={styles.listItem}>
+                        <div className={styles.icon}>🤖</div>
+                        <div className={styles.itemContent}>
+                            <h3 className={styles.itemTitle}>Agentforce Upgrade</h3>
+                            <p className={styles.itemDesc}>
+                                The interactive AI assistant has been upgraded to a smarter
+                                Agentforce bot to assist you directly from the chat button.
                             </p>
                         </div>
                     </li>
                     <li className={styles.listItem}>
                         <div className={styles.icon}>🚶</div>
                         <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>Daily Steps Tracking</h3>
+                            <h3 className={styles.itemTitle}>Live Fitbit Tracking</h3>
                             <p className={styles.itemDesc}>
-                                Check out my real-time daily steps metric, newly added to the Daily
-                                Steps section.
+                                The steps shown are now real, live data fetched directly from my
+                                Fitbit tracker!
+                            </p>
+                        </div>
+                    </li>
+                    <li className={styles.listItem}>
+                        <div className={styles.icon}>🎵</div>
+                        <div className={styles.itemContent}>
+                            <h3 className={styles.itemTitle}>Last.fm Integration</h3>
+                            <p className={styles.itemDesc}>
+                                Added Last.fm integration to show the music track I listened to most
+                                recently.
                             </p>
                         </div>
                     </li>
