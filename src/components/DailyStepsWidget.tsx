@@ -3,11 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { SFPortfolioSettings } from '@/types/salesforce';
-
-interface DailyStepsWidgetProps {
-    settings: SFPortfolioSettings | null;
-}
 
 function useAnimatedNumber(value: number | null, duration: number = 2000) {
     const [displayValue, setDisplayValue] = useState(0);
