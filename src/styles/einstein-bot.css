@@ -36,7 +36,16 @@
    TRIGGER BUTTON (Ask Me Anything)
    ========================================================================== */
 .embeddedServiceHelpButton .helpButton .uiButton {
-    display: none !important;
+    background-color: var(--bot-user-bubble-bg) !important;
+    font-family: var(--bot-font-family) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(1, 118, 211, 0.3) !important;
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .embeddedServiceHelpButton .helpButton .uiButton:hover {
