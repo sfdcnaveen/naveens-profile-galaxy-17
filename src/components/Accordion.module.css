@@ -1,7 +1,9 @@
 .accordion {
-    background-color: var(--slds-g-color-neutral-base-100);
+    background-color: var(--slds-g-color-neutral-base-100-alpha);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
     border: 1px solid var(--slds-g-color-border-base-40);
-    border-radius: var(--slds-g-radius-border-2);
+    border-radius: var(--slds-g-radius-border-3);
     margin-bottom: var(--slds-g-spacing-medium);
     box-shadow: var(--slds-g-shadow-depth-1);
     display: flex;
@@ -73,6 +75,9 @@
 }
 
 .body {
+    background-color: transparent;
+}
+
+.bodyContent {
     padding: var(--slds-g-spacing-medium);
-    background-color: var(--slds-g-color-neutral-base-100);
 }

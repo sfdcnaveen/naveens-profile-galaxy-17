@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { trackEvent } from '@/lib/tracking';
 import styles from './Accordion.module.css';
 
@@ -62,7 +63,20 @@ const Accordion: React.FC<AccordionProps> = ({
                     </div>
                 </button>
             </header>
-            {isExpanded && <div className={styles.body}>{children}</div>}
+            <AnimatePresence initial={false}>
+                {isExpanded && (
+                    <motion.div
+                        className={styles.body}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                        style={{ overflow: 'hidden' }}
+                    >
+                        <div className={styles.bodyContent}>{children}</div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </article>
     );
 };
