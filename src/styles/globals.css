@@ -42,6 +42,7 @@ p {
 
 /* Layout Utilities */
 .container {
+    width: 100%;
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 var(--slds-g-spacing-large);
@@ -49,6 +50,7 @@ p {
 
 .record-workspace {
     min-height: 65vh;
+    width: 100%;
     background-color: var(--slds-g-color-neutral-base-100-alpha);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
@@ -62,10 +64,12 @@ p {
 }
 
 .page-layout {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--slds-g-spacing-large);
     align-items: start;
+    justify-items: stretch;
 }
 
 @media (min-width: 768px) {
