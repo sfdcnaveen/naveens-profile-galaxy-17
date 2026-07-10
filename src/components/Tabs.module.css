@@ -6,15 +6,14 @@
 }
 
 .tabNav {
-    display: flex;
+    display: grid;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-auto-flow: column;
     list-style: none;
     border-bottom: 1px solid var(--slds-g-color-border-base-40);
     margin: 0;
     padding: 0 var(--slds-g-spacing-medium);
     overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
     background: transparent;
 }
 .tabNav::-webkit-scrollbar {
@@ -24,9 +23,13 @@
 .tabItem {
     margin-bottom: -1px; /* Overlap the border */
     padding-top: var(--slds-g-spacing-small);
+    text-align: center;
 }
 
 .tabButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     padding: 0.85rem var(--slds-g-spacing-large);
     font-size: 0.95rem;
     color: var(--slds-g-color-neutral-base-10);
@@ -69,20 +72,5 @@
     grid-area: 1 / 1;
     display: flex;
     flex-direction: column;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
     height: 100%;
-    transform: translateY(4px);
-    transition:
-        opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
-        transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
-        visibility 0.3s;
-}
-
-.activePanel {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateY(0);
 }

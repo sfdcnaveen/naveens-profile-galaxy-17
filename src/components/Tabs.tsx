@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import { trackEvent } from '@/lib/tracking';
 import styles from './Tabs.module.css';
 
@@ -75,15 +76,24 @@ const Tabs: React.FC<TabsProps> = ({ tabs, defaultActiveTab }) => {
                 ))}
             </ul>
             <div className={styles.tabContent}>
-                {tabs.map((tab) => (
-                    <div
-                        key={tab.id}
-                        role="tabpanel"
-                        className={`${styles.tabPanel} ${activeTab === tab.id ? styles.activePanel : ''}`}
-                    >
-                        {tab.content}
-                    </div>
-                ))}
+                <AnimatePresence mode="wait">
+                    {tabs.map((tab) => {
+                        if (activeTab !== tab.id) return null;
+                        return (
+                            <motion.div
+                                key={tab.id}
+                                role="tabpanel"
+                                className={styles.tabPanel}
+                                initial={{ opacity: 0, y: 8, filter: 'blur(4px)' }}
+                                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                                exit={{ opacity: 0, y: -8, filter: 'blur(4px)' }}
+                                transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+                            >
+                                {tab.content}
+                            </motion.div>
+                        );
+                    })}
+                </AnimatePresence>
             </div>
         </div>
     );

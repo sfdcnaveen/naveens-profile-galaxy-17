@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { SFWorkExperience } from '@/types/salesforce';
 import Accordion from './Accordion';
 
@@ -34,7 +37,7 @@ export default function Experience({ experienceData = [] }: ExperienceProps) {
             id="tab-details_accordion-experience"
         >
             <div style={{ padding: 'var(--slds-g-spacing-small)' }}>
-                {experienceData.map((step) => {
+                {experienceData.map((step, index) => {
                     const startYear = step.Start_Date__c
                         ? new Date(step.Start_Date__c).getFullYear()
                         : '';
@@ -44,13 +47,20 @@ export default function Experience({ experienceData = [] }: ExperienceProps) {
                     const meta = `${startYear} - ${endYear} · ${step.Company__c}`;
 
                     return (
-                        <div
+                        <motion.div
                             key={step.Id}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{
+                                duration: 0.4,
+                                delay: 0.1 * index,
+                                ease: [0.32, 0.72, 0, 1],
+                            }}
                             style={{
                                 marginBottom: 'var(--slds-g-spacing-large)',
                                 position: 'relative',
                                 paddingLeft: 'var(--slds-g-spacing-large)',
-                                borderLeft: '2px solid var(--slds-g-color-border-base-40)',
+                                borderLeft: '2px solid rgba(1, 118, 211, 0.2)',
                             }}
                         >
                             <div
@@ -62,6 +72,7 @@ export default function Experience({ experienceData = [] }: ExperienceProps) {
                                     height: '10px',
                                     borderRadius: '50%',
                                     backgroundColor: 'var(--slds-g-color-brand-base-50)',
+                                    boxShadow: '0 0 0 4px rgba(1, 118, 211, 0.1)',
                                 }}
                             ></div>
                             <div
@@ -69,6 +80,7 @@ export default function Experience({ experienceData = [] }: ExperienceProps) {
                                     fontSize: '0.875rem',
                                     color: 'var(--slds-g-color-neutral-base-30)',
                                     marginBottom: '4px',
+                                    fontWeight: 600,
                                 }}
                             >
                                 {meta}
@@ -82,8 +94,15 @@ export default function Experience({ experienceData = [] }: ExperienceProps) {
                             >
                                 {step.Role__c}
                             </h3>
-                            <p style={{ fontSize: '0.875rem' }}>{step.Description__c}</p>
-                        </div>
+                            <p
+                                style={{
+                                    fontSize: '0.9rem',
+                                    color: 'var(--slds-g-color-neutral-base-30)',
+                                }}
+                            >
+                                {step.Description__c}
+                            </p>
+                        </motion.div>
                     );
                 })}
             </div>

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HighlightsPanel.module.css';
 import Image from 'next/image';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { SFPortfolioSettings } from '@/types/salesforce';
 
@@ -109,11 +108,9 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
                     <span className={styles.fieldLabel}>GitHub Pulse</span>
                     <span
                         className={styles.fieldValue}
-                        style={{ display: 'flex', alignItems: 'center', gap: '4px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                     >
-                        <div style={{ width: '16px', height: '16px' }}>
-                            <DotLottieReact src="/lotties/pulse.lottie" loop autoplay />
-                        </div>
+                        <div className={styles.pulseDot} />
                         Actively coding
                     </span>
                 </li>

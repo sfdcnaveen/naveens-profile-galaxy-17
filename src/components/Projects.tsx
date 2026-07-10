@@ -4,23 +4,16 @@ import React from 'react';
 import { trackEvent } from '@/lib/tracking';
 import { SFProject } from '@/types/salesforce';
 import Accordion from './Accordion';
+import styles from './Projects.module.css';
 
 function ProjectCard({ project, children }: { project: SFProject; children: React.ReactNode }) {
-    const style: React.CSSProperties = {
-        display: 'block',
-        border: '1px solid var(--slds-g-color-border-base-40)',
-        borderRadius: '4px',
-        padding: 'var(--slds-g-spacing-medium)',
-        color: 'inherit',
-        textDecoration: 'none',
-    };
     if (project.Live_Link__c) {
         return (
             <a
                 href={project.Live_Link__c}
                 target="_blank"
                 rel="noreferrer noopener"
-                style={style}
+                className={`${styles.projectCard} ${styles.projectCardLink}`}
                 onClick={() =>
                     trackEvent('project_clicked', {
                         project_title: project.Title__c,
@@ -32,7 +25,7 @@ function ProjectCard({ project, children }: { project: SFProject; children: Reac
             </a>
         );
     }
-    return <div style={style}>{children}</div>;
+    return <div className={styles.projectCard}>{children}</div>;
 }
 
 interface ProjectsProps {

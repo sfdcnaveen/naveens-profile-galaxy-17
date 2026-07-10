@@ -54,7 +54,12 @@ export default async function Home() {
                 <div className="page-layout">
                     <div
                         className="main-column"
-                        style={{ minWidth: 0, display: 'flex', flexDirection: 'column' }}
+                        style={{
+                            minWidth: 0,
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                        }}
                     >
                         <div className="record-workspace" data-tour="record-workspace">
                             <Tabs
