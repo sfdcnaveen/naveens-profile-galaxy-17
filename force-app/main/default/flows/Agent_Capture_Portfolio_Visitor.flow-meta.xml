@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>60.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>Agent Capture Portfolio Visitor {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Agent Capture Portfolio Visitor</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Visitor_Record</targetReference>
+        </connector>
+    </start>
+    
+    <recordCreates>
+        <name>Create_Visitor_Record</name>
+        <label>Create Visitor Record</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignRecordIdToReference>varVisitorId</assignRecordIdToReference>
+        <connector>
+            <targetReference>Set_Status_Message</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>visitorName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Portfolio_Visitor_Email__c</field>
+            <value>
+                <elementReference>visitorEmail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Portfolio_Visitor_Message__c</field>
+            <value>
+                <elementReference>visitorMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Portfolio_Visitor__c</object>
+        <faultConnector>
+            <targetReference>Set_Fault_Message</targetReference>
+        </faultConnector>
+    </recordCreates>
+    
+    <assignments>
+        <name>Set_Status_Message</name>
+        <label>Set Status Message</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>statusMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Successfully sent message to Naveen!</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    
+    <assignments>
+        <name>Set_Fault_Message</name>
+        <label>Set Fault Message</label>
+        <locationX>400</locationX>
+        <locationY>278</locationY>
+        <assignmentItems>
+            <assignToReference>statusMessage</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+
+    <variables>
+        <name>visitorName</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>visitorEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>visitorMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>varVisitorId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>statusMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
