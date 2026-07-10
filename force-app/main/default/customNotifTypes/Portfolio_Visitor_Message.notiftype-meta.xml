@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomNotificationType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customNotifTypeName>Portfolio Visitor Message</customNotifTypeName>
+    <description>Notification sent when a visitor leaves a message via Agentforce.</description>
+    <desktop>true</desktop>
+    <masterLabel>Portfolio Visitor Message</masterLabel>
+    <mobile>true</mobile>
+</CustomNotificationType>

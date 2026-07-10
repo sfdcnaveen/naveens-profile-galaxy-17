@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>PortfolioBotDataService</members>
-        <members>VisitorNotificationService</members>
-        <name>ApexClass</name>
+        <members>Portfolio_Visitor_Message</members>
+        <name>CustomNotificationType</name>
     </types>
-    <version>58.0</version>
+    <types>
+        <members>Agent_Capture_Portfolio_Visitor</members>
+        <members>Notify_Portfolio_Visitor</members>
+        <name>Flow</name>
+    </types>
+    <version>60.0</version>
 </Package>
