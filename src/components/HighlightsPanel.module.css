@@ -1,12 +1,21 @@
 .highlightsPanel {
-    background-color: var(--slds-g-color-neutral-base-100);
+    background-color: var(--slds-g-color-neutral-base-100-alpha);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
     border: 1px solid var(--slds-g-color-border-base-40);
-    border-radius: var(--slds-g-radius-border-2);
-    padding: var(--slds-g-spacing-medium);
+    border-radius: var(--slds-g-radius-border-3);
+    padding: var(--slds-g-spacing-large);
     margin: var(--slds-g-spacing-large) 0;
     box-shadow: var(--slds-g-shadow-depth-1);
     position: relative;
     overflow: hidden;
+    transition:
+        box-shadow 0.4s var(--ease-apple),
+        transform 0.4s var(--ease-apple);
+}
+
+.highlightsPanel:hover {
+    box-shadow: var(--slds-g-shadow-depth-2);
 }
 
 .highlightsPanel::before {
@@ -74,13 +83,15 @@
 
 .buttonNeutral {
     border: 1px solid var(--slds-g-color-border-base-40);
-    background-color: var(--slds-g-color-neutral-base-100);
+    background-color: var(--slds-g-color-neutral-base-100-alpha);
     color: var(--slds-g-color-brand-base-50);
     padding: 0 1rem;
     height: 32px;
-    border-radius: var(--slds-g-radius-border-1);
+    border-radius: var(--slds-g-radius-border-2);
     font-weight: 600;
     font-size: 0.875rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s var(--ease-apple);
 }
 
 .buttonNeutral:hover {
@@ -93,9 +104,11 @@
     color: white;
     padding: 0 1rem;
     height: 32px;
-    border-radius: var(--slds-g-radius-border-1);
+    border-radius: var(--slds-g-radius-border-2);
     font-weight: 600;
     font-size: 0.875rem;
+    transition: all 0.4s var(--ease-apple);
+    box-shadow: 0 2px 8px rgba(1, 118, 211, 0.25);
 }
 
 .buttonBrand:hover {
@@ -153,4 +166,33 @@
     font-weight: 500;
     color: var(--slds-g-color-neutral-base-10);
     line-height: 1.5;
+}
+
+.pulseDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--slds-g-color-success-base-50, #45c65a);
+    position: relative;
+    margin-right: 4px;
+}
+
+.pulseDot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--slds-g-color-success-base-50, #45c65a);
+    animation: pulseAnim 2s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+
+@keyframes pulseAnim {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
 }

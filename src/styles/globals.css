@@ -77,7 +77,7 @@ p {
 a {
     color: var(--slds-g-color-brand-base-50);
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s var(--ease-apple);
 }
 
 a:hover {
@@ -90,7 +90,7 @@ button {
     border: none;
     cursor: pointer;
     font-family: inherit;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s var(--ease-apple);
 }
 
 button:active {
