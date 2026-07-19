@@ -58,8 +58,16 @@ export async function GET() {
             }) => {
                 const snippet = item.snippet;
                 const videoId = snippet.resourceId?.videoId;
+
+                // Clean up title by removing trailing channel/branding tags (Option 3)
+                let title = snippet.title || 'Unknown Title';
+                if (title.includes('|')) {
+                    title = title.split('|')[0].trim();
+                }
+                title = title.replace(/\s+-\s+$/, '').trim();
+
                 return {
-                    title: snippet.title || 'Unknown Title',
+                    title,
                     channelTitle:
                         snippet.videoOwnerChannelTitle || snippet.channelTitle || 'Unknown Channel',
                     thumbnail:
