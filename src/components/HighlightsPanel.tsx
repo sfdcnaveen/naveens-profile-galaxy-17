@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './HighlightsPanel.module.css';
 import Image from 'next/image';
 
@@ -11,48 +11,6 @@ interface HighlightsPanelProps {
 }
 
 const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
-    const [weather, setWeather] = useState('☀️ 32°C');
-
-    useEffect(() => {
-        const fetchWeather = async () => {
-            try {
-                const response = await fetch(
-                    'https://api.open-meteo.com/v1/forecast?latitude=14.442599&longitude=79.986458&current=temperature_2m,weather_code'
-                );
-                if (!response.ok) return;
-                const data = await response.json();
-
-                const weatherCodes: Record<number, { icon: string }> = {
-                    0: { icon: '☀️' },
-                    1: { icon: '🌤️' },
-                    2: { icon: '⛅' },
-                    3: { icon: '☁️' },
-                    45: { icon: '🌫️' },
-                    48: { icon: '🌫️' },
-                    51: { icon: '🌦️' },
-                    53: { icon: '🌦️' },
-                    55: { icon: '🌦️' },
-                    61: { icon: '🌧️' },
-                    63: { icon: '🌧️' },
-                    65: { icon: '🌧️' },
-                    71: { icon: '❄️' },
-                    73: { icon: '❄️' },
-                    75: { icon: '❄️' },
-                    95: { icon: '⛈️' },
-                };
-
-                const temp = Math.round(data.current.temperature_2m);
-                const code = data.current.weather_code;
-                const icon = weatherCodes[code]?.icon || '☀️';
-
-                setWeather(`${icon} ${temp}°C`);
-            } catch (error) {
-                console.log('Weather API failed', error);
-            }
-        };
-        fetchWeather();
-    }, []);
-
     return (
         <div className={styles.highlightsPanel} data-tour="highlights-panel">
             <div className={styles.mainInfo}>
@@ -67,51 +25,52 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
                     />
                 </div>
                 <div className={styles.textInfo}>
-                    <span className={styles.entityName}>Profile Record</span>
+                    <span className={styles.entityName}>Senior QA Automation Engineer</span>
                     <h1 className={styles.recordName}>
-                        {settings?.Full_Name__c || "Naveen's Portfolio"}
+                        {settings?.Full_Name__c || 'Naveen Kumar Pasupuleti'}
                     </h1>
                 </div>
                 <div className={styles.actions} data-tour="record-actions">
-                    <a href="/about" style={{ textDecoration: 'none' }}>
-                        <button className={styles.buttonNeutral}>Read Bio</button>
-                    </a>
                     <a
                         href={settings?.Resume_URL__c || '#'}
                         target="_blank"
                         rel="noreferrer"
                         style={{ textDecoration: 'none' }}
                     >
-                        <button className={styles.buttonNeutral}>Resume</button>
+                        <button className={styles.buttonBrand}>View Resume</button>
                     </a>
                     <a href="/api/contact" style={{ textDecoration: 'none' }}>
-                        <button className={styles.buttonBrand}>Send Email</button>
+                        <button className={styles.buttonNeutral}>Get in Touch</button>
                     </a>
                 </div>
             </div>
             <ul className={styles.keyFields}>
                 <li className={styles.keyField}>
-                    <span className={styles.fieldLabel}>Title</span>
-                    <span className={styles.fieldValue}>{settings?.Headline_Title__c || ''}</span>
+                    <span className={styles.fieldLabel}>Specialization</span>
+                    <span className={styles.fieldValue}>
+                        {settings?.Headline_Title__c || 'Salesforce & Playwright'}
+                    </span>
                 </li>
                 <li className={styles.keyField}>
-                    <span className={styles.fieldLabel}>Company</span>
-                    <span className={styles.fieldValue}>{settings?.Current_Company__c || ''}</span>
+                    <span className={styles.fieldLabel}>Current Role</span>
+                    <span className={styles.fieldValue}>
+                        {settings?.Current_Company__c || 'QA Architect'}
+                    </span>
                 </li>
                 <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Location</span>
                     <span className={styles.fieldValue}>
-                        {settings?.Location__c || ''} {weather ? `(${weather})` : ''}
+                        {settings?.Location__c || 'Nellore, India'}
                     </span>
                 </li>
                 <li className={styles.keyField}>
-                    <span className={styles.fieldLabel}>GitHub Pulse</span>
+                    <span className={styles.fieldLabel}>Availability</span>
                     <span
                         className={styles.fieldValue}
-                        style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+                        style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                     >
                         <div className={styles.pulseDot} />
-                        Actively coding
+                        Open to Projects
                     </span>
                 </li>
             </ul>
