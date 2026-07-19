@@ -192,6 +192,26 @@
     cursor: pointer;
 }
 
+.cardFooter {
+    text-align: center;
+    border-top: 1px solid var(--slds-g-color-neutral-base-95, #f3f2f1);
+    padding-top: var(--slds-g-spacing-small);
+    margin-top: var(--slds-g-spacing-xx-small, 4px);
+}
+
+.viewAllLink {
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: var(--slds-g-color-brand-base-50, #0176d3);
+    text-decoration: none;
+    transition: color 0.1s ease;
+}
+
+.viewAllLink:hover {
+    color: var(--slds-g-color-brand-base-30, #014486);
+    text-decoration: underline;
+}
+
 .subText {
     font-size: 0.75rem;
     color: var(--slds-g-color-neutral-base-30, #514f4d);

@@ -26,11 +26,19 @@ interface PodcastData {
     videoUrl: string;
 }
 
-export default function LiveSignals() {
-    const [weather, setWeather] = useState<WeatherData | null>(null);
+interface LiveSignalsProps {
+    initialWeather?: WeatherData | null;
+    initialSteps?: number | null;
+}
+
+export default function LiveSignals({
+    initialWeather = null,
+    initialSteps = null,
+}: LiveSignalsProps) {
+    const [weather, setWeather] = useState<WeatherData | null>(initialWeather);
     const [tracks, setTracks] = useState<TrackData[]>([]);
     const [podcasts, setPodcasts] = useState<PodcastData[]>([]);
-    const [steps, setSteps] = useState<number | null>(null);
+    const [steps, setSteps] = useState<number | null>(initialSteps);
     const [activePreviewUrl, setActivePreviewUrl] = useState<string | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -41,7 +49,7 @@ export default function LiveSignals() {
         async function fetchWeather() {
             try {
                 const res = await fetch(
-                    'https://api.open-meteo.com/v1/forecast?latitude=14.442599&longitude=79.986458&current=temperature_2m,weather_code,is_day'
+                    'https://api.open-meteo.com/v1/forecast?latitude=12.9716&longitude=77.5946&current=temperature_2m,weather_code,is_day'
                 );
                 if (!res.ok) return;
                 const data = await res.json();
@@ -50,13 +58,13 @@ export default function LiveSignals() {
                 const isDay = data.current.is_day;
 
                 let emoji = '☀️';
-                let message = 'Clear skies in Nellore.';
+                let message = 'Clear skies today.';
                 if (code === 0) {
                     emoji = isDay ? '☀️' : '🌙';
                     message = isDay ? 'Clear skies today.' : 'Clear night sky.';
                 } else if (code >= 1 && code <= 3) {
                     emoji = '⛅';
-                    message = 'Cloudy start in Nellore.';
+                    message = 'Cloudy start today.';
                 } else if (code >= 51 && code <= 65) {
                     emoji = '🌧️';
                     message = 'Rainy day — good for focused work.';
@@ -115,11 +123,15 @@ export default function LiveSignals() {
             }
         }
 
-        fetchWeather();
+        if (!initialWeather) {
+            fetchWeather();
+        }
+        if (initialSteps === null) {
+            fetchSteps();
+        }
         fetchMusic();
         fetchPodcast();
-        fetchSteps();
-    }, []);
+    }, [initialWeather, initialSteps]);
 
     const playPreview = (url: string) => {
         if (!audioRef.current) return;
@@ -137,14 +149,14 @@ export default function LiveSignals() {
 
     return (
         <div className={styles.signalsContainer}>
-            <h2 className={styles.sectionTitle}>Telemetry & Signals</h2>
-
             {/* Weather Card */}
             {weather && (
                 <div className={styles.signalCard}>
                     <div className={styles.cardHeader}>
                         <span className={styles.cardLabel}>Weather Now</span>
-                        <span className={`${styles.sourceBadge} ${styles.badgeLive}`}>Nellore</span>
+                        <span className={`${styles.sourceBadge} ${styles.badgeLive}`}>
+                            Bengaluru
+                        </span>
                     </div>
                     <div className={styles.cardBody}>
                         <div className={styles.artContainer}>
@@ -266,8 +278,19 @@ export default function LiveSignals() {
                             </div>
                         ))}
                     </div>
+                    <div className={styles.cardFooter}>
+                        <a
+                            href="https://music.apple.com/profile/naveenpasupuleti"
+                            target="_blank"
+                            rel="noreferrer"
+                            className={styles.viewAllLink}
+                        >
+                            View All
+                        </a>
+                    </div>
                     <audio
                         ref={audioRef}
+                        style={{ display: 'none' }}
                         onEnded={() => setIsPlaying(false)}
                         onError={(e) => {
                             console.warn('Audio preview is unavailable or has expired:', e);
