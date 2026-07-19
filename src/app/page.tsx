@@ -9,8 +9,7 @@ import Projects from '@/components/Projects';
 import Certifications from '@/components/Certifications';
 import Card from '@/components/Card';
 import SocialLinks from '@/components/SocialLinks';
-import DailyStepsWidget from '@/components/DailyStepsWidget';
-import LastFmWidget from '@/components/LastFmWidget';
+import LiveSignals from '@/components/LiveSignals';
 import {
     getProjects,
     getWorkExperience,
@@ -35,7 +34,7 @@ export default async function Home() {
     if (settings) {
         settings.Headline_Title__c = 'Salesforce QA & Playwright Expert';
         settings.About_Me_Description__c =
-            "I am Naveen Kumar Pasupuleti, a Salesforce QA & Playwright Expert. I'm not just a QA; I am the engineer who transitions legacy SFDC testing to modern deterministic Playwright suites.";
+            'Transitioning enterprise Salesforce testing suites to modern, deterministic Playwright automation. Focused on speed, reliability, and continuous delivery.';
     }
 
     return (
@@ -140,8 +139,7 @@ export default async function Home() {
                             </div>
                         </Card>
 
-                        <DailyStepsWidget />
-                        <LastFmWidget />
+                        <LiveSignals />
                     </aside>
                 </div>
             </main>
