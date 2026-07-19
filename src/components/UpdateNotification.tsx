@@ -8,7 +8,7 @@ export default function UpdateNotification() {
 
     useEffect(() => {
         // Only show once per user for this specific update version
-        const hasSeenUpdate = localStorage.getItem('hasSeenUpdate_v2_1');
+        const hasSeenUpdate = localStorage.getItem('hasSeenUpdate_v3_0');
         if (!hasSeenUpdate) {
             // Slight delay so it doesn't pop up instantly before page loads
             const timer = setTimeout(() => {
@@ -20,7 +20,7 @@ export default function UpdateNotification() {
 
     const handleDismiss = () => {
         setIsVisible(false);
-        localStorage.setItem('hasSeenUpdate_v2_1', 'true');
+        localStorage.setItem('hasSeenUpdate_v3_0', 'true');
     };
 
     if (!isVisible) return null;
@@ -32,57 +32,40 @@ export default function UpdateNotification() {
                     <h2 id="update-title" className={styles.title}>
                         🎉 What&apos;s New
                     </h2>
-                    <p className={styles.subtitle}>Version 2.1 is here!</p>
+                    <p className={styles.subtitle}>Version 3.0 is here!</p>
                 </div>
 
                 <ul className={styles.list}>
                     <li className={styles.listItem}>
-                        <div className={styles.icon}>☁️</div>
+                        <div className={styles.icon}>🎙️</div>
                         <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>New Salesforce Org & Data Cloud</h3>
+                            <h3 className={styles.itemTitle}>Live Media Feed Integration</h3>
                             <p className={styles.itemDesc}>
-                                Shifted from the old org to a new org for better data management,
-                                leveraging Agentforce and Data Cloud!
+                                Seamlessly display the top three most recently played podcast
+                                episodes, keeping the interface synced with current interests and
+                                professional insights.
                             </p>
                         </div>
                     </li>
                     <li className={styles.listItem}>
-                        <div className={styles.icon}>🤖</div>
+                        <div className={styles.icon}>✨</div>
                         <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>Agentforce Upgrade</h3>
+                            <h3 className={styles.itemTitle}>Ambient Interface Styling</h3>
                             <p className={styles.itemDesc}>
-                                The interactive AI assistant has been upgraded to a smarter
-                                Agentforce bot to assist you directly from the chat button.
+                                Introduced a sophisticated ambient lighting effect behind media
+                                thumbnails, dynamically reflecting the color palette of the artwork
+                                for a premium visual depth.
                             </p>
                         </div>
                     </li>
                     <li className={styles.listItem}>
-                        <div className={styles.icon}>🚶</div>
+                        <div className={styles.icon}>⚡</div>
                         <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>Live Fitbit Tracking</h3>
+                            <h3 className={styles.itemTitle}>Performance & Speed Optimizations</h3>
                             <p className={styles.itemDesc}>
-                                The steps shown are now real, live data fetched directly from my
-                                Fitbit tracker!
-                            </p>
-                        </div>
-                    </li>
-                    <li className={styles.listItem}>
-                        <div className={styles.icon}>🎵</div>
-                        <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>Last.fm Integration</h3>
-                            <p className={styles.itemDesc}>
-                                Added Last.fm integration to show the music track I listened to most
-                                recently.
-                            </p>
-                        </div>
-                    </li>
-                    <li className={styles.listItem}>
-                        <div className={styles.icon}>🎨</div>
-                        <div className={styles.itemContent}>
-                            <h3 className={styles.itemTitle}>Dynamic Micro-Animations</h3>
-                            <p className={styles.itemDesc}>
-                                The portfolio now feels more alive with beautiful, high-quality
-                                Lottie animations enhancing the experience.
+                                Replaced heavy animation libraries and migrated weather and activity
+                                sync logic to server-side pre-fetching, achieving near-instantaneous
+                                page load speeds and layout stability.
                             </p>
                         </div>
                     </li>

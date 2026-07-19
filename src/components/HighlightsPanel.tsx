@@ -58,12 +58,6 @@ const HighlightsPanel = ({ settings }: HighlightsPanelProps) => {
                     </span>
                 </li>
                 <li className={styles.keyField}>
-                    <span className={styles.fieldLabel}>Location</span>
-                    <span className={styles.fieldValue}>
-                        {settings?.Location__c || 'Nellore, India'}
-                    </span>
-                </li>
-                <li className={styles.keyField}>
                     <span className={styles.fieldLabel}>Availability</span>
                     <span
                         className={styles.fieldValue}
