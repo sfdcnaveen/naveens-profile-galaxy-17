@@ -4,17 +4,8 @@ import fallbackPodcasts from '@/data/podcasts.json';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-    const playlistId = process.env.YOUTUBE_PLAYLIST_ID;
-    const apiKey = process.env.YOUTUBE_API_KEY;
-
-    if (!apiKey || !playlistId) {
-        // Fallback to local curated JSON if env variables are not set
-        return NextResponse.json(fallbackPodcasts, {
-            headers: {
-                'Cache-Control': 'no-store, no-cache, must-revalidate',
-            },
-        });
-    }
+    const playlistId = 'PLY8z_fdHI-nU';
+    const apiKey = 'AIzaSyBU0rB423oppfZ58Y4c2itw7PmOESfB9hA';
 
     try {
         const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&maxResults=3&playlistId=${playlistId}&key=${apiKey}`;
@@ -58,8 +49,16 @@ export async function GET() {
             }) => {
                 const snippet = item.snippet;
                 const videoId = snippet.resourceId?.videoId;
+
+                // Clean up title by removing trailing channel/branding tags (Option 3)
+                let title = snippet.title || 'Unknown Title';
+                if (title.includes('|')) {
+                    title = title.split('|')[0].trim();
+                }
+                title = title.replace(/\s+-\s+$/, '').trim();
+
                 return {
-                    title: snippet.title || 'Unknown Title',
+                    title,
                     channelTitle:
                         snippet.videoOwnerChannelTitle || snippet.channelTitle || 'Unknown Channel',
                     thumbnail:

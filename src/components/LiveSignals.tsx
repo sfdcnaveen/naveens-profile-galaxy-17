@@ -186,14 +186,21 @@ export default function LiveSignals() {
                 <div className={styles.signalCard}>
                     <div className={styles.cardHeader}>
                         <span className={styles.cardLabel}>Recent Listening</span>
-                        <span className={`${styles.sourceBadge} ${styles.badgeLastfm}`}>
-                            Last.fm
-                        </span>
+                        <span className={`${styles.sourceBadge} ${styles.badgeLastfm}`}>Music</span>
                     </div>
                     <div className={styles.trackList}>
                         {tracks.map((track, i) => (
                             <div key={i} className={styles.trackRow}>
                                 <div className={styles.artContainer}>
+                                    {track.artwork && (
+                                        /* eslint-disable-next-line @next/next/no-img-element */
+                                        <img
+                                            src={track.artwork}
+                                            alt=""
+                                            className={styles.artGlow}
+                                            aria-hidden="true"
+                                        />
+                                    )}
                                     {track.artwork ? (
                                         // eslint-disable-next-line @next/next/no-img-element
                                         <img
@@ -287,14 +294,23 @@ export default function LiveSignals() {
                                     href={podcast.videoUrl}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className={styles.artContainer}
+                                    className={styles.podcastArtContainer}
                                     style={{ cursor: 'pointer' }}
                                 >
+                                    {podcast.thumbnail && (
+                                        /* eslint-disable-next-line @next/next/no-img-element */
+                                        <img
+                                            src={podcast.thumbnail}
+                                            alt=""
+                                            className={styles.podcastArtGlow}
+                                            aria-hidden="true"
+                                        />
+                                    )}
                                     {/* eslint-disable-next-line @next/next/no-img-element */}
                                     <img
                                         src={podcast.thumbnail}
                                         alt={podcast.title}
-                                        className={styles.artImage}
+                                        className={styles.podcastArtImage}
                                     />
                                 </a>
                                 <div className={styles.details}>
