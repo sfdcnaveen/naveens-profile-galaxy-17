@@ -11,7 +11,6 @@ import Card from '@/components/Card';
 import SocialLinks from '@/components/SocialLinks';
 import LiveSignals from '@/components/LiveSignals';
 import Accordion from '@/components/Accordion';
-import SalesforceLoader from '@/components/SalesforceLoader';
 import {
     getProjects,
     getWorkExperience,
@@ -83,7 +82,6 @@ export default async function Home() {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
-            <SalesforceLoader />
             <GlobalHeader
                 experienceData={experienceData}
                 projectsData={projectsData}
